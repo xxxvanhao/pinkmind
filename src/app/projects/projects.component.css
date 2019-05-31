@@ -1,0 +1,16 @@
+/*Project-nav*/
+
+.project-nav {
+    position: fixed;
+    z-index: 2;
+    top: 51px;
+    left: 0;
+    width: 200px;
+    height: calc(100% - 50px);
+    background-color: #4caf93;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+
+/*Project-nav*/

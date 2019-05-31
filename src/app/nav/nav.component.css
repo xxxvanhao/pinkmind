@@ -1,0 +1,327 @@
+/*Nav*/
+
+nav.nav-fix {
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    font-size: .88rem;
+}
+
+.navbar {
+    padding: 0.4rem 0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #000;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: green;
+}
+
+.fa-bell,
+.fa-eye,
+.fa-user {
+    font-size: 1.3rem;
+    color: gray;
+}
+
+.fa-bell:hover,
+.fa-eye:hover,
+.fa-user:hover {
+    color: #2c9a7a;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    min-width: 25rem;
+    font-size: .88rem;
+    border: none;
+    padding: 0;
+    border: #f9f9f9;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+
+.drop-issue .dropdown-menu {
+    min-width: 30rem;
+}
+
+.dropdown-menu:after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 10%;
+    margin-left: -5px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: transparent transparent #2c9a7a transparent;
+}
+
+.dropdown-item {
+    padding: 0;
+}
+
+.dropbox-header {
+    background-color: #2c9a7a;
+    padding: 10px;
+    border-radius: .25rem;
+}
+
+.dropbox-header span {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.dropbox-header .dropbox-search {
+    width: 15rem;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    padding: 5px 10px 5px 30px;
+    background-image: url('https://fresher-k1.backlog.com/images/_newUI/icon/svg/icon_search.svg');
+    background-repeat: no-repeat;
+    background-position: 6px center;
+    background-size: 18px;
+}
+
+.dropbox-header .dropbox-search:focus {
+    background-color: #fcfade;
+}
+
+.isNo-items {
+    padding: 10px;
+    text-align: center;
+}
+
+
+/*notification*/
+
+.dropdown-menu-right.dropdown-notification {
+    right: -49px;
+}
+
+.dropdown-notification {
+    padding: 10px;
+    min-width: 29rem;
+    height: 35rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.notification-list-content {
+    height: 31.1rem;
+    overflow-y: auto;
+}
+
+.dropdown-notification:after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 85%;
+    margin-left: -5px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: transparent transparent #2c9a7a transparent;
+}
+
+.unread {
+    color: #fff;
+    font-size: .88rem;
+}
+
+.notification-content {
+    position: relative;
+    background-color: #ddd;
+    border-top: 1px solid #f9f9f9;
+    font-size: .8rem;
+}
+
+.notification-content:hover {
+    background-color: #fcfade;
+}
+
+.notification-content .inprogress {
+    background-color: #4488c5;
+    text-align: center;
+    padding: 1px;
+    border-radius: 20px;
+    color: white;
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.notification-content .resolve {
+    background-color: #4caf93;
+    text-align: center;
+    padding: 1px;
+    border-radius: 20px;
+    color: white;
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.action-noti-content,
+.title-noti,
+.timeAgo-noti {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #777;
+}
+
+.action-noti-content .content {
+    color: #000;
+}
+
+.title-noti .fn-noti {
+    font-weight: 600;
+}
+
+.title-noti .action-noti {
+    color: #2c9a7a;
+    font-weight: 600;
+}
+
+.blockLink-noti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #ffffff;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+
+@-webkit-keyframes slideIn {
+    from {
+        right: -400px;
+        opacity: 0
+    }
+    to {
+        right: 0;
+        opacity: 1
+    }
+}
+
+@keyframes slideIn {
+    from {
+        right: -400px;
+        opacity: 0
+    }
+    to {
+        right: 0;
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+
+/* user-control*/
+
+.dropdown-user-control {
+    padding: 10px;
+    min-width: 15rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-user-control .dropdown-header {
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-user-control hr {
+    margin: 0;
+}
+
+.dropdown-user-control .dropdown-item {
+    padding: 2px 5px;
+    margin: 5px 0;
+}
+
+.dropdown-user-control .dropdown-item:hover {
+    color: #2c9a7a;
+    background-color: #f1f1f1;
+}
+
+.dropdown-user-control:after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 92%;
+    margin-left: -5px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: transparent transparent #2c9a7a transparent;
+}
+
+
+/*nav*/
+
+
+/*Project*/
+
+.project-list,
+.issue-list {
+    background-color: #fff;
+    border-radius: .25rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+
+.project-list .project-content,
+.issue-list .issue-content {
+    position: relative;
+}
+
+.blockLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #ffffff;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+
+.project-list .project-content:not(:last-child),
+.issue-list .issue-content:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.project-content .project-name {
+    font-weight: 600;
+}
+
+.project-content .project-key {
+    font-weight: 300;
+    font-size: .85rem;
+}
+
+.project-list .project-content:hover,
+.issue-list .issue-content:hover {
+    background-color: #fcfade;
+    cursor: pointer;
+}
