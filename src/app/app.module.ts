@@ -12,6 +12,7 @@ import { IssueComponent } from './projects/issue/issue.component';
 import { AddissueComponent } from './projects/addissue/addissue.component';
 import { ProjectsettingComponent } from './projects/projectsetting/projectsetting.component';
 import { MenuComponent } from './projects/menu/menu.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,8 @@ import { MenuComponent } from './projects/menu/menu.component';
     MenuComponent
   ],
   imports: [
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     ProjectsModule
