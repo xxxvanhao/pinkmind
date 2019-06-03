@@ -20,6 +20,7 @@ import { ProFileComponent } from './organization/pro-file/pro-file.component';
 import { SecurityComponent } from './organization/security/security.component';
 import { ChangePasswordComponent } from './organization/change-password/change-password.component';
 import { GenaralComponent } from './projects/projectsetting/genaral/genaral.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,8 @@ import { GenaralComponent } from './projects/projectsetting/genaral/genaral.comp
     GenaralComponent,
   ],
   imports: [
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     ProjectsModule

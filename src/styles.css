@@ -206,7 +206,7 @@ table {
     font-size: .88rem;
 }
 
-.issue-tbody .test {
+.issue-tbody .tr-body {
     position: relative;
 }
 

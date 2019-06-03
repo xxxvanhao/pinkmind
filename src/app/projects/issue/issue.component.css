@@ -2,3 +2,13 @@
     display: flex;
     flex: 1;
 }
+
+.search-conditions {
+    font-size: .88rem;
+}
+
+@media screen and (max-width: 760px) {
+    .res-table {
+        display: none;
+    }
+}
