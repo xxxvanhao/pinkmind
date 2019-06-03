@@ -4,6 +4,7 @@ import { BodyComponent } from './dashboard/body.component';
 import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: BodyComponent},
   {path: 'projects', component: ProjectsComponent}
 ];

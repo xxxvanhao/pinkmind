@@ -11,7 +11,7 @@ export class MenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    //Nav-project
+$('[data-toggle="tooltip"]').tooltip();
     // Hide submenus
 $('#body-row .collapse').collapse('hide');
 // Collapse/Expand icon
@@ -22,8 +22,6 @@ $('[data-toggle=sidebar-colapse]').click(() =>
 );
 function SidebarCollapse() {
     $('.menu-collapsed').toggleClass('d-none');
-    $('.sidebar-submenu').toggleClass('d-none');
-    $('.submenu-icon').toggleClass('d-none');
     $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
     // Treating d-flex/d-none on separators with title
     const SeparatorTitle = $('.sidebar-separator-title');
@@ -33,8 +31,7 @@ function SidebarCollapse() {
         SeparatorTitle.addClass('d-flex');
     }
     // Collapse/Expand icon
-    $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
-}
+    $('#collapse-icon').toggleClass('fa-angle-double-x-double-right');
+    }
   }
-
 }

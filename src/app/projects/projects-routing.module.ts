@@ -6,21 +6,21 @@ import { AddissueComponent } from './addissue/addissue.component';
 import { ProjectsettingComponent } from './projectsetting/projectsetting.component';
 import { ProjectsComponent } from './projects.component';
 const routes: Routes = [
-  {path:'projects', component: ProjectsComponent, children: [
+  {path: 'projects', component: ProjectsComponent, children: [
     {
-      path:'home',
+      path: 'home',
       component: HomeComponent
     },
     {
-      path:'issue',
+      path: 'issue',
       component: IssueComponent
     },
     {
-      path:'add',
+      path: 'add',
       component: AddissueComponent
     },
     {
-      path:'setting',
+      path: 'setting',
       component: ProjectsettingComponent
     }
   ]}
