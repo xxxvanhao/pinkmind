@@ -52,7 +52,7 @@ nav.nav-fix {
     content: " ";
     position: absolute;
     bottom: 100%;
-    left: 10%;
+    left: 8%;
     margin-left: -5px;
     border-width: 7px;
     border-style: solid;
@@ -284,14 +284,17 @@ nav.nav-fix {
 /*Project*/
 
 .project-list,
-.issue-list {
+.issue-list,
+.saved-filter-list {
     background-color: #fff;
     border-radius: .25rem;
+    border: none;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
 }
 
 .project-list .project-content,
-.issue-list .issue-content {
+.issue-list .issue-content,
+.saved-filter-list .saved-filter-content {
     position: relative;
 }
 
@@ -308,7 +311,8 @@ nav.nav-fix {
 }
 
 .project-list .project-content:not(:last-child),
-.issue-list .issue-content:not(:last-child) {
+.issue-list .issue-content:not(:last-child),
+.saved-filter-list .saved-filter-content:not(:last-child) {
     border-bottom: 1px solid #ddd;
 }
 
@@ -322,7 +326,9 @@ nav.nav-fix {
 }
 
 .project-list .project-content:hover,
-.issue-list .issue-content:hover {
+.issue-list .issue-content:hover,
+.saved-filter-list .saved-filter-content:hover {
+    color: black;
     background-color: #fcfade;
     cursor: pointer;
 }

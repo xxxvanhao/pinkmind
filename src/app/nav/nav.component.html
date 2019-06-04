@@ -78,8 +78,29 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Filters</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">Filters</a>
+                        <div class="dropdown-menu">
+                            <div class="saved-filter-list dropdown-item">
+                                <div class="dropbox-header">
+                                    <span>Issue Filters</span>
+                                    <input type="search" class="dropbox-search" value="" name="search" placeholder="Search saved filters">
+                                </div>
+                                <div class="saved-filter-content">
+                                    <div href="#" class="row mx-0 align-items-center">
+                                        <div class="col-md-2 pl-0 text-center">Avatar</div>
+                                        <div class="col-md-10 pl-0">
+                                            <p class="filter-name my-3">[KR-1] Code các phần common front-end</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="blockLink"></a>
+                                </div>
+                                <div class="isNo-items" style="display: none;">
+                                    <p class="mb-0">There are no saved issue filters</p>
+                                    <p class="mb-2">Saved filters after searching issues will be listed here.</p>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
