@@ -33,5 +33,13 @@ function SidebarCollapse() {
     // Collapse/Expand icon
     $('#collapse-icon').toggleClass('fa-angle-double-x-double-right');
     }
+function myFunction(x) {
+    if (x.matches) {
+      SidebarCollapse();
+    }
+}
+const x = window.matchMedia('(max-width: 760px)');
+myFunction(x);
+x.addListener(myFunction);
   }
 }

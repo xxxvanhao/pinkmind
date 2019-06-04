@@ -5,6 +5,7 @@ import { IssueComponent } from './issue/issue.component';
 import { AddissueComponent } from './addissue/addissue.component';
 import { ProjectsettingComponent } from './projectsetting/projectsetting.component';
 import { ProjectsComponent } from './projects.component';
+import { FileComponent } from './file/file.component';
 const routes: Routes = [
   {path: 'projects', component: ProjectsComponent, children: [
     {
@@ -18,6 +19,10 @@ const routes: Routes = [
     {
       path: 'add',
       component: AddissueComponent
+    },
+    {
+      path: 'file',
+      component: FileComponent
     },
     {
       path: 'setting',

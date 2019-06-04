@@ -1,0 +1,23 @@
+:host {
+    display: flex;
+    flex: 1;
+}
+
+
+/*file*/
+
+.fix-color-orange {
+    color: orange;
+}
+
+.fix-color-yellowgreen {
+    color: yellowgreen;
+}
+
+.add-folder-erea,
+.add-file-erea {
+    background-color: #fff;
+    padding: 12px 14px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.07);
+    font-size: .88rem;
+}

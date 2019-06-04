@@ -153,7 +153,8 @@ body {
 
 /****My Issue****/
 
-.issue-menu {
+.issue-menu,
+.file-menu {
     padding: 8px 6px;
     background-color: #f0f0f0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
@@ -174,7 +175,8 @@ body {
     margin-right: 15px;
 }
 
-.issue-table {
+.issue-table,
+.file-table {
     border: 8px solid #fff;
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
@@ -185,38 +187,49 @@ table {
     background-color: #f9f9f9;
 }
 
-.issue-thead {
+.issue-thead,
+.file-thead {
     background-color: #fff;
     border-bottom: 2px solid #ddd;
 }
 
-.issue-thead tr th {
+.issue-thead tr th,
+.file-thead tr th {
     font-size: .9rem;
     font-weight: 400;
     padding: 6px;
 }
 
-.issue-thead tr th:hover {
+.issue-thead tr th:hover,
+.file-thead tr th:hover {
     color: #00836b;
     background-color: #e3eee8;
     cursor: pointer;
 }
 
-.issue-tbody {
+.issue-tbody,
+.file-tbody {
     font-size: .88rem;
 }
 
-.issue-tbody .tr-body {
+.issue-tbody .tr-body,
+.file-tbody .tr-body {
     position: relative;
 }
 
-.issue-tbody tr td {
+.issue-tbody tr td,
+.file-tbody tr td {
     padding: 0 6px;
 }
 
-.issue-tbody tr:hover {
+.issue-tbody tr:hover,
+.file-tbody tr:hover {
     background-color: #fcfade;
     cursor: pointer;
+}
+
+.tr-body:not(:last-child) {
+    border-bottom: 1px solid #ddd;
 }
 
 
@@ -417,7 +430,8 @@ table {
 
 /*home-milestone*/
 
-.milestone-list-items {
+.milestone-list-items,
+.category-list-items {
     width: 100%;
 }
 
@@ -450,3 +464,16 @@ table {
 
 
 /*project*/
+
+@media screen and (max-width: 760px) {
+    .timeline-avatar {
+        display: none;
+    }
+    .disable-this {
+        pointer-events: none;
+        opacity: 0;
+    }
+    .fix-search {
+        display: none;
+    }
+}

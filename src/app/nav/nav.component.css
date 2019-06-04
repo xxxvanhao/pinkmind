@@ -6,6 +6,10 @@ nav.nav-fix {
     font-size: .88rem;
 }
 
+.fix-background-toggle {
+    background-color: #333;
+}
+
 .navbar {
     padding: 0.4rem 0;
 }
@@ -20,7 +24,8 @@ nav.nav-fix {
 
 .fa-bell,
 .fa-eye,
-.fa-user {
+.fa-user,
+.fa-search {
     font-size: 1.3rem;
     color: gray;
 }
@@ -76,7 +81,7 @@ nav.nav-fix {
     margin-right: 10px;
 }
 
-.dropbox-header .dropbox-search {
+.dropbox-search {
     width: 15rem;
     border: none;
     border-radius: 20px;
@@ -88,13 +93,24 @@ nav.nav-fix {
     background-size: 18px;
 }
 
-.dropbox-header .dropbox-search:focus {
+.dropbox-search:focus {
     background-color: #fcfade;
 }
 
 .isNo-items {
     padding: 10px;
     text-align: center;
+}
+
+.fix-search {
+    border: 1px solid #ddd;
+    width: 100px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.fix-search:focus {
+    width: 100%;
 }
 
 
@@ -331,4 +347,13 @@ nav.nav-fix {
     color: black;
     background-color: #fcfade;
     cursor: pointer;
+}
+
+
+/*Nav response */
+
+@media screen and (max-width:760px) {
+    nav.nav-fix .row {
+        flex-flow: nowrap;
+    }
 }
