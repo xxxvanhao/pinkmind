@@ -1,0 +1,9 @@
+C:\Users\Administrator\source\repos\PinkMind\PinkMindBusinessLogic\bin\Debug\netcoreapp2.0\PinkMindBusinessLogic.deps.json
+C:\Users\Administrator\source\repos\PinkMind\PinkMindBusinessLogic\bin\Debug\netcoreapp2.0\PinkMindBusinessLogic.dll
+C:\Users\Administrator\source\repos\PinkMind\PinkMindBusinessLogic\bin\Debug\netcoreapp2.0\PinkMindBusinessLogic.pdb
+C:\Users\Administrator\source\repos\PinkMind\PinkMindBusinessLogic\obj\Debug\netcoreapp2.0\PinkMindBusinessLogic.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\PinkMind\PinkMindBusinessLogic\obj\Debug\netcoreapp2.0\PinkMindBusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\PinkMind\PinkMindBusinessLogic\obj\Debug\netcoreapp2.0\PinkMindBusinessLogic.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\PinkMind\PinkMindBusinessLogic\obj\Debug\netcoreapp2.0\PinkMindBusinessLogic.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\PinkMind\PinkMindBusinessLogic\obj\Debug\netcoreapp2.0\PinkMindBusinessLogic.dll
+C:\Users\Administrator\source\repos\PinkMind\PinkMindBusinessLogic\obj\Debug\netcoreapp2.0\PinkMindBusinessLogic.pdb

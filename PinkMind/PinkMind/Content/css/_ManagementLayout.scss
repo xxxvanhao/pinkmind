@@ -1,0 +1,288 @@
+﻿$whiteColor: #FFF;
+$background: #74758b;
+
+body {
+}
+
+#signHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.navigation {
+    display: flex;
+    padding: 0 20px 0 15px;
+    justify-content: space-between;
+    background-color: $background;
+
+    .page-header {
+        color: #FFF;
+    }
+
+    .components {
+        display: flex;
+        padding: 10px 0;
+        font-size: 20px;
+
+        .help-outer {
+            position: relative;
+            margin-right: 40px;
+            color: $whiteColor;
+        }
+
+        .help-outer:before {
+            position: absolute;
+            content: "|";
+            top: 0;
+            right: -20px;
+            color: $whiteColor;
+        }
+
+        .org-switcher {
+            position: relative;
+
+            .user-name {
+                color: $whiteColor;
+            }
+        }
+    }
+
+    #dropMenu {
+        position: absolute;
+        display: none;
+        top: 100%;
+        right: 0;
+        width: 240px;
+        background: #FFF;
+        font-size: 0.8em;
+        color: #808080;
+        z-index: 1;
+        box-shadow: 0px 1px 4px #808080;
+
+        ul {
+            margin: 0;
+            padding: 20px 0;
+
+            li {
+                padding: 5px 20px;
+                list-style: none;
+            }
+
+            li:hover {
+                background: #808080;
+                color: #FFF;
+            }
+        }
+    }
+
+    .fixed {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        box-shadow: 0px 2px 9px;
+    }
+}
+
+.head-component {
+    position: relative;
+    background: #FFF;
+
+    .component-title {
+        top: 10px;
+        margin-left: 20px;
+    }
+}
+
+.component-content {
+    position: relative;
+    background-color: #f1f1f1;
+
+    .component-title {
+        top: 10px;
+        margin-left: 20px;
+    }
+
+    .form-field {
+        padding-bottom: 10px;
+    }
+
+    .fnc {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+    }
+
+    .btn-update {
+        background: #b200ff;
+        color: #FFF;
+    }
+
+    .btn-cancel {
+        background: #cbcbcb;
+        color: #FFF;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+}
+
+.component-tabs {
+    display: flex;
+    justify-content: center;
+
+    .component-item {
+
+
+        a {
+            display: inline-block;
+            padding: 20px 30px;
+        }
+
+        a.active {
+            font-weight: 600;
+            color: #3E3E3E;
+            border-bottom: 2px solid #3E3E3E;
+        }
+    }
+}
+
+.container {
+    background: #FFF;
+
+    .profile {
+        max-width: 680px;
+    }
+
+    .security {
+    }
+
+    .component-teamplate {
+        min-height: 100vh;
+        margin: 0px auto;
+        padding: 20px 0;
+        margin-top: 10px;
+
+        .avatar {
+            text-align: center;
+        }
+
+        .form-change {
+            .title {
+                h3 {
+                    display: inline-block;
+                    margin-left: 15px;
+                }
+            }
+
+            .password-change {
+                max-width: 680px;
+            }
+        }
+    }
+
+    .security-content {
+        .password-strength {
+            border: 1px solid #808080;
+            padding: 20px;
+            width: 100%;
+        }
+    }
+
+
+
+    .strength-level {
+        display: inline-block;
+        width: calc((100% - 21px) / 5);
+        height: 5px;
+        background: #cbcbcb;
+    }
+}
+//Security page
+.page-nav {
+    left: 0;
+    width: 182px;
+
+    ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        flex-direction: column;
+
+        li {
+            margin-bottom: 5px;
+
+            a {
+                display: block;
+                padding: 12px 10px;
+                font-weight: bold;
+                color: #979797;
+                text-decoration: none;
+            }
+
+            .active {
+                font-weight: 700;
+            }
+
+            a:hover {
+                background: #f1f1f1;
+            }
+        }
+    }
+}
+
+.security-side-menu {
+    position: fixed;
+    height: 100%;
+    background-color: #f3f3f3;
+    padding: 0 10px;
+    z-index: 10;
+    transition: left .5s;
+}
+
+@media only screen and (min-width: 500px) {
+    .component-title {
+        position: unset;
+        text-align: center;
+    }
+
+    .component-content {
+        padding: 180px 0 10px 0;
+    }
+
+    .page-nav {
+        top: 182px;
+        left: -200px;
+    }
+
+    .password-strength {
+        text-align: center;
+
+        .title, .password-strength__meter {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .component-title {
+        position: absolute;
+    }
+
+    .page-nav {
+        top: 135px;
+        left: 0;
+    }
+
+    .component-content {
+        padding: 125px 0 10px 0;
+    }
+}

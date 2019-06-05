@@ -1,0 +1,141 @@
+﻿body {
+  background: #f1f1f1; }
+
+.btn {
+  padding: 12px 25px;
+  font-size: 18px;
+  font-size: 1.125rem;
+  min-width: 210px; }
+
+.btn-blue {
+  color: #FFF !important;
+  background-color: #2c9a7a; }
+
+.project-header {
+  display: flex;
+  padding: 10px 25px;
+  background: #FFF;
+  justify-content: space-between;
+  border-bottom: 1px solid #808080; }
+  .project-header .header-set {
+    display: flex; }
+    .project-header .header-set i {
+      margin-right: 10px; }
+  .project-header .project-action {
+    height: 40px;
+    padding: 3px 5px 3px 10px;
+    background: #f1f1f1;
+    color: #FFF;
+    border-radius: 16px;
+    border: 1px solid; }
+    .project-header .project-action input {
+      background: inherit;
+      color: #000;
+      border: none;
+      outline: none; }
+    .project-header .project-action .search-form i.fa-search {
+      color: #000;
+      display: inline-block;
+      padding: 5px;
+      border: 1px solid;
+      border-radius: 50%; }
+
+.project-setting-menu {
+  padding: 5px 0;
+  margin: 0; }
+  .project-setting-menu ul {
+    padding: 0;
+    margin-left: 30px;
+    list-style-type: none; }
+    .project-setting-menu ul li {
+      list-style: none;
+      margin: 2px 0; }
+      .project-setting-menu ul li b {
+        display: inline-block;
+        padding: 20px 0; }
+      .project-setting-menu ul li a {
+        display: block;
+        padding: 5px 0 5px 10px;
+        border: 1px solid inherit;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px; }
+      .project-setting-menu ul li a:hover, .project-setting-menu ul li a.active {
+        text-decoration: none;
+        background: #FFF;
+        color: #000;
+        border: 1px solid #bababa; }
+
+.project-setting-content {
+  margin: 0; }
+  .project-setting-content .project-contain-main {
+    background: #FFF;
+    padding: 30px; }
+    .project-setting-content .project-contain-main .title {
+      display: block;
+      padding: 10px 0 20px 0; }
+    .project-setting-content .project-contain-main .Type-list {
+      margin-top: 10px; }
+      .project-setting-content .project-contain-main .Type-list table td {
+        text-align: center; }
+      .project-setting-content .project-contain-main .Type-list table tbody tr:hover {
+        background: #fcfade; }
+      .project-setting-content .project-contain-main .Type-list table .show-type {
+        width: 100%; }
+      .project-setting-content .project-contain-main .Type-list table .mem-email {
+        width: 40%; }
+      .project-setting-content .project-contain-main .Type-list table .delete {
+        text-align: center; }
+      .project-setting-content .project-contain-main .Type-list table a .type-color {
+        display: inline-block;
+        padding: 2px 10px;
+        background: #ffd800;
+        border-radius: 14px; }
+    .project-setting-content .project-contain-main .page-list {
+      padding: 30px 0 0 0; }
+  .project-setting-content .back {
+    padding: 10px 0; }
+    .project-setting-content .back a i {
+      font-size: 0.8em;
+      padding-right: 10px; }
+  .project-setting-content .edit-menber-form {
+    padding: 35px 25px;
+    margin: 0;
+    background: #f1f1f1; }
+    .project-setting-content .edit-menber-form .full {
+      max-height: none; }
+    .project-setting-content .edit-menber-form .nomal {
+      max-height: 70%; }
+  .project-setting-content .edit-type {
+    margin: 20px 0; }
+    .project-setting-content .edit-type .edit-type-name input {
+      border: 1px solid #f1f1f1;
+      border-radius: 14px;
+      padding: 7px;
+      width: 400px; }
+    .project-setting-content .edit-type .edit-type-name input:focus {
+      outline: none;
+      border: 1px solid pink; }
+  .project-setting-content .text-description {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    margin: 5px 0 0;
+    word-break: break-word;
+    color: #777; }
+  .project-setting-content .edit-submit {
+    text-align: center; }
+  .project-setting-content .Issue-overview {
+    background: #FFF; }
+  .project-setting-content .content-overview {
+    border: 0.5px solid #808080; }
+    .project-setting-content .content-overview .property {
+      display: flex;
+      width: 50%; }
+      .project-setting-content .content-overview .property .property-label, .project-setting-content .content-overview .property .property-content {
+        padding: 10px 0;
+        text-align: left; }
+      .project-setting-content .content-overview .property .property-label {
+        flex: 0 1 30%; }
+    .project-setting-content .content-overview .property {
+      border-bottom: 0.5px solid #808080; }
+    .project-setting-content .content-overview .property:nth-child(2n+1) {
+      margin-right: 20px; }

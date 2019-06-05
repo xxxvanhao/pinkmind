@@ -1,0 +1,111 @@
+﻿body {
+}
+
+#project {
+    padding: 130px 0 0 0;
+    height: 100%;
+
+    .project-nav {
+        position: fixed;
+        top: 130px;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background: #4caf93;
+        transition: all 0.2s linear;
+
+        .head-trigger {
+            height: 50px;
+            background: pink;
+            padding: 10px;
+
+            .trigger-icon {
+                position: relative;
+                display: inline-block;
+                padding: 10px 0;
+                width: 40px;
+                height: 40px;
+                color: #FFF;
+
+                .triger-icon_inner1 {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 40px;
+                    height: 2px;
+                    margin-bottom: 12px;
+                    background: #FFF;
+                    transition: 0.2s all linear;
+                }
+
+                .triger-icon_inner2 {
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    display: block;
+                    width: 40px;
+                    height: 2px;
+                    margin-bottom: 12px;
+                    background: #FFF;
+                }
+
+                .triger-icon_inner3 {
+                    position: absolute;
+                    top: 20px;
+                    left: 0;
+                    display: block;
+                    width: 40px;
+                    height: 2px;
+                    margin-bottom: 12px;
+                    background: #FFF;
+                    transition: 0.2s all linear;
+                }
+            }
+        }
+
+        .project-nav-list {
+            ul {
+                padding: 0;
+                margin: 0;
+
+                li {
+                    a {
+                        display: block;
+                        padding: 10px 10px;
+                        color: #FFF;
+                        background: inherit;
+                    }
+
+                    a:hover {
+                        background: #808080;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .active {
+        width: 100px;
+    }
+
+    .content-outer {
+        margin-left: 260px;
+        transition: all 0.2s linear;
+    }
+
+    .expand {
+        margin-left: 110px;
+    }
+
+    .trigger-icon:hover > .triger-icon_inner1 {
+        width: 25px;
+        transform: translateY(18px) translateX(-4px) rotate(45deg);
+    }
+
+    .trigger-icon:hover > .triger-icon_inner3 {
+        width: 25px;
+        transform: translateY(5) translateX(-4px) rotate(-45deg);
+    }
+}

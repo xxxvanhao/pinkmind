@@ -1,0 +1,9 @@
+C:\Users\Administrator\source\repos\PinkMind\PinkMindDataAccess\obj\Debug\netcoreapp2.0\PinkMindDataAccess.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\PinkMind\PinkMindDataAccess\obj\Debug\netcoreapp2.0\PinkMindDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\PinkMind\PinkMindDataAccess\obj\Debug\netcoreapp2.0\PinkMindDataAccess.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\PinkMind\PinkMindDataAccess\obj\Debug\netcoreapp2.0\PinkMindDataAccess.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\PinkMind\PinkMindDataAccess\bin\Debug\netcoreapp2.0\PinkMindDataAccess.deps.json
+C:\Users\Administrator\source\repos\PinkMind\PinkMindDataAccess\bin\Debug\netcoreapp2.0\PinkMindDataAccess.dll
+C:\Users\Administrator\source\repos\PinkMind\PinkMindDataAccess\bin\Debug\netcoreapp2.0\PinkMindDataAccess.pdb
+C:\Users\Administrator\source\repos\PinkMind\PinkMindDataAccess\obj\Debug\netcoreapp2.0\PinkMindDataAccess.dll
+C:\Users\Administrator\source\repos\PinkMind\PinkMindDataAccess\obj\Debug\netcoreapp2.0\PinkMindDataAccess.pdb

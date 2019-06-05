@@ -1,0 +1,9 @@
+C:\Users\Administrator\source\repos\PinkMind\Commom\bin\Debug\netcoreapp2.0\Commom.deps.json
+C:\Users\Administrator\source\repos\PinkMind\Commom\bin\Debug\netcoreapp2.0\Commom.dll
+C:\Users\Administrator\source\repos\PinkMind\Commom\bin\Debug\netcoreapp2.0\Commom.pdb
+C:\Users\Administrator\source\repos\PinkMind\Commom\obj\Debug\netcoreapp2.0\Commom.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\PinkMind\Commom\obj\Debug\netcoreapp2.0\Commom.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\PinkMind\Commom\obj\Debug\netcoreapp2.0\Commom.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\PinkMind\Commom\obj\Debug\netcoreapp2.0\Commom.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\PinkMind\Commom\obj\Debug\netcoreapp2.0\Commom.dll
+C:\Users\Administrator\source\repos\PinkMind\Commom\obj\Debug\netcoreapp2.0\Commom.pdb

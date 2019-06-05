@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Project";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<main id="project">
+    <div class="project-nav">
+        <div class="head-trigger">
+            <span class="trigger-icon">
+                <span class="triger-icon_inner1"></span>
+                <span class="triger-icon_inner2"></span>
+                <span class="triger-icon_inner3"></span>
+            </span>
+        </div>
+        <div class="project-nav-list">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Issue</a></li>
+                <li><a href="#">Add Issue</a></li>
+                <li><a href="#">File</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content-outer">
+        <p>Depending on your notification settings, you’ll see updates here for your conversations in watched repositories.</p>
+    </div>
+    <script>
+        var pro_head = $('.head-trigger');
+        var nav = $('.project-nav');
+        var content = $('.content-outer');
+        pro_head.click(function () {
+            change();
+        })
+        function change() {
+            if (!nav.hasClass('active')) {
+                {
+                    nav.addClass("active");
+                    content.addClass('expand');
+                }
+            }
+            else {
+                nav.removeClass("active");
+                content.removeClass('expand');
+            }
+        }
+    </script>
+</main>
+

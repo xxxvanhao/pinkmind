@@ -1,0 +1,16 @@
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\bin\Debug\netcoreapp2.0\PinkMindWebApi.deps.json
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\bin\Debug\netcoreapp2.0\PinkMindWebApi.runtimeconfig.json
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\bin\Debug\netcoreapp2.0\PinkMindWebApi.runtimeconfig.dev.json
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\bin\Debug\netcoreapp2.0\PinkMindWebApi.dll
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\bin\Debug\netcoreapp2.0\PinkMindWebApi.pdb
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\bin\Debug\netcoreapp2.0\PinkMindBusinessLogic.dll
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\bin\Debug\netcoreapp2.0\PinkMindDataAccess.dll
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\bin\Debug\netcoreapp2.0\PinkMindBusinessLogic.pdb
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\bin\Debug\netcoreapp2.0\PinkMindDataAccess.pdb
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\obj\Debug\netcoreapp2.0\PinkMindWebApi.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\obj\Debug\netcoreapp2.0\PinkMindWebApi.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\obj\Debug\netcoreapp2.0\PinkMindWebApi.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\obj\Debug\netcoreapp2.0\PinkMindWebApi.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\obj\Debug\netcoreapp2.0\PinkMindWebApi.csproj.CopyComplete
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\obj\Debug\netcoreapp2.0\PinkMindWebApi.dll
+C:\Users\Administrator\source\repos\PinkMind\PinkMindWebApi\obj\Debug\netcoreapp2.0\PinkMindWebApi.pdb

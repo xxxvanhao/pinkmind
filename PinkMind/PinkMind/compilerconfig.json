@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "Content/css/Main.css",
+    "inputFile": "Content/css/Main.scss"
+  },
+  {
+    "outputFile": "Content/css/_ManagementLayout.css",
+    "inputFile": "Content/css/_ManagementLayout.scss"
+  },
+  {
+    "outputFile": "Content/css/Project.css",
+    "inputFile": "Content/css/Project.scss"
+  },
+  {
+    "outputFile": "Content/css/pro_setting.css",
+    "inputFile": "Content/css/pro_setting.scss"
+  }
+]

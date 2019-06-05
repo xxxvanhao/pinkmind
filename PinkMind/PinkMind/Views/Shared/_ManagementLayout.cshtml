@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/_ManagementLayout.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/css/Project.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="ManamentUser" class="na">
+        <header id="signHeader">
+            <div class="navigation" >
+                <div class="page-header">
+                    <div class="LogoApp">
+                        <h2>PinkMind</h2>
+                    </div>
+                </div>
+                <div class="components">
+                    <div class="help-outer">
+                        <div>
+                            <i class="far fa-question-circle"></i>
+                        </div>
+                    </div>
+                    <div class="org-switcher">
+                        @*<i class="far fa-question-circle"></i>*@
+                        <img src="https://d1zqp7au6yhc2p.cloudfront.net/default-icons/account/FF4447/128x128.png" width="24" height="24" />
+                        <label class="user-name" onclick="showDropMenu()">User Name</label>
+                        <div class="drop-menu" id="dropMenu">
+                            <div class="">
+                                <ul>
+                                    <li>
+                                        <img src="https://d1zqp7au6yhc2p.cloudfront.net/default-icons/account/FF4447/128x128.png" width="24" height="24" />
+                                        <label>User Name</label>
+
+                                    </li>
+                                    <li>
+                                        <i class="far fa-building"></i>
+                                        <label>Orgnization</label>
+                                    </li>
+                                    <hr />
+                                    <li>
+                                        <label>My profile</label>
+                                    </li>
+                                    <li>
+                                        <label>Log out</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="head-component">
+                <h2 class="component-title">My profile</h2>
+                <div class="component-tabs">
+                    <div class="component-item active">
+                        <a class="active">Account</a>
+                    </div>
+                    <div class="component-item">
+                        <a>Security</a>
+                    </div>
+                    <div class="component-item">
+                        <a>Preferent</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+    </div>
+    <script>
+        function showDropMenu() {
+            var elm = ".drop-menu";
+            if ($(elm).css("display") != "block") {
+                $(elm).slideDown("slow");
+            }
+            else {
+                $(elm).slideUp("slow");
+            }
+        }
+    </script>
+</body>
+</html>
