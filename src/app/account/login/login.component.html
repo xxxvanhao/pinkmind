@@ -1,35 +1,63 @@
 <main>
-  <div class="container">
-      <div class="page-intro text-center">
-          <h1>PinkMind</h1>
-          <p>
-              Log in to your PinkMind Account Email
-          </p>
-      </div>
-      <div class="page-content">
-          <form method="post" action="">
-              <div class="form-field">
-                  <label>Email</label>
-                  <input class="form-control" name="" type="text" placeholder="" />
-              </div>
-              <div class="form-field">
-                  <label>Password</label>
-                  <input class="form-control" name="" type="text" placeholder="" />
-              </div>
-              <div class="form-field">
-                  <input type="checkbox" id="autoSignin" name="autoSignin" value="on">
-                  <label for="autoSignin" class="keep-login">Keep me logged in</label>
-                  <a class="forgot-login" href="">Forgot Password?</a>
-              </div>
-              <div class="form-field text-center">
-                  <button class="btn" type="submit" value="Cancel">Cancel</button>
-                  <button class="btn btn-signin" type="submit" value="Login">Login</button>
-              </div>
-          </form>
-          <div class="signup-link text-center">
-              <label>Don't have a PinkMind Account?</label><a href="#"> Sign up</a>
-          </div>
-      </div>
-  </div>
+    <div class="container mt-3">
+        <div class="page-intro text-center">
+            <h1>PinkMind</h1>
+            <p>
+                Log in to your PinkMind Account Email
+            </p>
+        </div>
+        <div class="page-content">
+            <form method="post" action="">
+                <div class="form-field">
+                    <label>Email</label>
+                    <input class="form-control" name="" type="text" placeholder="" />
+                </div>
+                <div class="form-field">
+                    <label>Password</label>
+                    <input class="form-control" name="" type="text" placeholder="" />
+                </div>
+                <div class="form-field">
+                    <input type="checkbox" id="autoSignin" name="autoSignin" value="on">
+                    <label for="autoSignin" class="keep-login">Keep me logged in</label>
+                    <a class="forgot-login" href="">Forgot Password?</a>
+                </div>
+                <div class="form-field text-center">
+                    <button class="btn btn-success mr-2 w-25" type="submit" value="Login">Login</button>
+                </div>
+            </form>
+            <div class="signup-link text-center mt-3">
+                <label>Don't have a PinkMind Account?</label><a href='account/register'> Sign up</a>
+            </div>
+        </div>
+    </div>
 </main>
-
+<div class="jumbotron bg-transparent text-center">
+    <div *ngIf="!user" class="card text-center">
+        <h6 class="card-header">
+            Social Login Demo
+        </h6>
+        <div class="card-block">
+            <h4 class="card-title">Not signed in</h4>
+            <p class="card-text">Sign in with</p>
+        </div>
+        <div class="card-block">
+            <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
+            <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>
+            <button class="btn btn-social-icon btn-linkedin" (click)="signInWithLinkedIn()"><span class="fa fa-linkedin"></span></button>
+        </div>
+    </div>
+    <div *ngIf="user" class="card text-center">
+        <h6 class="card-header">
+            Social Login Demo
+        </h6>
+        <div class="card-block"></div>
+        <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+        <div class="card-block">
+            <h4 class="card-title">{{ user.name }}</h4>
+            <p class="card-text">{{ user.email }}</p>
+        </div>
+        <div class="card-block">
+            <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+        </div>
+    </div>
+</div>

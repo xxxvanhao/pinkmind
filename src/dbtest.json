@@ -1,0 +1,138 @@
+{
+    "tbl_user": {
+        "id": 1,
+        "email": "testing@gmail.com",
+        "password": "123456",
+        "fullname": "Test",
+        "Avatar": "None",
+        "organization": "Test",
+        "createat": "6/5/2019 12:00:00",
+        "lastupdate": "6/5/2019 12:00:00"
+    },
+    "tbl_role": [{
+            "id": 1,
+            "name": "Admin",
+            "type": "1"
+        },
+        {
+            "id": 2,
+            "name": "Member",
+            "type": "2"
+        },
+        {
+            "id": 3,
+            "name": "Guest",
+            "type": "3"
+        }
+    ],
+    "tbl_team": {
+        "id": 1,
+        "name": "Test all member",
+        "createBy": "1",
+        "createat": "6/5/2019 12:00:00",
+        "updateby": 1,
+        "lastupdate": "6/5/2019 12:00:00",
+        "delflag": 1
+    },
+    "tbl_teamdetail": {
+        "id": 1,
+        "userid": 1,
+        "teamid": 1,
+        "roleid": 1,
+        "joinedon": "6/5/2019 12:00:00",
+        "addby": "",
+        "delflag": 1
+    },
+    "tbl_project": {
+        "id": "frs",
+        "name": "DNO_Fresher",
+        "createby": 1,
+        "createat": "6/5/2019 13:00:00",
+        "update": 1,
+        "lastupdate": "6/5/2019 13:00:00"
+    },
+    "tbl_teamjoin": {
+        "id": 1,
+        "teamid": 1,
+        "projectid": "frs",
+        "joindedon": "6/5/2019 12:00:00",
+        "addby": "",
+        "delflag": 1
+    },
+    "tbl_issuetype": [{
+            "id": 1,
+            "name": "Task",
+            "backgroundcolor": "#ddd",
+            "createby": 1,
+            "createat": "6/5/2019 13:05:00",
+            "updateby": 1,
+            "lastupdate": "6/5/2019 13:05:00",
+            "delflag": 1
+        },
+        {
+            "id": 2,
+            "name": "Coding",
+            "backgroundcolor": "violet",
+            "createby": 1,
+            "createat": "6/5/2019 13:06:00",
+            "updateby": 1,
+            "lastupdate": "6/5/2019 13:06:00",
+            "delflag": 1
+        }
+    ],
+    "tbl_statustype": [{
+            "id": 1,
+            "name": "Open",
+            "createby": 1,
+            "createat": "6/5/2019 13:07:00",
+            "updateby": 1,
+            "lastupdate": "6/5/2019 13:07:00",
+            "delflag": 1
+        },
+        {
+            "id": 2,
+            "name": "In Progress",
+            "createby": 1,
+            "createat": "6/5/2019 13:07:00",
+            "updateby": 1,
+            "lastupdate": "6/5/2019 13:06:00",
+            "delflag": 1
+        }, {
+            "id": 3,
+            "name": "Resolved",
+            "createby": 1,
+            "createat": "6/5/2019 13:07:00",
+            "updateby": 1,
+            "lastupdate": "6/5/2019 13:07:00",
+            "delflag": 1
+        },
+        {
+            "id": 4,
+            "name": "Closed",
+            "createby": 1,
+            "createat": "6/5/2019 13:07:00",
+            "updateby": 1,
+            "lastupdate": "6/5/2019 13:06:00",
+            "delflag": 1
+        }
+    ],
+    "tbl_priority": [{
+            "id": 1,
+            "name": "Open",
+            "createby": 1,
+            "createat": "6/5/2019 13:07:00",
+            "updateby": 1,
+            "lastupdate": "6/5/2019 13:07:00",
+            "delflag": 1
+        },
+        {
+            "id": 2,
+            "name": "In Progress",
+            "createby": 1,
+            "createat": "6/5/2019 13:07:00",
+            "updateby": 1,
+            "lastupdate": "6/5/2019 13:06:00",
+            "delflag": 1
+        }
+    ]
+}

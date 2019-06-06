@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { BodyComponent } from './dashboard/body.component';
@@ -21,6 +25,24 @@ import { SecurityComponent } from './organization/security/security.component';
 import { ChangePasswordComponent } from './organization/change-password/change-password.component';
 import { GenaralComponent } from './projects/projectsetting/genaral/genaral.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { WwwrootComponent } from './wwwroot/wwwroot.component';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('302915156991-khminqnb8g314ul54pncrgka89e6j6bi.apps.googleusercontent.com')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('Facebook-App-Id')
+  }
+]);
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -42,15 +64,24 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     SecurityComponent,
     ChangePasswordComponent,
     GenaralComponent,
+    WwwrootComponent,
   ],
   imports: [
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
-    ProjectsModule
+    ProjectsModule,
+    FormsModule,
+    HttpClientModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
