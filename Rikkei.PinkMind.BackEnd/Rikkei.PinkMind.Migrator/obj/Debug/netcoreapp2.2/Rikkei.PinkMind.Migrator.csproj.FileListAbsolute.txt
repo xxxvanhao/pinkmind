@@ -1,0 +1,12 @@
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.deps.json
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.dll
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.pdb
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.csprojAssemblyReference.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.csproj.CoreCompileInputs.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.AssemblyInfoInputs.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.AssemblyInfo.cs
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.csproj.CopyComplete
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.dll
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.pdb

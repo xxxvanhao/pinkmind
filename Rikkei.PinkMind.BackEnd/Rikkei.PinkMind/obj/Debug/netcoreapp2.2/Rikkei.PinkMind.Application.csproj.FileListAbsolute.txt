@@ -1,0 +1,14 @@
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.deps.json
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.runtimeconfig.json
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.runtimeconfig.dev.json
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.dll
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.pdb
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.csprojAssemblyReference.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.csproj.CoreCompileInputs.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.RazorAssemblyInfo.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.RazorAssemblyInfo.cs
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.AssemblyInfoInputs.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.AssemblyInfo.cs
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.RazorTargetAssemblyInfo.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.dll
+D:\Exercise\Rikkei.PinkMind\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Application.pdb

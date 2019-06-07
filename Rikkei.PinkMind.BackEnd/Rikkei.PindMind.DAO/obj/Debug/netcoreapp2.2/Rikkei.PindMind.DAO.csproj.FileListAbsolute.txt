@@ -1,0 +1,9 @@
+D:\Exercise\Rikkei.PinkMind\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.deps.json
+D:\Exercise\Rikkei.PinkMind\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
+D:\Exercise\Rikkei.PinkMind\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
+D:\Exercise\Rikkei.PinkMind\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.csprojAssemblyReference.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.csproj.CoreCompileInputs.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.AssemblyInfoInputs.cache
+D:\Exercise\Rikkei.PinkMind\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.AssemblyInfo.cs
+D:\Exercise\Rikkei.PinkMind\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
+D:\Exercise\Rikkei.PinkMind\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
