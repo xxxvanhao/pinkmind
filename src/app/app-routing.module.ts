@@ -11,10 +11,13 @@ import { IssueComponent } from './projects/issue/issue.component';
 import { FileComponent } from './projects/file/file.component';
 import { AddissueComponent } from './projects/addissue/addissue.component';
 import { ProjectsettingComponent } from './projects/projectsetting/projectsetting.component';
+import { FacebookLoginComponent } from './account/facebook-login/facebook-login.component';
+import { AuthGuard } from './auth.guard';
+import { FacebookAuthComponent } from './facebook-auth/facebook-auth.component';
 
 const routes: Routes = [
-  {path: '', component: WwwrootComponent, children: [
-    {path: '', redirectTo: 'dashboard', pathMatch: 'prefix'},
+  {path: '', component: WwwrootComponent , canActivate: [AuthGuard], children: [
+    {path: '', redirectTo: 'dashboard', pathMatch: 'prefix', canActivate: [AuthGuard]},
     {path: 'dashboard', component: BodyComponent},
     {path: 'projects', component: ProjectsComponent, children: [
       {
@@ -42,14 +45,18 @@ const routes: Routes = [
         path: 'setting',
         component: ProjectsettingComponent
       }
-    ]}
+    ]},
   ]
 },
   {path: 'account', component: AccountComponent, children : [
     {path: '', redirectTo: 'login', pathMatch: 'prefix'},
     {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent}
+    {path: 'register', component: RegisterComponent},
+    {path: 'facebook-login', component: FacebookLoginComponent}
   ]},
+  {
+    path: 'facebook-auth', component: FacebookAuthComponent
+  },
   {
     path: '**',
     redirectTo: 'dashboard'
