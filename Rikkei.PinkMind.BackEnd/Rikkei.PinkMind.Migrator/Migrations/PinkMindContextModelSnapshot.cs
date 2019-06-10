@@ -504,8 +504,6 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Email")
                         .HasMaxLength(100);
 
-                    b.Property<long?>("FacebookId");
-
                     b.Property<string>("FirstName")
                         .HasMaxLength(50);
 

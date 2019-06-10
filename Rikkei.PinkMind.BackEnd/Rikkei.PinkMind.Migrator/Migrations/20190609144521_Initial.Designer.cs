@@ -10,8 +10,8 @@ using Rikkei.PinkMind.DAO.Data;
 namespace Rikkei.PinkMind.Migrator.Migrations
 {
     [DbContext(typeof(PinkMindContext))]
-    [Migration("20190606084346_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190609144521_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -505,8 +505,6 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<string>("Email")
                         .HasMaxLength(100);
-
-                    b.Property<long?>("FacebookId");
 
                     b.Property<string>("FirstName")
                         .HasMaxLength(50);

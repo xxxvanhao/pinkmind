@@ -79,7 +79,7 @@ namespace Rikkei.PinkMind.API.Controllers
             _context.User.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.ID }, user);
+            return CreatedAtAction(nameof(GetUser), new { id = user.ID }, user);
         }
 
         // DELETE: api/Users/5

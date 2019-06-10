@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Rikkei.PindMind.DAO.Models
@@ -18,7 +19,6 @@ namespace Rikkei.PindMind.DAO.Models
         [StringLength(50, MinimumLength = 3)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string FirstName { get; set; }
-        public long? FacebookId { get; set; }
         public string PictureUrl { get; set; }
         [StringLength(50, MinimumLength = 3)]
         public string SpaceID { get; set; }

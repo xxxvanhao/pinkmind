@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Rikkei.PinkMind.Migrator.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -196,13 +196,11 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 name: "tbl_user",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<int>(nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: true),
                     Password = table.Column<string>(maxLength: 50, nullable: true),
                     LastName = table.Column<string>(maxLength: 50, nullable: true),
                     FirstName = table.Column<string>(maxLength: 50, nullable: true),
-                    FacebookId = table.Column<long>(nullable: true),
                     PictureUrl = table.Column<string>(nullable: true),
                     SpaceID = table.Column<string>(maxLength: 50, nullable: true),
                     OrganizationName = table.Column<string>(maxLength: 50, nullable: true),
