@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    flex: 1;
+}
+
+.admin-header {
+    background-color: #fff;
+    margin: 0 -15px;
+    padding: 0 1.5rem;
+    color: #f1f1f1;
+}

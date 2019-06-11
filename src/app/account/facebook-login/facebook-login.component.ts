@@ -34,6 +34,9 @@ export class FacebookLoginComponent {
     if (message.origin !== 'http://localhost:4200') {
       return;
   }
+
+    this.authWindow.close();
+
     const result = JSON.parse(message.data);
     const status = result.status;
     const accessTK = result.accessToken;
@@ -46,7 +49,7 @@ export class FacebookLoginComponent {
       this.isRequesting = true;
       this.userService.facebookLogin(accessTK)
         .pipe(finalize(() => this.isRequesting = false))
-        .subscribe( result => {
+        .subscribe(result => {
           if (result) {
             this.router.navigate(['/dashboard']);
           }

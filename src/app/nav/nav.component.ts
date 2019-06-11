@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { UserService } from '../shared/services/user.service';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+
 declare var jquery: any;
 declare var $: any;
 @Component({
@@ -6,12 +10,25 @@ declare var $: any;
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  status: boolean;
+  subscription: Subscription;
 
-  ngOnInit() {
-    $('[data-toggle="tooltip"]').tooltip();
+  constructor(private userService: UserService, private router: Router) {
+
   }
 
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['/account/facebook-login']);
+ }
+
+  ngOnInit() {
+    this.subscription = this.userService.authNavStatus$.subscribe(status => this.status = status);
+  }
+  ngOnDestroy() {
+    // prevent memory leak when component is destroyed
+    this.subscription.unsubscribe();
+  }
 }

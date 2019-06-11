@@ -27,6 +27,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { FacebookLoginComponent } from './account/facebook-login/facebook-login.component';
 import { AuthGuard } from './auth.guard';
 import { FacebookAuthComponent } from './facebook-auth/facebook-auth.component';
+import { AuthAccountGuard } from './auth-account.guard';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { FacebookAuthComponent } from './facebook-auth/facebook-auth.component';
     MenuComponent,
     SpinnerComponent,
     FacebookLoginComponent,
-    FacebookAuthComponent
+    FacebookAuthComponent,
+    AdminComponent
   ],
   imports: [
     FroalaEditorModule.forRoot(),
@@ -61,7 +64,7 @@ import { FacebookAuthComponent } from './facebook-auth/facebook-auth.component';
   providers: [ConfigService, {
     provide: [HttpXhrBackend, HTTP_INTERCEPTORS],
     useClass: AuthenticateXHRBackend
-  }, AuthGuard],
+  }, AuthGuard, AuthAccountGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { worker } from 'cluster';
-import { windowCount } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core'; 
 declare var getParameterByName: any;
 @Component({
   selector: 'app-facebook-auth',

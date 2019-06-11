@@ -13,11 +13,12 @@ import { AddissueComponent } from './projects/addissue/addissue.component';
 import { ProjectsettingComponent } from './projects/projectsetting/projectsetting.component';
 import { FacebookLoginComponent } from './account/facebook-login/facebook-login.component';
 import { AuthGuard } from './auth.guard';
-import { FacebookAuthComponent } from './facebook-auth/facebook-auth.component';
+import { AuthAccountGuard } from './auth-account.guard';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
-  {path: '', component: WwwrootComponent , canActivate: [AuthGuard], children: [
-    {path: '', redirectTo: 'dashboard', pathMatch: 'prefix', canActivate: [AuthGuard]},
+  {path: '', component: WwwrootComponent,  canActivate: [AuthGuard], children: [
+    {path: '', redirectTo: 'dashboard', pathMatch: 'prefix'},
     {path: 'dashboard', component: BodyComponent},
     {path: 'projects', component: ProjectsComponent, children: [
       {
@@ -46,17 +47,15 @@ const routes: Routes = [
         component: ProjectsettingComponent
       }
     ]},
+    {path: 'admin', component: AdminComponent}
   ]
 },
-  {path: 'account', component: AccountComponent, children : [
+  {path: 'account', component: AccountComponent, canActivate: [AuthAccountGuard], children : [
     {path: '', redirectTo: 'login', pathMatch: 'prefix'},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'facebook-login', component: FacebookLoginComponent}
   ]},
-  {
-    path: 'facebook-auth', component: FacebookAuthComponent
-  },
   {
     path: '**',
     redirectTo: 'dashboard'
