@@ -1,17 +1,73 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind\\Rikkei.PinkMind.API.csproj": {}
+    "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind\\Rikkei.PinkMind.API.csproj": {}
   },
   "projects": {
-    "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
+    "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj",
-        "projectName": "Rikkei.PindMind.DAO",
-        "projectPath": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj",
+        "projectUniqueName": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj",
+        "projectName": "Rikei.PinkMind.Business",
+        "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PindMind.DAO\\obj\\",
+        "outputPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
+                "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj",
+        "projectName": "Rikkei.PindMind.DAO",
+        "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -45,9 +101,13 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[2.2.4, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
@@ -68,14 +128,14 @@
         }
       }
     },
-    "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj": {
+    "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj",
+        "projectUniqueName": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj",
         "projectName": "Rikkei.PinkMind.Migrator",
-        "projectPath": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj",
+        "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind.Migrator\\obj\\",
+        "outputPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind.Migrator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -94,8 +154,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
-                "projectPath": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj"
+              "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
+                "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj"
               }
             }
           }
@@ -111,7 +171,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[2.2.4, )"
             },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
@@ -128,14 +188,14 @@
         }
       }
     },
-    "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind\\Rikkei.PinkMind.API.csproj": {
+    "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind\\Rikkei.PinkMind.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind\\Rikkei.PinkMind.API.csproj",
+        "projectUniqueName": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind\\Rikkei.PinkMind.API.csproj",
         "projectName": "Rikkei.PinkMind.API",
-        "projectPath": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind\\Rikkei.PinkMind.API.csproj",
+        "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind\\Rikkei.PinkMind.API.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind\\obj\\",
+        "outputPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -154,11 +214,14 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
-                "projectPath": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj"
+              "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj": {
+                "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj"
               },
-              "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj": {
-                "projectPath": "D:\\Exercise\\Rikkei.PinkMind\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj"
+              "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
+                "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj"
+              },
+              "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj": {
+                "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj"
               }
             }
           }

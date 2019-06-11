@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Rikei.PinkMind.Business\Rikei.PinkMind.Business.csproj" />
     <ProjectReference Include="..\Rikkei.PindMind.DAO\Rikkei.PindMind.DAO.csproj" />
     <ProjectReference Include="..\Rikkei.PinkMind.Migrator\Rikkei.PinkMind.Migrator.csproj" />
   </ItemGroup>

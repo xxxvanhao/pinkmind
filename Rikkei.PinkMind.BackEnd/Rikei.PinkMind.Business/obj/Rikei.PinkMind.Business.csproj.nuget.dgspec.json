@@ -1,0 +1,132 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj": {}
+  },
+  "projects": {
+    "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj",
+        "projectName": "Rikei.PinkMind.Business",
+        "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
+                "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj",
+        "projectName": "Rikkei.PindMind.DAO",
+        "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[5.4.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
