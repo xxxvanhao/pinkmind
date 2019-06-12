@@ -253,8 +253,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 name: "tbl_user",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<int>(nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: true),
                     Password = table.Column<string>(maxLength: 50, nullable: true),
                     LastName = table.Column<string>(maxLength: 50, nullable: true),

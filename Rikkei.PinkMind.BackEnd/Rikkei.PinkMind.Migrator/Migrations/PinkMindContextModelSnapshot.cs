@@ -539,9 +539,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
             modelBuilder.Entity("Rikkei.PindMind.DAO.Models.User", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("ID");
 
                     b.Property<DateTime>("CreateAt");
 
@@ -555,9 +553,6 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("LastUpdate");
-
-                    b.Property<string>("OrganizationName")
-                        .HasMaxLength(50);
 
                     b.Property<string>("Password")
                         .HasMaxLength(50);

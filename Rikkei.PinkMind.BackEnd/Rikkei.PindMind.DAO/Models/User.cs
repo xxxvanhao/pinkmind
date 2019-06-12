@@ -8,6 +8,7 @@ namespace Rikkei.PindMind.DAO.Models
 {
     public class User
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         [StringLength(100, MinimumLength = 3)]
         public string Email { get; set; }
