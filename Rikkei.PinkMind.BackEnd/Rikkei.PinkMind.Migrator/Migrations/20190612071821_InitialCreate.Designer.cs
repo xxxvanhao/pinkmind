@@ -10,14 +10,14 @@ using Rikkei.PinkMind.DAO.Data;
 namespace Rikkei.PinkMind.Migrator.Migrations
 {
     [DbContext(typeof(PinkMindContext))]
-    [Migration("20190609144521_Initial")]
-    partial class Initial
+    [Migration("20190612071821_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -383,6 +383,50 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.ToTable("tbl_role");
                 });
 
+            modelBuilder.Entity("Rikkei.PindMind.DAO.Models.Space", b =>
+                {
+                    b.Property<string>("SpaceID")
+                        .HasMaxLength(50);
+
+                    b.Property<byte[]>("CheckUpdate")
+                        .HasColumnType("timestamp");
+
+                    b.Property<DateTime>("CreateAt");
+
+                    b.Property<int>("CreateBy");
+
+                    b.Property<bool>("DelFlag")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdate");
+
+                    b.Property<string>("OrganizationName")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("UpdateBy");
+
+                    b.HasKey("SpaceID");
+
+                    b.ToTable("tbl_space");
+                });
+
+            modelBuilder.Entity("Rikkei.PindMind.DAO.Models.SpaceControl", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ControlBy");
+
+                    b.Property<string>("SpaceID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("SpaceID");
+
+                    b.ToTable("tbl_spaceControl");
+                });
+
             modelBuilder.Entity("Rikkei.PindMind.DAO.Models.Status", b =>
                 {
                     b.Property<int>("ID")
@@ -527,6 +571,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("SpaceID");
+
                     b.ToTable("tbl_user");
                 });
 
@@ -627,6 +673,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("Rikkei.PindMind.DAO.Models.SpaceControl", b =>
+                {
+                    b.HasOne("Rikkei.PindMind.DAO.Models.Space", "Space")
+                        .WithMany("SpaceControls")
+                        .HasForeignKey("SpaceID");
+                });
+
             modelBuilder.Entity("Rikkei.PindMind.DAO.Models.TeamDetail", b =>
                 {
                     b.HasOne("Rikkei.PindMind.DAO.Models.Role", "Role")
@@ -655,6 +708,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .WithMany("TeamJoins")
                         .HasForeignKey("TeamID")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Rikkei.PindMind.DAO.Models.User", b =>
+                {
+                    b.HasOne("Rikkei.PindMind.DAO.Models.Space", "Space")
+                        .WithMany("Users")
+                        .HasForeignKey("SpaceID");
                 });
 #pragma warning restore 612, 618
         }

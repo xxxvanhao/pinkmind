@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Rikkei.PinkMind.Migrator.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,13 +14,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,14 +33,14 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     BackgroundColor = table.Column<string>(nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,13 +53,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,13 +72,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,13 +90,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 columns: table => new
                 {
                     ID = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -109,13 +109,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -147,11 +147,29 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true)
+                    Name = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_role", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tbl_space",
+                columns: table => new
+                {
+                    SpaceID = table.Column<string>(maxLength: 50, nullable: false),
+                    OrganizationName = table.Column<string>(maxLength: 50, nullable: false),
+                    CreateBy = table.Column<int>(nullable: false),
+                    CreateAt = table.Column<DateTime>(nullable: false),
+                    UpdateBy = table.Column<int>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    DelFlag = table.Column<bool>(type: "bit", nullable: false),
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_space", x => x.SpaceID);
                 });
 
             migrationBuilder.CreateTable(
@@ -160,13 +178,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -179,37 +197,17 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_team", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "tbl_user",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(maxLength: 100, nullable: true),
-                    Password = table.Column<string>(maxLength: 50, nullable: true),
-                    LastName = table.Column<string>(maxLength: 50, nullable: true),
-                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
-                    PictureUrl = table.Column<string>(nullable: true),
-                    SpaceID = table.Column<string>(maxLength: 50, nullable: true),
-                    OrganizationName = table.Column<string>(maxLength: 50, nullable: true),
-                    CreateAt = table.Column<DateTime>(nullable: false),
-                    LastUpdate = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tbl_user", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,17 +216,63 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_version", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tbl_spaceControl",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    SpaceID = table.Column<string>(nullable: false),
+                    ControlBy = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_spaceControl", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_tbl_spaceControl_tbl_space_SpaceID",
+                        column: x => x.SpaceID,
+                        principalTable: "tbl_space",
+                        principalColumn: "SpaceID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tbl_user",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(maxLength: 100, nullable: true),
+                    Password = table.Column<string>(maxLength: 50, nullable: true),
+                    LastName = table.Column<string>(maxLength: 50, nullable: true),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
+                    PictureUrl = table.Column<string>(nullable: true),
+                    SpaceID = table.Column<string>(maxLength: 50, nullable: true),
+                    CreateAt = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_user", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_tbl_user_tbl_space_SpaceID",
+                        column: x => x.SpaceID,
+                        principalTable: "tbl_space",
+                        principalColumn: "SpaceID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -237,10 +281,10 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    TeamID = table.Column<int>(nullable: false),
+                    TeamID = table.Column<int>(nullable: true),
                     ProjectID = table.Column<string>(nullable: true),
                     JoinOn = table.Column<DateTime>(nullable: false),
-                    AddBy = table.Column<int>(nullable: false),
+                    AddBy = table.Column<int>(nullable: true),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -261,66 +305,30 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "tbl_teamdetail",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserID = table.Column<int>(nullable: false),
-                    TeamID = table.Column<int>(nullable: false),
-                    RoleID = table.Column<int>(nullable: false),
-                    JoinedOn = table.Column<DateTime>(nullable: false),
-                    AddBy = table.Column<int>(nullable: false),
-                    DelFlag = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tbl_teamdetail", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_tbl_teamdetail_tbl_role_RoleID",
-                        column: x => x.RoleID,
-                        principalTable: "tbl_role",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_tbl_teamdetail_tbl_team_TeamID",
-                        column: x => x.TeamID,
-                        principalTable: "tbl_team",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_tbl_teamdetail_tbl_user_UserID",
-                        column: x => x.UserID,
-                        principalTable: "tbl_user",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "tbl_issue",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     IssueTypeID = table.Column<int>(nullable: false),
-                    IssueKey = table.Column<string>(nullable: true),
+                    IssueKey = table.Column<string>(nullable: false),
                     Subject = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     StatusID = table.Column<int>(nullable: false),
-                    AssigneeUser = table.Column<int>(nullable: false),
-                    PriorityID = table.Column<int>(nullable: false),
-                    CategoryID = table.Column<int>(nullable: false),
-                    MilestoneID = table.Column<int>(nullable: false),
-                    VersionID = table.Column<int>(nullable: false),
+                    AssigneeUser = table.Column<int>(nullable: true),
+                    PriorityID = table.Column<int>(nullable: true),
+                    CategoryID = table.Column<int>(nullable: true),
+                    MilestoneID = table.Column<int>(nullable: true),
+                    VersionID = table.Column<int>(nullable: true),
                     ResolutionID = table.Column<int>(nullable: true),
-                    DueDate = table.Column<DateTime>(nullable: false),
-                    ProjectID = table.Column<string>(nullable: true),
+                    DueDate = table.Column<DateTime>(nullable: true),
+                    ProjectID = table.Column<string>(nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true)
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -376,6 +384,42 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "tbl_teamdetail",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserID = table.Column<int>(nullable: false),
+                    TeamID = table.Column<int>(nullable: true),
+                    RoleID = table.Column<int>(nullable: false),
+                    JoinedOn = table.Column<DateTime>(nullable: false),
+                    AddBy = table.Column<int>(nullable: true),
+                    DelFlag = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_teamdetail", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_tbl_teamdetail_tbl_role_RoleID",
+                        column: x => x.RoleID,
+                        principalTable: "tbl_role",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_tbl_teamdetail_tbl_team_TeamID",
+                        column: x => x.TeamID,
+                        principalTable: "tbl_team",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_tbl_teamdetail_tbl_user_UserID",
+                        column: x => x.UserID,
+                        principalTable: "tbl_user",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "tbl_comment",
                 columns: table => new
                 {
@@ -387,7 +431,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true),
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false),
                     IssueID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -434,7 +478,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     UpdateBy = table.Column<int>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
-                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: true),
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false),
                     IssueID = table.Column<int>(nullable: false),
                     CommentID = table.Column<int>(nullable: true)
                 },
@@ -516,6 +560,11 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 column: "IssueID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_tbl_spaceControl_SpaceID",
+                table: "tbl_spaceControl",
+                column: "SpaceID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_tbl_teamdetail_RoleID",
                 table: "tbl_teamdetail",
                 column: "RoleID");
@@ -539,6 +588,11 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 name: "IX_tbl_teamjoin_TeamID",
                 table: "tbl_teamjoin",
                 column: "TeamID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tbl_user_SpaceID",
+                table: "tbl_user",
+                column: "SpaceID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -551,6 +605,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
             migrationBuilder.DropTable(
                 name: "tbl_reupdate");
+
+            migrationBuilder.DropTable(
+                name: "tbl_spaceControl");
 
             migrationBuilder.DropTable(
                 name: "tbl_teamdetail");
@@ -572,6 +629,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
             migrationBuilder.DropTable(
                 name: "tbl_issue");
+
+            migrationBuilder.DropTable(
+                name: "tbl_space");
 
             migrationBuilder.DropTable(
                 name: "tbl_category");

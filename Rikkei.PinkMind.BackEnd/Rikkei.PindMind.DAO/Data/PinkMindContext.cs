@@ -15,28 +15,31 @@ namespace Rikkei.PinkMind.DAO.Data
         : base(options)
     {
     }
-
+    public DbSet<SpaceControl> SpaceControls { get; set; }
+    public DbSet<Space> Spaces { get; set; }
     public DbSet<User> User { get; set; }
-    public DbSet<Category> categories { get; set; }
-    public DbSet<Comment> comments { get; set; }
-    public DbSet<File> files { get; set; }
-    public DbSet<Issue> issues { get; set; }
-    public DbSet<IssueType> issueTypes { get; set; }
-    public DbSet<Milestone> milestones { get; set; }
-    public DbSet<Notify> notifies { get; set; }
-    public DbSet<Priority> priorities { get; set; }
-    public DbSet<Project> projects { get; set; }
-    public DbSet<Resolution> resolutions { get; set; }
-    public DbSet<ReUpdate> reUpdates { get; set; }
-    public DbSet<Role> roles { get; set; }
-    public DbSet<Status> statuses { get; set; }
-    public DbSet<Team> teams { get; set; }
-    public DbSet<TeamDetail> teamDetails { get; set; }
-    public DbSet<TeamJoin> teamJoins { get; set; }
-    public DbSet<Version> versions { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Comment> Comments { get; set; }
+    public DbSet<File> Files { get; set; }
+    public DbSet<Issue> Issues { get; set; }
+    public DbSet<IssueType> IssueTypes { get; set; }
+    public DbSet<Milestone> Milestones { get; set; }
+    public DbSet<Notify> Notifies { get; set; }
+    public DbSet<Priority> Priorities { get; set; }
+    public DbSet<Project> Projects { get; set; }
+    public DbSet<Resolution> Resolutions { get; set; }
+    public DbSet<ReUpdate> ReUpdates { get; set; }
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<Status> Statuses { get; set; }
+    public DbSet<Team> Teams { get; set; }
+    public DbSet<TeamDetail> TeamDetails { get; set; }
+    public DbSet<TeamJoin> TeamJoins { get; set; }
+    public DbSet<Version> Versions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+      modelBuilder.Entity<Space>().ToTable("tbl_space");
+      modelBuilder.Entity<SpaceControl>().ToTable("tbl_spaceControl");
       modelBuilder.Entity<User>().ToTable("tbl_user");
       modelBuilder.Entity<Role>().ToTable("tbl_role");
       modelBuilder.Entity<Team>().ToTable("tbl_team");

@@ -53,10 +53,10 @@ namespace Rikkei.PinkMind.API.Controllers
             var userInfoResponse = await Client.GetStringAsync($"https://graph.facebook.com/v3.2/me?fields=id,email,first_name,last_name,name,gender,locale,birthday,picture&access_token={model.AccessToken}");
             var userInfo = JsonConvert.DeserializeObject<FacebookUserData>(userInfoResponse);
 
-            // 4. ready to create the local user account (if necessary) and jwt
-            var user = await _pmDbContext.User.FindAsync((int)userInfo.Id);
-            if (user == null)
-            {
+      // 4. ready to create the local user account (if necessary) and jwt
+      var user = await _pmDbContext.User.FindAsync(userInfo.Id);
+      if (user == null)
+             {
                 var appUser = new User
                 {
                     ID = (int)userInfo.Id,
@@ -73,7 +73,7 @@ namespace Rikkei.PinkMind.API.Controllers
             }
 
             // generate the jwt for the local user...
-            var localUser = await _pmDbContext.User.FindAsync((int)userInfo.Id);
+            var localUser = await _pmDbContext.User.FindAsync(userInfo.Id);
             
             if (localUser == null)
             {

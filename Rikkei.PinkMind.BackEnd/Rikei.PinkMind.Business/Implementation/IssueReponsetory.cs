@@ -22,7 +22,7 @@ namespace Rikei.PinkMind.Business.Implementation
 
     public List<Issue> GetAll()
     {
-      var item = ctx.issues.ToList();
+      var item = ctx.Issues.ToList();
       return item;
     }
 

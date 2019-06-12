@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,10 +22,6 @@ namespace Rikkei.PindMind.DAO.Models
         public string PictureUrl { get; set; }
         [StringLength(50, MinimumLength = 3)]
         public string SpaceID { get; set; }
-        [StringLength(50, MinimumLength = 3)]
-        [Display(Name = "Organization Name")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
-        public string OrganizationName { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Create At")]
         public DateTime CreateAt { get; set; }
@@ -41,7 +37,7 @@ namespace Rikkei.PindMind.DAO.Models
                 return LastName + " " + FirstName;
             }
         }
-        public ICollection<TeamDetail> TeamDetails { get; set; }
-
+        public Space Space { get; set; }
+        public ICollection<TeamDetail> TeamDetails { get; set; } 
     }
 }

@@ -29,6 +29,8 @@ import { AuthGuard } from './auth.guard';
 import { FacebookAuthComponent } from './facebook-auth/facebook-auth.component';
 import { AuthAccountGuard } from './auth-account.guard';
 import { AdminComponent } from './admin/admin.component';
+import { AdminAccountComponent } from './admin/account/admin-account.component';
+import { MembersComponent } from './admin/members/members.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { AdminComponent } from './admin/admin.component';
     SpinnerComponent,
     FacebookLoginComponent,
     FacebookAuthComponent,
-    AdminComponent
+    AdminComponent,
+    AdminAccountComponent,
+    MembersComponent
   ],
   imports: [
     FroalaEditorModule.forRoot(),

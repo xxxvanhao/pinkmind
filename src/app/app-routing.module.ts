@@ -15,6 +15,8 @@ import { FacebookLoginComponent } from './account/facebook-login/facebook-login.
 import { AuthGuard } from './auth.guard';
 import { AuthAccountGuard } from './auth-account.guard';
 import { AdminComponent } from './admin/admin.component';
+import { AdminAccountComponent } from './admin/account/admin-account.component';
+import { MembersComponent } from './admin/members/members.component';
 
 const routes: Routes = [
   {path: '', component: WwwrootComponent,  canActivate: [AuthGuard], children: [
@@ -47,7 +49,21 @@ const routes: Routes = [
         component: ProjectsettingComponent
       }
     ]},
-    {path: 'admin', component: AdminComponent}
+    {path: 'admin', component: AdminComponent, children: [
+      {
+        path: '',
+        redirectTo: 'account',
+        pathMatch: 'prefix'
+      },
+      {
+        path: 'account',
+        component: AdminAccountComponent
+      },
+      {
+        path: 'members',
+        component: MembersComponent
+      }
+    ]}
   ]
 },
   {path: 'account', component: AccountComponent, canActivate: [AuthAccountGuard], children : [
