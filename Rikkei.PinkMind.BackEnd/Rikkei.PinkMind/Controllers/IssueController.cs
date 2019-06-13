@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Rikei.PinkMind.Business.Implementation;
-using Rikkei.PinkMind.DAO.Data;
+using Rikkei.PindMind.DAO.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,18 +26,24 @@ namespace Rikkei.PinkMind.API.Controllers
       string toJson = Newtonsoft.Json.JsonConvert.SerializeObject(item);
       return toJson;
     }
-
+    public async Task<ActionResult<IEnumerable<Issue>>> GetIssue()
+    {
+      List<Issue> item = Issuerp.GetAll();
+      return item;
+    }
     // GET api/<controller>/5
     [HttpGet("{id}")]
     public string Get(int id)
     {
-      return "value";
+      var item = Issuerp.GetById(id);
+      return item.ToString();
     }
 
     // POST api/<controller>
     [HttpPost]
     public void Post([FromBody]string value)
     {
+
     }
 
     // PUT api/<controller>/5

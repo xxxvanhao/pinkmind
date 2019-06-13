@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Interface
 {
-  public interface IIssueReponsetory
+  interface IIssueTypeResponsetory
   {
-    List<Issue> GetAll();
-    Issue GetById(int id);
-    string Update(Issue issue);
-    string Insert(Issue issue);
+    List<IssueType> GetAll();
+    IssueType GetById(int id);
+    string Update(IssueType issueType);
+    string Insert(IssueType issueType);
     string Delete(int id);
   }
 }
