@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "b81478a616eca4ba620b8ee9188c0cfa870262b3"
+    "signature": "6235b56c51a191b05e697fc53253f8d17915b4e0"
   },
   "compilationOptions": {
     "defines": [
@@ -26,6 +26,9 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.1.1",
           "FluentValidation.AspNetCore": "8.4.0",
+          "MediatR": "7.0.0",
+          "MediatR.Extensions.Microsoft.AspNetCore.Mvc": "2.0.0",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "7.0.0",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.2.0",
           "Microsoft.AspNetCore.Cors": "2.2.0",
@@ -117,6 +120,47 @@
         },
         "compile": {
           "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {}
+        }
+      },
+      "MediatR/7.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/MediatR.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MediatR.dll": {}
+        }
+      },
+      "MediatR.Extensions.Microsoft.AspNetCore.Mvc/2.0.0": {
+        "dependencies": {
+          "MediatR": "7.0.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.AspNetCore.Mvc.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.AspNetCore.Mvc.dll": {}
+        }
+      },
+      "MediatR.Extensions.Microsoft.DependencyInjection/7.0.0": {
+        "dependencies": {
+          "MediatR": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
@@ -702,6 +746,8 @@
       },
       "Rikei.PinkMind.Business/1.0.0": {
         "dependencies": {
+          "MediatR.Extensions.Microsoft.AspNetCore.Mvc": "2.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
           "Rikkei.PindMind.DAO": "1.0.0"
         },
         "runtime": {
@@ -3741,6 +3787,27 @@
       "sha512": "sha512-RZdsBuUJCXGhyjy/XY5E3Xk5VbbCEWc78Qp8Zez0YkTWfdlCuH1Ef2+rg0Ng2ayb7yhinLlSe1YxB9/7j9c7iQ==",
       "path": "fluentvalidation.dependencyinjectionextensions/8.4.0",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.8.4.0.nupkg.sha512"
+    },
+    "MediatR/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sgfHxkBsmMlHOD564SnLqTvSbAuGlFiZfc6ybxBSI1wYV/2u+Y5TXtFoIhCISFg5/s/6aMvB338QC2JseHsjTA==",
+      "path": "mediatr/7.0.0",
+      "hashPath": "mediatr.7.0.0.nupkg.sha512"
+    },
+    "MediatR.Extensions.Microsoft.AspNetCore.Mvc/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pZYwZmQoyNS+Mdq544FbxhEZcD2dZvTXqGUA6HiPUbbflp0DiZeBXBvHt64NuGBX1pzZ/xxFU2BgN32zk5Hu5g==",
+      "path": "mediatr.extensions.microsoft.aspnetcore.mvc/2.0.0",
+      "hashPath": "mediatr.extensions.microsoft.aspnetcore.mvc.2.0.0.nupkg.sha512"
+    },
+    "MediatR.Extensions.Microsoft.DependencyInjection/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DRf8jBnjBg84da1L1L0YmwqkhCV+UJTg7bTBHOhleWrLfrtSK5h5aNeE1HOofs1Afisq03B6H2C10NmS47gmqA==",
+      "path": "mediatr.extensions.microsoft.dependencyinjection/7.0.0",
+      "hashPath": "mediatr.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",

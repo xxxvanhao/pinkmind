@@ -67,6 +67,41 @@
           "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {}
         }
       },
+      "MediatR/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MediatR.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.dll": {}
+        }
+      },
+      "MediatR.Extensions.Microsoft.AspNetCore.Mvc/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "MediatR": "6.0.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.AspNetCore.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.AspNetCore.Mvc.dll": {}
+        }
+      },
+      "MediatR.Extensions.Microsoft.DependencyInjection/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "MediatR": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -4790,6 +4825,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
+          "FluentValidation.AspNetCore": "8.4.0",
+          "MediatR.Extensions.Microsoft.AspNetCore.Mvc": "2.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
           "Rikkei.PindMind.DAO": "1.0.0"
         },
         "compile": {
@@ -4905,6 +4943,44 @@
         "fluentvalidation.dependencyinjectionextensions.nuspec",
         "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
         "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml"
+      ]
+    },
+    "MediatR/7.0.0": {
+      "sha512": "sgfHxkBsmMlHOD564SnLqTvSbAuGlFiZfc6ybxBSI1wYV/2u+Y5TXtFoIhCISFg5/s/6aMvB338QC2JseHsjTA==",
+      "type": "package",
+      "path": "mediatr/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/MediatR.dll",
+        "lib/netstandard2.0/MediatR.dll",
+        "mediatr.7.0.0.nupkg.sha512",
+        "mediatr.nuspec"
+      ]
+    },
+    "MediatR.Extensions.Microsoft.AspNetCore.Mvc/2.0.0": {
+      "sha512": "pZYwZmQoyNS+Mdq544FbxhEZcD2dZvTXqGUA6HiPUbbflp0DiZeBXBvHt64NuGBX1pzZ/xxFU2BgN32zk5Hu5g==",
+      "type": "package",
+      "path": "mediatr.extensions.microsoft.aspnetcore.mvc/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MediatR.Extensions.Microsoft.AspNetCore.Mvc.dll",
+        "lib/netstandard2.0/MediatR.Extensions.Microsoft.AspNetCore.Mvc.xml",
+        "mediatr.extensions.microsoft.aspnetcore.mvc.2.0.0.nupkg.sha512",
+        "mediatr.extensions.microsoft.aspnetcore.mvc.nuspec"
+      ]
+    },
+    "MediatR.Extensions.Microsoft.DependencyInjection/7.0.0": {
+      "sha512": "DRf8jBnjBg84da1L1L0YmwqkhCV+UJTg7bTBHOhleWrLfrtSK5h5aNeE1HOofs1Afisq03B6H2C10NmS47gmqA==",
+      "type": "package",
+      "path": "mediatr.extensions.microsoft.dependencyinjection/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll",
+        "mediatr.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
+        "mediatr.extensions.microsoft.dependencyinjection.nuspec"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -13143,6 +13219,9 @@
     ".NETCoreApp,Version=v2.2": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 6.1.1",
       "FluentValidation.AspNetCore >= 8.4.0",
+      "MediatR >= 7.0.0",
+      "MediatR.Extensions.Microsoft.AspNetCore.Mvc >= 2.0.0",
+      "MediatR.Extensions.Microsoft.DependencyInjection >= 7.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 2.2.0",
       "Microsoft.AspNetCore.Cors >= 2.2.0",
@@ -13213,6 +13292,18 @@
           "FluentValidation.AspNetCore": {
             "target": "Package",
             "version": "[8.4.0, )"
+          },
+          "MediatR": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
+          "MediatR.Extensions.Microsoft.AspNetCore.Mvc": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
+          "MediatR.Extensions.Microsoft.DependencyInjection": {
+            "target": "Package",
+            "version": "[7.0.0, )"
           },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",

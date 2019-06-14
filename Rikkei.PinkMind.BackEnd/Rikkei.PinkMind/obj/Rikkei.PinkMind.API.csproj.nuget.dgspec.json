@@ -45,6 +45,18 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
+            "MediatR.Extensions.Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
@@ -242,6 +254,18 @@
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[8.4.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",

@@ -1,106 +1,67 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Rikei.PinkMind.Business.Users.Queries.GetUserDetail;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
+    //[Authorize(Policy = "ApiUser")]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly PinkMindContext _context;
+        private readonly IMediator _mediator;
 
-        public UsersController(PinkMindContext context)
+    public UsersController(IMediator mediator)
         {
-            _context = context;
+            _mediator = mediator;
         }
 
         // GET: api/Users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
-        {
-            return await _context.User.ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        //{
+        //}
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<UserDetailModel>> GetUser(int id)
         {
-            var user = await _context.User.FindAsync(id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return user;
+          return Ok(await _mediator.Send(new GetUserDetailQuery { ID = id }));
         }
 
-        // PUT: api/Users/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
-        {
-            if (id != user.ID)
-            {
-                return BadRequest();
-            }
+        //// PUT: api/Users/5
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutUser(int id, User user)
+        //{
+        //    if (id != user.ID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(user).State = EntityState.Modified;
+        //    return NoContent();
+        //}
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //// POST: api/Users
+        //[HttpPost]
+        //public async Task<ActionResult<User>> PostUser(User user)
+        //{
+           
+        //}
 
-            return NoContent();
-        }
-
-        // POST: api/Users
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
-        {
-            _context.User.Add(user);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetUser), new { id = user.ID }, user);
-        }
-
-        // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> DeleteUser(int id)
-        {
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _context.User.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return user;
-        }
-
-        private bool UserExists(int id)
-        {
-            return _context.User.Any(e => e.ID == id);
-        }
+        //// DELETE: api/Users/5
+        //[HttpDelete("{id}")]
+        //public async Task<ActionResult<User>> DeleteUser(int id)
+        //{
+          
+        //}
     }
 }

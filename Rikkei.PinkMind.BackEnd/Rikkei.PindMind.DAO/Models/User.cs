@@ -15,10 +15,8 @@ namespace Rikkei.PindMind.DAO.Models
         [StringLength(50, MinimumLength = 8)]
         public string Password { get; set; }
         [StringLength(50, MinimumLength = 3)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string LastName { get; set; }
         [StringLength(50, MinimumLength = 3)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string FirstName { get; set; }
         public string PictureUrl { get; set; }
         [StringLength(50, MinimumLength = 3)]

@@ -24,12 +24,10 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\n
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Rikei.PinkMind.Business.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Rikei.PinkMind.Business.pdb
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
-D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
-D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.xml
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.xml
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.pdb
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.xml

@@ -28,6 +28,9 @@ using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Rikkei.PindMind.DAO.Extensions;
 using Rikei.PinkMind.Business.Implementation;
+using MediatR;
+using Rikei.PinkMind.Business.Users.Queries.GetUserDetail;
+using System.Reflection;
 
 namespace Rikkei.PinkMind
 {
@@ -105,6 +108,7 @@ namespace Rikkei.PinkMind
 
       services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
       services.AddCors();
+      services.AddMediatR(typeof(GetUserDetailQueryHandler).GetTypeInfo().Assembly);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

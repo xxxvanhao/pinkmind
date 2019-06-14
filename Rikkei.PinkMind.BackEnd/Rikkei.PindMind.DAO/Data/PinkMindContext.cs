@@ -17,7 +17,7 @@ namespace Rikkei.PinkMind.DAO.Data
     }
     public DbSet<SpaceControl> SpaceControls { get; set; }
     public DbSet<Space> Spaces { get; set; }
-    public DbSet<User> User { get; set; }
+    public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<File> Files { get; set; }
