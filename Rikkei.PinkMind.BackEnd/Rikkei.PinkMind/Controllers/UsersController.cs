@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Rikei.PinkMind.Business.Users.Commands.CreateUser;
+using Rikei.PinkMind.Business.Users.Commands.DeleteUser;
+using Rikei.PinkMind.Business.Users.Commands.UpdateUser;
 using Rikei.PinkMind.Business.Users.Queries.GetUserDetail;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
@@ -38,30 +41,31 @@ namespace Rikkei.PinkMind.API.Controllers
           return Ok(await _mediator.Send(new GetUserDetailQuery { ID = id }));
         }
 
-        //// PUT: api/Users/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutUser(int id, User user)
-        //{
-        //    if (id != user.ID)
-        //    {
-        //        return BadRequest();
-        //    }
+        // PUT: api/Users
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUser([FromBody]UpdateUserCommand command)
+        {
+          await _mediator.Send(command);
 
-        //    return NoContent();
-        //}
+          return NoContent();
+        }
 
-        //// POST: api/Users
-        //[HttpPost]
-        //public async Task<ActionResult<User>> PostUser(User user)
-        //{
-           
-        //}
+        // POST: api/Users
+        [HttpPost]
+        public async Task<IActionResult> PostUser([FromBody]CreateUserCommand command)
+        {
+          await _mediator.Send(command);
 
-        //// DELETE: api/Users/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<User>> DeleteUser(int id)
-        //{
-          
-        //}
+          return NoContent();
+        }
+
+        // DELETE: api/Users
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+           await _mediator.Send(new DeleteUserCommand { ID = id });
+
+          return NoContent();
+        }
     }
 }

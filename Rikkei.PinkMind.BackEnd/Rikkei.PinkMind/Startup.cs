@@ -31,6 +31,9 @@ using Rikei.PinkMind.Business.Implementation;
 using MediatR;
 using Rikei.PinkMind.Business.Users.Queries.GetUserDetail;
 using System.Reflection;
+using Rikei.PinkMind.Business.Users.Commands.CreateUser;
+using Rikei.PinkMind.Business.Users.Commands.UpdateUser;
+using Rikei.PinkMind.Business.Users.Commands.DeleteUser;
 
 namespace Rikkei.PinkMind
 {
@@ -108,7 +111,12 @@ namespace Rikkei.PinkMind
 
       services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
       services.AddCors();
-      services.AddMediatR(typeof(GetUserDetailQueryHandler).GetTypeInfo().Assembly);
+
+      //AddMediatR
+      services.AddMediatR(typeof(GetUserDetailQueryHandler).GetTypeInfo().Assembly,
+                          typeof(CreateUserCommand.Handler).GetTypeInfo().Assembly,
+                          typeof(UpdateUserCommand.Handler).GetTypeInfo().Assembly,
+                          typeof(DeleteUserQueryHandler).GetTypeInfo().Assembly);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

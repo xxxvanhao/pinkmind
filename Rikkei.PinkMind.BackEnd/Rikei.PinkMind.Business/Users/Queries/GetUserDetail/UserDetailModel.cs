@@ -10,6 +10,7 @@ namespace Rikei.PinkMind.Business.Users.Queries.GetUserDetail
   {
     public int ID { get; set; }
     public string Email { get; set; }
+    public string Password { get; set; }
     public string LastName { get; set; }
     public string FirstName { get; set; }
     public string PictureUrl { get; set; }
@@ -25,6 +26,7 @@ namespace Rikei.PinkMind.Business.Users.Queries.GetUserDetail
         {
           ID = user.ID,
           Email = user.Email,
+          Password = user.Password,
           LastName = user.LastName,
           FirstName = user.FirstName,
           PictureUrl = user.PictureUrl,
