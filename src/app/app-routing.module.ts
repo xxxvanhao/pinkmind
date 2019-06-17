@@ -12,11 +12,13 @@ import { FileComponent } from './projects/file/file.component';
 import { AddissueComponent } from './projects/addissue/addissue.component';
 import { ProjectsettingComponent } from './projects/projectsetting/projectsetting.component';
 import { FacebookLoginComponent } from './account/facebook-login/facebook-login.component';
-import { AuthGuard } from './auth.guard';
-import { AuthAccountGuard } from './auth-account.guard';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthAccountGuard } from './auth/auth-account.guard';
 import { AdminComponent } from './admin/admin.component';
 import { AdminAccountComponent } from './admin/account/admin-account.component';
 import { MembersComponent } from './admin/members/members.component';
+import { SpaceComponent } from './space/space.component';
+import { AuthSpaceGuard } from './auth/auth-space.guard';
 
 const routes: Routes = [
   {path: '', component: WwwrootComponent,  canActivate: [AuthGuard], children: [
@@ -72,10 +74,11 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'facebook-login', component: FacebookLoginComponent}
   ]},
+  {path: 'space', component: SpaceComponent, canActivate: [AuthSpaceGuard]},
   {
     path: '**',
     redirectTo: 'dashboard'
-  },
+  }
 ];
 @NgModule({
   declarations: [],

@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { ConfigService } from '../utils/config.service';
 import {BaseService} from './base.service';
-import { BehaviorSubject } from 'rxjs/';
+import { BehaviorSubject, Observable } from 'rxjs/';
 import { map, catchError } from 'rxjs/operators';
+import { UserDetails } from '../models/userDetails.interface';
+import { CodegenComponentFactoryResolver } from '@angular/core/src/linker/component_factory_resolver';
 @Injectable({
   providedIn: 'root'
 })
@@ -60,6 +62,7 @@ export class UserService extends BaseService {
       'Content-Type' : 'application/json'
     });
     const body = JSON.stringify({ accessToken });
+    console.log(body);
     return this.http.post(
       this.baseUrl + '/auth/facebook', body, { headers })
       .pipe(map((res: any) => {
@@ -69,5 +72,33 @@ export class UserService extends BaseService {
         return true;
       }))
       .pipe(catchError(this.handleError));
+  }
+
+  isSpaceId() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + '/users', {headers})
+    .pipe(map((response: any) => {
+      if (response.spaceID != null) {
+        return true;
+      } else {
+        return false;
+      }
+    }))
+    .pipe(catchError(this.handleError));
+  }
+
+  getUserDetails(): Observable<UserDetails> {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + '/users', {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
   }
 }

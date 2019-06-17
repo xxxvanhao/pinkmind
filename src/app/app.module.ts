@@ -25,12 +25,14 @@ import { ConfigService } from './shared/utils/config.service';
 import { AuthenticateXHRBackend } from './authenticate-xhr.backend';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { FacebookLoginComponent } from './account/facebook-login/facebook-login.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './auth/auth.guard';
 import { FacebookAuthComponent } from './facebook-auth/facebook-auth.component';
-import { AuthAccountGuard } from './auth-account.guard';
+import { AuthAccountGuard } from './auth/auth-account.guard';
+import { AuthSpaceGuard } from './auth/auth-space.guard';
 import { AdminComponent } from './admin/admin.component';
 import { AdminAccountComponent } from './admin/account/admin-account.component';
 import { MembersComponent } from './admin/members/members.component';
+import { SpaceComponent } from './space/space.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { MembersComponent } from './admin/members/members.component';
     FacebookAuthComponent,
     AdminComponent,
     AdminAccountComponent,
-    MembersComponent
+    MembersComponent,
+    SpaceComponent
   ],
   imports: [
     FroalaEditorModule.forRoot(),
@@ -68,7 +71,7 @@ import { MembersComponent } from './admin/members/members.component';
   providers: [ConfigService, {
     provide: [HttpXhrBackend, HTTP_INTERCEPTORS],
     useClass: AuthenticateXHRBackend
-  }, AuthGuard, AuthAccountGuard],
+  }, AuthGuard, AuthAccountGuard, AuthSpaceGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

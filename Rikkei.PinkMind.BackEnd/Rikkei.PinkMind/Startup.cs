@@ -113,6 +113,7 @@ namespace Rikkei.PinkMind
       services.AddCors();
 
       //AddMediatR
+
       services.AddMediatR(typeof(GetUserDetailQueryHandler).GetTypeInfo().Assembly,
                           typeof(CreateUserCommand.Handler).GetTypeInfo().Assembly,
                           typeof(UpdateUserCommand.Handler).GetTypeInfo().Assembly,
