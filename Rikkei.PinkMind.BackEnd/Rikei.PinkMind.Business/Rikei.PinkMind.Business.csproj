@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
     <Folder Include="Users\Queries\GetUserDetailList\" />
   </ItemGroup>
 

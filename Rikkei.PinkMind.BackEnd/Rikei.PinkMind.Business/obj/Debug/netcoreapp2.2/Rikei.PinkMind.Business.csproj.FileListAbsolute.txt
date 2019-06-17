@@ -6,12 +6,10 @@ C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEn
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Rikei.PinkMind.Business.dll
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Rikei.PinkMind.Business.pdb
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
-C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.dll
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
-C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.xml
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.xml
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.pdb
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.xml
