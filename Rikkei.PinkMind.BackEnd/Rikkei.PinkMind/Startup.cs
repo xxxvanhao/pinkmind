@@ -117,7 +117,7 @@ namespace Rikkei.PinkMind
       services.AddMediatR(typeof(GetUserDetailQueryHandler).GetTypeInfo().Assembly,
                           typeof(CreateUserCommand.Handler).GetTypeInfo().Assembly,
                           typeof(UpdateUserCommand.Handler).GetTypeInfo().Assembly,
-                          typeof(DeleteUserQueryHandler).GetTypeInfo().Assembly);
+                          typeof(DeleteUserQueryHandler).GetTypeInfo().Assembly);      
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
