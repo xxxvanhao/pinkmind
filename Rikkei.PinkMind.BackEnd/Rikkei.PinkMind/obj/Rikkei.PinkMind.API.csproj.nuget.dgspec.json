@@ -29,11 +29,7 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
-            "projectReferences": {
-              "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
-                "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -97,7 +93,11 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj": {
+                "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

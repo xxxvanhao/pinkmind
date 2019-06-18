@@ -4,6 +4,70 @@
     "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PinkMind.Migrator\\Rikkei.PinkMind.Migrator.csproj": {}
   },
   "projects": {
+    "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj",
+        "projectName": "Rikei.PinkMind.Business",
+        "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
+            "MediatR.Extensions.Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
     "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikkei.PindMind.DAO\\Rikkei.PindMind.DAO.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -29,7 +93,11 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj": {
+                "projectPath": "D:\\Exercise\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\Rikei.PinkMind.Business.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

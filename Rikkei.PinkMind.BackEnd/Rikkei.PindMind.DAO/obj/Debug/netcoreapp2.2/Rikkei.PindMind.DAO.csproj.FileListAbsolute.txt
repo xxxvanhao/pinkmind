@@ -67,4 +67,3 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netco
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.csproj.CopyComplete
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
-D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.csprojAssemblyReference.cache

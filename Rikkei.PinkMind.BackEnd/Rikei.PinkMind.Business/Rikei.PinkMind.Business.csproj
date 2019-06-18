@@ -27,12 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Folder Include="Projects\Commands\Delete\" />
     <Folder Include="Projects\Commands\Update\" />
     <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
->>>>>>> 42a154e850f0b5df591ad9c3b8c10978e76c20b2
     <Folder Include="Users\Queries\GetUserDetailList\" />
   </ItemGroup>
 
