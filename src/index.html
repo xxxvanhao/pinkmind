@@ -20,17 +20,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
         // if we don't receive an access token then login failed and/or the user has not connected properly
-        var accessToken = getParameterByName("access_token");
+        const accessToken = getParameterByName("access_token");
+        const refId = getParameterByName("refid");
         var message = {};
-        if (accessToken) {
+        if ((accessToken != null) || (refId != null)) {
             message.status = true;
             message.accessToken = accessToken;
+            message.refId = refId;
         } else {
             message.status = false;
             message.error = getParameterByName("error");
             message.errorDescription = getParameterByName("error_description");
         }
-        console.log(accessToken);
         window.opener.postMessage(JSON.stringify(message), 'http://localhost:4200');
     </script>
 </body>

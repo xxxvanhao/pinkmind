@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -16,56 +17,71 @@ using Rikkei.PinkMind.DAO.Data;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
-    //[Authorize(Policy = "ApiUser")]
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
+  [Route("api/[controller]")]
+  [ApiController]
+  public class UsersController : ControllerBase
+  {
+    private readonly IMediator _mediator;
+    private readonly ClaimsPrincipal _caller;
+
+    public UsersController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
     {
-        private readonly IMediator _mediator;
-
-    public UsersController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
-        // GET: api/Users
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<User>>> GetUser()
-        //{
-        //}
-
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserDetailModel>> GetUser(int id)
-        {
-          return Ok(await _mediator.Send(new GetUserDetailQuery { ID = id }));
-        }
-
-        // PUT: api/Users
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser([FromBody]UpdateUserCommand command)
-        {
-          await _mediator.Send(command);
-
-          return NoContent();
-        }
-
-        // POST: api/Users
-        [HttpPost]
-        public async Task<IActionResult> PostUser([FromBody]CreateUserCommand command)
-        {
-          await _mediator.Send(command);
-
-          return NoContent();
-        }
-
-        // DELETE: api/Users
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
-        {
-           await _mediator.Send(new DeleteUserCommand { ID = id });
-
-          return NoContent();
-        }
+      _mediator = mediator;
+      _caller = httpContextAccessor.HttpContext.User;
     }
+
+    // GET: api/Users
+    //[HttpGet]
+    //public async Task<ActionResult<IEnumerable<User>>> GetUser()
+    //{
+    //}
+
+    // GET: api/Users/5
+    [Authorize(Policy = "ApiUser")]
+    public async Task<IActionResult> GetUser()
+    {
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      var userInfo = await _mediator.Send(new GetUserDetailQuery { ID = Convert.ToInt32(userID.Value)});
+      return new OkObjectResult(new
+      {
+        Message = "This is secure API and user data!",
+        userInfo.ID,
+        userInfo.Email,
+        userInfo.FirstName,
+        userInfo.LastName,
+        userInfo.PictureUrl,
+        userInfo.SpaceID,
+        userInfo.CreateAt,
+        userInfo.LastUpdate
+      });
+    }
+
+    // PUT: api/Users
+    [Authorize(Policy = "ApiUser")]
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutUser([FromBody]UpdateUserCommand command)
+    {
+      await _mediator.Send(command);
+
+      return NoContent();
+    }
+
+    // POST: api/Users
+    [HttpPost]
+    public async Task<IActionResult> PostUser([FromBody]CreateUserCommand command)
+    {
+      await _mediator.Send(command);
+
+      return NoContent();
+    }
+
+    // DELETE: api/Users
+    [Authorize(Policy = "ApiUser")]
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteUser(int id)
+    {
+      await _mediator.Send(new DeleteUserCommand { ID = id });
+      return NoContent();
+    }
+  }
 }
