@@ -3,7 +3,7 @@ using Rikei.PinkMind.Business.SpaceControls.Commands.UpdatePmSpaceControls;
 
 namespace Rikei.PinkMind.Business.pmSpaces.Commands.UpdatePmSpaceControl
 {
-  class UpdatepmSpaceControlCommandValidator : AbstractValidator<UpdatepmSpaceControlCommand>
+  public class UpdatepmSpaceControlCommandValidator : AbstractValidator<UpdatepmSpaceControlCommand>
   {
    public UpdatepmSpaceControlCommandValidator()
     {
