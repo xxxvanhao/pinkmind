@@ -46,7 +46,6 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreap
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikei.PinkMind.Business.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.dll
-D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikei.PinkMind.Business.pdb
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.pdb
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.csprojAssemblyReference.cache

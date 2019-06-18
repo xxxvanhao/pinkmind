@@ -27,7 +27,6 @@ using FluentValidation.AspNetCore;
 using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Rikkei.PindMind.DAO.Extensions;
-using Rikei.PinkMind.Business.Implementation;
 using MediatR;
 using Rikei.PinkMind.Business.Users.Queries.GetUserDetail;
 using System.Reflection;
@@ -63,7 +62,6 @@ namespace Rikkei.PinkMind
       services.Configure<FacebookAuthSettings>(Configuration.GetSection(nameof(FacebookAuthSettings)));
 
       services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
-      services.AddTransient<IssueReponsetory>();
       services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
       // jwt wire up
       // Get options from app settings
