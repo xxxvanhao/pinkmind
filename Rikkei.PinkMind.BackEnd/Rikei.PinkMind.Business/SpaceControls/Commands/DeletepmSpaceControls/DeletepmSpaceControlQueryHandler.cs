@@ -20,7 +20,7 @@ namespace Rikei.PinkMind.Business.SpaceControls.Commands.DeletepmSpaceControls
       var entity = await _pmContext.SpaceControls.FindAsync(request.ID);
       if (entity == null)
       {
-        throw new DeleteFailureException(nameof(SpaceControl), request.ID, "Spacecontrol");
+        throw new DeleteFailureException(nameof(SpaceControl), request.ID, "Not exist");
       }
       _pmContext.SpaceControls.Remove(entity);
       await _pmContext.SaveChangesAsync();

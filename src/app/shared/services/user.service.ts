@@ -6,13 +6,13 @@ import { BehaviorSubject, Observable } from 'rxjs/';
 import { map, catchError } from 'rxjs/operators';
 import { UserDetails } from '../models/userDetails.interface';
 import { CodegenComponentFactoryResolver } from '@angular/core/src/linker/component_factory_resolver';
+import { SpaceControlsDetails } from '../models/spaceControlsDetails.interface';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService extends BaseService {
 
   baseUrl: string = '';
-
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
   // Observable navItem stream
@@ -62,7 +62,6 @@ export class UserService extends BaseService {
       'Content-Type' : 'application/json'
     });
     const body = JSON.stringify({ accessToken });
-    console.log(body);
     return this.http.post(
       this.baseUrl + '/auth/facebook', body, { headers })
       .pipe(map((res: any) => {
@@ -71,6 +70,18 @@ export class UserService extends BaseService {
         this._authNavStatusSource.next(true);
         return true;
       }))
+      .pipe(catchError(this.handleError));
+  }
+
+  getSpaceControlDeltails(refId: string): Observable<SpaceControlsDetails> {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    const body = JSON.parse(JSON.stringify({ refId }));
+    return this.http.get(this.baseUrl + `/SpaceControls/${body.refId}`, { headers })
+      .pipe(map((response: any) => response ))
       .pipe(catchError(this.handleError));
   }
 
@@ -94,10 +105,21 @@ export class UserService extends BaseService {
   getUserDetails(): Observable<UserDetails> {
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
+      Authorization : `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + '/Users', { headers })
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
+
+  putUser(userDetails: UserDetails) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    return this.http.get(this.baseUrl + '/users', {headers})
+    return this.http.put(this.baseUrl + '/Users', userDetails, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
   }

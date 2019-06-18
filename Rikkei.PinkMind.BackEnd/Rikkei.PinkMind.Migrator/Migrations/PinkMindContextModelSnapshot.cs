@@ -30,7 +30,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -40,7 +40,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -60,7 +60,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -69,7 +69,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("LastUpdate");
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -91,7 +91,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -103,7 +103,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("LastUpdate");
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -129,7 +129,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -156,7 +156,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<string>("Subject");
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.Property<int>("VersionID");
 
@@ -195,7 +195,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -205,7 +205,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -223,7 +223,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -233,7 +233,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -251,7 +251,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UserID");
+                    b.Property<long>("UserID");
 
                     b.HasKey("ID");
 
@@ -269,7 +269,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<byte[]>("CheckUpdate")
                         .HasColumnType("timestamp");
 
-                    b.Property<DateTime>("CreateAt");
+                    b.Property<long>("CreateAt");
 
                     b.Property<int>("CreateBy");
 
@@ -281,7 +281,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -297,7 +297,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -307,7 +307,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -350,7 +350,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -360,7 +360,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -391,7 +391,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -401,7 +401,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("OrganizationName")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("SpaceID");
 
@@ -414,7 +414,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ControlBy");
+                    b.Property<long>("ControlBy");
 
                     b.Property<string>("SpaceID");
 
@@ -436,7 +436,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -446,7 +446,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -464,7 +464,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -474,7 +474,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 
@@ -487,7 +487,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AddBy");
+                    b.Property<long>("AddBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -498,7 +498,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<int>("TeamID");
 
-                    b.Property<int>("UserID");
+                    b.Property<long>("UserID");
 
                     b.HasKey("ID");
 
@@ -517,7 +517,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AddBy");
+                    b.Property<long>("AddBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -539,7 +539,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
             modelBuilder.Entity("Rikkei.PindMind.DAO.Models.User", b =>
                 {
-                    b.Property<int>("ID");
+                    b.Property<long>("ID");
 
                     b.Property<DateTime>("CreateAt");
 

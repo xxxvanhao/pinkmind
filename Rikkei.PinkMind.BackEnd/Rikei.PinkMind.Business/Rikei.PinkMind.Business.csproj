@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SpaceControls\Commands\GetAllSpaceControl\**" />
+    <EmbeddedResource Remove="SpaceControls\Commands\GetAllSpaceControl\**" />
+    <None Remove="SpaceControls\Commands\GetAllSpaceControl\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Rikkei.PindMind.DAO\Rikkei.PindMind.DAO.csproj" />
   </ItemGroup>
 
@@ -21,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
     <Folder Include="Users\Queries\GetUserDetailList\" />
   </ItemGroup>
 

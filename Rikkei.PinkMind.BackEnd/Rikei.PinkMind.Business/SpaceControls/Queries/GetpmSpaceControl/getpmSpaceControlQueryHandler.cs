@@ -1,13 +1,15 @@
 using MediatR;
+using System.Linq;
 using Rikei.PinkMind.Business.Exceptions;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Rikei.PinkMind.Business.SpaceControls.Queries.GetpmSpaceControl
 {
-  class GetpmSpaceControlQueryHandler : IRequestHandler<GetpmSpaceControlQuery, SpaceControlModel>
+  public class GetpmSpaceControlQueryHandler : IRequestHandler<GetpmSpaceControlQuery, SpaceControlModel>
   {
     private readonly PinkMindContext _pmContext;
     public GetpmSpaceControlQueryHandler(PinkMindContext pinkMindContext)
@@ -15,11 +17,13 @@ namespace Rikei.PinkMind.Business.SpaceControls.Queries.GetpmSpaceControl
       _pmContext = pinkMindContext;
     }
     public async Task<SpaceControlModel> Handle(GetpmSpaceControlQuery request, CancellationToken cancellationToken)
+
     {
-      var entity = await _pmContext.SpaceControls.FindAsync(request.ID);
+      var spaceControl = from sc in _pmContext.SpaceControls select sc;
+      var entity = await spaceControl.Where(sc => sc.ControlBy == request.userId).SingleOrDefaultAsync();
       if (entity == null)
       {
-        throw new NotFoundException(nameof(SpaceControl), request.ID);
+        throw new NotFoundException(nameof(SpaceControl), request.userId);
       }
 
       return SpaceControlModel.Create(entity);

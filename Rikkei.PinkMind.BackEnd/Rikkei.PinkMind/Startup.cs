@@ -34,6 +34,7 @@ using System.Reflection;
 using Rikei.PinkMind.Business.Users.Commands.CreateUser;
 using Rikei.PinkMind.Business.Users.Commands.UpdateUser;
 using Rikei.PinkMind.Business.Users.Commands.DeleteUser;
+using Rikei.PinkMind.Business.SpaceControls.Commands.UpdatePmSpaceControls;
 
 namespace Rikkei.PinkMind
 {
@@ -117,7 +118,8 @@ namespace Rikkei.PinkMind
       services.AddMediatR(typeof(GetUserDetailQueryHandler).GetTypeInfo().Assembly,
                           typeof(CreateUserCommand.Handler).GetTypeInfo().Assembly,
                           typeof(UpdateUserCommand.Handler).GetTypeInfo().Assembly,
-                          typeof(DeleteUserQueryHandler).GetTypeInfo().Assembly);      
+                          typeof(DeleteUserQueryHandler).GetTypeInfo().Assembly,
+                          typeof(UpdatepmSpaceControlCommand.Handler).GetTypeInfo().Assembly);      
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -13,9 +13,9 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.UpdatePmSpace
   {
     public string SpaceID { get; set; }
     public string OrganizationName { get; set; }
-    public int CreateBy { get; set; }
+    public long CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
-    public int UpdateBy { get; set; }
+    public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
     public string CheckUpdate { get; set; }
@@ -35,14 +35,13 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.UpdatePmSpace
         {
           throw new NotFoundException(nameof(Space), request.SpaceID);
         }
-        entity.SpaceID = request.SpaceID;
-        entity.OrganizationName = request.OrganizationName;
-        entity.CreateBy = request.CreateBy;
-        entity.CreateAt = request.CreateAt;
+        entity.OrganizationName = request.OrganizationName ?? entity.OrganizationName;
+        entity.CreateAt = DateTime.UtcNow;
         entity.UpdateBy = request.UpdateBy;
-        entity.LastUpdate = request.LastUpdate;
-        entity.DelFlag = request.DelFlag;
-        entity.CheckUpdate = request.CheckUpdate;
+        entity.LastUpdate = DateTime.UtcNow;
+        entity.DelFlag = request.DelFlag == false? true: false;
+        await _pmContext.SaveChangesAsync(cancellationToken);
+
         return Unit.Value;
       }
     }

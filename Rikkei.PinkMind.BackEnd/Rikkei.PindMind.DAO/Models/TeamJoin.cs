@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,7 +15,7 @@ namespace Rikkei.PindMind.DAO.Models
         [Display(Name = "Join On")]
         public DateTime JoinOn { get; set; }
         [Display(Name = "Add By")]
-        public int  AddBy { get; set; }
+        public long AddBy { get; set; }
         [Column(TypeName = "bit")]
         public bool DelFlag { get; set; }
         public Team Team { get; set; }

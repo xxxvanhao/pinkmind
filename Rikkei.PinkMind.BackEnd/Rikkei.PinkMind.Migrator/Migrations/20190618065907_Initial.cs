@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Rikkei.PinkMind.Migrator.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,9 +15,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -35,9 +35,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     BackgroundColor = table.Column<string>(nullable: false),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -54,9 +54,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -74,8 +74,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<int>(nullable: false),
-                    CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    CreateAt = table.Column<long>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -91,9 +91,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<string>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -110,9 +110,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -160,9 +160,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     SpaceID = table.Column<string>(maxLength: 50, nullable: false),
                     OrganizationName = table.Column<string>(maxLength: 50, nullable: false),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -179,9 +179,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -198,9 +198,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -236,7 +236,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SpaceID = table.Column<string>(nullable: false),
-                    ControlBy = table.Column<int>(nullable: false)
+                    ControlBy = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -253,8 +253,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 name: "tbl_user",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(maxLength: 100, nullable: true),
+                    ID = table.Column<long>(nullable: false),
+                    Email = table.Column<string>(maxLength: 100, nullable: false),
                     Password = table.Column<string>(maxLength: 50, nullable: true),
                     LastName = table.Column<string>(maxLength: 50, nullable: true),
                     FirstName = table.Column<string>(maxLength: 50, nullable: true),
@@ -280,10 +280,10 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    TeamID = table.Column<int>(nullable: true),
+                    TeamID = table.Column<int>(nullable: false),
                     ProjectID = table.Column<string>(nullable: true),
                     JoinOn = table.Column<DateTime>(nullable: false),
-                    AddBy = table.Column<int>(nullable: true),
+                    AddBy = table.Column<long>(nullable: true),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -311,20 +311,20 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     IssueTypeID = table.Column<int>(nullable: false),
                     IssueKey = table.Column<string>(nullable: false),
-                    Subject = table.Column<string>(nullable: true),
+                    Subject = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     StatusID = table.Column<int>(nullable: false),
-                    AssigneeUser = table.Column<int>(nullable: true),
+                    AssigneeUser = table.Column<long>(nullable: true),
                     PriorityID = table.Column<int>(nullable: true),
                     CategoryID = table.Column<int>(nullable: true),
                     MilestoneID = table.Column<int>(nullable: true),
                     VersionID = table.Column<int>(nullable: true),
                     ResolutionID = table.Column<int>(nullable: true),
-                    DueDate = table.Column<DateTime>(nullable: true),
+                    DueDate = table.Column<DateTime>(nullable: false),
                     ProjectID = table.Column<string>(nullable: false),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false)
@@ -388,11 +388,11 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserID = table.Column<int>(nullable: false),
+                    UserID = table.Column<long>(nullable: false),
                     TeamID = table.Column<int>(nullable: true),
                     RoleID = table.Column<int>(nullable: false),
                     JoinedOn = table.Column<DateTime>(nullable: false),
-                    AddBy = table.Column<int>(nullable: true),
+                    AddBy = table.Column<long>(nullable: true),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -425,9 +425,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
-                    CreateBy = table.Column<int>(nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false),
@@ -450,7 +450,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserID = table.Column<int>(nullable: false),
+                    UserID = table.Column<long>(nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     IssueID = table.Column<int>(nullable: false)
                 },
@@ -471,10 +471,10 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FilePath = table.Column<string>(maxLength: 50, nullable: true),
-                    CreateBy = table.Column<int>(nullable: false),
+                    FilePath = table.Column<string>(maxLength: 50, nullable: false),
+                    CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<int>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", nullable: false),

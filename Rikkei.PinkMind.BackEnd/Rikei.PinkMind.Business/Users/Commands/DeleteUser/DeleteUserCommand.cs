@@ -7,6 +7,6 @@ namespace Rikei.PinkMind.Business.Users.Commands.DeleteUser
 {
   public class DeleteUserCommand : IRequest
   {
-    public int ID { get; set; }
+    public long ID { get; set; }
   }
 }

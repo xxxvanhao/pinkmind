@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,9 +15,9 @@ namespace Rikkei.PindMind.DAO.Models
         public int CreateBy { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Create At")]
-        public DateTime CreateAt { get; set; }
+        public long CreateAt { get; set; }
         [Display(Name = "Update By")]
-        public int UpdateBy { get; set; }
+        public long UpdateBy { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Last Update")]
         public DateTime LastUpdate { get; set; }

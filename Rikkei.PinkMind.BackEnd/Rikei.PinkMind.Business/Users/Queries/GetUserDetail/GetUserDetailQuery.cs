@@ -7,6 +7,6 @@ namespace Rikei.PinkMind.Business.Users.Queries.GetUserDetail
 {
   public class GetUserDetailQuery : IRequest<UserDetailModel>
   {
-     public int ID { get; set; }
+     public long ID { get; set; }
   }
 }

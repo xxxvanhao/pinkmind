@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.SpaceControls.Queries.GetpmSpaceControl
 {
-  class GetpmSpaceControlQuery : IRequest<SpaceControlModel>
+  public class GetpmSpaceControlQuery : IRequest<SpaceControlModel>
   {
-    public int ID { get; set; }
+    public long userId { get; set; }
 
   }
 }

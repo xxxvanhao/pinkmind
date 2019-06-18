@@ -11,7 +11,7 @@ namespace Rikei.PinkMind.Business.Users.Commands.UpdateUser
 {
   public class UpdateUserCommand : IRequest
   {
-    public int ID { get; set; }
+    public long ID { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
     public string LastName { get; set; }
@@ -34,11 +34,11 @@ namespace Rikei.PinkMind.Business.Users.Commands.UpdateUser
           throw new NotFoundException(nameof(User), request.ID);
         }
 
-        entity.Password = request.Password;
-        entity.LastName = request.LastName;
-        entity.FirstName = request.FirstName;
-        entity.PictureUrl = request.PictureUrl;
-        entity.SpaceID = request.SpaceID;
+        entity.Password = request.Password ?? entity.Password;
+        entity.LastName = request.LastName ?? entity.LastName;
+        entity.FirstName = request.FirstName ?? entity.FirstName;
+        entity.PictureUrl = request.PictureUrl ?? entity.PictureUrl;
+        entity.SpaceID = request.SpaceID ?? entity.SpaceID;
         entity.LastUpdate = DateTime.UtcNow;
         await _pmContext.SaveChangesAsync(cancellationToken);
 

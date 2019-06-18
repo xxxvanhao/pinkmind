@@ -36,6 +36,7 @@ namespace Rikkei.PinkMind.DAO.Data
     public DbSet<TeamJoin> TeamJoins { get; set; }
     public DbSet<Version> Versions { get; set; }
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.Entity<Space>().ToTable("tbl_space");

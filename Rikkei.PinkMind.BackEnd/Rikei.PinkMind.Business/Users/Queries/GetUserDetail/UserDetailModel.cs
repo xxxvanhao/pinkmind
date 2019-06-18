@@ -8,7 +8,7 @@ namespace Rikei.PinkMind.Business.Users.Queries.GetUserDetail
 {
   public class UserDetailModel
   {
-    public int ID { get; set; }
+    public long ID { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
     public string LastName { get; set; }

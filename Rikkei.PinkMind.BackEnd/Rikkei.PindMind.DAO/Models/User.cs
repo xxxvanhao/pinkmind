@@ -9,7 +9,7 @@ namespace Rikkei.PindMind.DAO.Models
     public class User
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+        public long ID { get; set; }
         [StringLength(100, MinimumLength = 3)]
         public string Email { get; set; }
         [StringLength(50, MinimumLength = 8)]
