@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Teams.Commands.Create
 {
-  class CreateTeamCommands : IRequest
+  public class CreateTeamCommands : IRequest
   {
     public int ID { get; set; }
     public string Name { get; set; }
-    public int CreateBy { get; set; }
+    public long CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
-    public int UpdateBy { get; set; }
+    public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
-    public string CheckUpdate { get; set; }
     public class Handler : IRequestHandler<CreateTeamCommands, Unit>
     {
       private readonly PinkMindContext _pmContext;
@@ -28,15 +27,12 @@ namespace Rikei.PinkMind.Business.Teams.Commands.Create
       {
         var entity = new Team
         {
-          ID = request.ID,
           Name = request.Name,
-          CreateAt = request.CreateAt,
+          CreateAt = DateTime.UtcNow,
           CreateBy = request.CreateBy,
-          CheckUpdate = request.CheckUpdate,
-          LastUpdate = request.LastUpdate,
-          DelFlag = request.DelFlag,
-          UpdateBy = request.UpdateBy
-
+          LastUpdate = DateTime.UtcNow,
+          UpdateBy = request.UpdateBy,
+          DelFlag = true
         };
         _pmContext.Teams.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);

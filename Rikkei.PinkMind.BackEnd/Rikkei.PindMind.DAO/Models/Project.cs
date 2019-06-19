@@ -24,6 +24,7 @@ namespace Rikkei.PindMind.DAO.Models
         [Column(TypeName = "bit")]
         public bool DelFlag { get; set; }
         [Column(TypeName = "timestamp")]
+        [Timestamp]
         public string CheckUpdate { get; set; }
         public ICollection<TeamJoin> TeamJoins { get; set; }
         public ICollection<Issue> Issues { get; set; }

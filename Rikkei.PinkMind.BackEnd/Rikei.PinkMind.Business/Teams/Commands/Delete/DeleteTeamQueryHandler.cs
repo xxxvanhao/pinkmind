@@ -32,7 +32,7 @@ namespace Rikei.PinkMind.Business.Teams.Commands.Delete
         throw new DeleteFailureException(nameof(Team), request.ID, "There are existing Teams, please get out");
       }
       _pmContext.Teams.Remove(entity);
-      await _pmContext.SaveChangesAsync();
+      await _pmContext.SaveChangesAsync(cancellationToken);
       return Unit.Value;
     }
   }

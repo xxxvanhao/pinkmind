@@ -49,12 +49,10 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netco
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.runtimeconfig.dev.json
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
-D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.WebSockets.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.dll
-D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.xml
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.WebSockets.xml
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.xml
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.IdentityModel.JsonWebTokens.pdb
@@ -67,3 +65,6 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netco
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.csproj.CopyComplete
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
+D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\obj\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.csprojAssemblyReference.cache
+D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.dll
+D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PindMind.DAO\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.xml

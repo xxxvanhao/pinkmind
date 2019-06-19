@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Teams.Queries.GetTeams
 {
-  class GetTeamControlQuery : IRequest<GetTeamModel>
+  public class GetTeamControlQuery : IRequest<GetTeamModel>
   {
     public int ID { get; set; }
   }

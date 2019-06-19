@@ -1,5 +1,6 @@
 using MediatR;
-using Rikei.PinkMind.Business.Users.Commands.CreateUser;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
@@ -7,7 +8,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static Rikei.PinkMind.Business.Users.Commands.CreateUser.CreateUserCommand;
 
 namespace Rikei.PinkMind.Business.pmSpaces.Commands.CreatepmSpace
 {
@@ -20,6 +20,7 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.CreatepmSpace
     public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
+    public string CheckUpdate { get; set; }
 
     public class Handler : IRequestHandler<CreatepmSpaceCommand, Unit>
     {
@@ -40,11 +41,12 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.CreatepmSpace
           LastUpdate = DateTime.UtcNow,
           DelFlag = true
         };
+
         _pmContext.Spaces.Add(entity);
-        await _pmContext.SaveChangesAsync(cancellationToken);
+        await _pmContext.SaveChangesAsync();
         return Unit.Value;
       }
-      
+
     }
   }
 }

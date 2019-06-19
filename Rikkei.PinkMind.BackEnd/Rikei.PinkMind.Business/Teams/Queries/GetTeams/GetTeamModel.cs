@@ -31,7 +31,8 @@ namespace Rikei.PinkMind.Business.Teams.Queries.GetTeams
           CheckUpdate = team.CheckUpdate,
           LastUpdate = team.LastUpdate,
           DelFlag = team.DelFlag,
-          UpdateBy = team.UpdateBy
+          UpdateBy = team.UpdateBy,
+          
         };
       }
     }

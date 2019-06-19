@@ -4827,7 +4827,8 @@
         "dependencies": {
           "FluentValidation.AspNetCore": "8.4.0",
           "MediatR.Extensions.Microsoft.AspNetCore.Mvc": "2.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4"
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
+          "Rikkei.PindMind.DAO": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Rikei.PinkMind.Business.dll": {}
@@ -4843,8 +4844,7 @@
           "Microsoft.AspNetCore.Http": "2.2.0",
           "Microsoft.EntityFrameworkCore.Design": "2.2.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
-          "Microsoft.IdentityModel.Tokens": "5.4.0",
-          "Rikei.PinkMind.Business": "1.0.0"
+          "Microsoft.IdentityModel.Tokens": "5.4.0"
         },
         "compile": {
           "bin/placeholder/Rikkei.PindMind.DAO.dll": {}

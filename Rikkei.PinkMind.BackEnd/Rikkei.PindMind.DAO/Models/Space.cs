@@ -15,7 +15,6 @@ namespace Rikkei.PindMind.DAO.Models
     public string SpaceID { get; set; }
     [StringLength(50, MinimumLength = 3)]
     [Display(Name = "Organization Name")]
-    [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
     public string OrganizationName { get; set; }
     public long CreateBy { get; set; }
     [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -29,6 +28,7 @@ namespace Rikkei.PindMind.DAO.Models
     [Column(TypeName = "bit")]
     public bool DelFlag { get; set; }
     [Column(TypeName = "timestamp")]
+    [Timestamp]
     public string CheckUpdate { get; set; }
     public ICollection<SpaceControl> SpaceControls { get; set; }
     public ICollection<User> Users { get; set; }

@@ -35,6 +35,7 @@ namespace Rikkei.PindMind.DAO.Models
         [Display(Name = "Last Update")]
         public DateTime LastUpdate { get; set; }
         [Column(TypeName = "bit")]
+        [Timestamp]
         public bool DelFlag { get; set; }
         [Column(TypeName = "timestamp")]
         public string CheckUpdate { get; set; }

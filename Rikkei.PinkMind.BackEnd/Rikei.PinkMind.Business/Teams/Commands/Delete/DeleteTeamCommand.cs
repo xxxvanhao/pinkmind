@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Teams.Commands.Delete
 {
-    class DeleteTeamCommand : IRequest
+    public class DeleteTeamCommand : IRequest
     {
       public int ID { get; set; }
     }

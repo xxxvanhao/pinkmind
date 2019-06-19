@@ -39,7 +39,7 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.UpdatePmSpace
         entity.CreateAt = DateTime.UtcNow;
         entity.UpdateBy = request.UpdateBy;
         entity.LastUpdate = DateTime.UtcNow;
-        entity.DelFlag = request.DelFlag == false? true: false;
+        entity.DelFlag = !request.DelFlag ? true: false;
         await _pmContext.SaveChangesAsync(cancellationToken);
 
         return Unit.Value;

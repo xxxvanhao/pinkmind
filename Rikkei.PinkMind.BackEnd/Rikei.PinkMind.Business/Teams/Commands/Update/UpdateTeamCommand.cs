@@ -10,16 +10,15 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Teams.Commands.Update
 {
-  class UpdateTeamCommand : IRequest
+  public class UpdateTeamCommand : IRequest
   {
     public int ID { get; set; }
     public string Name { get; set; }
-    public int CreateBy { get; set; }
+    public long CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
-    public int UpdateBy { get; set; }
+    public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
-    public string CheckUpdate { get; set; }
     public class Handler : IRequestHandler<UpdateTeamCommand, Unit>
     {
       private readonly PinkMindContext _pmContext;
@@ -30,19 +29,18 @@ namespace Rikei.PinkMind.Business.Teams.Commands.Update
 
       public async Task<Unit> Handle(UpdateTeamCommand request, CancellationToken cancellationToken)
       {
-        var entity = await _pmContext.Teams.SingleOrDefaultAsync(u => u.ID == request.ID);
+        var entity = await _pmContext.Teams.SingleOrDefaultAsync(t => t.ID == request.ID);
         if (entity == null)
         {
           throw new NotFoundException(nameof(Teams), request.ID);
         }
-        entity.ID = request.ID;
         entity.Name = request.Name;
-        entity.CreateAt = request.CreateAt;
-        entity.CreateBy = request.CreateBy;
-        entity.CheckUpdate = request.CheckUpdate;
-        entity.LastUpdate = request.LastUpdate;
-        entity.DelFlag = request.DelFlag;
+        entity.CreateAt = DateTime.UtcNow;
         entity.UpdateBy = request.UpdateBy;
+        entity.LastUpdate = DateTime.UtcNow;
+        entity.DelFlag = !request.DelFlag ? true : false;
+
+        await _pmContext.SaveChangesAsync(cancellationToken);
         return Unit.Value;
       }
     }

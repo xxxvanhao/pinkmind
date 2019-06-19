@@ -28,7 +28,7 @@ namespace Rikkei.PinkMind.API.Controllers
     }
 
     // GET: api/Spaces/5
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetSpace(string id)
     {
       var spaceInfo = await _mediator.Send(new GetpmSpaceQuery { SpaceID = id });
@@ -41,6 +41,7 @@ namespace Rikkei.PinkMind.API.Controllers
         spaceInfo.CreateAt,
         spaceInfo.UpdateBy,
         spaceInfo.LastUpdate,
+        spaceInfo.DelFlag,
         spaceInfo.CheckUpdate
       });
     }
@@ -49,29 +50,23 @@ namespace Rikkei.PinkMind.API.Controllers
     [HttpPut]
     public async Task<IActionResult> PutSpace([FromBody]UpdatepmSpaceCommand command)
     {                               
-      await _mediator.Send(new UpdatepmSpaceCommand
-      { 
-        SpaceID = command.SpaceID,
-        OrganizationName = command.OrganizationName,
-        UpdateBy = command.UpdateBy,
-        DelFlag = command.DelFlag
-      });
-
+      await _mediator.Send(command);
+      
       return NoContent();
     }
 
     // POST: api/Spaces
     [HttpPost]
-    public async Task<IActionResult> PostUser([FromBody]CreatepmSpaceCommand command)
+    public async Task<IActionResult> PostSpace([FromBody]CreatepmSpaceCommand command)
     {
       await _mediator.Send(command);
-
+      
       return NoContent();
     }
 
     // DELETE: api/Spaces 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUser(string id)
+    public async Task<IActionResult> DeleteSpace(string id)
     {
       await _mediator.Send(new DeletepmSpaceCommand { SpaceID = id });
       return NoContent();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,6 +24,7 @@ namespace Rikkei.PindMind.DAO.Models
         [Column(TypeName = "bit")]
         public bool DelFlag { get; set; }
         [Column(TypeName = "timestamp")]
+        [Timestamp]
         public string CheckUpdate { get; set; }
         public ICollection<Issue> Issues { get; set; }
     }

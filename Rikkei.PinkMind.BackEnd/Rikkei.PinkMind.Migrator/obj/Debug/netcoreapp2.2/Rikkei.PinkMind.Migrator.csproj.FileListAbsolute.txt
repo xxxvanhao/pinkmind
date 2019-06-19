@@ -46,12 +46,10 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.pdb
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.dll
-D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
-D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.xml
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.xml
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.pdb
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.xml
@@ -64,3 +62,5 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.csproj.CopyComplete
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.pdb
+D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.dll
+D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.xml

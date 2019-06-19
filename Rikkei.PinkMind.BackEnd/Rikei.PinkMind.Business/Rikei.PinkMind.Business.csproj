@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -8,10 +8,6 @@
     <Compile Remove="SpaceControls\Commands\GetAllSpaceControl\**" />
     <EmbeddedResource Remove="SpaceControls\Commands\GetAllSpaceControl\**" />
     <None Remove="SpaceControls\Commands\GetAllSpaceControl\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Rikkei.PindMind.DAO\Rikkei.PindMind.DAO.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +27,10 @@
     <Folder Include="Projects\Commands\Update\" />
     <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
     <Folder Include="Users\Queries\GetUserDetailList\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rikkei.PindMind.DAO\Rikkei.PindMind.DAO.csproj" />
   </ItemGroup>
 
 </Project>
