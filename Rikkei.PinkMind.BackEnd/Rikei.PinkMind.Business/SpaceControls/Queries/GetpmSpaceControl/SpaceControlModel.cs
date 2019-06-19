@@ -9,9 +9,9 @@ namespace Rikei.PinkMind.Business.SpaceControls.Queries.GetpmSpaceControl
 {
   public class SpaceControlModel
   {
-    public int ID { get; set; }
+    public long ID { get; set; }
     public string SpaceID { get; set; }
-    public int ControlBy { get; set; }
+    public long ControlBy { get; set; }
     public static Expression<Func<SpaceControl, SpaceControlModel>> Projection
     {
       get

@@ -8,12 +8,12 @@ namespace Rikei.PinkMind.Business.TeamDetails.Queries.GetTeamDetail
 {
   class TeamDetailModel
   {
-    public int ID { get; set; }
-    public int UserID { get; set; }
-    public int TeamID { get; set; }
-    public int RoleID { get; set; }
+    public long ID { get; set; }
+    public long UserID { get; set; }
+    public long TeamID { get; set; }
+    public long RoleID { get; set; }
     public DateTime JoinedOn { get; set; }
-    public int AddBy { get; set; }
+    public long AddBy { get; set; }
     public bool DelFlag { get; set; }
 
 

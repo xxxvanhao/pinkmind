@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,5 +29,6 @@ namespace Rikkei.PindMind.DAO.Models
         public int? CommentID { get; set; }
         public Issue Issue { get; set; }
         public Comment Comment { get; set; }
+
     }
 }

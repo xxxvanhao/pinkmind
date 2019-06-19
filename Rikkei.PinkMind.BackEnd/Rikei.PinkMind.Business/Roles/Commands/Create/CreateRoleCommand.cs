@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Roles.Commands.Create
 {
-  class CreateRoleCommand : IRequest
+  public class CreateRoleCommand : IRequest
   {
     public int ID { get; set; }
     public string Name { get; set; }

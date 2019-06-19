@@ -21,8 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Projects\Commands\Delete\" />
-    <Folder Include="Projects\Commands\Update\" />
     <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
     <Folder Include="Users\Queries\GetUserDetailList\" />
   </ItemGroup>

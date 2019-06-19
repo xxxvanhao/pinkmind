@@ -9,22 +9,22 @@ namespace Rikei.PinkMind.Business.Roles.Queries.GetRole
 {
   public class RoleModel : IRequest
   {
-    public int ID { get; set; }
+    public long ID { get; set; }
     public string Name { get; set; }
-    public static Expression<Func<Role, RoleModel>> Projection
-    {
-      get
+      public static Expression<Func<Role, RoleModel>> Projection
       {
-        return role => new RoleModel
+        get
         {
-          ID = role.ID,
-          Name = role.Name
-        };
+          return role => new RoleModel
+          {
+            ID = role.ID,
+            Name = role.Name
+          };
+        }
       }
-    }
-    public static RoleModel Create(Role role)
-    {
-      return Projection.Compile().Invoke(role);
-    }
+      public static RoleModel Create(Role role)
+      {
+        return Projection.Compile().Invoke(role);
+      }
   }
 }
