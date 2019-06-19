@@ -2,6 +2,7 @@ using Rikei.PinkMind.Business.SpaceControls.Queries.GetpmSpaceControl;
 using Rikkei.PindMind.DAO.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -16,7 +17,8 @@ namespace Rikei.PinkMind.Business.Teams.Queries.GetTeams
     public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
-    public string CheckUpdate { get; set; }
+    [Timestamp]
+    public byte[] CheckUpdate { get; set; }
 
     public static Expression<Func<Team, GetTeamModel>> Projection
     {

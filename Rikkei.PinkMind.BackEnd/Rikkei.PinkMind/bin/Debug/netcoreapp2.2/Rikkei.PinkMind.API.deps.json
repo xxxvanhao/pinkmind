@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "6235b56c51a191b05e697fc53253f8d17915b4e0"
+    "signature": "b4d62339f9efa1400061806a509b4ca107943e71"
   },
   "compilationOptions": {
     "defines": [
@@ -60,6 +60,50 @@
         },
         "compile": {
           "lib/netstandard2.0/AutoMapper.dll": {}
+        }
+      },
+      "AutoMapper.Collection/5.0.0": {
+        "dependencies": {
+          "AutoMapper": "8.1.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Collection.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Collection.dll": {}
+        }
+      },
+      "AutoMapper.Collection.EntityFrameworkCore/0.2.0": {
+        "dependencies": {
+          "AutoMapper.Collection": "5.0.0",
+          "AutoMapper.Extensions.ExpressionMapping": "2.0.0",
+          "Microsoft.EntityFrameworkCore": "2.2.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Collection.EntityFrameworkCore.dll": {
+            "assemblyVersion": "0.2.0.0",
+            "fileVersion": "0.2.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Collection.EntityFrameworkCore.dll": {}
+        }
+      },
+      "AutoMapper.Extensions.ExpressionMapping/2.0.0": {
+        "dependencies": {
+          "AutoMapper": "8.1.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.dll": {}
         }
       },
       "AutoMapper.Extensions.Microsoft.DependencyInjection/6.1.1": {
@@ -746,6 +790,7 @@
       },
       "Rikei.PinkMind.Business/1.0.0": {
         "dependencies": {
+          "AutoMapper.Collection.EntityFrameworkCore": "0.2.0",
           "FluentValidation.AspNetCore": "8.4.0",
           "MediatR.Extensions.Microsoft.AspNetCore.Mvc": "2.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
@@ -3760,6 +3805,27 @@
       "sha512": "sha512-GKBliBukkLG0z/U0T4Jy+yEpr5bKDImQ9nEy/T8jqNulwNkWDjiEWa9TL4yCxIhleDbmVmw2xYSaJ3Eb2OcSUg==",
       "path": "automapper/8.1.1",
       "hashPath": "automapper.8.1.1.nupkg.sha512"
+    },
+    "AutoMapper.Collection/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PTcaaXG1UpWtVlgjdskYA6AJqxvakNvfNS78jEkrBqqkOrM/AoeAO1/aajHqbyQ90qQcsqE3EUar73E6Ri4paA==",
+      "path": "automapper.collection/5.0.0",
+      "hashPath": "automapper.collection.5.0.0.nupkg.sha512"
+    },
+    "AutoMapper.Collection.EntityFrameworkCore/0.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K+HMfspV/SuQ0CFsIeQzRb024OGJUC4OPBOiWA/oeJMzeI2FUKCyzsMyMq/26OBXOtQ3zB6OMCzqoOJR2c5upg==",
+      "path": "automapper.collection.entityframeworkcore/0.2.0",
+      "hashPath": "automapper.collection.entityframeworkcore.0.2.0.nupkg.sha512"
+    },
+    "AutoMapper.Extensions.ExpressionMapping/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-y5OWOzdaBTEUwmuEyc5oPvw4f9vTX2W94RuK1T7VwqYUH7a2IHwDY6pGqlP5alx0PczMmlpOhUZcsQwqmVLCxw==",
+      "path": "automapper.extensions.expressionmapping/2.0.0",
+      "hashPath": "automapper.extensions.expressionmapping.2.0.0.nupkg.sha512"
     },
     "AutoMapper.Extensions.Microsoft.DependencyInjection/6.1.1": {
       "type": "package",

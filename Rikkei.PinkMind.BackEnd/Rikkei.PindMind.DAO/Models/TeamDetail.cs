@@ -16,7 +16,7 @@ namespace Rikkei.PindMind.DAO.Models
         [Display(Name = "Joined On")]
         public DateTime JoinedOn { get; set; }
         [Display(Name = "Add By")]
-        public long AddBy { get; set; }
+        public long? AddBy { get; set; }
         [Column(TypeName = "bit")]
         public bool DelFlag { get; set; }
         public User User { get; set; }

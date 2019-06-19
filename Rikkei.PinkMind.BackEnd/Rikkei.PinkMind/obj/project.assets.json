@@ -15,6 +15,44 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
+      "AutoMapper.Collection/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Collection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Collection.dll": {}
+        }
+      },
+      "AutoMapper.Collection.EntityFrameworkCore/0.2.0": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper.Collection": "5.0.0",
+          "AutoMapper.Extensions.ExpressionMapping": "2.0.0",
+          "Microsoft.EntityFrameworkCore": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Collection.EntityFrameworkCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Collection.EntityFrameworkCore.dll": {}
+        }
+      },
+      "AutoMapper.Extensions.ExpressionMapping/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.dll": {}
+        }
+      },
       "AutoMapper.Extensions.Microsoft.DependencyInjection/6.1.1": {
         "type": "package",
         "dependencies": {
@@ -4825,6 +4863,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
+          "AutoMapper.Collection.EntityFrameworkCore": "0.2.0",
           "FluentValidation.AspNetCore": "8.4.0",
           "MediatR.Extensions.Microsoft.AspNetCore.Mvc": "2.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
@@ -4885,6 +4924,47 @@
         "lib/netstandard2.0/AutoMapper.dll",
         "lib/netstandard2.0/AutoMapper.pdb",
         "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "AutoMapper.Collection/5.0.0": {
+      "sha512": "PTcaaXG1UpWtVlgjdskYA6AJqxvakNvfNS78jEkrBqqkOrM/AoeAO1/aajHqbyQ90qQcsqE3EUar73E6Ri4paA==",
+      "type": "package",
+      "path": "automapper.collection/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.collection.5.0.0.nupkg.sha512",
+        "automapper.collection.nuspec",
+        "lib/net461/AutoMapper.Collection.dll",
+        "lib/netstandard2.0/AutoMapper.Collection.dll"
+      ]
+    },
+    "AutoMapper.Collection.EntityFrameworkCore/0.2.0": {
+      "sha512": "K+HMfspV/SuQ0CFsIeQzRb024OGJUC4OPBOiWA/oeJMzeI2FUKCyzsMyMq/26OBXOtQ3zB6OMCzqoOJR2c5upg==",
+      "type": "package",
+      "path": "automapper.collection.entityframeworkcore/0.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.collection.entityframeworkcore.0.2.0.nupkg.sha512",
+        "automapper.collection.entityframeworkcore.nuspec",
+        "lib/net461/AutoMapper.Collection.EntityFrameworkCore.dll",
+        "lib/netstandard2.0/AutoMapper.Collection.EntityFrameworkCore.dll"
+      ]
+    },
+    "AutoMapper.Extensions.ExpressionMapping/2.0.0": {
+      "sha512": "y5OWOzdaBTEUwmuEyc5oPvw4f9vTX2W94RuK1T7VwqYUH7a2IHwDY6pGqlP5alx0PczMmlpOhUZcsQwqmVLCxw==",
+      "type": "package",
+      "path": "automapper.extensions.expressionmapping/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.extensions.expressionmapping.2.0.0.nupkg.sha512",
+        "automapper.extensions.expressionmapping.nuspec",
+        "lib/net461/AutoMapper.Extensions.ExpressionMapping.dll",
+        "lib/net461/AutoMapper.Extensions.ExpressionMapping.xml",
+        "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.dll",
+        "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.xml"
       ]
     },
     "AutoMapper.Extensions.Microsoft.DependencyInjection/6.1.1": {

@@ -13,10 +13,10 @@ using Rikei.PinkMind.Business.Teams.Queries.GetTeams;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TeamsController : ControllerBase
-    {
+  [Route("api/[controller]")]
+  [ApiController]
+  public class TeamsController : ControllerBase
+  {
     private readonly IMediator _mediator;
     private readonly ClaimsPrincipal _caller;
 
@@ -56,11 +56,11 @@ namespace Rikkei.PinkMind.API.Controllers
 
     // POST: api/Teams
     [HttpPost]
-    public async Task<Unit> PostTeam([FromBody]CreateTeamCommands command)
+    public async Task<int> PostTeam([FromBody]CreateTeamCommands command)
     {
-      var xx = await _mediator.Send(command);
+      var teamId = await _mediator.Send(command);
 
-      return xx;
+      return teamId;
     }
 
     // DELETE: api/Teams 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.TeamDetails.Commands.Create
 {
-  public class CreateTeamDetailCommand : IRequest
+  public class CreateTeamDetailCommand : IRequest<int>
   {
     public int ID { get; set; }
     public int UserID { get; set; }
@@ -19,28 +19,27 @@ namespace Rikei.PinkMind.Business.TeamDetails.Commands.Create
     public int AddBy { get; set; }
     public bool DelFlag { get; set; }
 
-    public class Handler : IRequestHandler<CreateTeamDetailCommand, Unit>
+    public class Handler : IRequestHandler<CreateTeamDetailCommand, int>
     {
       private readonly PinkMindContext _pmContext;
       public Handler(PinkMindContext pmContext)
       {
         _pmContext = pmContext;
       }
-      public async Task<Unit> Handle(CreateTeamDetailCommand request, CancellationToken cancellationToken)
+      public async Task<int> Handle(CreateTeamDetailCommand request, CancellationToken cancellationToken)
       {
         var entity = new TeamDetail
         {
-          ID = request.ID,
-          RoleID = request.RoleID,
           TeamID = request.TeamID,
           UserID = request.UserID,
-          JoinedOn = request.JoinedOn,
+          RoleID = request.RoleID,
+          JoinedOn = DateTime.UtcNow,
           AddBy = request.AddBy,
-          DelFlag = request.DelFlag
+          DelFlag = true
         };
         _pmContext.TeamDetails.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);
-        return Unit.Value;
+        return entity.ID;
       }
     }
   }

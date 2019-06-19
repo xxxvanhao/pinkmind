@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Teams.Commands.Create
 {
-  public class CreateTeamCommands : IRequest
+  public class CreateTeamCommands : IRequest<int>
   {
     public int ID { get; set; }
     public string Name { get; set; }
@@ -16,14 +17,14 @@ namespace Rikei.PinkMind.Business.Teams.Commands.Create
     public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
-    public class Handler : IRequestHandler<CreateTeamCommands, Unit>
+    public class Handler : IRequestHandler<CreateTeamCommands, int>
     {
       private readonly PinkMindContext _pmContext;
       public Handler(PinkMindContext pmContext)
       {
         _pmContext = pmContext;
       }
-      public async Task<Unit> Handle(CreateTeamCommands request, CancellationToken cancellationToken)
+      public async Task<int> Handle(CreateTeamCommands request, CancellationToken cancellationToken)
       {
         var entity = new Team
         {
@@ -36,7 +37,7 @@ namespace Rikei.PinkMind.Business.Teams.Commands.Create
         };
         _pmContext.Teams.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);
-        return Unit.Value;
+        return entity.ID;
       }
 
     }

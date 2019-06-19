@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Collection.EntityFrameworkCore" Version="0.2.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.4.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.AspNetCore.Mvc" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
@@ -25,7 +26,6 @@
   <ItemGroup>
     <Folder Include="Projects\Commands\Delete\" />
     <Folder Include="Projects\Commands\Update\" />
-    <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
     <Folder Include="Users\Queries\GetUserDetailList\" />
   </ItemGroup>
 

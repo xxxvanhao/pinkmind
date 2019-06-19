@@ -38,7 +38,7 @@ namespace Rikkei.PindMind.DAO.Models
         [Timestamp]
         public bool DelFlag { get; set; }
         [Column(TypeName = "timestamp")]
-        public string CheckUpdate { get; set; }
+        public byte[] CheckUpdate { get; set; }
         public Project Project { get; set; }
         public IssueType IssueType { get; set; }
         public Status Status { get; set; }

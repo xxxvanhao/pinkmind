@@ -29,7 +29,7 @@ namespace Rikkei.PindMind.DAO.Models
     public bool DelFlag { get; set; }
     [Column(TypeName = "timestamp")]
     [Timestamp]
-    public string CheckUpdate { get; set; }
+    public byte[] CheckUpdate { get; set; }
     public ICollection<SpaceControl> SpaceControls { get; set; }
     public ICollection<User> Users { get; set; }
   }
