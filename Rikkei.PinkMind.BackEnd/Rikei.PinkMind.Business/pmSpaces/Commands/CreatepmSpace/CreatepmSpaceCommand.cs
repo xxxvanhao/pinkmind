@@ -31,7 +31,7 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.CreatepmSpace
       }
       public async Task<Unit> Handle(CreatepmSpaceCommand request, CancellationToken cancellationToken)
       {
-        var entity = new Space
+        var eSpace = new Space
         {
           SpaceID = request.SpaceID,
           OrganizationName = request.OrganizationName,
@@ -41,9 +41,21 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.CreatepmSpace
           LastUpdate = DateTime.UtcNow,
           DelFlag = true
         };
-
-        _pmContext.Spaces.Add(entity);
+        _pmContext.Spaces.Add(eSpace);
         await _pmContext.SaveChangesAsync();
+
+        var eSpaceControl = new SpaceControl
+        {
+          SpaceID = request.SpaceID,
+          ControlBy = request.CreateBy
+        };
+        _pmContext.SpaceControls.Add(eSpaceControl);
+        await _pmContext.SaveChangesAsync();
+
+        var eUser = await _pmContext.Users.FindAsync(request.CreateBy);
+        eUser.SpaceID = request.SpaceID;
+        await _pmContext.SaveChangesAsync(cancellationToken);
+
         return Unit.Value;
       }
 

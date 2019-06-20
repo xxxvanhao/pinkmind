@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -7,13 +6,10 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Rikei.PinkMind.Business.Users.Commands.CreateUser;
 using Rikei.PinkMind.Business.Users.Commands.DeleteUser;
 using Rikei.PinkMind.Business.Users.Commands.UpdateUser;
 using Rikei.PinkMind.Business.Users.Queries.GetUserDetail;
-using Rikkei.PindMind.DAO.Models;
-using Rikkei.PinkMind.DAO.Data;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
