@@ -486,11 +486,13 @@ table {
 /*ngFrom model*/
 
 input.ng-touched.ng-invalid {
-    border-color: #dc3545;
+    border: 1px solid #dc3545;
+    outline: none;
 }
 
 input.ng-touched.ng-valid {
-    border-color: #28a745;
+    outline: none;
+    border: 1px solid #28a745;
 }
 
 

@@ -21,30 +21,32 @@
                                     Add
                                   </button>
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content model-fix">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Add Project</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <form #formProject="ngForm" autocomplete="off" (submit)="onSubmit(formProject)">
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content model-fix">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Add Project</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <label for="projectName">Project name</label>
-                                            <input type="text" name="project.name" maxlength=" 25 " value=" " id="projectName" class="input-fix d-flex mb-3">
-                                            <label for="projectKey">Project key</label>
-                                            <input type="text " name="project.key " maxlength="25 " value=" " id="projectKey" class="input-fix d-flex mb-1">
-                                            <p>The project key is a unique identifier for a project. A short, concise key is recommended.</p>
-                                            <p>(e.g. Project name Backlog has project key BLG_2) Uppercase letters (A-Z), numbers (0-9) and underscore (_) can be used.</p>
-                                        </div>
-                                        <div class="modal-footer ">
-                                            <button type="button " class="btn btn-secondary" data-dismiss="modal" onclick="this.getElementById('exampleModalCenter').display='none'">Close</button>
-                                            <button type="button " class="btn btn-primary ">Add</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label for="projectName">Project name</label>
+                                                <input type="text" name="projectName" ngModel #projectName="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-3">
+                                                <label for="projectKey">Project key</label>
+                                                <input type="text " name="projectKey " ngModel #projectKey="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-1">
+                                                <p>The project key is a unique identifier for a project. A short, concise key is recommended.</p>
+                                                <p>(e.g. Project name Backlog has project key BLG_2) Uppercase letters (A-Z), numbers (0-9) and underscore (_) can be used.</p>
+                                            </div>
+                                            <div class="modal-footer ">
+                                                <button type="button " class="btn btn-secondary" data-dismiss="modal" onclick="this.getElementById('exampleModalCenter').display='none'">Close</button>
+                                                <button type="submit" class="btn btn-primary" [disabled]="formProject.invalid">Add</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

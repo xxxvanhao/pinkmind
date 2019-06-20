@@ -151,4 +151,17 @@ export class UserService extends BaseService {
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
   }
+
+  // Project
+
+  postProject(spaceControlsDetails: SpaceControlsDetails) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/Spaces', spaceControlsDetails, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
 }
