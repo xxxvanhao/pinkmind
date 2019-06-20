@@ -23,7 +23,7 @@ namespace Rikei.PinkMind.Business.Categories.Commands.Delete
       var entity = await _pmContext.Categories.FindAsync(request.ID);
       if (entity == null)
       {
-        throw new DeleteFailureException(nameof(Category), request.ID, "Issue not found");
+        throw new DeleteFailureException(nameof(Category), request.ID, "Not found this ID in Category");
       }
       _pmContext.Categories.Remove(entity);
       await _pmContext.SaveChangesAsync();

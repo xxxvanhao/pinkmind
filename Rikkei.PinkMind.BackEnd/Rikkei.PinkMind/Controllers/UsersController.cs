@@ -38,10 +38,11 @@ namespace Rikkei.PinkMind.API.Controllers
 
     // GET: api/Users/5
     [Authorize(Policy = "ApiUser")]
+    [HttpGet]
     public async Task<IActionResult> GetUser()
     {
       var userID = _caller.Claims.Single(u => u.Type == "id");
-      var userInfo = await _mediator.Send(new GetUserDetailQuery { ID = Convert.ToInt32(userID.Value)});
+      var userInfo = await _mediator.Send(new GetUserDetailQuery { ID = Convert.ToInt64(userID.Value)});
       return new OkObjectResult(new
       {
         Message = "This is secure API and user data!",
@@ -58,10 +59,19 @@ namespace Rikkei.PinkMind.API.Controllers
 
     // PUT: api/Users
     [Authorize(Policy = "ApiUser")]
-    [HttpPut("{id}")]
+    [HttpPut]
     public async Task<IActionResult> PutUser([FromBody]UpdateUserCommand command)
     {
-      await _mediator.Send(command);
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+        await _mediator.Send(new UpdateUserCommand
+        {
+            ID = Convert.ToInt64(userID.Value),
+            Email = command.Email,
+            LastName = command.LastName,
+            FirstName = command.FirstName,
+            PictureUrl = command.PictureUrl,
+            SpaceID = command.SpaceID
+        });
 
       return NoContent();
     }

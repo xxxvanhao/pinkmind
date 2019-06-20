@@ -1,11 +1,8 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Rikei.PinkMind.Business.Exceptions;
-using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,11 +12,8 @@ namespace Rikei.PinkMind.Business.Versions.Commands.Update
   {
     public long ID { get; set; }
     public string Name { get; set; }
-    public long CreateBy { get; set; }
-    public DateTime CreateAt { get; set; }
     public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
-    public bool DelFlag { get; set; }
     public string CheckUpdate { get; set; }
     public class Handler : IRequestHandler<UpdateVersionCommand, Unit>
     {
@@ -37,6 +31,9 @@ namespace Rikei.PinkMind.Business.Versions.Commands.Update
           throw new NotFoundException(nameof(Rikkei.PindMind.DAO.Models.Version), request.ID);
         }
         entity.Name = request.Name;
+        entity.UpdateBy = request.UpdateBy;
+        entity.LastUpdate = DateTime.UtcNow;
+        await _pmContext.SaveChangesAsync(cancellationToken);
         return Unit.Value;
       }
     }

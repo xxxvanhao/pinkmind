@@ -1,8 +1,5 @@
 using FluentValidation;
 using Rikei.PinkMind.Business.Issues.Queries;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Create
 {
@@ -23,7 +20,6 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
       RuleFor(x => x.DueDate).NotEmpty();
       RuleFor(x => x.ProjectID).NotEmpty();
       RuleFor(x => x.CreateBy).NotEmpty();
-      RuleFor(x => x.UpdateBy).NotEmpty();
     }
   }
 }

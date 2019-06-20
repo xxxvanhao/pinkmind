@@ -11,11 +11,7 @@ namespace Rikei.PinkMind.Business.SpaceControls.Commands.CreatepmSpaceControl
   public class CreatepmSpaceControlCommand :IRequest
   {
     public string SpaceID { get; set; }
-    public string OrganizationName { get; set; }
-    public int CreateBy { get; set; }
-    public DateTime CreateAt { get; set; }
-    public int UpdateBy { get; set; }
-    public DateTime LastUpdate { get; set; }
+    public long ControlBy { get; set; }
 
     public class Handler : IRequestHandler<CreatepmSpaceControlCommand, Unit>
     {
@@ -26,17 +22,12 @@ namespace Rikei.PinkMind.Business.SpaceControls.Commands.CreatepmSpaceControl
       }
       public async Task<Unit> Handle(CreatepmSpaceControlCommand request, CancellationToken cancellationToken)
       {
-        var entity = new Space
+        var entity = new SpaceControl
         {
           SpaceID = request.SpaceID,
-          OrganizationName = request.OrganizationName,
-          CreateBy = request.CreateBy,
-          CreateAt = request.CreateAt,
-          UpdateBy = request.UpdateBy,
-          LastUpdate = request.LastUpdate
-
+          ControlBy = request.ControlBy
         };
-        _pmContext.Spaces.Add(entity);
+        _pmContext.SpaceControls.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);
         return Unit.Value;
       }

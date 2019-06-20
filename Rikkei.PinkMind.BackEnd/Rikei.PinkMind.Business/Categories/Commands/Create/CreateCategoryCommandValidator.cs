@@ -10,7 +10,6 @@ namespace Rikei.PinkMind.Business.Categories.Commands.Create
   {
     public CreateCategoryCommandValidator()
     {
-      RuleFor(x => x.ID).NotEmpty();
       RuleFor(x => x.Name).NotEmpty();
       RuleFor(x => x.CreateBy).NotEmpty();
     }

@@ -2,15 +2,12 @@ using MediatR;
 using Rikei.PinkMind.Business.Exceptions;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Delete
 {
-    class DeleteIssueCommandHandler : IRequestHandler<DeleteIssueCommand, Unit>
+  class DeleteIssueCommandHandler : IRequestHandler<DeleteIssueCommand, Unit>
 
   {
     private readonly PinkMindContext _pmContext;
@@ -24,7 +21,7 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Delete
       var entity = await _pmContext.Issues.FindAsync(request.ID);
       if (entity == null)
       {
-        throw new DeleteFailureException(nameof(Issue), request.ID, "Issue not found");
+        throw new DeleteFailureException(nameof(Issue), request.ID, "Not found this ID in Issue");
       }
       _pmContext.Issues.Remove(entity);
       await _pmContext.SaveChangesAsync();

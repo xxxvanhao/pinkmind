@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.TeamDetails.Commands.Delete
 {
-  class DeleteTeamDetailQueryHandler : IRequestHandler<DeleteTeamDetailCommand, Unit>
+  public class DeleteTeamDetailQueryHandler : IRequestHandler<DeleteTeamDetailCommand, Unit>
   {
     private readonly PinkMindContext _pmContext;
     public DeleteTeamDetailQueryHandler(PinkMindContext pmContext)

@@ -11,7 +11,7 @@ namespace Rikei.PinkMind.Business.Users.Commands.CreateUser
 {
   public class CreateUserCommand : IRequest
   {
-    public int ID { get; set; }
+    public long ID { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
     public string LastName { get; set; }
@@ -30,7 +30,7 @@ namespace Rikei.PinkMind.Business.Users.Commands.CreateUser
       {
         var entity = new User
         {
-          ID = request.ID,
+          
           Email = request.Email,
           Password = request.Password,
           LastName = request.LastName,

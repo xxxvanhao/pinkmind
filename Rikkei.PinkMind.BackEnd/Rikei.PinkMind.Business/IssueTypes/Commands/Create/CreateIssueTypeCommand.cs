@@ -9,15 +9,11 @@ namespace Rikei.PinkMind.Business.IssueTypes.Commands.Create
 {
   public class CreateIssueTypeCommand : IRequest
   {
-    public int ID { get; set; }
     public string Name { get; set; }
     public string BackgroundColor { get; set; }
     public int CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
-    public int UpdateBy { get; set; }
-    public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
-    public string CheckUpdate{ get; set;}
     public class Handler : IRequestHandler<CreateIssueTypeCommand, Unit>
     {
       private readonly PinkMindContext _pmContext;
@@ -31,10 +27,9 @@ namespace Rikei.PinkMind.Business.IssueTypes.Commands.Create
         {
           Name = request.Name,
           BackgroundColor = request.BackgroundColor,
-          UpdateBy = request.UpdateBy,
+          CreateBy = request.CreateBy,
           CreateAt = DateTime.UtcNow,
           DelFlag = true,
-
         };
         _pmContext.IssueTypes.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);

@@ -4,14 +4,12 @@ using Rikei.PinkMind.Business.Exceptions;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Update
 {
-    class UpdateIssueCommand : IRequest
+  class UpdateIssueCommand : IRequest
     {
     public int ID { get; set; }
     public int IssueTypeID { get; set; }

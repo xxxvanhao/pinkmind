@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Teams.Commands.Delete
 {
-  class DeleteTeamQueryHandler
+  public class DeleteTeamQueryHandler : IRequestHandler<DeleteTeamCommand, Unit>
   {
     private readonly PinkMindContext _pmContext;
     public DeleteTeamQueryHandler(PinkMindContext pmContext)
@@ -23,16 +23,16 @@ namespace Rikei.PinkMind.Business.Teams.Commands.Delete
       var entity = await _pmContext.Teams.FindAsync(request.ID);
       if (entity == null)
       {
-        throw new NotFoundException(nameof(Teams), request.ID);
+        throw new NotFoundException(nameof(Team ), request.ID);
       }
-      var hasTeam = _pmContext.Teams.Any(t => t.ID == entity.ID);
+      var hasTeam = _pmContext.TeamDetails.Any(t => t.ID == entity.ID);
       if (hasTeam)
       {
-
         throw new DeleteFailureException(nameof(Team), request.ID, "There are existing Teams, please get out");
       }
+
       _pmContext.Teams.Remove(entity);
-      await _pmContext.SaveChangesAsync();
+      await _pmContext.SaveChangesAsync(cancellationToken);
       return Unit.Value;
     }
   }

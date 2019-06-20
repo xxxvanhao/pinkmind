@@ -2,14 +2,12 @@ using MediatR;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Create
 {
-    class CreateIssueCommand : IRequest
+  class CreateIssueCommand : IRequest
   {
     public int ID { get; set; }
     public int IssueTypeID { get; set; }
@@ -27,8 +25,6 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
     public string ProjectID { get; set; }
     public int CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
-    public int UpdateBy { get; set; }
-    public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
     public class Handler : IRequestHandler<CreateIssueCommand, Unit>
     {
@@ -55,8 +51,6 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
           ProjectID = request.ProjectID,
           CreateBy = request.CreateBy,
           CreateAt = DateTime.UtcNow,
-          UpdateBy = request.UpdateBy,
-          LastUpdate = DateTime.UtcNow,
           DelFlag = true
         };
         _pmContext.Issues.Add(entity);

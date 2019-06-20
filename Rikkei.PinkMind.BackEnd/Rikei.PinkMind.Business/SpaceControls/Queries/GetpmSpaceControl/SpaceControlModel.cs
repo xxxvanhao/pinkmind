@@ -18,10 +18,8 @@ namespace Rikei.PinkMind.Business.SpaceControls.Queries.GetpmSpaceControl
       {
         return pmSpaceControl => new SpaceControlModel
         {
-          ID = pmSpaceControl.ID,
           SpaceID = pmSpaceControl.SpaceID,
           ControlBy = pmSpaceControl.ControlBy
-          
         };
       }
     }

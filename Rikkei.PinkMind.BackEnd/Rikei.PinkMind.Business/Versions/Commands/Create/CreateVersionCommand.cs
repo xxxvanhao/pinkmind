@@ -11,14 +11,10 @@ namespace Rikei.PinkMind.Business.Versions.Commands.Create
 {
   class CreateVersionCommand : IRequest
   {
-    public long ID { get; set; }
     public string Name { get; set; }
     public int CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
-    public int UpdateBy { get; set; }
-    public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
-    public string CheckUpdate { get; set; }
     public class Handler : IRequestHandler<CreateVersionCommand, Unit>
     {
       private readonly PinkMindContext _pmContext;
@@ -33,11 +29,7 @@ namespace Rikei.PinkMind.Business.Versions.Commands.Create
           Name = request.Name,
           CreateAt = DateTime.UtcNow,
           CreateBy = request.CreateBy,
-          LastUpdate = DateTime.UtcNow,
-          UpdateBy = request.UpdateBy,
-          CheckUpdate = request.CheckUpdate,
-          DelFlag = request.DelFlag
-
+          DelFlag = request.DelFlag        
         };
         _pmContext.Versions.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);

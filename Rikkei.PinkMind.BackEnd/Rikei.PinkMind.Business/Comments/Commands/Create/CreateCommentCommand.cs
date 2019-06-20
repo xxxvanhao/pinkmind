@@ -14,8 +14,6 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
     public string Content { get; set; }
     public int CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
-    public int UpdateBy { get; set; }
-    public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
     public int IssueID { get; set; }
     public class Handler : IRequestHandler<CreateCommentCommand, Unit>
@@ -33,7 +31,6 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
           IssueID = request.IssueID,
           CreateAt = DateTime.UtcNow,
           CreateBy = request.CreateBy,
-          LastUpdate = DateTime.UtcNow,
           DelFlag = true
 
         };

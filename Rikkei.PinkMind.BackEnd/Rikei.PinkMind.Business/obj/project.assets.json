@@ -2,6 +2,57 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
+      "AutoMapper/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.dll": {}
+        }
+      },
+      "AutoMapper.Collection/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Collection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Collection.dll": {}
+        }
+      },
+      "AutoMapper.Collection.EntityFrameworkCore/0.2.0": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper.Collection": "5.0.0",
+          "AutoMapper.Extensions.ExpressionMapping": "2.0.0",
+          "Microsoft.EntityFrameworkCore": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Collection.EntityFrameworkCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Collection.EntityFrameworkCore.dll": {}
+        }
+      },
+      "AutoMapper.Extensions.ExpressionMapping/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.dll": {}
+        }
+      },
       "FluentValidation/8.4.0": {
         "type": "package",
         "dependencies": {
@@ -2055,7 +2106,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -2069,7 +2120,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -2909,6 +2960,60 @@
     }
   },
   "libraries": {
+    "AutoMapper/8.0.0": {
+      "sha512": "kcbje0Y71XkvzPn8k6OROZGOn2SKaWimon3Bu1WUTVoV5GTJVym+k+zQuKApyyFVRfk7bisumj/qUX4xIIXS+Q==",
+      "type": "package",
+      "path": "automapper/8.0.0",
+      "files": [
+        ".signature.p7s",
+        "automapper.8.0.0.nupkg.sha512",
+        "automapper.nuspec",
+        "lib/net461/AutoMapper.dll",
+        "lib/net461/AutoMapper.pdb",
+        "lib/net461/AutoMapper.xml",
+        "lib/netstandard2.0/AutoMapper.dll",
+        "lib/netstandard2.0/AutoMapper.pdb",
+        "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "AutoMapper.Collection/5.0.0": {
+      "sha512": "rTKx5U9K32KE+4m+D7D8UdVbBP8dqG3ZTpLslwpuhtSVsN6+vLbr9VCE8MqxDsc2x61Mlhyy5hojf21a/852vA==",
+      "type": "package",
+      "path": "automapper.collection/5.0.0",
+      "files": [
+        ".signature.p7s",
+        "automapper.collection.5.0.0.nupkg.sha512",
+        "automapper.collection.nuspec",
+        "lib/net461/AutoMapper.Collection.dll",
+        "lib/netstandard2.0/AutoMapper.Collection.dll"
+      ]
+    },
+    "AutoMapper.Collection.EntityFrameworkCore/0.2.0": {
+      "sha512": "8lzIxNNxQ+rGqsyPfRgLvgUyeuzUyYNl8T46P4lBynUgqVT+1/cQEHwBLpLCfaOJrli5qcNqN9zsgrVdDKykGQ==",
+      "type": "package",
+      "path": "automapper.collection.entityframeworkcore/0.2.0",
+      "files": [
+        ".signature.p7s",
+        "automapper.collection.entityframeworkcore.0.2.0.nupkg.sha512",
+        "automapper.collection.entityframeworkcore.nuspec",
+        "lib/net461/AutoMapper.Collection.EntityFrameworkCore.dll",
+        "lib/netstandard2.0/AutoMapper.Collection.EntityFrameworkCore.dll"
+      ]
+    },
+    "AutoMapper.Extensions.ExpressionMapping/2.0.0": {
+      "sha512": "djZU4NdQTP1vmLeVAHi4E9wVNDDKLp2A2UPtLQQ2W6OsCdQvp4DBhTmI+hlr2PGiT6v7RyLm74q13jrm+Sl2rQ==",
+      "type": "package",
+      "path": "automapper.extensions.expressionmapping/2.0.0",
+      "files": [
+        ".signature.p7s",
+        "automapper.extensions.expressionmapping.2.0.0.nupkg.sha512",
+        "automapper.extensions.expressionmapping.nuspec",
+        "lib/net461/AutoMapper.Extensions.ExpressionMapping.dll",
+        "lib/net461/AutoMapper.Extensions.ExpressionMapping.xml",
+        "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.dll",
+        "lib/netstandard2.0/AutoMapper.Extensions.ExpressionMapping.xml"
+      ]
+    },
     "FluentValidation/8.4.0": {
       "sha512": "HGWLOCywqku5v8tWe6YfK/9XCgZbMDGtKq6fCHo2cn+dyTkN5Ibcx41NBWp/RgV7/cp5fmBUeeqiASvGiCTjWQ==",
       "type": "package",
@@ -8766,6 +8871,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "AutoMapper.Collection.EntityFrameworkCore >= 0.2.0",
       "FluentValidation.AspNetCore >= 8.4.0",
       "MediatR.Extensions.Microsoft.AspNetCore.Mvc >= 2.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
@@ -8818,6 +8924,10 @@
     "frameworks": {
       "netcoreapp2.2": {
         "dependencies": {
+          "AutoMapper.Collection.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[0.2.0, )"
+          },
           "FluentValidation.AspNetCore": {
             "target": "Package",
             "version": "[8.4.0, )"
@@ -8844,5 +8954,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Administrator\\Desktop\\PinkMind\\pinkmind\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\obj\\Rikei.PinkMind.Business.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

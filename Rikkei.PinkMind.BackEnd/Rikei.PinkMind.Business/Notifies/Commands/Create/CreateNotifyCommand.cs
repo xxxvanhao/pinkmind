@@ -1,9 +1,6 @@
 using MediatR;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,10 +8,9 @@ namespace Rikei.PinkMind.Business.Notifies.Commands.Create
 {
   public class CreateNotifyCommand : IRequest
   {
-    public long ID { get; set; }
     public long UserID { get; set; }
     public bool Status { get; set; }
-    public long IssueID { get; set; }
+    public int IssueID { get; set; }
     public class Handler : IRequestHandler<CreateNotifyCommand, Unit>
     {
       private readonly PinkMindContext _pmContext;
@@ -26,7 +22,9 @@ namespace Rikei.PinkMind.Business.Notifies.Commands.Create
       {
         var entity = new Notify
         {
-         
+         UserID = request.UserID,
+         IssueID = request.IssueID,
+         Status =  true
         };
         _pmContext.Notifies.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);

@@ -16,7 +16,7 @@ namespace Rikei.PinkMind.Business.Files.Queries
     public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
-    public string CheckUpdate { get; set; }
+    public byte[] CheckUpdate { get; set; }
     public long IssueID { get; set; }
     public long? CommentID { get; set; }
     public static Expression<Func<File, FileModel>> Projection

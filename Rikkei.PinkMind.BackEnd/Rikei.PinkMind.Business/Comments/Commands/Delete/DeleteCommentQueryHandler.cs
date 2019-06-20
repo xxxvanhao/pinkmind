@@ -23,7 +23,7 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Delete
       var entity = await _pmContext.Users.FindAsync(request.ID);
       if (entity == null)
       {
-        throw new NotFoundException(nameof(Comment), request.ID);
+        throw new DeleteFailureException(nameof(Comment), request.ID, "Not found this ID in Comment");
       }
       var hasTeam = _pmContext.Teams.Any(t => t.ID == entity.ID);
       _pmContext.Users.Remove(entity);

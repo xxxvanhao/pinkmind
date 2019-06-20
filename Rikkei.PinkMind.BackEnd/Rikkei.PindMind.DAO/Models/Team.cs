@@ -8,9 +8,8 @@ namespace Rikkei.PindMind.DAO.Models
 {
     public class Team
     {
-        public long ID { get; set; }
+        public int ID { get; set; }
         [StringLength(50, MinimumLength = 3)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string Name { get; set; }
         public long CreateBy { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -24,7 +23,8 @@ namespace Rikkei.PindMind.DAO.Models
         [Column(TypeName = "bit")]
         public bool DelFlag { get; set; }
         [Column(TypeName = "timestamp")]
-        public string CheckUpdate { get; set; }
+        [Timestamp]
+        public byte[] CheckUpdate { get; set; }
         public ICollection<TeamDetail> TeamDetails { get; set; }
         public ICollection<TeamJoin> TeamJoins { get; set; }
     }

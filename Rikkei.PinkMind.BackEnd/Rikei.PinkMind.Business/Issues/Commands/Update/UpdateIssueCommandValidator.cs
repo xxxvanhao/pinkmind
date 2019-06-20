@@ -1,8 +1,5 @@
 using FluentValidation;
 using Rikei.PinkMind.Business.Issues.Queries;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Update
 {

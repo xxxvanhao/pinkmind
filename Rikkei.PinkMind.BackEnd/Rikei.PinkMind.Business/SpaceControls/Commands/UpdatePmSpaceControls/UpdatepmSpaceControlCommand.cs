@@ -13,7 +13,7 @@ namespace Rikei.PinkMind.Business.SpaceControls.Commands.UpdatePmSpaceControls
   {
     public int ID { get; set; }
     public string SpaceID { get; set; }
-    public int ControlBy { get; set; }
+    public long ControlBy { get; set; }
 
     public class Handler : IRequestHandler<UpdatepmSpaceControlCommand, Unit>
     {
@@ -30,7 +30,6 @@ namespace Rikei.PinkMind.Business.SpaceControls.Commands.UpdatePmSpaceControls
         {
           throw new NotFoundException(nameof(SpaceControl), request.SpaceID);
         }
-        entity.ID = request.ID;
         entity.SpaceID = request.SpaceID;
         entity.ControlBy = request.ControlBy;        
         return Unit.Value;

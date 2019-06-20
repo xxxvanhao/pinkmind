@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.pmSpaces.Commands.UpdatePmSpace
 {
-  class UpdatepmSpaceControlCommandValidator : AbstractValidator<UpdatepmSpaceCommand>
+  public class UpdatepmSpaceControlCommandValidator : AbstractValidator<UpdatepmSpaceCommand>
   {
    public UpdatepmSpaceControlCommandValidator()
     {

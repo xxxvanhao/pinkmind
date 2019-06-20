@@ -2,8 +2,6 @@ using MediatR;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,7 +12,6 @@ namespace Rikei.PinkMind.Business.Files.Commands.Create
     public string FilePath { get; set; }
     public int CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
-    public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
     public int IssueID { get; set; }
     public int? CommentID { get; set; }

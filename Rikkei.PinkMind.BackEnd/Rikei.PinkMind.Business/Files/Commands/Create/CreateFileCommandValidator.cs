@@ -1,16 +1,13 @@
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Rikei.PinkMind.Business.Files.Commands.Create
 {
-    public class CreateFileCommandValidator : AbstractValidator<CreateFileCommand>
-    {
-      public CreateFileCommandValidator()
+  public class CreateFileCommandValidator : AbstractValidator<CreateFileCommand>
+  {
+    public CreateFileCommandValidator()
     {
       RuleFor(x => x.FilePath).NotEmpty();
       RuleFor(x => x.CreateBy).NotEmpty();
     }
-    }
+  }
 }

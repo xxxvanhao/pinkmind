@@ -3,6 +3,7 @@ import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { UserDetails } from 'src/app/shared/models/userDetails.interface';
+import { SpaceControlsDetails } from 'src/app/shared/models/spaceControlsDetails.interface';
 
 @Component({
   selector: 'app-facebook-login',
@@ -15,6 +16,7 @@ export class FacebookLoginComponent {
   error: string;
   errorDescription: string;
   isRequesting: boolean;
+  private userDetails: UserDetails;
 
   getParaByName(name, url) {
     if (!url) { url = window.location.href; }
@@ -31,8 +33,10 @@ export class FacebookLoginComponent {
 
   constructor(private userService: UserService, private router: Router) {
     const refId = this.getParaByName('refid', null);
-    if (refId != null) {
-      window.open(`https://www.facebook.com/v3.2/dialog/oauth?&response_type=token&display=popup&client_id=579347222556886&display=popup&redirect_uri=http://localhost:4200/?refid=${refId}&scope=email`, null, 'width=600,height=400');
+    if (!this.userService.isLoggedIn()) {
+      if (refId != null) {
+        window.open(`https://www.facebook.com/v3.2/dialog/oauth?&response_type=token&display=popup&client_id=579347222556886&display=popup&redirect_uri=http://localhost:4200/?refid=${refId}&scope=email`, null, 'width=600,height=400');
+      }
     }
     if (window.addEventListener) {
       window.addEventListener('message', this.handleMessage.bind(this), false);
@@ -53,7 +57,6 @@ export class FacebookLoginComponent {
     const status = result.status;
     const accessTK = result.accessToken;
     const refId = result.refId;
-    console.log(refId);
     if (!status) {
       this.failed = true;
       this.error = result.error;
@@ -68,7 +71,19 @@ export class FacebookLoginComponent {
             this.userService.getUserDetails()
             .subscribe((userDetails: UserDetails) => {
               if (userDetails.spaceID == null) {
-                this.router.navigate(['/account/space']);
+                if (refId != null) {
+                  this.userService.getSpaceControlDeltails(refId)
+                    .subscribe((spaceControlsDetails: SpaceControlsDetails) => {
+                      this.userDetails = {spaceID : spaceControlsDetails.spaceID };
+                      this.userService.putUser(this.userDetails)
+                    .subscribe(res => {
+                      this.router.navigate(['/dashboard']);
+                      return res;
+                    },
+                err => err);
+              },
+              error => error);
+            } else { this.router.navigate(['/account/space']); }
               } else {
                 this.router.navigate(['/dashboard']);
               }

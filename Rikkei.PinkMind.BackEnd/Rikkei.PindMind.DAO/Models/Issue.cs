@@ -25,19 +25,20 @@ namespace Rikkei.PindMind.DAO.Models
         [Display(Name = "Due Date")]
         public DateTime DueDate { get; set; }
         public string ProjectID { get; set; }
-        public int CreateBy { get; set; }
+        public long CreateBy { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Create At")]
         public DateTime CreateAt { get; set; }
         [Display(Name = "Update By")]
-        public int UpdateBy { get; set; }
+        public long UpdateBy { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Last Update")]
         public DateTime LastUpdate { get; set; }
         [Column(TypeName = "bit")]
+        [Timestamp]
         public bool DelFlag { get; set; }
         [Column(TypeName = "timestamp")]
-        public string CheckUpdate { get; set; }
+        public byte[] CheckUpdate { get; set; }
         public Project Project { get; set; }
         public IssueType IssueType { get; set; }
         public Status Status { get; set; }

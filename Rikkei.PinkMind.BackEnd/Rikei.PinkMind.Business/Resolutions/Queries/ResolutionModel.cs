@@ -15,7 +15,7 @@ namespace Rikei.PinkMind.Business.Resolutions.Queries
     public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
-    public string CheckUpdate { get; set; }
+    public byte[] CheckUpdate { get; set; }
     public static Expression<Func<Resolution, ResolutionModel>> Projection
     {
       get

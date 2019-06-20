@@ -15,7 +15,7 @@ namespace Rikei.PinkMind.Business.Priorities.Commands.Update
     public string Name { get; set; }
     public int UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
-    public string CheckUpdate { get; set; }
+    public byte[] CheckUpdate { get; set; }
     public class Handler : IRequestHandler<UpdatePriorityCommand, Unit>
     {
       private readonly PinkMindContext _pmContext;

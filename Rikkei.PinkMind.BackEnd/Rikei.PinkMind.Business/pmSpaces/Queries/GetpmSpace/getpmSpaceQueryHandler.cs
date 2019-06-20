@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.pmSpaces.Queries.GetpmSpace
 {
-  class GetpmSpaceQueryHandler : IRequestHandler<GetpmSpaceQuery, SpaceModel>
+  public class GetpmSpaceQueryHandler : IRequestHandler<GetpmSpaceQuery, SpaceModel>
   {
     private readonly PinkMindContext _pmContext;
     public GetpmSpaceQueryHandler(PinkMindContext pinkMindContext)

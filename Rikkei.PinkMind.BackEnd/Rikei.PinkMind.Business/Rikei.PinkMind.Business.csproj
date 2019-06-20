@@ -5,10 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rikkei.PindMind.DAO\Rikkei.PindMind.DAO.csproj" />
+    <Compile Remove="SpaceControls\Commands\GetAllSpaceControl\**" />
+    <EmbeddedResource Remove="SpaceControls\Commands\GetAllSpaceControl\**" />
+    <None Remove="SpaceControls\Commands\GetAllSpaceControl\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Collection.EntityFrameworkCore" Version="0.2.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.4.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.AspNetCore.Mvc" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
@@ -22,7 +25,13 @@
 
   <ItemGroup>
     <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
+    <Folder Include="Projects\Commands\Delete\" />
+    <Folder Include="Projects\Commands\Update\" />
     <Folder Include="Users\Queries\GetUserDetailList\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rikkei.PindMind.DAO\Rikkei.PindMind.DAO.csproj" />
   </ItemGroup>
 
 </Project>

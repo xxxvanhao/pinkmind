@@ -49,10 +49,10 @@ namespace Rikei.PinkMind.Business.Issues.Queries
           DueDate = issue.DueDate,
           ProjectID = issue.ProjectID,
           CreateBy = issue.CreateBy,
-          CreateAt = DateTime.UtcNow,
+          CreateAt =issue.CreateAt,
           UpdateBy = issue.UpdateBy,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true,
+          LastUpdate = issue.LastUpdate,
+          DelFlag = issue.DelFlag
         };
       }
     }

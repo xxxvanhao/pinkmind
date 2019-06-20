@@ -8,7 +8,7 @@ namespace Rikkei.PindMind.DAO.Models
   {
     public int ID { get; set; }
     public string SpaceID { get; set; }
-    public int ControlBy { get; set; }
+    public long ControlBy { get; set; }
     public Space Space { get; set; }
   }
 }

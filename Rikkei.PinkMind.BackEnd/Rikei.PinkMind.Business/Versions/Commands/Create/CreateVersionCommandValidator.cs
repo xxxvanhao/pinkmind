@@ -11,9 +11,7 @@ namespace Rikei.PinkMind.Business.Versions.Commands.Create
     public CreateVersionCommandValidator()
     {
       RuleFor(x => x.Name).NotEmpty();
-      RuleFor(x => x.CreateAt).NotEmpty();
       RuleFor(x => x.CreateBy).NotEmpty();
-      RuleFor(x => x.LastUpdate).NotEmpty();
     }
   }
 }

@@ -1,7 +1,4 @@
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Rikei.PinkMind.Business.Files.Commands.Update
 {
@@ -10,6 +7,7 @@ namespace Rikei.PinkMind.Business.Files.Commands.Update
     public UpdateFileCommandValidator()
     {
       RuleFor(x => x.ID).NotEmpty();
+      RuleFor(x => x.UpdateBy).NotEmpty();
     }
   }
 }

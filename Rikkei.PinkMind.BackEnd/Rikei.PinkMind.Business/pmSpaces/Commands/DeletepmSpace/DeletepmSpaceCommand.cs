@@ -7,6 +7,6 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.DeletepmSpace
 {
   public class DeletepmSpaceCommand : IRequest
   {
-    public int SpaceID { get; set; }
+    public string SpaceID { get; set; }
   }
 }

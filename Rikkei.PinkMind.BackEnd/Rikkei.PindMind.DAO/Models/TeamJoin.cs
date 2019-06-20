@@ -8,8 +8,8 @@ namespace Rikkei.PindMind.DAO.Models
 {
     public class TeamJoin
     {
-        public long ID { get; set; }
-        public long TeamID { get; set; }
+        public int ID { get; set; }
+        public int TeamID { get; set; }
         public string ProjectID { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Join On")]

@@ -8,7 +8,7 @@ namespace Rikkei.PindMind.DAO.Models
 {
     public class Version
     {
-        public long ID { get; set; }
+        public int ID { get; set; }
         [StringLength(50, MinimumLength = 3)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string Name { get; set; }
@@ -24,7 +24,8 @@ namespace Rikkei.PindMind.DAO.Models
         [Column(TypeName = "bit")]
         public bool DelFlag { get; set; }
         [Column(TypeName = "timestamp")]
-        public string CheckUpdate { get; set; }
+        [Timestamp]
+        public byte[] CheckUpdate { get; set; }
         public ICollection<Issue> Issues { get; set; }
     }
 }

@@ -15,8 +15,6 @@ namespace Rikei.PinkMind.Business.Categories.Commands.Create
     public string Name { get; set; }
     public int CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
-    public int UpdateBy { get; set; }
-    public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
     public class Handler : IRequestHandler<CreateCategoryCommand, Unit>
     {
@@ -29,13 +27,10 @@ namespace Rikei.PinkMind.Business.Categories.Commands.Create
       {
         var entity = new Category
         {
-          ID = request.ID,
           Name = request.Name,
           CreateAt = DateTime.UtcNow,
           CreateBy = request.CreateBy,
-          LastUpdate = DateTime.UtcNow,
           DelFlag = true
-
         };
         _pmContext.Categories.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);

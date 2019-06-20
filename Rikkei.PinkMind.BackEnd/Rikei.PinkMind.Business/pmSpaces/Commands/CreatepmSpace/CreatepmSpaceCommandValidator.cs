@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.pmSpaces.Commands.CreatepmSpace
 {
-  public class CreatepmSpaceControlCommandValidator : AbstractValidator<SpaceModel>
+  public class CreatepmSpaceCommandValidator : AbstractValidator<CreatepmSpaceCommand>
   {
-    public CreatepmSpaceControlCommandValidator()
+    public CreatepmSpaceCommandValidator()
     {
       RuleFor(x => x.SpaceID).NotEmpty();
       RuleFor(x => x.OrganizationName).NotEmpty();
