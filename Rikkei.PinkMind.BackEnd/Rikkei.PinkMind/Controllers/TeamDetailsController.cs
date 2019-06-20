@@ -27,7 +27,7 @@ namespace Rikkei.PinkMind.API.Controllers
       _caller = httpContextAccessor.HttpContext.User;
     }
 
-    // GET: api/TeamDetails
+    // GET: api/TeamDetails/getall/5
     [Route("getall/{id}")]
     public async Task<ActionResult<TeamDetailsViewModel>> GetAllTeamDetails(int id)
     {

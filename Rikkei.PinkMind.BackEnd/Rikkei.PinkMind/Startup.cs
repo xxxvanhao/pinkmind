@@ -1,10 +1,15 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Rikkei.PinkMind.DAO.Data;
 using Microsoft.IdentityModel.Tokens;
@@ -15,6 +20,8 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Rikkei.PindMind.DAO.Helper;
+using Rikkei.PindMind.DAO.Models;
+using Microsoft.AspNetCore.Identity;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using System.Net;
@@ -26,7 +33,12 @@ using System.Reflection;
 using Rikei.PinkMind.Business.Users.Commands.CreateUser;
 using Rikei.PinkMind.Business.Users.Commands.UpdateUser;
 using Rikei.PinkMind.Business.Users.Commands.DeleteUser;
+using Rikei.PinkMind.Business.SpaceControls.Commands.UpdatePmSpaceControls;
+using Rikei.PinkMind.Business.pmSpaces.Commands.CreatepmSpace;
+using Rikei.PinkMind.Business.Teams.Commands.Delete;
+using Rikei.PinkMind.Business.TeamDetails.Queries.GetTeamDetail;
 using Rikei.PinkMind.Business.TeamDetails.Queries.GetAllTeamDetail;
+using Rikei.PinkMind.Business.AutoMapper;
 
 namespace Rikkei.PinkMind
 {
@@ -103,8 +115,11 @@ namespace Rikkei.PinkMind
 
       services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
       services.AddCors();
+
       // Add AutoMapper
-      services.AddAutoMapper(new Assembly[] { typeof(TeamDetailsDTO).GetTypeInfo().Assembly });
+
+      //Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
+      services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
       //AddMediatR
 
@@ -112,7 +127,7 @@ namespace Rikkei.PinkMind
                           typeof(CreateUserCommand.Handler).GetTypeInfo().Assembly,
                           typeof(UpdateUserCommand.Handler).GetTypeInfo().Assembly,
                           typeof(DeleteUserQueryHandler).GetTypeInfo().Assembly,
-                          typeof(GetAllTeamDetailsQueryHandler).GetTypeInfo().Assembly);      
+                          typeof(GetAllTeamDetailsQueryHandler).GetTypeInfo().Assembly);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -129,16 +144,16 @@ namespace Rikkei.PinkMind
         builder.Run(
                          async context =>
                       {
-                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                 context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                        context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-                 var error = context.Features.Get<IExceptionHandlerFeature>();
-                 if (error != null)
-                 {
-                   context.Response.AddApplicationError(error.Error.Message);
-                   await context.Response.WriteAsync(error.Error.Message).ConfigureAwait(false);
-                 }
-               });
+                        var error = context.Features.Get<IExceptionHandlerFeature>();
+                        if (error != null)
+                        {
+                          context.Response.AddApplicationError(error.Error.Message);
+                          await context.Response.WriteAsync(error.Error.Message).ConfigureAwait(false);
+                        }
+                      });
       });
       app.UseCors(
           options => options.WithOrigins("http://localhost:4200")
