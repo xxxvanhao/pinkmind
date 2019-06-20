@@ -7,6 +7,7 @@ import { map, catchError } from 'rxjs/operators';
 import { UserDetails } from '../models/userDetails.interface';
 import { CodegenComponentFactoryResolver } from '@angular/core/src/linker/component_factory_resolver';
 import { SpaceControlsDetails } from '../models/spaceControlsDetails.interface';
+import { Space } from '../models/space.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -73,17 +74,6 @@ export class UserService extends BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  getSpaceControlDeltails(refId: string): Observable<SpaceControlsDetails> {
-    const authToken = localStorage.getItem('auth_token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${authToken}`,
-      'Content-Type' : 'application/json'
-    });
-    const body = JSON.parse(JSON.stringify({ refId }));
-    return this.http.get(this.baseUrl + `/SpaceControls/${body.refId}`, { headers })
-      .pipe(map((response: any) => response ))
-      .pipe(catchError(this.handleError));
-  }
 
   isSpaceId() {
     const authToken = localStorage.getItem('auth_token');
@@ -120,6 +110,44 @@ export class UserService extends BaseService {
       'Content-Type' : 'application/json'
     });
     return this.http.put(this.baseUrl + '/Users', userDetails, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
+
+  // team
+
+  postSpace(space: Space) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/Spaces', space, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
+
+  // space control
+
+  getSpaceControlDeltails(refId: string): Observable<SpaceControlsDetails> {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    const body = JSON.parse(JSON.stringify({ refId }));
+    return this.http.get(this.baseUrl + `/SpaceControls/${body.refId}`, { headers })
+      .pipe(map((response: any) => response ))
+      .pipe(catchError(this.handleError));
+  }
+
+  postSpaceControl(spaceControlsDetails: SpaceControlsDetails) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/Spaces', spaceControlsDetails, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
   }

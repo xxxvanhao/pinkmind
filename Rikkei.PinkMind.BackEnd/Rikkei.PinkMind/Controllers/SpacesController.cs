@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -14,6 +13,7 @@ using Rikei.PinkMind.Business.pmSpaces.Queries.GetpmSpace;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
+  [Authorize(Policy = "ApiUser")]
   [Route("api/[controller]")]
   [ApiController]
   public class SpacesController : ControllerBase
@@ -59,7 +59,14 @@ namespace Rikkei.PinkMind.API.Controllers
     [HttpPost]
     public async Task<IActionResult> PostSpace([FromBody]CreatepmSpaceCommand command)
     {
-      await _mediator.Send(command);
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      await _mediator.Send(new CreatepmSpaceCommand
+      {
+        SpaceID = command.SpaceID,
+        OrganizationName = command.OrganizationName, 
+        CreateBy = Convert.ToInt64(userID.Value),
+        UpdateBy = Convert.ToInt64(userID.Value)
+      });
       
       return NoContent();
     }

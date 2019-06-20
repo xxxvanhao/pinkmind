@@ -33,6 +33,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminAccountComponent } from './admin/account/admin-account.component';
 import { MembersComponent } from './admin/members/members.component';
 import { SpaceComponent } from './space/space.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { SpaceComponent } from './space/space.component';
   imports: [
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     WwwrootModule,

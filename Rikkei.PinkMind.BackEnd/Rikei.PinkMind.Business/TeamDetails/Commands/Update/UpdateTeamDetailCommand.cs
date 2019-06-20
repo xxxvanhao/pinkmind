@@ -13,11 +13,11 @@ namespace Rikei.PinkMind.Business.TeamDetails.Commands.Update
   public class UpdateTeamDetailCommand : IRequest
   {
     public int ID { get; set; }
-    public int UserID { get; set; }
+    public long UserID { get; set; }
     public int TeamID { get; set; }
     public int RoleID { get; set; }
     public DateTime JoinedOn { get; set; }
-    public int AddBy { get; set; }
+    public long AddBy { get; set; }
     public bool DelFlag { get; set; }
     public class Handler : IRequestHandler<UpdateTeamDetailCommand, Unit>
     {
@@ -34,13 +34,8 @@ namespace Rikei.PinkMind.Business.TeamDetails.Commands.Update
           throw new NotFoundException(nameof(TeamDetails), request.ID);
         }
 
-        entity.ID = request.ID;
-        entity.RoleID = request.RoleID;
-        entity.UserID = request.UserID;
-        entity.TeamID = request.TeamID;
-        entity.JoinedOn = request.JoinedOn;
-        entity.AddBy = request.AddBy;
-        entity.DelFlag = request.DelFlag;
+        entity.RoleID = request.RoleID == null ? entity.RoleID : request.RoleID;
+        entity.DelFlag = !request.DelFlag ? true : false;
         await _pmContext.SaveChangesAsync(cancellationToken);
 
         return Unit.Value;

@@ -9,11 +9,9 @@ namespace Rikei.PinkMind.Business.TeamDetails.Commands.Create
   {
     public CreateTeamDetailCommandValidator()
     {
-      RuleFor(u => u.ID).NotEmpty();
-      RuleFor(u => u.RoleID).NotEmpty();
-      RuleFor(u => u.UserID).NotEmpty();
-      RuleFor(u => u.JoinedOn).NotEmpty();
-      RuleFor(u => u.AddBy).NotEmpty();
+      RuleFor(t => t.TeamID).NotEmpty();
+      RuleFor(t => t.RoleID).NotEmpty();
+      RuleFor(t => t.UserID).NotEmpty();
     }
   }
 }

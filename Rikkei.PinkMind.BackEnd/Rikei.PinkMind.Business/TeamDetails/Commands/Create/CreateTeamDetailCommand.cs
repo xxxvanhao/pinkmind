@@ -12,11 +12,11 @@ namespace Rikei.PinkMind.Business.TeamDetails.Commands.Create
   public class CreateTeamDetailCommand : IRequest<int>
   {
     public int ID { get; set; }
-    public int UserID { get; set; }
+    public long UserID { get; set; }
     public int TeamID { get; set; }
     public int RoleID { get; set; }
     public DateTime JoinedOn { get; set; }
-    public int AddBy { get; set; }
+    public long AddBy { get; set; }
     public bool DelFlag { get; set; }
 
     public class Handler : IRequestHandler<CreateTeamDetailCommand, int>

@@ -1,13 +1,18 @@
-<div class="div container">
-    <form>
-        <div class="form-group">
-            <label for="spaceId">Space ID</label>
-            <input type="text" class="form-control" name="spaceId" placeholder="Enter Space ID">
-        </div>
-        <div class="form-group">
-            <label for="orgName">Password</label>
-            <input type="text" class="form-control" name="orgName" placeholder="Enter Organization Name">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+<div class="container fix-space">
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <fieldset>
+            <legend>Register Space:</legend>
+            <div class="form-group">
+                <label for="spaceID">Space ID</label>
+                <input type="text" class="form-control" name="spaceID" ngModel #spaceID="ngModel" placeholder="Enter Space ID" required minlength="3" maxlength="50">
+            </div>
+            <div class="form-group">
+                <label for="organizationName">Organization Name</label>
+                <input type="text" class="form-control" name="organizationName" ngModel #organizationName="ngModel" placeholder="Enter Organization Name" required minlength="3" maxlength="50">
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary px-5" [disabled]="form.invalid">Add</button>
+            </div>
+        </fieldset>
     </form>
 </div>
