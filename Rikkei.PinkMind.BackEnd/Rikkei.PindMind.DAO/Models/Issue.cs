@@ -10,7 +10,6 @@ namespace Rikkei.PindMind.DAO.Models
     {
         public int ID { get; set; }
         public int IssueTypeID { get; set; }
-        public string IssueKey { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
         public int StatusID { get; set; }

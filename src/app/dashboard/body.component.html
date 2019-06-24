@@ -1,7 +1,7 @@
 <div class="container mb-5">
     <div id="header">
-        <p class="content-header text-center">
-            <i class="far fa-building"></i> RikkeiSoft
+        <p class="content-header text-center" *ngIf="userService.userDetails">
+            <i class="far fa-building"></i> {{userService.userDetails.spaceID}}
         </p>
     </div>
     <div class="new-project">
@@ -14,33 +14,33 @@
                             <div class="radius-avatar"><i class="avatar fa fa-tasks" aria-hidden="true"></i></div>
                         </div>
                         <div class="col-md-9 pl-0">
-                            <a href="#">Add project</a>
+                            <a href="javascript:void(0)">Add project</a>
                             <p class="message">First, add a project that you would like to work on.</p>
                             <br>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addForm">
                                     Add
                                   </button>
                             <!-- Modal -->
                             <form #formProject="ngForm" autocomplete="off" (submit)="onSubmit(formProject)">
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="addForm" tabindex="-1" role="dialog" aria-labelledby="addFormTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content model-fix">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Add Project</h5>
+                                                <h5 class="modal-title">Add Project</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
                                             </div>
                                             <div class="modal-body">
-                                                <label for="projectName">Project name</label>
-                                                <input type="text" name="projectName" ngModel #projectName="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-3">
-                                                <label for="projectKey">Project key</label>
-                                                <input type="text " name="projectKey " ngModel #projectKey="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-1">
+                                                <label for="name">Project name</label>
+                                                <input type="text" name="name" ngModel #name="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-3 px-2">
+                                                <label for="id">Project key</label>
+                                                <input type="text " name="id" ngModel #id="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-1 px-2">
                                                 <p>The project key is a unique identifier for a project. A short, concise key is recommended.</p>
                                                 <p>(e.g. Project name Backlog has project key BLG_2) Uppercase letters (A-Z), numbers (0-9) and underscore (_) can be used.</p>
                                             </div>
                                             <div class="modal-footer ">
-                                                <button type="button " class="btn btn-secondary" data-dismiss="modal" onclick="this.getElementById('exampleModalCenter').display='none'">Close</button>
+                                                <button type="button " class="btn btn-secondary" data-dismiss="modal" onclick="this.getElementById('addForm').display='none'">Close</button>
                                                 <button type="submit" class="btn btn-primary" [disabled]="formProject.invalid">Add</button>
                                             </div>
                                         </div>
@@ -56,9 +56,25 @@
                             <div class="radius-avatar "><i class="avatar fas fa-user "></i></div>
                         </div>
                         <div class="col-md-9 pl-0 ">
-                            <a href="# ">Add User</a>
+                            <a href="javascript:void(0)">Add User</a>
                             <p class="message ">Invite members to this Space to work on your projects with you.</p>
-                            <button type="button " class="btn btn-success ">Add</button>
+                            <button type="button " class="btn btn-success add-user" data-toggle="modal" data-target="#openAddUser">Add</button>
+                            <div class="modal fade" id="openAddUser" tabindex="-1" role="dialog" aria-labelledby="openAddUserTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content model-fix">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Add User</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="text" value="test" class="input-fix refId d-flex mb-0 px-2" readonly>
+                                            <small>Coppy this link end send for your friends</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,30 +162,22 @@
             <div class="col-md-6 ">
                 <div class="project ">
                     <h5>Projects</h5>
-                    <div class="project-list ">
-                        <div class="project-content ">
+                    <div class="project-list">
+
+                        <div class="isNo-items" *ngIf="!(userService.listProject | keyvalue)?.length > 0; else notShow"><span>There are no projects assigned to you yet.<br>Projects assigned to you will be listed here.</span></div>
+                        <ng-template #notShow></ng-template>
+
+                        <div class="project-content" *ngFor="let p of userService.listProject">
                             <div href="# " class="row flex-nowrap align-items-center ">
                                 <div class="col-md-2 pl-0 text-center ">
-                                    Avatar
+                                    <i class="far fa-building fix-fa-building"></i>
                                 </div>
                                 <div class="col-md-10 pl-0 ">
-                                    <p class="project-name mb-0 mt-2 ">DN0_Project</p>
-                                    <p class="project-key mb-2 ">FRK1</p>
+                                    <p class="project-name mb-0 mt-2 ">{{ p.name}}</p>
+                                    <p class="project-key mb-2 ">{{ p.id}}</p>
                                 </div>
                             </div>
-                            <a href="# " class="blockLink "></a>
-                        </div>
-                        <div class="project-content ">
-                            <div class="row flex-nowrap align-items-center ">
-                                <div class="col-md-2 pl-0 text-center ">
-                                    Avatar
-                                </div>
-                                <div class="col-md-10 pl-0 ">
-                                    <p class="project-name mb-0 mt-2 ">DN0_Project</p>
-                                    <p class="project-key mb-2 ">FRK1</p>
-                                </div>
-                            </div>
-                            <a href="# " class="blockLink "></a>
+                            <a [routerLink]="['/projects/home',p.id]" class="blockLink "></a>
                         </div>
                     </div>
                 </div>

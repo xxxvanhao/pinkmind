@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/shared/services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-projectsetting',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsettingComponent implements OnInit {
 
-  constructor() { }
+  paramSettingId: string;
+  constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getParamProjectSetting();
   }
-
+  getParamProjectSetting() {
+    this.route.params.subscribe(params => {
+      this.paramSettingId = params['id'];
+      this.userService.getParamSpaceId(this.paramSettingId);
+      });
+  }
 }

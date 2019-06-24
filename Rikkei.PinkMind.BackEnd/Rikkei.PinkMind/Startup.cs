@@ -33,11 +33,8 @@ using System.Reflection;
 using Rikei.PinkMind.Business.Users.Commands.CreateUser;
 using Rikei.PinkMind.Business.Users.Commands.UpdateUser;
 using Rikei.PinkMind.Business.Users.Commands.DeleteUser;
-using Rikei.PinkMind.Business.SpaceControls.Commands.UpdatePmSpaceControls;
-using Rikei.PinkMind.Business.pmSpaces.Commands.CreatepmSpace;
-using Rikei.PinkMind.Business.Teams.Commands.Delete;
-using Rikei.PinkMind.Business.TeamDetails.Queries.GetTeamDetail;
 using Rikei.PinkMind.Business.TeamDetails.Queries.GetAllTeamDetail;
+
 using Rikei.PinkMind.Business.AutoMapper;
 
 namespace Rikkei.PinkMind

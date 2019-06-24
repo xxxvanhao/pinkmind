@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
     <Folder Include="Projects\Commands\Delete\" />
     <Folder Include="Projects\Commands\Update\" />
     <Folder Include="Users\Queries\GetUserDetailList\" />

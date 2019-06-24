@@ -7,6 +7,6 @@ namespace Rikei.PinkMind.Business.Teams.Commands.Delete
 {
     public class DeleteTeamCommand : IRequest<Unit>
     {
-      public int ID { get; set; }
+      public int ID { get; set; } 
     }
 }

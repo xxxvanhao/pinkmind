@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace Rikei.PinkMind.Business.TeamDetails.Queries.GetAllTeamDetail
 {
-  public class GetAllTeamDetailsQueryHandler: IRequestHandler<GetAllTeamDetailsQuery, TeamDetailsViewModel>
+  public class GetAllTeamDetailsQueryHandler : IRequestHandler<GetAllTeamDetailsQuery, TeamDetailsViewModel>
   {
 
     private readonly PinkMindContext _pmContext;

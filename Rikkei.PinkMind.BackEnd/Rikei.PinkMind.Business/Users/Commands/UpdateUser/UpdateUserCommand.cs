@@ -19,20 +19,20 @@ namespace Rikei.PinkMind.Business.Users.Commands.UpdateUser
     public string PictureUrl { get; set; }
     public string SpaceID { get; set; }
 
-    public class Handler : IRequestHandler<UpdateUserCommand, Unit>
-    {
-      private readonly PinkMindContext _pmContext;
-      public Handler(PinkMindContext pmContext)
+      public class Handler : IRequestHandler<UpdateUserCommand, Unit>
       {
-        _pmContext = pmContext;
-      }
-      public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
-      {
-        var entity = await _pmContext.Users.SingleOrDefaultAsync(u => u.ID == request.ID);
-        if(entity == null)
+        private readonly PinkMindContext _pmContext;
+        public Handler(PinkMindContext pmContext)
         {
-          throw new NotFoundException(nameof(User), request.ID);
+          _pmContext = pmContext;
         }
+        public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        {
+          var entity = await _pmContext.Users.SingleOrDefaultAsync(u => u.ID == request.ID);
+          if(entity == null)
+          {
+            throw new NotFoundException(nameof(User), request.ID);
+          }
 
         entity.Password = request.Password ?? entity.Password;
         entity.LastName = request.LastName ?? entity.LastName;
@@ -42,8 +42,8 @@ namespace Rikei.PinkMind.Business.Users.Commands.UpdateUser
         entity.LastUpdate = DateTime.UtcNow;
         await _pmContext.SaveChangesAsync(cancellationToken);
 
-        return Unit.Value;
+          return Unit.Value;
+        }
       }
-    }
   }
 }

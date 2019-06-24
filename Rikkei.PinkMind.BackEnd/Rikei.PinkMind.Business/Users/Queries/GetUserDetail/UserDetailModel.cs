@@ -19,26 +19,26 @@ namespace Rikei.PinkMind.Business.Users.Queries.GetUserDetail
     public DateTime LastUpdate { get; set; }
 
     public static Expression<Func<User, UserDetailModel>> Projection
-    {
-      get
       {
-        return user => new UserDetailModel
+        get
         {
-          ID = user.ID,
-          Email = user.Email,
-          Password = user.Password,
-          LastName = user.LastName,
-          FirstName = user.FirstName,
-          PictureUrl = user.PictureUrl,
-          SpaceID = user.SpaceID,
-          CreateAt = user.CreateAt,
-          LastUpdate = user.LastUpdate
-        };
+          return user => new UserDetailModel
+          {
+            ID = user.ID,
+            Email = user.Email,
+            Password = user.Password,
+            LastName = user.LastName,
+            FirstName = user.FirstName,
+            PictureUrl = user.PictureUrl,
+            SpaceID = user.SpaceID,
+            CreateAt = user.CreateAt,
+            LastUpdate = user.LastUpdate
+          };
+        }
       }
-    }
-    public static UserDetailModel Create(User user)
-    {
-      return Projection.Compile().Invoke(user);
-    }
+      public static UserDetailModel Create(User user)
+      {
+        return Projection.Compile().Invoke(user);
+      }
   }
 }

@@ -12,10 +12,10 @@ namespace Rikkei.PindMind.DAO.Models
         [StringLength(50, MinimumLength = 3)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string Name { get; set; }
-        public int CreateBy { get; set; }
+        public long CreateBy { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Create At")]
-        public long CreateAt { get; set; }
+        public DateTime CreateAt { get; set; }
         [Display(Name = "Update By")]
         public long UpdateBy { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

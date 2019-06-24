@@ -1,16 +1,13 @@
-using Rikei.PinkMind.Business.SpaceControls.Queries.GetpmSpaceControl;
 using Rikkei.PindMind.DAO.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Rikei.PinkMind.Business.Teams.Queries.GetTeams
 {
   public class GetTeamModel
   {
-    public int ID { get; set; }
+    public long ID { get; set; }
     public string Name { get; set; }
     public long CreateBy { get; set; }
     public DateTime CreateAt { get; set; }

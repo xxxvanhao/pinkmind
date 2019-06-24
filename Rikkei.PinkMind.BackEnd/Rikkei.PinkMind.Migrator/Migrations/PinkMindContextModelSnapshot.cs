@@ -26,6 +26,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
@@ -54,6 +56,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<string>("Content");
@@ -85,6 +89,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<int?>("CommentID");
@@ -132,13 +138,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bit");
 
                     b.Property<string>("Description");
 
                     b.Property<DateTime>("DueDate");
-
-                    b.Property<string>("IssueKey");
 
                     b.Property<int>("IssueTypeID");
 
@@ -191,6 +197,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .IsRequired();
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
@@ -219,6 +227,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
@@ -267,11 +277,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
-                    b.Property<long>("CreateAt");
+                    b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -293,6 +305,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("ID");
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
@@ -328,9 +342,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<string>("IssueKey");
 
+                    b.Property<string>("ProjectKey");
+
+                    b.Property<string>("SpaceID");
+
                     b.Property<string>("Subject");
 
-                    b.Property<string>("UpdateTime");
+                    b.Property<DateTime>("UpdateTime");
 
                     b.Property<string>("UserName");
 
@@ -346,6 +364,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
@@ -387,6 +407,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasMaxLength(50);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
@@ -432,6 +454,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
@@ -460,6 +484,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
@@ -487,7 +513,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("AddBy");
+                    b.Property<long?>("AddBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -576,11 +602,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
 
-                    b.Property<int>("CreateBy");
+                    b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
@@ -590,7 +618,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int>("UpdateBy");
+                    b.Property<long>("UpdateBy");
 
                     b.HasKey("ID");
 

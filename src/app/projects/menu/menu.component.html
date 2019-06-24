@@ -8,31 +8,31 @@
         </li>
         <!-- /END Separator -->
         <!-- Menu with submenu -->
-        <a routerLink="home" class="bg-dark list-group-item list-group-item-action ">
+        <a [routerLink]="['home',userService.spaceId]" class="bg-dark list-group-item list-group-item-action ">
             <div class="d-flex w-100 justify-content-start align-items-center">
                 <span class="fa fa-home fa-fw mr-3" data-toggle="tooltip" data-placement="right" title="Home"></span>
                 <span class="menu-collapsed">Home</span>
             </div>
         </a>
-        <a routerLink="issue" class=" bg-dark list-group-item list-group-item-action ">
+        <a [routerLink]="['issue',userService.spaceId]" class=" bg-dark list-group-item list-group-item-action ">
             <div class="d-flex w-100 justify-content-start align-items-center ">
                 <span class="fa fa-tasks fa-fw mr-3" data-toggle="tooltip" data-placement="right" title="Issues"></span>
                 <span class="menu-collapsed">Issues</span>
             </div>
         </a>
-        <a routerLink="add" class="bg-dark list-group-item list-group-item-action ">
+        <a [routerLink]="['add',userService.spaceId]" class="bg-dark list-group-item list-group-item-action ">
             <div class="d-flex w-100 justify-content-start align-items-center ">
                 <span class="fa fa-plus fa-fw mr-3" data-toggle="tooltip" data-placement="right" title="Add Issue"></span>
                 <span class="menu-collapsed">Add Issue</span>
             </div>
         </a>
-        <a routerLink="file" class="bg-dark list-group-item list-group-item-action ">
+        <a [routerLink]="['file',userService.spaceId]" class="bg-dark list-group-item list-group-item-action ">
             <div class="d-flex w-100 justify-content-start align-items-center ">
                 <span class="fa fa-save fa-fw mr-3" data-toggle="tooltip" data-placement="right" title="Files"></span>
                 <span class="menu-collapsed">Files</span>
             </div>
         </a>
-        <a routerLink="setting" class="bg-dark list-group-item list-group-item-action ">
+        <a [routerLink]="['setting',userService.spaceId]" class="bg-dark list-group-item list-group-item-action ">
             <div class="d-flex w-100 justify-content-start align-items-center ">
                 <span class="fa fa-cog fa-fw mr-3" data-toggle="tooltip" data-placement="right" title="Project Settings"></span>
                 <span class="menu-collapsed">Project Settings</span>

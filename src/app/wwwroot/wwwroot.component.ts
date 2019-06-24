@@ -16,9 +16,9 @@ export class WwwrootComponent implements OnInit {
     this.userService.getUserDetails()
             .subscribe((userDetails: UserDetails) => {
               this.userDetails = userDetails;
-              if (userDetails.spaceID == null) {
+              // if (userDetails.spaceID == null) {
 
-              }
+              // }
             },
             error => {
               localStorage.clear();

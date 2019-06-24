@@ -33,6 +33,8 @@ namespace Rikei.PinkMind.Business.Roles.Commands.Update
         }
         entity.ID = request.ID;
         entity.Name = request.Name;
+        await _pmContext.SaveChangesAsync(cancellationToken);
+
         return Unit.Value;
       }
     }
