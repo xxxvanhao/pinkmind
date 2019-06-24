@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Milestones.Commands.Create
 {
-  class CreateVersionCommand : IRequest
+  public class CreateMilestonCommand : IRequest
   {
     public string Name { get; set; }
     public int CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
     public bool DelFlag { get; set; }
-    public class Handler : IRequestHandler<CreateVersionCommand, Unit>
+    public class Handler : IRequestHandler<CreateMilestonCommand, Unit>
     {
       private readonly PinkMindContext _pmContext;
       public Handler(PinkMindContext pmContext)
       {
         _pmContext = pmContext;
       }
-      public async Task<Unit> Handle(CreateVersionCommand request, CancellationToken cancellationToken)
+      public async Task<Unit> Handle(CreateMilestonCommand request, CancellationToken cancellationToken)
       {
         var entity = new Milestone
         {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Roles.Queries.GetRole
 {
-  class GetRoleQueryHandler : IRequestHandler<GetRoleQuery, RoleModel>
+  public class GetRoleQueryHandler : IRequestHandler<GetRoleQuery, RoleModel>
   {
     private readonly PinkMindContext _pmContext;
     public GetRoleQueryHandler(PinkMindContext pinkMindContext)

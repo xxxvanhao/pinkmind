@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Milestones.Queries.GetMileston
 {
-    public class GetMilestoneQuery : IRequest<VersionModel>
+    public class GetMilestoneQuery : IRequest<MilestonModel>
     {
       public int ID { get; set; }
     }

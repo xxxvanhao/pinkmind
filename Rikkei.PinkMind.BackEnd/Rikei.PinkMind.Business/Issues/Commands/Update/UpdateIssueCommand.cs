@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Update
 {
-  class UpdateIssueCommand : IRequest
-    {
+  public class UpdateIssueCommand : IRequest
+  {
     public int ID { get; set; }
     public int IssueTypeID { get; set; }
     public string Subject { get; set; }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Milestones.Commands.Update
 {
-  public class UpdateVersionCommandvalidator : AbstractValidator<UpdateVersionCommand>
+  public class UpdateMilestoneCommandvalidator : AbstractValidator<UpdateMilestonCommand>
   {
-    public UpdateVersionCommandvalidator()
+    public UpdateMilestoneCommandvalidator()
     {
       RuleFor(x => x.ID).NotEmpty();
       RuleFor(x => x.Name).NotEmpty();

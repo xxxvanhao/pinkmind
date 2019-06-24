@@ -10,7 +10,6 @@ namespace Rikkei.PinkMind.DAO.Data
 {
   public class PinkMindContext : DbContext
   {
-
     public PinkMindContext(DbContextOptions<PinkMindContext> options)
         : base(options)
     {

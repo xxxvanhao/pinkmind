@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Priorities.Commands.Delete
 {
-  class DeletePriorityQueryHandler : IRequestHandler<DeletePriorityCommand, Unit>
+  public class DeletePriorityQueryHandler : IRequestHandler<DeletePriorityCommand, Unit>
   {
     private readonly PinkMindContext _pmContext;
     public DeletePriorityQueryHandler(PinkMindContext pmContext)

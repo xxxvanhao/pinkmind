@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Delete
 {
-  class DeleteIssueCommandHandler : IRequestHandler<DeleteIssueCommand, Unit>
+  public class DeleteIssueCommandHandler : IRequestHandler<DeleteIssueCommand, Unit>
 
   {
     private readonly PinkMindContext _pmContext;

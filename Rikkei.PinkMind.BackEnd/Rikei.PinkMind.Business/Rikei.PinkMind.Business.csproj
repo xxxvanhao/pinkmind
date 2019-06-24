@@ -21,9 +21,13 @@
     <Reference Include="Microsoft.AspNetCore.Mvc.Core">
       <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.core\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.hosting\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Hosting.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Priorities\Queries\GetAllPriority\" />
     <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
     <Folder Include="Projects\Commands\Delete\" />
     <Folder Include="Projects\Commands\Update\" />

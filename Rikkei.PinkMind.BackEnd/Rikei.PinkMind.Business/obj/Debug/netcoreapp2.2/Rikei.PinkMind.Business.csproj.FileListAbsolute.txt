@@ -37,4 +37,9 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\obj\Debug\n
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\obj\Debug\netcoreapp2.2\Rikei.PinkMind.Business.csproj.CopyComplete
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\obj\Debug\netcoreapp2.2\Rikei.PinkMind.Business.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\obj\Debug\netcoreapp2.2\Rikei.PinkMind.Business.pdb
+<<<<<<< HEAD
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Hosting.dll
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Hosting.xml
+=======
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\obj\Debug\netcoreapp2.2\Rikei.PinkMind.Business.csprojAssemblyReference.cache
+>>>>>>> df6abc4f8a514685427249e516dca76e664a6daf

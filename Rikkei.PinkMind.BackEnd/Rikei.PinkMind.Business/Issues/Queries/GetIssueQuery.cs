@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Issues.Queries
 {
-    class GetIssueQuery : IRequest<IssueModel>
+  public class GetIssueQuery : IRequest<IssueModel>
   {
-    public long ID { get; set; }
+    public int ID { get; set; }
   }
 }

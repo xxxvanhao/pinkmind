@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Files.Queries
 {
-    class GetFileQuery : IRequest<FileModel>
+  public class GetFileQuery : IRequest<FileModel>
   {
     public int ID { get; set; }
   }

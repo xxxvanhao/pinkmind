@@ -6,12 +6,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-
+using MediatR;
 
 namespace Rikei.PinkMind.Business.Milestones.Queries.GetAllMileston
 {
-    class GetAllMilestonsQueryHandler
-    {
+  public class GetAllMilestonsQueryHandler 
+  { 
     private readonly PinkMindContext _pmContext;
     private readonly IMapper _mapper;
     public GetAllMilestonsQueryHandler(PinkMindContext pinkMindContext, IMapper mapper)

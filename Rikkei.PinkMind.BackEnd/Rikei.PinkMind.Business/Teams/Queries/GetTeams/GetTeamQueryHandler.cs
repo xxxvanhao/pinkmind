@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Teams.Queries.GetTeams
 {
-  class GetTeamQueryHandler : IRequestHandler<GetTeamControlQuery, GetTeamModel>
+  public class GetTeamQueryHandler : IRequestHandler<GetTeamControlQuery, GetTeamModel>
   {
 
     private readonly PinkMindContext _pmContext;

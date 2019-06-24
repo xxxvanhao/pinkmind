@@ -6,8 +6,8 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Resolutions.Queries
 {
-    class ResolutionModel
-    {
+  public class ResolutionModel
+  {
     public long ID { get; set; }
     public string Name { get; set; }
     public DateTime CreateAt { get; set; }
@@ -29,7 +29,7 @@ namespace Rikei.PinkMind.Business.Resolutions.Queries
           UpdateBy = resolution.UpdateBy,
           LastUpdate = resolution.LastUpdate,
           CheckUpdate = resolution.CheckUpdate,
-          DelFlag  = resolution.DelFlag
+          DelFlag = resolution.DelFlag
         };
       }
     }

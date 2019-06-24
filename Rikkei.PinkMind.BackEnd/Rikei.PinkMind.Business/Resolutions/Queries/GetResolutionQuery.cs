@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Resolutions.Queries
 {
-    class GetResolutionQuery : IRequest<ResolutionModel>
+  public class GetResolutionQuery : IRequest<ResolutionModel>
   {
-    public long ID { get; set; }
+    public int ID { get; set; }
   }
 }

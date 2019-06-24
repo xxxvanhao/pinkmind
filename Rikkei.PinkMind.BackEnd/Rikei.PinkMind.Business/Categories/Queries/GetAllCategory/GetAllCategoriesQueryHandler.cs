@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Categories.Queries.GetAllCategory
 {
-  public class GetAllCategoriesQueryHandler
+  public class GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoryQuery, CategoriesViewModel>
   {
 
     private readonly PinkMindContext _pmContext;
@@ -22,17 +22,17 @@ namespace Rikei.PinkMind.Business.Categories.Queries.GetAllCategory
       _mapper = mapper;
     }
 
-    public async Task<CategoriesViewModel> Handle(CancellationToken cancellationToken)
+    public async Task<CategoriesViewModel> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
     {
-      var Category = from ct in _pmContext.Categories select ct;
-      var AllCategory = await Category.ToListAsync(cancellationToken);
+      var Categories = from ct in _pmContext.Categories select ct;
+      var AllCategories = await Categories.ToListAsync(cancellationToken);
 
       var model = new CategoriesViewModel
       {
-        Categories = _mapper.Map<IEnumerable<CategoriesDTO>>(AllCategory)
+        Categories = _mapper.Map<IEnumerable<CategoriesDTO>>(AllCategories)
       };
+
       return model;
-      throw new NotImplementedException();
     }
   }
 }

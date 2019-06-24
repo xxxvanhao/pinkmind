@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Milestones.Commands.Delete
 {
-  class DeleteVersionCommandQueryHandler : IRequestHandler<DeleteVersioncommand, Unit>
+  public class DeleteMilestonCommandQueryHandler : IRequestHandler<DeleteMilestoncommand, Unit>
   {
     private readonly PinkMindContext _pmContext;
-    public DeleteVersionCommandQueryHandler(PinkMindContext pmContext)
+    public DeleteMilestonCommandQueryHandler(PinkMindContext pmContext)
     {
       _pmContext = pmContext;
     }
 
-    public async Task<Unit> Handle(DeleteVersioncommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteMilestoncommand request, CancellationToken cancellationToken)
     {
       var entity = await _pmContext.Milestones.FindAsync(request.ID);
       if (entity == null)
