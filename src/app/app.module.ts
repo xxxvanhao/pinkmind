@@ -36,6 +36,7 @@ import { SpaceComponent } from './space/space.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ProjectsRoutingModule } from './projects/projects-routing.module';
+import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { ProjectsRoutingModule } from './projects/projects-routing.module';
     ProjectsRoutingModule,
     WwwrootModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TimeagoModule.forRoot()
   ],
   providers: [ConfigService, {
     provide: [HttpXhrBackend, HTTP_INTERCEPTORS],

@@ -24,6 +24,7 @@ export class BodyComponent implements OnInit {
     this.userService.getProject();
     this.checkAddUser();
     // setTimeout(this.checkProject, 1000);
+    this.userService.getReUpdate();
   }
 
   checkProject() {

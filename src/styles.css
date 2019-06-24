@@ -124,7 +124,7 @@ body {
 .timeline .row,
 .project-content .row {
     padding: 0;
-    margin: 0 10px;
+    margin: 0 8px;
     font-size: .88rem;
 }
 
@@ -159,6 +159,19 @@ body {
 .action-content .subject {
     color: rgba(34, 34, 34, .7);
     font-weight: 300;
+}
+
+.action-content .content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.timeline .row .timeAgo {
+    font-size: .8rem;
 }
 
 
