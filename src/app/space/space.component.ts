@@ -13,7 +13,6 @@ import { UserDetails } from '../shared/models/userDetails.interface';
 export class SpaceComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router, private toastr: ToastrService) { }
-  userDetails: UserDetails;
   ngOnInit() {
 
   }

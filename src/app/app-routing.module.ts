@@ -31,23 +31,23 @@ const routes: Routes = [
         pathMatch: 'prefix'
       },
       {
-        path: 'home',
+        path: 'home/:id',
         component: HomeComponent
       },
       {
-        path: 'issue',
+        path: 'issue/:id',
         component: IssueComponent
       },
       {
-        path: 'add',
+        path: 'add/:id',
         component: AddissueComponent
       },
       {
-        path: 'file',
+        path: 'file/:id',
         component: FileComponent
       },
       {
-        path: 'setting',
+        path: 'setting/:id',
         component: ProjectsettingComponent
       }
     ]},

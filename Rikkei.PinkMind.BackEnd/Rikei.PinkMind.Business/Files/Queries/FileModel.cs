@@ -30,7 +30,7 @@ namespace Rikei.PinkMind.Business.Files.Queries
           CreateBy = file.CreateBy,
           CreateAt = file.CreateAt,
           LastUpdate = file.LastUpdate,
-          IssueID = file.IssueID,
+          IssueID = file.IssueID,          
           DelFlag = file.DelFlag,
           UpdateBy = file.UpdateBy,
           CheckUpdate = file.CheckUpdate,

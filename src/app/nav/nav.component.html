@@ -13,37 +13,27 @@
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
                                     Projects
                                 </a>
-                    <div class="dropdown-menu">
-                        <div class="project-list dropdown-item">
+                    <div class="dropdown-menu fix-nav-project">
+                        <div class="project-list dropdown-item filter-project">
                             <div class="dropbox-header">
                                 <span>Projects</span>
-                                <input type="search" class="dropbox-search" value="" name="searchProject" placeholder="Search projects">
+                                <input type="search" id="project-search-id" class="dropbox-search" value="" (keyup)="searchProject()" name="searchProject" placeholder="Search projects">
                             </div>
-                            <div class="project-content">
-                                <div href="#" class="row mx-0 align-items-center">
-                                    <div class="col-md-2 pl-0 text-center">
-                                        Avatar
-                                    </div>
-                                    <div class="col-md-10 pl-0">
-                                        <p class="project-name mb-0 mt-2">DN0_Project</p>
-                                        <p class="project-key mb-2">FRK1</p>
-                                    </div>
-                                </div>
-                                <a routerLink="/projects/home" class="blockLink"></a>
-                            </div>
-                            <div class="project-content">
+
+                            <div class="isNo-items" *ngIf="!(userService.listProject | keyvalue)?.length > 0; else notShow"><span>There are no projects assigned to you yet.<br>Projects assigned to you will be listed here.</span></div>
+                            <ng-template #notShow></ng-template>
+                            <div class="project-content" *ngFor="let p of userService.listProject">
                                 <div class="row mx-0 align-items-center">
                                     <div class="col-md-2 pl-0 text-center">
-                                        Avatar
+                                        <i class="far fa-building fix-fa-building"></i>
                                     </div>
                                     <div class="col-md-10 pl-0">
-                                        <p class="project-name mb-0 mt-2">DN0_Project</p>
-                                        <p class="project-key mb-2">FRK1</p>
+                                        <p class="project-name mb-0 mt-2">{{ p.name }}</p>
+                                        <p class="project-key mb-2">{{ p.id }}</p>
                                     </div>
                                 </div>
-                                <a href="#" class="blockLink"></a>
+                                <a [routerLink]="['/projects/home',p.id]" class="blockLink"></a>
                             </div>
-                            <div class="isNo-items" style="display: none;">There are no projects assigned to you yet.<br>Projects assigned to you will be listed here.</div>
                         </div>
                     </div>
                 </li>
@@ -59,6 +49,7 @@
                                 <span>Recently Viewed Issues</span>
                                 <input type="search" class="dropbox-search" value="" name="searchIssue" placeholder="Search recently viewed issues">
                             </div>
+                            <div class="isNo-items">There are no recently viewed issues yet.</div>
                             <div class="issue-content">
                                 <div href="#" class="row mx-0 align-items-center">
                                     <div class="col-md-2 pl-0 text-center">Avatar</div>
@@ -77,7 +68,6 @@
                                 </div>
                                 <a href="#" class="blockLink"></a>
                             </div>
-                            <div class="isNo-items" style="display: none;">There are no recently viewed issues yet.</div>
                         </div>
                     </div>
                 </li>
@@ -89,6 +79,10 @@
                                 <span>Issue Filters</span>
                                 <input type="search" class="dropbox-search" value="" name="searchFilter" placeholder="Search saved filters">
                             </div>
+                            <div class="isNo-items">
+                                <p class="mb-0">There are no saved issue filters</p>
+                                <p class="mb-2">Saved filters after searching issues will be listed here.</p>
+                            </div>
                             <div class="saved-filter-content">
                                 <div href="#" class="row mx-0 align-items-center">
                                     <div class="col-md-2 pl-0 text-center">Avatar</div>
@@ -97,10 +91,6 @@
                                     </div>
                                 </div>
                                 <a href="#" class="blockLink"></a>
-                            </div>
-                            <div class="isNo-items" style="display: none;">
-                                <p class="mb-0">There are no saved issue filters</p>
-                                <p class="mb-2">Saved filters after searching issues will be listed here.</p>
                             </div>
                         </div>
                     </div>
@@ -180,7 +170,7 @@
                         <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-user-control">
-                        <h6 class="dropdown-header"><span><i class="far fa-building"></i></span> FresherK1-DN0</h6>
+                        <h6 class="dropdown-header" *ngIf="userService.userDetails"><span><i class="far fa-building mr-2"></i></span>{{userService.userDetails.spaceID}} ({{userService.userDetails.lastName}})</h6>
                         <a class="dropdown-item" routerLink="/admin/members">Organization Settings</a>
                         <hr>
                         <a class="dropdown-item" routerLink="/admin/account">My profile</a>

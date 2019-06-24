@@ -97,11 +97,6 @@ nav.nav-fix {
     background-color: #fcfade;
 }
 
-.isNo-items {
-    padding: 10px;
-    text-align: center;
-}
-
 .fix-search {
     border: 1px solid #ddd;
     width: 100px;
@@ -299,49 +294,27 @@ nav.nav-fix {
 
 /*Project*/
 
-.project-list,
+.fix-nav-project .project-list,
 .issue-list,
 .saved-filter-list {
     background-color: #fff;
     border-radius: .25rem;
     border: none;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    min-height: 6rem;
 }
 
-.project-list .project-content,
 .issue-list .issue-content,
 .saved-filter-list .saved-filter-content {
     position: relative;
 }
 
-.blockLink {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: #ffffff;
-    filter: alpha(opacity=0);
-    opacity: 0;
-}
-
-.project-list .project-content:not(:last-child),
 .issue-list .issue-content:not(:last-child),
 .saved-filter-list .saved-filter-content:not(:last-child) {
     border-bottom: 1px solid #ddd;
 }
 
-.project-content .project-name {
-    font-weight: 600;
-}
-
-.project-content .project-key {
-    font-weight: 300;
-    font-size: .85rem;
-}
-
-.project-list .project-content:hover,
+.fix-nav-project .project-list .project-content:hover,
 .issue-list .issue-content:hover,
 .saved-filter-list .saved-filter-content:hover {
     color: black;

@@ -2,8 +2,8 @@
     <div class="col-md-12 admin-col-12-fix">
         <form action="" method="POST">
             <div class="py-4 px-2">
-                <div class=" m-auto text-center w-50">
-                    <img src="https://d1zqp7au6yhc2p.cloudfront.net/default-icons/account/F8E71C/128x128.png" width="128" height="128">
+                <div class=" m-auto text-center w-50" *ngIf="userService.userDetails">
+                    <img src="{{userService.userDetails.pictureUrl}}" width="128" height="128">
                 </div>
                 <div class="text-center mt-1"><a href="#">Change avatar</a></div>
             </div>

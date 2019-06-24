@@ -1,4 +1,8 @@
 using AutoMapper;
+using Rikei.PinkMind.Business.Categories.Queries.GetAllCategory;
+using Rikei.PinkMind.Business.Issues.Queries.GetAllIssues;
+using Rikei.PinkMind.Business.Projects.Queries;
+using Rikei.PinkMind.Business.ReUpdate.GetDetails;
 using Rikei.PinkMind.Business.TeamDetails.Queries.GetAllTeamDetail;
 using Rikkei.PindMind.DAO.Models;
 using System;
@@ -14,6 +18,18 @@ namespace Rikei.PinkMind.Business.AutoMapper
       CreateMap<TeamDetail, TeamDetailsDTO>()
         .ForMember(dest => dest.TeamID, opt => opt.MapFrom(src => src.TeamID))
         .ForMember(dest => dest.UserID, opt => opt.MapFrom(src => src.UserID));
+      CreateMap<Project, ProjectDTO>()
+        .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.ID))
+        .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+       CreateMap<ReUpdateSpace, ReUpdateDTO>()
+        .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.ID))
+        .ForMember(dest => dest.SpaceID, opt => opt.MapFrom(src => src.SpaceID));
+      CreateMap<Category, CategoriesDTO>()
+        .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.ID))
+        .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+      CreateMap<Issue, IssuesDTO>()
+        .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.ID))
+        .ForMember(dest => dest.AssigneeUser, opt => opt.MapFrom(src => src.AssigneeUser));      
     }
   }
 }

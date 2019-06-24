@@ -9,7 +9,6 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Update
     {
       RuleFor(x => x.ID).NotEmpty();
       RuleFor(x => x.IssueTypeID).NotEmpty();
-      RuleFor(x => x.IssueKey).NotEmpty();
       RuleFor(x => x.Subject).NotEmpty();
       RuleFor(x => x.StatusID).NotEmpty();
       RuleFor(x => x.AssigneeUser).NotEmpty();

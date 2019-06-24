@@ -35,6 +35,7 @@ import { MembersComponent } from './admin/members/members.component';
 import { SpaceComponent } from './space/space.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ProjectsRoutingModule } from './projects/projects-routing.module';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
+    ProjectsRoutingModule,
     WwwrootModule,
     FormsModule,
     HttpClientModule

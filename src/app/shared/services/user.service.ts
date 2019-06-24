@@ -2,18 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { ConfigService } from '../utils/config.service';
 import {BaseService} from './base.service';
-import { BehaviorSubject, Observable } from 'rxjs/';
+import { BehaviorSubject, Observable, never, throwError, of } from 'rxjs/';
 import { map, catchError } from 'rxjs/operators';
 import { UserDetails } from '../models/userDetails.interface';
-import { CodegenComponentFactoryResolver } from '@angular/core/src/linker/component_factory_resolver';
 import { SpaceControlsDetails } from '../models/spaceControlsDetails.interface';
 import { Space } from '../models/space.interface';
+import { Project } from '../models/project.interface';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService extends BaseService {
 
-  baseUrl: string = '';
+  baseUrl: string;
+
+  listProject: Project;
+  userDetails: UserDetails;
+  spaceId: string;
+
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
   // Observable navItem stream
@@ -74,6 +79,9 @@ export class UserService extends BaseService {
       .pipe(catchError(this.handleError));
   }
 
+  getParamSpaceId(id: string) {
+    this.spaceId = id;
+  }
 
   isSpaceId() {
     const authToken = localStorage.getItem('auth_token');
@@ -99,7 +107,10 @@ export class UserService extends BaseService {
       'Content-Type' : 'application/json'
     });
     return this.http.get(this.baseUrl + '/Users', { headers })
-    .pipe(map((response: any) => response ))
+    .pipe(map((response: any) => {
+      this.userDetails = response;
+      return response;
+    } ))
     .pipe(catchError(this.handleError));
   }
 
@@ -141,6 +152,17 @@ export class UserService extends BaseService {
       .pipe(catchError(this.handleError));
   }
 
+  checkSpaceControlDeltails(): Observable<SpaceControlsDetails> {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + '/SpaceControls', { headers })
+      .pipe(map((response: any) => response ))
+      .pipe(catchError(this.handleError));
+  }
+
   postSpaceControl(spaceControlsDetails: SpaceControlsDetails) {
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
@@ -150,5 +172,31 @@ export class UserService extends BaseService {
     return this.http.post(this.baseUrl + '/Spaces', spaceControlsDetails, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
+  }
+
+  // Project
+
+  postProject(project: Project) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/Projects', project, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
+
+  getProject() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + '/Projects', {headers})
+    .toPromise()
+    .then((res: any) => this.listProject = res.projects);
+    // .pipe(map((response: any) => response ))
+    // .pipe(catchError(this.handleError));
   }
 }

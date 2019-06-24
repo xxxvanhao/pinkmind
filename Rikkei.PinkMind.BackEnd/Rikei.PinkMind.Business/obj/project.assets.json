@@ -8954,13 +8954,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Administrator\\Desktop\\PinkMind\\pinkmind\\pinkmind\\Rikkei.PinkMind.BackEnd\\Rikei.PinkMind.Business\\obj\\Rikei.PinkMind.Business.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

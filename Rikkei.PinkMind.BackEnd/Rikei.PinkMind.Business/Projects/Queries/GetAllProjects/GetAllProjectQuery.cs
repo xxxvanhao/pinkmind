@@ -1,9 +1,10 @@
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Rikei.PinkMind.Business.Projects.Queries.GetAllProjects
 {
-  public class ProjectViewModel
+  class GetAllProjectQuery
   {
-    public IEnumerable<ProjectDTO> Projects { get; set; }
   }
 }

@@ -2,9 +2,11 @@ using MediatR;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting.Internal;
+using Rikei.PinkMind.Business.Files.Commands.Create;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,10 +22,11 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
     public DateTime CreateAt { get; set; }
     public bool DelFlag { get; set; }
     public long UpdateBy { get; set; }
-    public IFormFile FileName { get; set; }
+    public List<IFormFile> FileName { get; set; }
     public int IssueID { get; set; }
     public class Handler : IRequestHandler<CreateCommentCommand, Unit>
     {
+      private readonly IMediator _mediator;
       private readonly PinkMindContext _pmContext;
       public Handler(PinkMindContext pmContext)
       {
@@ -44,29 +47,18 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
         };
         _pmContext.Comments.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);
-        if(request.FileName != null)
+        int ReID = entity.ID;
+        var createFile = new CreateFileCommand();
+        foreach(var item in request.FileName)
         {
-          int returnID = entity.ID;
-          entity.FileName = savefileAsync(request.IssueID, returnID, request.FileName);
-          await _pmContext.SaveChangesAsync(cancellationToken);
+          createFile.CommentID = ReID;
+          createFile.CreateBy = request.CreateBy;
+          createFile.UpdateBy = request.UpdateBy;
+          createFile.IssueID = request.IssueID;
         }
+        var SavefileContent = await _mediator.Send(new CreateFileCommand());
         return Unit.Value;
-      }
-      public  string savefileAsync(int IssueID, int CommentID, IFormFile filename)
-      {
-        var path = Path.Combine(
-                      Directory.GetCurrentDirectory(), "~/Issue/" + "Comment" + "/" + CommentID + "/");
-        string TextFileName = filename.FileName;
-        if (filename == null || filename.Length == 0)
-        {
-          using (var stream = new FileStream(path, FileMode.Create))
-          {
-             filename.CopyToAsync(stream);
-          }
-          return TextFileName;
-        }
-        return "0";
-      }
+      }      
     }
   }
 }

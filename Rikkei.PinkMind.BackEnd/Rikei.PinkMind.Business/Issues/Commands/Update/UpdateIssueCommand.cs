@@ -13,7 +13,6 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Update
   {
     public int ID { get; set; }
     public int IssueTypeID { get; set; }
-    public string IssueKey { get; set; }
     public string Subject { get; set; }
     public string Description { get; set; }
     public int StatusID { get; set; }
@@ -44,7 +43,6 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Update
           throw new NotFoundException(nameof(Issue), request.ID);
         }
         entity.IssueTypeID = request.IssueTypeID;
-        entity.IssueKey = request.IssueKey;
         entity.Subject = request.Subject;
         entity.Description = request.Description;
         entity.StatusID = request.StatusID;

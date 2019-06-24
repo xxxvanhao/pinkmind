@@ -46,6 +46,19 @@ namespace Rikkei.PinkMind.API.Controllers
       });
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetAndCheckSpaceControl()
+    {
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      var spaceControlInfo = await _mediator.Send(new GetpmSpaceControlQuery { userId = Convert.ToInt64(userID.Value) });
+      return new OkObjectResult(new
+      {
+        Message = "This is secure API and space control data!",
+        spaceControlInfo.SpaceID,
+        spaceControlInfo.ControlBy,
+      });
+    }
+
     // POST: api/SpaceControls
     [HttpPost]
     public async Task<IActionResult> PostSpaceControl([FromBody]CreatepmSpaceControlCommand command)

@@ -1,9 +1,5 @@
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
 export abstract class BaseService {
   constructor() { }
 
@@ -15,7 +11,7 @@ export abstract class BaseService {
     return Observable.throw(applicationError);
   }
 
-  let modelStateErrors: string = '';
+  let modelStateErrors: string;
   const serverError = error;
 
   if (!serverError.type) {
@@ -28,5 +24,5 @@ export abstract class BaseService {
 
   modelStateErrors = modelStateErrors = '' ? null : modelStateErrors;
   return Observable.throw(modelStateErrors || 'Server error');
-}
+  }
 }

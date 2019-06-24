@@ -10,7 +10,6 @@ namespace Rikei.PinkMind.Business.Issues.Queries
   {
     public long ID { get; set; }
     public long IssueTypeID { get; set; }
-    public string IssueKey { get; set; }
     public string Subject { get; set; }
     public string Description { get; set; }
     public long StatusID { get; set; }
@@ -36,7 +35,6 @@ namespace Rikei.PinkMind.Business.Issues.Queries
         {
           ID = issue.ID,
           IssueTypeID = issue.IssueTypeID,
-          IssueKey = issue.IssueKey,
           Subject = issue.Subject,
           Description = issue.Description,
           StatusID = issue.StatusID,

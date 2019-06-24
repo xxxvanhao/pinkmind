@@ -1,12 +1,16 @@
 using MediatR;
+using Microsoft.AspNetCore.Http;
+using Rikei.PinkMind.Business.Files.Commands.Create;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Create
 {
+
   public class CreateIssueCommand : IRequest
   {
     public int IssueTypeID { get; set; }
@@ -25,8 +29,11 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
     public int CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
     public bool DelFlag { get; set; }
+    public List<IFormFile> File { get; set; }
+    
     public class Handler : IRequestHandler<CreateIssueCommand, Unit>
     {
+      private readonly IMediator _mediator;
       private readonly PinkMindContext _pmContext;
       public Handler(PinkMindContext pmContext)
       {
@@ -36,7 +43,6 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
       {
         var entity = new Issue
         {
-          IssueKey = request.IssueKey,
           Subject = request.Subject,
           Description = request.Description,
           StatusID = request.StatusID,
@@ -54,6 +60,17 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
         };
         _pmContext.Issues.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);
+        int resID = entity.ID;
+        //Save files
+        var createFile = new CreateFileCommand();
+        foreach (var item in request.File)
+        {
+          createFile.CommentID = null;
+          createFile.CreateBy = request.CreateBy;
+          createFile.UpdateBy = request.CreateBy;
+          createFile.IssueID = resID;
+        }
+        var SaveFileContent = await _mediator.Send(new CreateFileCommand());
         return Unit.Value;
       }
     }

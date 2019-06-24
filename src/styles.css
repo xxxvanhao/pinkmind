@@ -49,6 +49,13 @@ body {
     border-left: none;
 }
 
+.isNo-items {
+    padding: 10px;
+    text-align: center;
+    font-size: .88rem;
+    /* display: none; */
+}
+
 
 /* modal */
 
@@ -244,6 +251,7 @@ table {
     border: 8px solid #fff;
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    min-height: 3rem;
 }
 
 .project-list .project-content {
@@ -469,6 +477,10 @@ table {
 
 /*project*/
 
+.fix-fa-building {
+    font-size: 2rem;
+}
+
 @media screen and (max-width: 760px) {
     .timeline-avatar {
         display: none;
@@ -486,11 +498,13 @@ table {
 /*ngFrom model*/
 
 input.ng-touched.ng-invalid {
-    border-color: #dc3545;
+    border: 1px solid #dc3545;
+    outline: none;
 }
 
 input.ng-touched.ng-valid {
-    border-color: #28a745;
+    outline: none;
+    border: 1px solid #28a745;
 }
 
 

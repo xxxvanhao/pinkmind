@@ -27,7 +27,7 @@ namespace Rikkei.PinkMind.DAO.Data
     public DbSet<Priority> Priorities { get; set; }
     public DbSet<Project> Projects { get; set; }
     public DbSet<Resolution> Resolutions { get; set; }
-    public DbSet<ReUpdate> ReUpdates { get; set; }
+    public DbSet<ReUpdateSpace> ReUpdates { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<Status> Statuses { get; set; }
     public DbSet<Team> Teams { get; set; }
@@ -57,7 +57,7 @@ namespace Rikkei.PinkMind.DAO.Data
       modelBuilder.Entity<Notify>().ToTable("tbl_notify");
       modelBuilder.Entity<File>().ToTable("tbl_file");
       modelBuilder.Entity<Comment>().ToTable("tbl_comment");
-      modelBuilder.Entity<ReUpdate>().ToTable("tbl_reupdate");
+      modelBuilder.Entity<ReUpdateSpace>().ToTable("tbl_reupdate");
     }
   }
 }

@@ -12,6 +12,7 @@ using Rikei.PinkMind.Business.Issues.Commands.Update;
 using Rikei.PinkMind.Business.Issues.Queries;
 using Rikei.PinkMind.Business.Issues.Queries.GetAllIssues;
 using Rikei.PinkMind.Business.Issues.Queries.SearchIssues;
+using Rikkei.PinkMind.DAO.Data;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
@@ -29,15 +30,15 @@ namespace Rikkei.PinkMind.API.Controllers
     }
 
     // GET: api/Issue/getall/5
-    [Route("GetAll")]
+    [Route("GetAll/{id}")]
     public async Task<ActionResult<IssuesViewModel>> GetAllIssue(string id)
-    {
+    { 
       return Ok(await _mediator.Send(new GetAllIssuesQuery { ID = id }));
     }
     // GET: api/Issue/Search
     [Route("Search")]
     public async Task<ActionResult<IssuesViewModel>> SearchIssue(string projectID, string key, long AssigneeUser, int CategoryID, int MilestoneID, int StatusID)
-    {
+    {      
       return Ok(await _mediator.Send(new SearchIssueQuery { Key = key, AssigneeUser = AssigneeUser, CategoryID = CategoryID, MilestoneID = MilestoneID, StatusID = StatusID }));
     }
     // GET: api/Issue/5

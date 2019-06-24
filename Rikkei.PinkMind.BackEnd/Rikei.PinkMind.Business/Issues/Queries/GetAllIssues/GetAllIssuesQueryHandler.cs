@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Rikei.PinkMind.Business.Issues.Queries.GetAllIssues
 {
@@ -20,15 +21,48 @@ namespace Rikei.PinkMind.Business.Issues.Queries.GetAllIssues
     }
     public async Task<IssuesViewModel> Handle(GetAllIssuesQuery request, CancellationToken cancellationToken)
     {
-      var Issue = from iss in _pmContext.Issues select iss;
-      var All = await Issue.ToListAsync(cancellationToken);
-
-      var model = new IssuesViewModel
+      var issue = from iss in _pmContext.Issues
+                      select new
+                      {
+                        iss.ID,
+                        iss.IssueTypeID,
+                        iss.IssueType.Name,
+                        iss.Subject,
+                        iss.Description,
+                        iss.StatusID,
+                        StatusName = iss.Status.Name,
+                        iss.AssigneeUser,
+                        iss.PriorityID,
+                        PriorityName = iss.Priority.Name,
+                        iss.CategoryID,
+                        CategoryName = iss.Category.Name,
+                        iss.MilestoneID,
+                        MilestonName = iss.Milestone.Name,
+                        iss.VersionID,
+                        VersionName = iss.Version.Name,
+                        iss.ResolutionID,
+                        ResolutionName = iss.Resolution.Name,
+                        iss.DueDate,
+                        iss.ProjectID,
+                        iss.CreateBy,
+                        iss.UpdateBy,
+                        iss.LastUpdate,
+                        iss.DelFlag,
+                        iss.CheckUpdate
+                      };
+      try
       {
-        Issues = _mapper.Map<IEnumerable<IssuesDTO>>(All)
-      };
-
-      return model;
+        var All = await issue.ToListAsync(cancellationToken);
+        var model = new IssuesViewModel
+        {
+          Issues = _mapper.Map<IEnumerable<IssuesDTO>>(All)
+        };
+        return model;
+      }
+      catch(Exception ex)
+      {
+        throw ex;
+      }
     }
   }
 }

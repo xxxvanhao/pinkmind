@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/shared/services/user.service';
 declare var jquery: any;
 declare var $: any;
 @Component({
@@ -8,7 +10,7 @@ declare var $: any;
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
 $('[data-toggle="tooltip"]').tooltip();

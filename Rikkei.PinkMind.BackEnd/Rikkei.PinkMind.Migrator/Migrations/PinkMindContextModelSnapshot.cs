@@ -146,8 +146,6 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("DueDate");
 
-                    b.Property<string>("IssueKey");
-
                     b.Property<int>("IssueTypeID");
 
                     b.Property<DateTime>("LastUpdate");
@@ -344,9 +342,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<string>("IssueKey");
 
+                    b.Property<string>("ProjectKey");
+
+                    b.Property<string>("SpaceID");
+
                     b.Property<string>("Subject");
 
-                    b.Property<string>("UpdateTime");
+                    b.Property<DateTime>("UpdateTime");
 
                     b.Property<string>("UserName");
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace Rikei.PinkMind.Business.Projects.Queries.GetAllProjects
+namespace Rikei.PinkMind.Business.Projects.Queries
 {
   public class ProjectDTO
   {
