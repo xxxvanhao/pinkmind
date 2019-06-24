@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Files.Queries
 {
-  class GetFileQueryHandler : IRequestHandler<GetFileQuery, FileModel>
+  public class GetFileQueryHandler : IRequestHandler<GetFileQuery, FileModel>
   {
 
     private readonly PinkMindContext _pmContext;

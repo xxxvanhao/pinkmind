@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Priorities.Commands.Update
 {
-  class UpdatePriorityCommand : IRequest
+  public class UpdatePriorityCommand : IRequest
   {
     public long ID { get; set; }
     public string Name { get; set; }

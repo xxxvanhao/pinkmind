@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Notifies.Commands.Delete
 {
-  class DeleteNotifyQueryHandler : IRequestHandler<DeleteNotifyCommand, Unit>
+  public class DeleteNotifyQueryHandler : IRequestHandler<DeleteNotifyCommand, Unit>
   {
     private readonly PinkMindContext _pmContext;
     public DeleteNotifyQueryHandler(PinkMindContext pmContext)

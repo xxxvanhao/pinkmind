@@ -3,7 +3,7 @@ using Rikei.PinkMind.Business.Issues.Queries;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Update
 {
-  class UpdateIssueCommandValidator : AbstractValidator<IssueModel>
+  public class UpdateIssueCommandValidator : AbstractValidator<IssueModel>
   {
     public UpdateIssueCommandValidator()
     {
@@ -11,7 +11,6 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Update
       RuleFor(x => x.IssueTypeID).NotEmpty();
       RuleFor(x => x.IssueKey).NotEmpty();
       RuleFor(x => x.Subject).NotEmpty();
-      RuleFor(x => x.Description).NotEmpty();
       RuleFor(x => x.StatusID).NotEmpty();
       RuleFor(x => x.AssigneeUser).NotEmpty();
       RuleFor(x => x.PriorityID).NotEmpty();

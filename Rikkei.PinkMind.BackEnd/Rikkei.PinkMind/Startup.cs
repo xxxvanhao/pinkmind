@@ -36,6 +36,7 @@ using Rikei.PinkMind.Business.Users.Commands.DeleteUser;
 using Rikei.PinkMind.Business.TeamDetails.Queries.GetAllTeamDetail;
 
 using Rikei.PinkMind.Business.AutoMapper;
+using Rikei.PinkMind.Business.pmSpaces.Queries.GetpmSpace;
 
 namespace Rikkei.PinkMind
 {
@@ -124,7 +125,8 @@ namespace Rikkei.PinkMind
                           typeof(CreateUserCommand.Handler).GetTypeInfo().Assembly,
                           typeof(UpdateUserCommand.Handler).GetTypeInfo().Assembly,
                           typeof(DeleteUserQueryHandler).GetTypeInfo().Assembly,
-                          typeof(GetAllTeamDetailsQueryHandler).GetTypeInfo().Assembly);
+                          typeof(GetAllTeamDetailsQueryHandler).GetTypeInfo().Assembly,
+                          typeof(GetpmSpaceQuery).GetTypeInfo().Assembly);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

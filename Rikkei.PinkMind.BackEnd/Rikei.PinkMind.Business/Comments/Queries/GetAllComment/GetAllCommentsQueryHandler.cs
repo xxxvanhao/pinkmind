@@ -10,7 +10,7 @@ using Rikei.PinkMind.Business.Comments.Comments.GetAllComment;
 
 namespace Rikei.PinkMind.Business.Comments.Queries.GetAllComment
 {
-  public class GetAllCommentsQueryHandler: IRequestHandler<GetAllTeamDetailsQuery, CommentsViewModel>
+  public class GetAllCommentsQueryHandler: IRequestHandler<GetAllCommentsQuery, CommentsViewModel>
   {
     private readonly PinkMindContext _pmContext;
     private readonly IMapper _mapper;
@@ -19,9 +19,22 @@ namespace Rikei.PinkMind.Business.Comments.Queries.GetAllComment
       _pmContext = pinkMindContext;
       _mapper = mapper;
     }
-    public async Task<CommentsViewModel> Handle(GetAllTeamDetailsQuery request, CancellationToken cancellationToken)
+    public async Task<CommentsViewModel> Handle(GetAllCommentsQuery request, CancellationToken cancellationToken)
     {
-      var Comments = from td in _pmContext.Comments select td;
+      var Comments = from cm in _pmContext.Comments
+                     select new
+                     {
+                       cm.ID,
+                       cm.Content,
+                       cm.CreateAt,
+                       cm.CreateBy,
+                       cm.UpdateBy,
+                       cm.LastUpdate,
+                       cm.DelFlag,
+                       cm.CheckUpdate,
+                       cm.IssueID,
+                       cm.FileName
+                     };
       var Allcomment = await Comments.Where(td => td.IssueID == request.ID).ToListAsync(cancellationToken);
 
       var model = new CommentsViewModel

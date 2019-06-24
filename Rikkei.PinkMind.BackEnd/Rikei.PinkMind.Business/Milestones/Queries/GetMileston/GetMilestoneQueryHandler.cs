@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Milestones.Queries.GetMileston
 {
-  class GetMilestoneQueryHandler : IRequestHandler<GetMilestoneQuery, VersionModel>
+  public class GetMilestoneQueryHandler : IRequestHandler<GetMilestoneQuery, MilestonModel>
   {
     private readonly PinkMindContext _pmContext;
     public GetMilestoneQueryHandler(PinkMindContext pinkMindContext)
     {
       _pmContext = pinkMindContext;
     }
-    public async Task<VersionModel> Handle(GetMilestoneQuery request, CancellationToken cancellationToken)
+    public async Task<MilestonModel> Handle(GetMilestoneQuery request, CancellationToken cancellationToken)
     {
       var entity = await _pmContext.Milestones.FindAsync(request.ID);
 
@@ -25,7 +25,7 @@ namespace Rikei.PinkMind.Business.Milestones.Queries.GetMileston
         throw new NotFoundException(nameof(Roles), request.ID);
       }
 
-      return VersionModel.Create(entity);
+      return MilestonModel.Create(entity);
     }
   }
 }

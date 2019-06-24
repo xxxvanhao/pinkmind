@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Resolutions.Commands.Update
 {
-    class UpdateResolutionCommand : IRequest
+  public class UpdateResolutionCommand : IRequest
   {
     public int ID { get; set; }
     public string Name { get; set; }
@@ -35,7 +35,7 @@ namespace Rikei.PinkMind.Business.Resolutions.Commands.Update
         }
         entity.Name = request.Name;
         entity.UpdateBy = request.UpdateBy;
-        entity.LastUpdate = DateTime.UtcNow;        
+        entity.LastUpdate = DateTime.UtcNow;
         await _pmContext.SaveChangesAsync(cancellationToken);
         return Unit.Value;
       }

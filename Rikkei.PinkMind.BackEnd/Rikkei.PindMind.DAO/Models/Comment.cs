@@ -25,6 +25,7 @@ namespace Rikkei.PindMind.DAO.Models
         [Timestamp]
         public byte[] CheckUpdate { get; set; }
         public int IssueID { get; set; }
+        public string FileName { get; set; }
         public Issue Issue { get; set; }
     }
 }

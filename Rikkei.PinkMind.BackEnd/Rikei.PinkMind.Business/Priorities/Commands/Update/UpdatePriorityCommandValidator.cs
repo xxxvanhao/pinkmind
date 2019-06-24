@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Priorities.Commands.Update
 {
-  class UpdatePriorityCommandValidator : AbstractValidator<UpdatePriorityCommand>
+  public class UpdatePriorityCommandValidator : AbstractValidator<UpdatePriorityCommand>
   {
     public UpdatePriorityCommandValidator()
     {

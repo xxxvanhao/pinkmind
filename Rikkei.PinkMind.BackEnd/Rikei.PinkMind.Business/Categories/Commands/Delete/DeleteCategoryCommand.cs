@@ -7,6 +7,6 @@ namespace Rikei.PinkMind.Business.Categories.Commands.Delete
 {
   public class DeleteCategoryCommand : IRequest
   {
-    public long ID { get; set; }
+    public int ID { get; set; }
   }
 }

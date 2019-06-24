@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Versions.Commands.Delete
 {
-  class DeleteVersionCommandQueryHandler : IRequestHandler<DeleteVersioncommand, Unit>
+  public class DeleteVersionCommandQueryHandler : IRequestHandler<DeleteVersioncommand, Unit>
   {
     private readonly PinkMindContext _pmContext;
     public DeleteVersionCommandQueryHandler(PinkMindContext pmContext)

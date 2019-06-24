@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.IssueTypes.Queries
 {
-  class GetIssueTypeQueryHandler : IRequestHandler<GetIssueTypeQuery, IssueTypeModel>
+  public class GetIssueTypeQueryHandler : IRequestHandler<GetIssueTypeQuery, IssueTypeModel>
   {
     private readonly PinkMindContext _pmContext;
     public GetIssueTypeQueryHandler(PinkMindContext pinkMindContext)

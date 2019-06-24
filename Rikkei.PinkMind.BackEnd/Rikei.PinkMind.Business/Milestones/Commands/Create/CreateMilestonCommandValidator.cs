@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Milestones.Commands.Create
 {
-  public class CreateVersionCommandValidator : AbstractValidator<VersionModel>
+  public class CreateMilestonCommandValidator : AbstractValidator<MilestonModel>
   {
-    public CreateVersionCommandValidator()
+    public CreateMilestonCommandValidator()
     {
       RuleFor(x => x.Name).NotEmpty();
       RuleFor(x => x.CreateBy).NotEmpty();

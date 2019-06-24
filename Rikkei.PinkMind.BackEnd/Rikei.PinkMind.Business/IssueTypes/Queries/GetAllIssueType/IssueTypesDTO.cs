@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.IssueTypes.Queries.GetAllIssueType
 {
-    public class IssueTypesDTO
-    {
+  public class IssueTypesDTO
+  {
     public int ID { get; set; }
     public string Name { get; set; }
     public string BackgroundColor { get; set; }

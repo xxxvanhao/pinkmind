@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Versions.Commands.Create
 {
-  class CreateVersionCommand : IRequest
+  public class CreateVersionCommand : IRequest
   {
     public string Name { get; set; }
     public int CreateBy { get; set; }

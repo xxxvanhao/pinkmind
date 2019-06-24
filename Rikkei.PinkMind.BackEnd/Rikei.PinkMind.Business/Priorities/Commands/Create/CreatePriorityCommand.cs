@@ -13,6 +13,7 @@ namespace Rikei.PinkMind.Business.Priorities.Commands.Create
     public string Name { get; set; }
     public long CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
+    public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
     public class Handler : IRequestHandler<CreatePriorityCommand, int>
     {
@@ -28,6 +29,7 @@ namespace Rikei.PinkMind.Business.Priorities.Commands.Create
           Name = request.Name,
           CreateAt = DateTime.UtcNow,
           CreateBy = request.CreateBy,
+          LastUpdate = DateTime.UtcNow,
           DelFlag = true
         };
         _pmContext.Priorities.Add(entity);

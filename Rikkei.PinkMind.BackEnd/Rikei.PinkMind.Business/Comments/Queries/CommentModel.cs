@@ -8,7 +8,7 @@ namespace Rikei.PinkMind.Business.Comments.Queries
 {
   public class CommentModel
   {
-    public long ID { get; set; }
+    public int ID { get; set; }
     public string Content { get; set; }
     public long CreateBy { get; set; }
     public DateTime CreateAt { get; set; }

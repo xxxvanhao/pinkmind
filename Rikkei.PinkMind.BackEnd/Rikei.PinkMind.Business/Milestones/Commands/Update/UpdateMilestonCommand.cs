@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Milestones.Commands.Update
 {
-  public class UpdateVersionCommand : IRequest
+  public class UpdateMilestonCommand : IRequest
   {
     public long ID { get; set; }
     public string Name { get; set; }
@@ -21,7 +21,7 @@ namespace Rikei.PinkMind.Business.Milestones.Commands.Update
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
     public string CheckUpdate { get; set; }
-    public class Handler : IRequestHandler<UpdateVersionCommand, Unit>
+    public class Handler : IRequestHandler<UpdateMilestonCommand, Unit>
     {
       private readonly PinkMindContext _pmContext;
       public Handler(PinkMindContext pmContext)
@@ -29,7 +29,7 @@ namespace Rikei.PinkMind.Business.Milestones.Commands.Update
         _pmContext = pmContext;
       }
 
-      public async Task<Unit> Handle(UpdateVersionCommand request, CancellationToken cancellationToken)
+      public async Task<Unit> Handle(UpdateMilestonCommand request, CancellationToken cancellationToken)
       {
         var entity = await _pmContext.Milestones.SingleOrDefaultAsync(u => u.ID == request.ID);
         if (entity == null)

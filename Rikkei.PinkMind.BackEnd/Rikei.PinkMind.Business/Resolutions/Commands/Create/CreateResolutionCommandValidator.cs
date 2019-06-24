@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Resolutions.Commands.Create
 {
-    class CreateResolutionCommandValidator : AbstractValidator<CreateResolutionCommand>
+  public class CreateResolutionCommandValidator : AbstractValidator<CreateResolutionCommand>
   {
     public CreateResolutionCommandValidator()
     {

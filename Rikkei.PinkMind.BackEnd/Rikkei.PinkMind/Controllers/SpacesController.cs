@@ -20,7 +20,6 @@ namespace Rikkei.PinkMind.API.Controllers
     {
     private readonly IMediator _mediator;
     private readonly ClaimsPrincipal _caller;
-
     public SpacesController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
     {
       _mediator = mediator;

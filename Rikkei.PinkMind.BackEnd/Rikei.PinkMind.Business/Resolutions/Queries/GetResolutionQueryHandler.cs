@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Resolutions.Queries
 {
-    class GetResolutionQueryHandler : IRequestHandler<GetResolutionQuery, ResolutionModel>
+  public class GetResolutionQueryHandler : IRequestHandler<GetResolutionQuery, ResolutionModel>
   {
     private readonly PinkMindContext _pmContext;
     public GetResolutionQueryHandler(PinkMindContext pinkMindContext)

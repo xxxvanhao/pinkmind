@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Milestones.Queries.GetMileston
 {
-  public class VersionModel
+  public class MilestonModel
   {
     public long ID { get; set; }
     public string Name { get; set; }
@@ -17,11 +17,11 @@ namespace Rikei.PinkMind.Business.Milestones.Queries.GetMileston
     public bool DelFlag { get; set; }
     public byte[] CheckUpdate { get; set; }
 
-    public static Expression<Func<Milestone, VersionModel>> Projection
+    public static Expression<Func<Milestone, MilestonModel>> Projection
     {
       get
       {
-        return milestone => new VersionModel
+        return milestone => new MilestonModel
         {
           ID = milestone.ID,
           Name = milestone.Name,
@@ -34,7 +34,7 @@ namespace Rikei.PinkMind.Business.Milestones.Queries.GetMileston
         };
       }
     }
-    public static VersionModel Create(Milestone milestone)
+    public static MilestonModel Create(Milestone milestone)
     {
       return Projection.Compile().Invoke(milestone);
     }

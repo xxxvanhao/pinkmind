@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Comments.Queries
 {
-  class GetCommentQueryHandler : IRequestHandler<GetCommentQuery, CommentModel>
+  public class GetCommentQueryHandler : IRequestHandler<GetCommentQuery, CommentModel>
   {
     private readonly PinkMindContext _pmContext;
     public GetCommentQueryHandler(PinkMindContext pinkMindContext)

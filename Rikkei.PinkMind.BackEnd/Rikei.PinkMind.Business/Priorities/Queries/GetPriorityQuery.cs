@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Priorities.Queries
 {
-  public class GetPriorityQuery : IRequest<PriorityModel>
+  public class GetAllPriorityQuery : IRequest<PriorityViewModel>
   {
-    public long ID { get; set; }
+    public int ID { get; set; }
   }
 }

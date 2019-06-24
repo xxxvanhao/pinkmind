@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Issues.Commands.Create
 {
-  class CreateIssueCommand : IRequest
+  public class CreateIssueCommand : IRequest
   {
-    public int ID { get; set; }
     public int IssueTypeID { get; set; }
     public string IssueKey { get; set; }
     public string Subject { get; set; }

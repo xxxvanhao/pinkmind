@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Versions.Queries.GetAllVersions
 {
-    class GetAllVersionQueryHandler
-    {
+  public class GetAllVersionQueryHandler
+  {
     private readonly PinkMindContext _pmContext;
     private readonly IMapper _mapper;
     public GetAllVersionQueryHandler(PinkMindContext pinkMindContext, IMapper mapper)

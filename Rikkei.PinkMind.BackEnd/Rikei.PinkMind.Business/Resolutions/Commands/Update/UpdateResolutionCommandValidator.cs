@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Rikei.PinkMind.Business.Resolutions.Commands.Update
 {
-  class UpdateResolutionCommandValidator : AbstractValidator<UpdateResolutionCommand>
+  public class UpdateResolutionCommandValidator : AbstractValidator<UpdateResolutionCommand>
   {
     public UpdateResolutionCommandValidator()
     {

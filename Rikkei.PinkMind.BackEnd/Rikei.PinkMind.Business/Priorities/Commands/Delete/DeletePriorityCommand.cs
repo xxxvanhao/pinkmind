@@ -2,8 +2,8 @@ using MediatR;
 
 namespace Rikei.PinkMind.Business.Priorities.Commands.Delete
 {
-  class DeletePriorityCommand : IRequest
+  public class DeletePriorityCommand : IRequest
   {
-    public long ID { get; set; }
+    public int ID { get; set; }
   }
 }

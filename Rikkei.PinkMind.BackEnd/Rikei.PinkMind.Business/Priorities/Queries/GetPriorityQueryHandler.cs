@@ -8,25 +8,25 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Rikei.PinkMind.Business.Priorities.Queries
+namespace Rikei.PinkMind.Business.Priorities.Queries.GetAllPriority
 {
-    class GetPriorityQueryHandler : IRequestHandler<GetPriorityQuery, PriorityModel>
+  public class GetAllPriorityQueryHandler : IRequestHandler<GetAllPriorityQuery, PriorityViewModel>
   {
     private readonly PinkMindContext _pmContext;
-    public GetPriorityQueryHandler(PinkMindContext pinkMindContext)
-    {
-      _pmContext = pinkMindContext;
-    }
-    public async Task<PriorityModel> Handle(GetPriorityQuery request, CancellationToken cancellationToken)
-    {
-      var entity = await _pmContext.Priorities.FindAsync(request.ID);
-
-      if (entity == null)
-      {
-        throw new NotFoundException(nameof(Priority), request.ID);
-      }
-
-      return PriorityModel.Create(entity);
-    }
+  public GetAllPriorityQueryHandler(PinkMindContext pinkMindContext)
+  {
+    _pmContext = pinkMindContext;
   }
+  public async Task<PriorityViewModel> Handle(GetAllPriorityQuery request, CancellationToken cancellationToken)
+  {
+    var entity = await _pmContext.Priorities.FindAsync(request.ID);
+
+    if (entity == null)
+    {
+      throw new NotFoundException(nameof(Priority), request.ID);
+    }
+
+    return PriorityViewModel.Create(entity);
+  }
+}
 }

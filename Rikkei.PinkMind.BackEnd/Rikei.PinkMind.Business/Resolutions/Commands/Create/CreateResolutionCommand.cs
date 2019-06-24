@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Resolutions.Commands.Create
 {
-  class CreateResolutionCommand : IRequest
+  public class CreateResolutionCommand : IRequest
   {
     public string Name { get; set; }
     public DateTime CreateAt { get; set; }
@@ -30,7 +30,7 @@ namespace Rikei.PinkMind.Business.Resolutions.Commands.Create
           CreateAt = DateTime.UtcNow,
           CreateBy = request.CreateBy,
           DelFlag = request.DelFlag
-          
+
         };
         _pmContext.Resolutions.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);

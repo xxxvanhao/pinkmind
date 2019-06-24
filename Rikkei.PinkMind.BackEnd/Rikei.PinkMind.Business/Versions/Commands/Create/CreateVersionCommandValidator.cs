@@ -1,8 +1,5 @@
 using FluentValidation;
-using Rikei.PinkMind.Business.Milestones.Queries.GetMileston;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Rikei.PinkMind.Business.Versions.Queries.GetVersion;
 
 namespace Rikei.PinkMind.Business.Versions.Commands.Create
 {

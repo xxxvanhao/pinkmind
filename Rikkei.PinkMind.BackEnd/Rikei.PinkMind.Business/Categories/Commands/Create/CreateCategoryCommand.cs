@@ -11,11 +11,12 @@ namespace Rikei.PinkMind.Business.Categories.Commands.Create
 {
   public class CreateCategoryCommand : IRequest
   {
-    public int ID { get; set; }
     public string Name { get; set; }
     public int CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
     public bool DelFlag { get; set; }
+    public long UpdateBy { get; set; }
+    public DateTime LastUpdate { get; set; }
     public class Handler : IRequestHandler<CreateCategoryCommand, Unit>
     {
       private readonly PinkMindContext _pmContext;
@@ -30,6 +31,8 @@ namespace Rikei.PinkMind.Business.Categories.Commands.Create
           Name = request.Name,
           CreateAt = DateTime.UtcNow,
           CreateBy = request.CreateBy,
+          UpdateBy = request.UpdateBy,
+          LastUpdate = DateTime.UtcNow,
           DelFlag = true
         };
         _pmContext.Categories.Add(entity);
