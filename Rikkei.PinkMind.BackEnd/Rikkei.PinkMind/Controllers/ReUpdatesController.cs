@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Rikei.PinkMind.Business.ReUpdate.Create;
@@ -11,6 +12,8 @@ using Rikei.PinkMind.Business.ReUpdate.GetDetails;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
+
+    [Authorize(Policy = "ApiUser")]
     [Route("api/[controller]")]
     [ApiController]
     public class ReUpdatesController : ControllerBase
@@ -28,8 +31,8 @@ namespace Rikkei.PinkMind.API.Controllers
     [HttpGet]
     public async Task<ActionResult<ReUpdateViewModel>> GetReUpdate()
     {
-      //var userID = _caller.Claims.Single(u => u.Type == "id"); /*Convert.ToInt64(userID.Value)*/
-      return Ok(await _mediator.Send(new GetReUpdateQuery { userID = 2243545045909014 }));
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      return Ok(await _mediator.Send(new GetReUpdateQuery { userID = Convert.ToInt64(userID.Value) }));
     }
 
     [HttpPost]

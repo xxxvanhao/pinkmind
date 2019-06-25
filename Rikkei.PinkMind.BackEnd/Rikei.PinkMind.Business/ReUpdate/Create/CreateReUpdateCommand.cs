@@ -5,6 +5,8 @@ using System;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.Net;
 
 namespace Rikei.PinkMind.Business.ReUpdate.Create
 {
@@ -34,11 +36,11 @@ namespace Rikei.PinkMind.Business.ReUpdate.Create
         {
           AvatarPath = request.AvatarPath,
           UserName = request.UserName,
-          ActionName = request.ActionName,
+          ActionName = WebUtility.HtmlEncode(request.ActionName),
           IssueKey = request.IssueKey,
           Subject = request.Subject,
-          Content = request.Content,
-          UpdateTime  = DateTime.UtcNow,
+          Content = WebUtility.HtmlEncode(request.Content),
+          UpdateTime  = DateTime.Now,
           SpaceID = request.SpaceID,
           ProjectKey = request.ProjectKey
         };

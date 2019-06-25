@@ -57,7 +57,6 @@ C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEn
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.IdentityModel.JsonWebTokens.pdb
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.IdentityModel.JsonWebTokens.xml
-C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.AssemblyInfoInputs.cache
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.AssemblyInfo.cs

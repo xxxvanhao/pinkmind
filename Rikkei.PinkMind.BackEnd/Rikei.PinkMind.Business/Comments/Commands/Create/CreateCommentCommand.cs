@@ -1,7 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting.Internal;
 using Rikei.PinkMind.Business.Files.Commands.Create;
 using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
