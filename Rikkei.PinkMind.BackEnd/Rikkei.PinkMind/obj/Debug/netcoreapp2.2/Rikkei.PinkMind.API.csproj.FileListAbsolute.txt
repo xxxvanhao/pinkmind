@@ -38,12 +38,6 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreap
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.pdb
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikei.PinkMind.Business.pdb
-C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.csprojAssemblyReference.cache
-C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.csproj.CoreCompileInputs.cache
-C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.RazorAssemblyInfo.cache
-C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.RazorAssemblyInfo.cs
-C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.AssemblyInfoInputs.cache
-C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.AssemblyInfo.cs
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.API.deps.json
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.API.runtimeconfig.json
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.API.runtimeconfig.dev.json
@@ -55,6 +49,12 @@ C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEn
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikei.PinkMind.Business.pdb
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PindMind.DAO.pdb
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.pdb
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.RazorAssemblyInfo.cache
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.RazorAssemblyInfo.cs
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.AssemblyInfo.cs
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.RazorTargetAssemblyInfo.cache
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.csproj.CopyComplete
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.API.dll
