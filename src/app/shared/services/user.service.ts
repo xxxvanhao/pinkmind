@@ -213,9 +213,9 @@ export class UserService extends BaseService {
     return this.http.get(this.baseUrl + '/ReUpdates', {headers})
     .toPromise()
     .then((res: any) => {
-      this.listReUpdate = res.reUpdateDTOs;
-      this.listDateReUpdate = Array.from(new Set((this.listReUpdate as any).map((item: any) => moment(item.updateTime).format('MMM DD, YYYY'))));
-      console.log(this.listDateReUpdate);
+      this.listDateReUpdate = Array.from(new Set((res.reUpdateDTOs as any).map((item: any) =>
+        moment(item.updateTime).format('MMM DD, YYYY'))));
+      this.listReUpdate = res.reUpdateDTOs.reverse();
     });
   }
 }

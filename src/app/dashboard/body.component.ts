@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/services/user.service';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 declare var jquery: any;
 declare var $: any;
@@ -25,6 +24,7 @@ export class BodyComponent implements OnInit {
     this.checkAddUser();
     // setTimeout(this.checkProject, 1000);
     this.userService.getReUpdate();
+    setTimeout(this.checkTimeLine, 1000);
   }
 
   checkProject() {
@@ -52,6 +52,18 @@ export class BodyComponent implements OnInit {
           this.refId[0].value = `http://localhost:4200/account/facebook-login?refid=${res.controlBy}`;
         },
         err => err);
+  }
+
+  checkTimeLine() {
+  const timeLine = document.getElementsByClassName('isNo-items timeline') as any;
+  const issue = document.getElementsByClassName('issue') as any;
+  console.log(timeLine);
+    if (timeLine.length > 0) {
+      issue[0].style.marginLeft = '-35.63rem';
+      issue[0].style.transition = '0.5s';
+    } else {
+      issue[0].style.marginLeft = '0px';
+    }
   }
   onSubmit(formProject: NgForm) {
     this.userService.postProject(formProject.value).subscribe(

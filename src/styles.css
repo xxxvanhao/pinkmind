@@ -128,7 +128,7 @@ body {
     font-size: .88rem;
 }
 
-.timeline .row:not(:last-child),
+.timeline .row,
 .milestone-list-items:not(:last-child),
 .category-list-items:not(:last-child) {
     border-bottom: 1px solid #ddd;
@@ -172,6 +172,10 @@ body {
 
 .timeline .row .timeAgo {
     font-size: .8rem;
+}
+
+.avatarProfile {
+    border-radius: 50%;
 }
 
 
@@ -436,19 +440,23 @@ table {
     color: white;
 }
 
-.home-open {
+.home-open,
+.status.Open {
     background-color: #ed8077;
 }
 
-.home-progress {
+.home-progress,
+.status.In.Progress {
     background-color: #4488c5;
 }
 
-.home-resolve {
+.home-resolve,
+.status.Resovled {
     background-color: #5eb5a6;
 }
 
-.home-close {
+.home-close,
+.status.Closed {
     background-color: #b0be3c;
 }
 

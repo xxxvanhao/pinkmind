@@ -82,37 +82,43 @@
         </div>
     </div>
     <div class="main ">
-        <div class="row ">
+        <div class="row main-body">
             <div class="col-md-6 ">
                 <div class="timeline-wraper ">
                     <h5>Recent Updates</h5>
                     <div class="timeline-content ">
-                        <div class="timeline" *ngFor="let ut of userService.listDateReUpdate">
-                            <h6 class=" timeline-date ">{{ut}}</h6>
-                            <div class="display-content" *ngFor="let lud of userService.listReUpdate">
-                                <div class="row" *ngIf="(lud.updateTime | date: 'MM/dd/yyyy' ) == (ut | date: 'MM/dd/yyyy')">
-                                    <div class="col-md-2 text-center timeline-avatar ">
-                                        <img src="{{lud.avatarPath}}">
-                                    </div>
-                                    <div class="col-md-7 pl-0 py-2 ">
-                                        <span class="title ">
-                                      <span class="fn ">{{lud.userName}}</span>
-                                        <span class="action ">updated</span>the issues
-                                        </span>
-                                        <div class="action-content ">
-                                            <a class="issue-key mr-1 " href="#">{{lud.issueKey}}</a>
-                                            <span class="subject ">{{lud.subject}}</span>
-                                            <div class="content " [innerHTML]="lud.content"></div>
-                                            <div class="attachment-file "></div>
+                        <div *ngIf="(userService.listProject | keyvalue)?.length> 0; else notShowTimeLine">
+                            <div class="timeline" *ngFor="let ut of userService.listDateReUpdate">
+                                <h6 class=" timeline-date ">{{ut}}</h6>
+                                <div class="display-content" *ngFor="let lud of userService.listReUpdate">
+                                    <div class="row" *ngIf="(lud.updateTime | date: 'MM/dd/yyyy' ) == (ut | date: 'MM/dd/yyyy')">
+                                        <div class="col-md-2 text-center timeline-avatar ">
+                                            <img class="avatarProfile" src="{{lud.avatarPath}}">
                                         </div>
-                                        <div class="file "></div>
-                                    </div>
-                                    <div class="col-md-3 d-flex justify-content-end py-2 ">
-                                        <span class="timeAgo ">{{lud.updateTime | timeago: live}}</span>
+                                        <div class="col-md-7 pl-0 py-2 ">
+                                            <span class="title ">
+                                      <span class="fn ">{{lud.userName}}</span>
+                                            <span class="action ">updated</span>the issues
+                                            </span>
+                                            <div class="action-content ">
+                                                <a class="issue-key mr-1 " href="#">{{lud.issueKey}}</a>
+                                                <span class="subject ">{{lud.subject}}</span>
+                                                <div class="content " [innerHTML]="lud.content"></div>
+                                                <div class="attachment-file "></div>
+                                            </div>
+                                            <div class="file "></div>
+                                        </div>
+                                        <div class="col-md-3 d-flex justify-content-end py-2 ">
+                                            <span class="timeAgo ">{{lud.updateTime | timeago: live}}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <ng-template #notShowTimeLine>
+                            <div class="isNo-items timeline"><span>There are no update.<br>Recently update will be listed here.</span></div>
+                        </ng-template>
                     </div>
                 </div>
             </div>
@@ -121,7 +127,7 @@
                     <h5>Projects</h5>
                     <div class="project-list ">
 
-                        <div class="isNo-items " *ngIf="!(userService.listProject | keyvalue)?.length> 0; else notShow"><span>There are no projects assigned to you yet.<br>Projects assigned to you will be listed here.</span></div>
+                        <div class="isNo-items " *ngIf="!(userService.listProject | keyvalue)?.length> 0; else notShow"><span>There are no project<br>Projects assigned to you will be listed here.</span></div>
                         <ng-template #notShow></ng-template>
 
                         <div class="project-content" *ngFor="let p of userService.listProject">
@@ -165,12 +171,12 @@
                                     <th>Due</th>
                                 </tr>
                             </thead>
-                            <tbody class="issue-tbody ">
+                            <tbody class="issue-tbody " align="center">
                                 <tr class="tr-body">
                                     <td><a href="# ">FRS_K1-4</a></td>
-                                    <td>Code các phần common front-end</td>
+                                    <td class="text-left">Code các phần common front-end</td>
                                     <td>Normal</td>
-                                    <td><span class="status ">In progress</span></td>
+                                    <td><span class="status">In progress</span></td>
                                     <td>Jun. 1</td>
                                 </tr>
                             </tbody>
