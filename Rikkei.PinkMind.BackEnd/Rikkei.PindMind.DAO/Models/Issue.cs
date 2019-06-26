@@ -15,7 +15,7 @@ namespace Rikkei.PindMind.DAO.Models
         public string Subject { get; set; }
         public string Description { get; set; }
         public int StatusID { get; set; }
-        public int? AssigneeUser { get; set; }
+        public long? AssigneeUser { get; set; }
         public int? PriorityID { get; set; }
         public int? CategoryID { get; set; }
         public int? MilestoneID { get; set; }
@@ -54,6 +54,5 @@ namespace Rikkei.PindMind.DAO.Models
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Notify> Notifies { get; set; }
         public ICollection<User> User { get; set; }
-
     }
 }

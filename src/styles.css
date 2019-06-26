@@ -15,13 +15,14 @@ body {
 .status,
 .deleteIssue,
 .is-active,
+.if-active,
+.idd-active,
 .is-item:hover {
-    background-color: #4caf93;
+    background-color: #4caf93 !important;
     padding: 3px 10px;
     margin: 0 3px;
     border-radius: 20px;
     color: white;
-    line-height: 2.5rem;
     font-size: .8rem;
     cursor: pointer;
 }
@@ -128,7 +129,7 @@ body {
     font-size: .88rem;
 }
 
-.timeline .row:not(:last-child),
+.timeline .row,
 .milestone-list-items:not(:last-child),
 .category-list-items:not(:last-child) {
     border-bottom: 1px solid #ddd;
@@ -141,11 +142,12 @@ body {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
 }
 
+.title-recent,
 .title {
     font-weight: 600;
 }
 
-.title .fn {
+.title-recent .fn {
     margin-right: 3px;
 }
 
@@ -174,6 +176,10 @@ body {
     font-size: .8rem;
 }
 
+.avatarProfile {
+    border-radius: 50%;
+}
+
 
 /****My Issue****/
 
@@ -195,8 +201,13 @@ body {
     margin-right: 5px;
 }
 
-.issue-menu .is-item {
+.issue-menu .is-item,
+.search-conditions .is-item {
     margin-right: 15px;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
 .issue-table,
@@ -243,7 +254,7 @@ table {
 
 .issue-tbody tr td,
 .file-tbody tr td {
-    padding: 0 6px;
+    padding: 8px 6px;
 }
 
 .issue-tbody tr:hover,
@@ -436,19 +447,23 @@ table {
     color: white;
 }
 
-.home-open {
+.home-open,
+.status.Open {
     background-color: #ed8077;
 }
 
-.home-progress {
+.home-progress,
+.status.In.Progress {
     background-color: #4488c5;
 }
 
-.home-resolve {
+.home-resolve,
+.status.Resovled {
     background-color: #5eb5a6;
 }
 
-.home-close {
+.home-close,
+.status.Closed {
     background-color: #b0be3c;
 }
 

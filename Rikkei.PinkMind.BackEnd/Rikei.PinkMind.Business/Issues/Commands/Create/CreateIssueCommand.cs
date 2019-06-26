@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,17 +20,18 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
     public string Subject { get; set; }
     public string Description { get; set; }
     public int StatusID { get; set; }
-    public int AssigneeUser { get; set; }
-    public int PriorityID { get; set; }
-    public int CategoryID { get; set; }
-    public int MilestoneID { get; set; }
-    public int VersionID { get; set; }
+    public long? AssigneeUser { get; set; }
+    public int? PriorityID { get; set; }
+    public int? CategoryID { get; set; }
+    public int? MilestoneID { get; set; }
+    public int? VersionID { get; set; }
     public int? ResolutionID { get; set; }
     public DateTime DueDate { get; set; }
     public string ProjectID { get; set; }
     public long CreateBy { get; set; }
     public long UpdateBy { get; set; }
     public DateTime CreateAt { get; set; }
+    public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
     [Timestamp]
     public byte[] CheckUpdate { get; set; }
@@ -45,9 +47,7 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
       }
       public async Task<Unit> Handle(CreateIssueCommand request, CancellationToken cancellationToken)
       {
-        try
-        {
-          var entity = new Issue
+          var eIssue = new Issue
           {
             IssueTypeID = request.IssueTypeID,
             Subject = request.Subject,
@@ -67,13 +67,28 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           };
-          _pmContext.Issues.Add(entity);
+          _pmContext.Issues.Add(eIssue);
           await _pmContext.SaveChangesAsync(cancellationToken);
-        }
-        catch (Exception ex)
+
+        var uDetails = await _pmContext.Users.FindAsync(request.CreateBy);
+        string actineName = "added a new <span class='action'>issue</span>";
+        var eReUpdate = new ReUpdateSpace
         {
-          Debug.WriteLine(ex.Message);
-        }
+          AvatarPath = uDetails.PictureUrl,
+          UserName = $"{uDetails.FirstName} {uDetails.LastUpdate}",
+          ActionName = WebUtility.HtmlEncode(actineName),
+          IssueKey = $"{request.ProjectID}-{eIssue.ID}",
+          Subject = request.Subject,
+          Content = request.Description,
+          ProjectKey = request.ProjectID,
+          SpaceID = uDetails.SpaceID,
+          UpdateTime = DateTime.UtcNow
+        };
+        _pmContext.ReUpdates.Add(eReUpdate);
+
+
+        await _pmContext.SaveChangesAsync(cancellationToken);
+
         ////Save files
         //if (request.File != null)
         //{

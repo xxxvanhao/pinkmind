@@ -42,7 +42,6 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
           CreateBy = request.CreateBy,
           UpdateBy = request.UpdateBy,
           LastUpdate = DateTime.UtcNow,
-          FileName = "",
           DelFlag = true,
         };
         _pmContext.Comments.Add(entity);

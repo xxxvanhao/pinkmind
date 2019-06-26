@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 declare var jquery: any;
 declare var $: any;
 
@@ -12,10 +12,14 @@ declare var $: any;
 export class FileComponent implements OnInit {
 
   paramFileId: string;
-  constructor(private userService: UserService, private route: ActivatedRoute) { 
+  isProjectKey: boolean;
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
+
   }
 
   ngOnInit() {
+
+    this.getParamProjectFile();
     $('#checkAll').click(() => {
     $('.check').prop('checked', $(this).prop('checked'));
     });
@@ -31,15 +35,27 @@ export class FileComponent implements OnInit {
     $('.add-folder-erea').hide();
     });
 
-    this.getParamProjectFile();
   }
 
   getParamProjectFile() {
     this.route.params.subscribe(params => {
       this.paramFileId = params['id'];
+      this.checkProject();
       this.userService.getParamSpaceId(this.paramFileId);
       });
   }
 
+  checkProject() {
+    this.userService.getProject().then((res: any) => {
+      for (const item of res) {
+        if (item.id === this.paramFileId) {
+          this.isProjectKey = true;
+        }
+      }
+      if (this.isProjectKey == undefined) {
+        this.router.navigate(['dashboard']);
+      }
+    });
+  }
 }
 

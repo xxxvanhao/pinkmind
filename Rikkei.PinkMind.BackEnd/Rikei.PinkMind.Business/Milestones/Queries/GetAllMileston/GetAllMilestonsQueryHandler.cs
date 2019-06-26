@@ -10,7 +10,7 @@ using MediatR;
 
 namespace Rikei.PinkMind.Business.Milestones.Queries.GetAllMileston
 {
-  public class GetAllMilestonsQueryHandler 
+  public class GetAllMilestonsQueryHandler : IRequestHandler<GetAllMilestoneQuery, MilestonsViewModel>
   { 
     private readonly PinkMindContext _pmContext;
     private readonly IMapper _mapper;
@@ -20,7 +20,7 @@ namespace Rikei.PinkMind.Business.Milestones.Queries.GetAllMileston
       _mapper = mapper;
     }
 
-    public async Task<MilestonsViewModel> Handle(CancellationToken cancellationToken)
+    public async Task<MilestonsViewModel> Handle(GetAllMilestoneQuery request, CancellationToken cancellationToken)
     {
       var Milestons = from mile in _pmContext.Milestones select mile;
       var AllMilestons = await Milestons.ToListAsync(cancellationToken);
@@ -30,7 +30,6 @@ namespace Rikei.PinkMind.Business.Milestones.Queries.GetAllMileston
         Milestons = _mapper.Map<IEnumerable<MilestonsDTO>>(AllMilestons)
       };
       return model;
-      throw new NotImplementedException();
     }
   }
 }

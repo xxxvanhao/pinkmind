@@ -13,16 +13,16 @@ namespace Rikei.PinkMind.Business.Issues.Queries.GetAllIssues
     public string Description { get; set; }
     public int StatusID { get; set; }
     public string StatusName { get; set; }
-    public int AssigneeUser { get; set; }
+    public long? AssigneeUser { get; set; }
     public string AssigneeName { get; set; }
     public string AssigneePicture { get; set; }
-    public int PriorityID { get; set; }
+    public int? PriorityID { get; set; }
     public string PriorityName { get; set; }
-    public int CategoryID { get; set; }
+    public int? CategoryID { get; set; }
     public string CategoryName { get; set; }
-    public int MilestoneID { get; set; }
+    public int? MilestoneID { get; set; }
     public string MilestonName { get; set; }
-    public int VersionID { get; set; }
+    public int? VersionID { get; set; }
     public string VersionName { get; set; }
     public int? ResolutionID { get; set; }
     public string ResolutionName { get; set; }

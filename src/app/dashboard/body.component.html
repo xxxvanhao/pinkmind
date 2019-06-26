@@ -35,7 +35,7 @@
                                                 <label for="name">Project name</label>
                                                 <input type="text" name="name" ngModel #name="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-3 px-2">
                                                 <label for="id">Project key</label>
-                                                <input type="text " name="id" ngModel #id="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-1 px-2">
+                                                <input type="text " name="id" ngModel #id="ngModel" required minlength="3" maxlength="5" class="input-fix d-flex mb-1 px-2">
                                                 <p>The project key is a unique identifier for a project. A short, concise key is recommended.</p>
                                                 <p>(e.g. Project name Backlog has project key BLG_2) Uppercase letters (A-Z), numbers (0-9) and underscore (_) can be used.</p>
                                             </div>
@@ -82,37 +82,43 @@
         </div>
     </div>
     <div class="main ">
-        <div class="row ">
+        <div class="row main-body">
             <div class="col-md-6 ">
                 <div class="timeline-wraper ">
                     <h5>Recent Updates</h5>
                     <div class="timeline-content ">
-                        <div class="timeline" *ngFor="let ut of userService.listDateReUpdate">
-                            <h6 class=" timeline-date ">{{ut}}</h6>
-                            <div class="display-content" *ngFor="let lud of userService.listReUpdate">
-                                <div class="row" *ngIf="(lud.updateTime | date: 'MM/dd/yyyy' ) == (ut | date: 'MM/dd/yyyy')">
-                                    <div class="col-md-2 text-center timeline-avatar ">
-                                        <img src="{{lud.avatarPath}}">
-                                    </div>
-                                    <div class="col-md-7 pl-0 py-2 ">
-                                        <span class="title ">
-                                      <span class="fn ">{{lud.userName}}</span>
-                                        <span class="action ">updated</span>the issues
-                                        </span>
-                                        <div class="action-content ">
-                                            <a class="issue-key mr-1 " href="#">{{lud.issueKey}}</a>
-                                            <span class="subject ">{{lud.subject}}</span>
-                                            <div class="content " [innerHTML]="lud.content"></div>
-                                            <div class="attachment-file "></div>
+                        <div *ngIf="(userService.listDateReUpdate | keyvalue)?.length> 0; else notShowTimeLine">
+                            <div class="timeline" *ngFor="let ut of userService.listDateReUpdate">
+                                <h6 class=" timeline-date ">{{ut}}</h6>
+                                <div class="display-content" *ngFor="let lud of userService.listReUpdate">
+                                    <div class="row" *ngIf="(lud.updateTime | date: 'MM/dd/yyyy' ) == (ut | date: 'MM/dd/yyyy')">
+                                        <div class="col-md-2 text-center timeline-avatar ">
+                                            <img class="avatarProfile" src="{{lud.avatarPath}}">
                                         </div>
-                                        <div class="file "></div>
-                                    </div>
-                                    <div class="col-md-3 d-flex justify-content-end py-2 ">
-                                        <span class="timeAgo ">{{lud.updateTime | timeago: live}}</span>
+                                        <div class="col-md-7 pl-0 py-2 ">
+                                            <div class="title-recent">
+                                                <span class="fn">{{lud.userName}}</span>
+                                                <span [innerHTML]="lud.actionName"></span>
+                                            </div>
+                                            <div class="action-content ">
+                                                <a class="issue-key mr-1 " href="#">{{lud.issueKey}}</a>
+                                                <span class="subject ">{{lud.subject}}</span>
+                                                <div class="content " [innerHTML]="lud.content"></div>
+                                                <div class="attachment-file "></div>
+                                            </div>
+                                            <div class="file "></div>
+                                        </div>
+                                        <div class="col-md-3 d-flex justify-content-end py-2 ">
+                                            <span class="timeAgo ">{{lud.updateTime | timeago: live}}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <ng-template #notShowTimeLine>
+                            <div class="isNo-items timeline"><span>There are no update.<br>Recently update will be listed here.</span></div>
+                        </ng-template>
                     </div>
                 </div>
             </div>
@@ -121,7 +127,7 @@
                     <h5>Projects</h5>
                     <div class="project-list ">
 
-                        <div class="isNo-items " *ngIf="!(userService.listProject | keyvalue)?.length> 0; else notShow"><span>There are no projects assigned to you yet.<br>Projects assigned to you will be listed here.</span></div>
+                        <div class="isNo-items " *ngIf="!(userService.listProject | keyvalue)?.length> 0; else notShow"><span>There are no project<br>Projects assigned to you will be listed here.</span></div>
                         <ng-template #notShow></ng-template>
 
                         <div class="project-content" *ngFor="let p of userService.listProject">
@@ -142,17 +148,17 @@
                     <h5>My Issues</h5>
                     <div class="issue-table ">
                         <div class="issue-menu ">
-                            <p class="mb-0 ">
+                            <p id="if-click" class="mb-0">
                                 <span class="is-filter ">Filters:</span>
-                                <span class="is-item is-active ">Assigned to me</span>
-                                <span class="is-item ">Created by me</span>
+                                <button type="button" (click)="ifSubmit('Assigned')" class="is-item if-active">Assigned to me</button>
+                                <button type="button" (click)="ifSubmit('Created')" class="is-item ">Created by me</button>
                             </p>
-                            <p class="mb-0 ">
+                            <p id="idd-click" class="mb-0">
                                 <span class="is-dueDate ">Due date:</span>
-                                <span class="is-item is-active ">All</span>
-                                <span class="is-item ">4days</span>
-                                <span class="is-item ">Due Today</span>
-                                <span class="is-item ">Overdue</span>
+                                <button type="button" (click)="iddSubmit('all')" class="is-item idd-active">All</button>
+                                <button type="button" (click)="iddSubmit('fourDay')" class="is-item ">4days</button>
+                                <button type="button" (click)="iddSubmit('dueToday')" class="is-item ">Due Today</button>
+                                <button type="button" (click)="iddSubmit('overDue')" class="is-item ">Overdue</button>
                             </p>
                         </div>
                         <table>
@@ -165,12 +171,12 @@
                                     <th>Due</th>
                                 </tr>
                             </thead>
-                            <tbody class="issue-tbody ">
+                            <tbody class="issue-tbody " align="center">
                                 <tr class="tr-body">
                                     <td><a href="# ">FRS_K1-4</a></td>
-                                    <td>Code các phần common front-end</td>
+                                    <td class="text-left">Code các phần common front-end</td>
                                     <td>Normal</td>
-                                    <td><span class="status ">In progress</span></td>
+                                    <td><span class="status">In progress</span></td>
                                     <td>Jun. 1</td>
                                 </tr>
                             </tbody>

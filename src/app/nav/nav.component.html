@@ -10,7 +10,7 @@
                     <a class="nav-link" href="dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" (click)="userService.getProject" data-toggle="dropdown">
                                     Projects
                                 </a>
                     <div class="dropdown-menu fix-nav-project">
@@ -20,7 +20,7 @@
                                 <input type="search" id="project-search-id" class="dropbox-search" value="" (keyup)="searchProject()" name="searchProject" placeholder="Search projects">
                             </div>
 
-                            <div class="isNo-items" *ngIf="!(userService.listProject | keyvalue)?.length > 0; else notShow"><span>There are no projects assigned to you yet.<br>Projects assigned to you will be listed here.</span></div>
+                            <div class="isNo-items" *ngIf="!(userService.listProject | keyvalue)?.length > 0; else notShow"><span>There are no project<br>Projects assigned to you will be listed here.</span></div>
                             <ng-template #notShow></ng-template>
                             <div class="project-content" *ngFor="let p of userService.listProject">
                                 <div class="row mx-0 align-items-center">

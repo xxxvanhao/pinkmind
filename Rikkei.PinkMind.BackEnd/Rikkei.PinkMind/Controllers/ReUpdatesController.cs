@@ -28,11 +28,11 @@ namespace Rikkei.PinkMind.API.Controllers
     }
 
     // GET: api/ReUpdates
-    [HttpGet]
-    public async Task<ActionResult<ReUpdateViewModel>> GetReUpdate()
+    [HttpGet("{pKey}")]
+    public async Task<ActionResult<ReUpdateViewModel>> GetReUpdate(string pKey)
     {
       var userID = _caller.Claims.Single(u => u.Type == "id");
-      return Ok(await _mediator.Send(new GetReUpdateQuery { userID = Convert.ToInt64(userID.Value) }));
+      return Ok(await _mediator.Send(new GetReUpdateQuery { projectKey = pKey, userID = Convert.ToInt64(userID.Value) }));
     }
 
     [HttpPost]

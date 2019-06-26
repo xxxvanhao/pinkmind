@@ -8,9 +8,7 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
     public CreateIssueCommandValidator()
     {
       RuleFor(x => x.IssueTypeID).NotEmpty();
-      RuleFor(x => x.Subject).NotEmpty();
       RuleFor(x => x.StatusID).NotEmpty();
-      RuleFor(x => x.AssigneeUser).NotEmpty();
       RuleFor(x => x.ProjectID).NotEmpty();
       RuleFor(x => x.CreateBy).NotEmpty();
     }

@@ -2,6 +2,7 @@ using AutoMapper;
 using Rikei.PinkMind.Business.Categories.Queries.GetAllCategory;
 using Rikei.PinkMind.Business.Comments.Queries.GetAllComment;
 using Rikei.PinkMind.Business.Issues.Queries.GetAllIssues;
+using Rikei.PinkMind.Business.Milestones.Queries.GetAllMileston;
 using Rikei.PinkMind.Business.Projects.Queries;
 using Rikei.PinkMind.Business.ReUpdate.GetDetails;
 using Rikei.PinkMind.Business.TeamDetails.Queries.GetAllTeamDetail;
@@ -31,6 +32,9 @@ namespace Rikei.PinkMind.Business.AutoMapper
       CreateMap<Comment, CommentsDTO>()
         .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.ID))
         .ForMember(dest => dest.IssueID, opt => opt.MapFrom(src => src.IssueID));
+      CreateMap<Milestone, MilestonsDTO>()
+       .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.ID))
+       .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
     }
   }
 }

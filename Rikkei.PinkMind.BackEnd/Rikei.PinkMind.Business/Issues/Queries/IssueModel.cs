@@ -2,23 +2,24 @@ using Rikkei.PindMind.DAO.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Net;
 using System.Text;
 
 namespace Rikei.PinkMind.Business.Issues.Queries
 {
   public class IssueModel
   {
-    public long ID { get; set; }
-    public long IssueTypeID { get; set; }
+    public int ID { get; set; }
+    public int IssueTypeID { get; set; }
     public string Subject { get; set; }
     public string Description { get; set; }
-    public long StatusID { get; set; }
-    public long AssigneeUser { get; set; }
-    public long PriorityID { get; set; }
-    public long CategoryID { get; set; }
-    public long MilestoneID { get; set; }
-    public long VersionID { get; set; }
-    public long? ResolutionID { get; set; }
+    public int StatusID { get; set; }
+    public long? AssigneeUser { get; set; }
+    public int? PriorityID { get; set; }
+    public int? CategoryID { get; set; }
+    public int? MilestoneID { get; set; }
+    public int? VersionID { get; set; }
+    public int? ResolutionID { get; set; }
     public DateTime DueDate { get; set; }
     public string ProjectID { get; set; }
     public long CreateBy { get; set; }
@@ -36,7 +37,7 @@ namespace Rikei.PinkMind.Business.Issues.Queries
           ID = issue.ID,
           IssueTypeID = issue.IssueTypeID,
           Subject = issue.Subject,
-          Description = issue.Description,
+          Description = WebUtility.HtmlDecode(issue.Description),
           StatusID = issue.StatusID,
           AssigneeUser = issue.AssigneeUser,
           PriorityID = issue.PriorityID,

@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/services/user.service';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 declare var jquery: any;
 declare var $: any;
@@ -21,10 +20,12 @@ export class BodyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getProject();
     this.checkAddUser();
+    this.userService.getReUpdate('pkey');
     // setTimeout(this.checkProject, 1000);
-    this.userService.getReUpdate();
+    setTimeout(this.checkTimeLine, 1000);
+    this.ifSubmit('Assigned');
+    this.iddSubmit('all');
   }
 
   checkProject() {
@@ -53,18 +54,55 @@ export class BodyComponent implements OnInit {
         },
         err => err);
   }
+
+  checkTimeLine() {
+  const timeLine = document.getElementsByClassName('isNo-items timeline') as any;
+  const issue = document.getElementsByClassName('issue') as any;
+  if (timeLine.length > 0) {
+      issue[0].style.marginLeft = '-35.63rem';
+      issue[0].style.transition = '0.5s';
+    } else {
+      issue[0].style.marginLeft = '0px';
+    }
+  }
   onSubmit(formProject: NgForm) {
     this.userService.postProject(formProject.value).subscribe(
       res => {
         this.toastr.success('Successful!', 'Register Project');
+        this.router.navigate([`/projects/home/${formProject.value.id}`]);
         formProject.resetForm();
         $('.modal-backdrop').remove();
-        this.router.navigate(['/projects/home'], { queryParams: { id: formProject.value.projectKey}});
       },
       err => {
         this.toastr.error('Failed!', 'Register Project');
         formProject.resetForm();
       }
     );
+  }
+
+  ifSubmit(iParam: string) {
+    const ifClick = document.getElementById('if-click') as any;
+    const isItem = ifClick.getElementsByClassName('is-item') as any;
+    for (const item of isItem) {
+      item.addEventListener('click', () => {
+      const current = document.getElementsByClassName('if-active');
+      current[0].className = current[0].className.replace(' if-active', '');
+      item.className += ' if-active';
+      });
+    }
+    this.userService.getIssue('iPrama');
+  }
+
+  iddSubmit(iParam: string) {
+    const ifClick = document.getElementById('idd-click') as any;
+    const isItem = ifClick.getElementsByClassName('is-item') as any;
+    for (const item of isItem) {
+      item.addEventListener('click', () => {
+      const current = document.getElementsByClassName('idd-active');
+      current[0].className = current[0].className.replace(' idd-active', '');
+      item.className += ' idd-active';
+      });
+    }
+    this.userService.getIssue('iPrama');
   }
 }
