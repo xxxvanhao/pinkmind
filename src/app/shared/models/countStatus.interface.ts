@@ -1,6 +1,6 @@
 export interface CountStatus {
-    'Open': number;
-    'In Progress': number;
-    'Resolved': number;
-    'Closed': number;
+    open: number;
+    inprogress: number;
+    resolved: number;
+    closed: number;
 }

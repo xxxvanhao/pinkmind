@@ -43,7 +43,7 @@ namespace Rikkei.PinkMind.API.Controllers
       return Ok(await _mediator.Send(new SearchIssueQuery {ProjectID = projectID, Key = key, AssigneeUser = AssigneeUser, CategoryID = CategoryID, MilestoneID = MilestoneID, StatusID = StatusID }));
     }
     //GET api get by user : api/GetByUser/Key
-    [Route("GetByUser")]
+    [Route("GetByUser/{key}")]
     public async Task<ActionResult<IssuesViewModel>> GetIssueByUser(string key)
     {
       var userID = _caller.Claims.Single(u => u.Type == "id");
