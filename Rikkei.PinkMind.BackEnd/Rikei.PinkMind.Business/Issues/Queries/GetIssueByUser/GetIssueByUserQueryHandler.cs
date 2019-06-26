@@ -67,12 +67,12 @@ namespace Rikei.PinkMind.Business.Issues.Queries.GetIssueByUser
                   };
       var List = await issue.ToListAsync(cancellationToken);
 
-      if (request.Key == "Create")
+      if (request.Key == "Created")
       {
         List = await issue.Where(x => x.CreateBy == request.ID).ToListAsync(cancellationToken);
       }
 
-      else if (request.Key == "Assigner")
+      else if (request.Key == "Assigned")
       {
         List = await issue.Where(x => x.AssigneeUser == request.ID).ToListAsync(cancellationToken);
       }

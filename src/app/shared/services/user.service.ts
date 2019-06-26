@@ -11,6 +11,8 @@ import { Project } from '../models/project.interface';
 import { ReUpdate } from '../models/reUpdate.interface';
 import * as moment from 'moment';
 import { Issue } from '../models/issue.interface';
+import { IGetType } from '../models/IGetType.interface';
+import { IIssueType } from '../models/issuetype.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +25,8 @@ export class UserService extends BaseService {
   listDateReUpdate: Date[];
   listReUpdate: ReUpdate;
   listIssue: Issue;
+  mileStone: IGetType;
+  issueType: IIssueType;
 
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
@@ -232,6 +236,95 @@ export class UserService extends BaseService {
     .toPromise()
     .then((res: any) => {
       this.listIssue = res;
+    });
+  }
+  getMilestone() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Mileston/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.mileStone = res.milestons;
+    });
+  }
+  getCategory() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Category/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.mileStone = res.categories;
+    });
+  }
+
+  getIssueType() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Mileston/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.issueType = res.issueTypes;
+    });
+  }
+
+  getVersion() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Version/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.mileStone = res.versions;
+    });
+  }
+
+  getStatus() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Status/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.mileStone = res.statuses;
+    });
+  }
+
+  getPriority() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Priority/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.mileStone = res.priorities;
+    });
+  }
+
+  getResolution() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Resolution/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.mileStone = res.resolutions;
     });
   }
 }

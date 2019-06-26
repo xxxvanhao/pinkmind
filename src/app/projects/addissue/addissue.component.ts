@@ -15,15 +15,15 @@ export class AddissueComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
     this.getParamProjectAddIssue();
   }
 
   getParamProjectAddIssue() {
-    this.route.params.subscribe(params => {
+      this.route.params.subscribe(params => {
       this.paramAddIssueId = params['id'];
       this.checkProject();
       this.userService.getParamSpaceId(this.paramAddIssueId);
+      this.userService.getMilestone();
       });
   }
 
