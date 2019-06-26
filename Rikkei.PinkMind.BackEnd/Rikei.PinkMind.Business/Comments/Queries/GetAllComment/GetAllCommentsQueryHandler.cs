@@ -44,10 +44,15 @@ namespace Rikei.PinkMind.Business.Comments.Queries.GetAllComment
         tfitem.LastUpdate = item.LastUpdate;
         tfitem.UpdateBy = item.UpdateBy;
         tfitem.CheckUpdate = item.CheckUpdate;
+        tfitem.Content = item.Content;
+        tfitem.CreateAt = item.CreateAt;
+        tfitem.CreateBy = item.CreateBy;
+        tfitem.DelFlag = item.DelFlag;
+        tranfList.Add(tfitem);
       }
       var model = new CommentsViewModel
       {
-        Comments = _mapper.Map<IEnumerable<CommentsDTO>>(Allcomment)
+        Comments = _mapper.Map<IEnumerable<CommentsDTO>>(tranfList)
       };
       return model;
     }

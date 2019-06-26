@@ -89,7 +89,7 @@ namespace Rikkei.PindMind.DAO.Models
           _pmContext.SaveChanges();
         }
         //Data for Version
-        if (_pmContext.Versions.Any())
+        if (!_pmContext.Versions.Any())
         {
           _pmContext.AddRange(new Version
           {
@@ -248,11 +248,11 @@ namespace Rikkei.PindMind.DAO.Models
           {
             Name = "Admin"
           },
-          new Resolution
+          new Role
           {
             Name = "Member",
           },
-          new Resolution
+          new Role
           {
             Name = "GUEST",
           });

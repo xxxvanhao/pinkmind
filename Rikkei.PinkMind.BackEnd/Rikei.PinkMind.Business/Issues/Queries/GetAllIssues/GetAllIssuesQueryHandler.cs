@@ -6,9 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Diagnostics;
-using Rikei.PinkMind.Business.Exceptions;
 
 namespace Rikei.PinkMind.Business.Issues.Queries.GetAllIssues
 {

@@ -18,7 +18,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
-  [Authorize(Policy = "ApiUser")]
   [Route("api/[controller]")]
   [ApiController]
   public class IssueController : ControllerBase
@@ -48,8 +47,8 @@ namespace Rikkei.PinkMind.API.Controllers
     [Route("GetByUser")]
     public async Task<ActionResult<IssuesViewModel>> GetIssueByUser(string key)
     {
-      var userID = _caller.Claims.Single(u => u.Type == "id");
-      return Ok(await _mediator.Send(new GetIssueByUserQuery { Key = key, ID = Convert.ToInt64(userID) }));
+      /*var userID = _caller.Claims.Single(u => u.Type == "id")*/;
+      return Ok(await _mediator.Send(new GetIssueByUserQuery { Key = key, ID = Convert.ToInt64(2591977) }));
     }
     // GET: api/Issue/GetDetail/7
     [HttpGet("GetDetail/{id}")]
