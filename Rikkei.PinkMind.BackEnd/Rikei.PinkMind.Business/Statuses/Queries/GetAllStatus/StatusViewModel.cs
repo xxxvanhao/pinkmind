@@ -6,6 +6,6 @@ namespace Rikei.PinkMind.Business.Statuses.Queries.GetAllStatus
 {
   public class StatusViewModel
   {
-    public IEnumerable<StatusDTO> statuses { get; set; }
+    public IEnumerable<StatusDTO> Statuses { get; set; }
   }
 }

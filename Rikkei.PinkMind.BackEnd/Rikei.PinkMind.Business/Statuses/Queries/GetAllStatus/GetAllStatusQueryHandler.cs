@@ -42,7 +42,7 @@ namespace Rikei.PinkMind.Business.Statuses.Queries.GetAllStatus
 
       var model = new StatusViewModel
       {
-        statuses = _mapper.Map<IEnumerable<StatusDTO>>(tranfItem)
+        Statuses = _mapper.Map<IEnumerable<StatusDTO>>(tranfItem)
       };
       return model;
       throw new System.NotImplementedException();

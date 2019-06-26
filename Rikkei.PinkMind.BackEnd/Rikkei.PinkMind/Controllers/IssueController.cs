@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;
@@ -18,6 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
+  [Authorize(Policy = "ApiUser")]
   [Route("api/[controller]")]
   [ApiController]
   public class IssueController : ControllerBase
@@ -44,11 +44,11 @@ namespace Rikkei.PinkMind.API.Controllers
       return Ok(await _mediator.Send(new SearchIssueQuery {ProjectID = projectID, Key = key, AssigneeUser = AssigneeUser, CategoryID = CategoryID, MilestoneID = MilestoneID, StatusID = StatusID }));
     }
     //GET api get by user : api/GetByUser/Key
-    [Route("GetByUser")]
+    [Route("GetByUser/{key}")]
     public async Task<ActionResult<IssuesViewModel>> GetIssueByUser(string key)
     {
-      /*var userID = _caller.Claims.Single(u => u.Type == "id")*/;
-      return Ok(await _mediator.Send(new GetIssueByUserQuery { Key = key, ID = Convert.ToInt64(2591977) }));
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      return Ok(await _mediator.Send(new GetIssueByUserQuery { Key = key, ID = Convert.ToInt64(userID.Value) }));
     }
     // GET: api/Issue/GetDetail/7
     [HttpGet("GetDetail/{id}")]

@@ -69,8 +69,6 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FileName");
-
                     b.Property<int>("IssueID");
 
                     b.Property<DateTime>("LastUpdate");
@@ -128,9 +126,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AssigneeUser");
+                    b.Property<long?>("AssigneeUser");
 
-                    b.Property<int>("CategoryID");
+                    b.Property<int?>("CategoryID");
 
                     b.Property<byte[]>("CheckUpdate")
                         .IsConcurrencyToken()
@@ -152,21 +150,23 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<DateTime>("LastUpdate");
 
-                    b.Property<int>("MilestoneID");
+                    b.Property<int?>("MilestoneID");
 
-                    b.Property<int>("PriorityID");
+                    b.Property<int?>("PriorityID");
 
-                    b.Property<string>("ProjectID");
+                    b.Property<string>("ProjectID")
+                        .IsRequired();
 
                     b.Property<int?>("ResolutionID");
 
                     b.Property<int>("StatusID");
 
-                    b.Property<string>("Subject");
+                    b.Property<string>("Subject")
+                        .IsRequired();
 
                     b.Property<long>("UpdateBy");
 
-                    b.Property<int>("VersionID");
+                    b.Property<int?>("VersionID");
 
                     b.HasKey("ID");
 
@@ -213,6 +213,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<DateTime>("LastUpdate");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<long>("UpdateBy");
@@ -243,6 +244,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<DateTime>("LastUpdate");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<long>("UpdateBy");
@@ -293,6 +295,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<DateTime>("LastUpdate");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<long>("UpdateBy");
@@ -321,6 +324,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<DateTime>("LastUpdate");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<long>("UpdateBy");
@@ -336,7 +340,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ActionName");
+                    b.Property<string>("ActionName")
+                        .IsRequired();
 
                     b.Property<string>("AvatarPath");
 
@@ -346,7 +351,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<string>("ProjectKey");
 
-                    b.Property<string>("SpaceID");
+                    b.Property<string>("SpaceID")
+                        .IsRequired();
 
                     b.Property<string>("Subject");
 
@@ -380,6 +386,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<DateTime>("LastUpdate");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<long>("UpdateBy");
@@ -440,7 +447,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<long>("ControlBy");
 
-                    b.Property<string>("SpaceID");
+                    b.Property<string>("SpaceID")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
@@ -470,6 +478,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<DateTime>("LastUpdate");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<long>("UpdateBy");
@@ -500,6 +509,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<DateTime>("LastUpdate");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<long>("UpdateBy");
@@ -545,14 +555,15 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("AddBy");
+                    b.Property<long?>("AddBy");
 
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("JoinOn");
 
-                    b.Property<string>("ProjectID");
+                    b.Property<string>("ProjectID")
+                        .IsRequired();
 
                     b.Property<int>("TeamID");
 
@@ -655,8 +666,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     b.HasOne("Rikkei.PindMind.DAO.Models.Category", "Category")
                         .WithMany("Issues")
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CategoryID");
 
                     b.HasOne("Rikkei.PindMind.DAO.Models.IssueType", "IssueType")
                         .WithMany("Issues")
@@ -665,17 +675,16 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.HasOne("Rikkei.PindMind.DAO.Models.Milestone", "Milestone")
                         .WithMany("Issues")
-                        .HasForeignKey("MilestoneID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("MilestoneID");
 
                     b.HasOne("Rikkei.PindMind.DAO.Models.Priority", "Priority")
                         .WithMany("Issues")
-                        .HasForeignKey("PriorityID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PriorityID");
 
                     b.HasOne("Rikkei.PindMind.DAO.Models.Project", "Project")
                         .WithMany("Issues")
-                        .HasForeignKey("ProjectID");
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Rikkei.PindMind.DAO.Models.Resolution", "Resolution")
                         .WithMany("Issues")
@@ -688,8 +697,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.HasOne("Rikkei.PindMind.DAO.Models.Version", "Version")
                         .WithMany("Issues")
-                        .HasForeignKey("VersionID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("VersionID");
                 });
 
             modelBuilder.Entity("Rikkei.PindMind.DAO.Models.Notify", b =>
@@ -704,7 +712,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     b.HasOne("Rikkei.PindMind.DAO.Models.Space", "Space")
                         .WithMany("SpaceControls")
-                        .HasForeignKey("SpaceID");
+                        .HasForeignKey("SpaceID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Rikkei.PindMind.DAO.Models.TeamDetail", b =>
@@ -729,7 +738,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     b.HasOne("Rikkei.PindMind.DAO.Models.Project", "Project")
                         .WithMany("TeamJoins")
-                        .HasForeignKey("ProjectID");
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Rikkei.PindMind.DAO.Models.Team", "Team")
                         .WithMany("TeamJoins")

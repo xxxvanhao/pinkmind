@@ -1,56 +1,113 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
 using System.Linq;
+using Version = Rikkei.PindMind.DAO.Models.Version;
 
 namespace Rikkei.PindMind.DAO.Models
 {
-  public class SeedData
+  public static class SeedData
   {
-    public void CreateData(IServiceProvider serviceProvider)
+    public static void Initialize(IServiceProvider serviceProvider)
     {
       using (var _pmContext = new PinkMindContext(
                  serviceProvider.GetRequiredService<
                      DbContextOptions<PinkMindContext>>()))
       {
         //Data for tbl_Category
-        if (!_pmContext.Issues.Any())
+        if (!_pmContext.Categories.Any())
+        {
+          //Data for IssueType
+          _pmContext.AddRange(new Category
+          {
+            Name = "Coding",
+            CreateBy = 999999999999,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 999999999999,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true,
+          },
+          new Category
+          {
+            Name = "Basic Design",
+            CreateBy = 999999999999,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 999999999999,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+         new Category
+         {
+           Name = "Infrastructure",
+           CreateBy = 999999999999,
+           CreateAt = DateTime.UtcNow,
+           UpdateBy = 999999999999,
+           LastUpdate = DateTime.UtcNow,
+           DelFlag = true
+         },
+        new Category
+        {
+          Name = "Detail Design",
+          CreateBy = 999999999999,
+          CreateAt = DateTime.UtcNow,
+          UpdateBy = 999999999999,
+          LastUpdate = DateTime.UtcNow,
+          DelFlag = true
+        },
+        new Category
+        {
+          Name = "Unit Test",
+          CreateBy = 999999999999,
+          CreateAt = DateTime.UtcNow,
+          UpdateBy = 999999999999,
+          LastUpdate = DateTime.UtcNow,
+          DelFlag = true
+        });
+          _pmContext.SaveChanges();
+        }
+        //
+        if (!_pmContext.IssueTypes.Any())
         {
           //Data for IssueType
           _pmContext.AddRange(new IssueType
           {
             Name = "Task",
-            CreateBy = 2591977,
+            BackgroundColor = "#b0be3c",
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new IssueType
           {
             Name = "Bug",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
+            BackgroundColor = "#ea2c00",
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
          new IssueType
          {
            Name = "Request",
-           CreateBy = 2591977,
+           CreateBy = 999999999999,
+           BackgroundColor = "#eda62a",
            CreateAt = DateTime.UtcNow,
-           UpdateBy = 2591977,
+           UpdateBy = 999999999999,
            LastUpdate = DateTime.UtcNow,
            DelFlag = true
          },
         new IssueType
         {
           Name = "Other",
-          CreateBy = 2591977,
+          CreateBy = 999999999999,
+          BackgroundColor = "#3b9dbd",
           CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
+          UpdateBy = 999999999999,
           LastUpdate = DateTime.UtcNow,
           DelFlag = true
         });
@@ -62,27 +119,27 @@ namespace Rikkei.PindMind.DAO.Models
           _pmContext.AddRange(new Milestone
           {
             Name = "Phase 1",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Milestone
           {
             Name = "Phase 2",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Milestone
           {
             Name = "Phase 3",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           });
@@ -94,30 +151,30 @@ namespace Rikkei.PindMind.DAO.Models
           _pmContext.AddRange(new Version
           {
             Name = "1.0",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
-          (new Version
+          new Version
           {
             Name = "2.0",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Version
           {
             Name = "3.0",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
-          }));
+          });
           _pmContext.SaveChanges();
         }
         //Data for Status
@@ -126,36 +183,36 @@ namespace Rikkei.PindMind.DAO.Models
           _pmContext.AddRange(new Status
           {
             Name = "Open",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Status
           {
             Name = "In Progress",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Status
           {
             Name = "Resolved",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Status
           {
             Name = "Closed",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           });
@@ -167,27 +224,27 @@ namespace Rikkei.PindMind.DAO.Models
           _pmContext.AddRange(new Priority
           {
             Name = "High",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Priority
           {
             Name = "Normal",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Priority
           {
             Name = "Low",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           });
@@ -198,45 +255,45 @@ namespace Rikkei.PindMind.DAO.Models
           _pmContext.AddRange(new Resolution
           {
             Name = "Fixed",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Resolution
           {
             Name = "Won't Fix",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Resolution
           {
             Name = "Invalid",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           },
           new Resolution
           {
             Name = "Duplication",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
-            DelFlag = true
+            DelFlag = true,
           },
           new Resolution
           {
             Name = "Can't Reproduce",
-            CreateBy = 2591977,
+            CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
-            UpdateBy = 2591977,
+            UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
             DelFlag = true
           });
@@ -254,7 +311,7 @@ namespace Rikkei.PindMind.DAO.Models
           },
           new Role
           {
-            Name = "GUEST",
+            Name = "Guest",
           });
           _pmContext.SaveChanges();
         }

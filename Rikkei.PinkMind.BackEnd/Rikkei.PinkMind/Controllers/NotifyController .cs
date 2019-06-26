@@ -27,7 +27,7 @@ namespace Rikkei.PinkMind.API.Controllers
     [Route("GetAll")]
     public async Task<ActionResult<NotifyViewModel>> GetAllNotify()
     {
-      return Ok(await _mediator.Send(new GetAllNotifyQuery {}));
+      return Ok(await _mediator.Send(new GetAllNotifyQuery()));
     }
   }
 }

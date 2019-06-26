@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit{
 
   ngOnInit() {
     this.getParamProjectHome();
+    this.getIssue();
   }
 
   getParamProjectHome() {
@@ -44,16 +45,17 @@ export class HomeComponent implements OnInit{
     });
   }
 
-  getIssue(iParam: string) {
+  getIssue() {
     this.userService.getIssue(this.paramHomeId)
     .then((res: any) => {
-      this.countStatus = res.issueDTO.reduce((total, item) => {
+      const sum = res.issueDTO.reduce((total, item) => {
         if (!total[item.status]) {
             total[item.status] = 0;
         }
         total[item.status]++;
         return total;
-    }, {});
+        }, {});
+      console.log(sum);
     });
   }
 }

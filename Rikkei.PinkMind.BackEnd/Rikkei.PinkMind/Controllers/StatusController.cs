@@ -28,7 +28,7 @@ namespace Rikkei.PinkMind.API.Controllers
     [Route("GetAll")]
     public async Task<ActionResult<StatusViewModel>> GetAllStatus()
     {
-      return Ok(await _mediator.Send(new GetAllStatusQuery()));
+      return Ok(await _mediator.Send(new GetAllStatusQuery( )));
     }
 
   }
