@@ -24,6 +24,8 @@ export class BodyComponent implements OnInit {
     this.userService.getReUpdate('pkey');
     // setTimeout(this.checkProject, 1000);
     setTimeout(this.checkTimeLine, 1000);
+    this.ifSubmit('Assigned');
+    this.iddSubmit('all');
   }
 
   checkProject() {
@@ -76,5 +78,31 @@ export class BodyComponent implements OnInit {
         formProject.resetForm();
       }
     );
+  }
+
+  ifSubmit(iParam: string) {
+    const ifClick = document.getElementById('if-click') as any;
+    const isItem = ifClick.getElementsByClassName('is-item') as any;
+    for (const item of isItem) {
+      item.addEventListener('click', () => {
+      const current = document.getElementsByClassName('if-active');
+      current[0].className = current[0].className.replace(' if-active', '');
+      item.className += ' if-active';
+      });
+    }
+    this.userService.getIssue('iPrama');
+  }
+
+  iddSubmit(iParam: string) {
+    const ifClick = document.getElementById('idd-click') as any;
+    const isItem = ifClick.getElementsByClassName('is-item') as any;
+    for (const item of isItem) {
+      item.addEventListener('click', () => {
+      const current = document.getElementsByClassName('idd-active');
+      current[0].className = current[0].className.replace(' idd-active', '');
+      item.className += ' idd-active';
+      });
+    }
+    this.userService.getIssue('iPrama');
   }
 }

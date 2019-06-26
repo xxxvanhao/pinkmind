@@ -13,7 +13,7 @@
                 <div class="timeline-wraper ">
                     <h5>Recent Updates</h5>
                     <div class="timeline-content ">
-                        <div *ngIf="(userService.listProject | keyvalue)?.length> 0; else notShowTimeLine">
+                        <div *ngIf="(userService.listDateReUpdate | keyvalue)?.length > 0; else noShowHomeTimeLine">
                             <div class="timeline" *ngFor="let ut of userService.listDateReUpdate">
                                 <h6 class=" timeline-date ">{{ut}}</h6>
                                 <div class="display-content" *ngFor="let lud of userService.listReUpdate">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
 
-                        <ng-template #notShowTimeLine>
+                        <ng-template #noShowHomeTimeLine>
                             <div class="isNo-items timeline"><span>There are no update.<br>Recently update will be listed here.</span></div>
                         </ng-template>
                     </div>

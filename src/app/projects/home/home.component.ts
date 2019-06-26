@@ -3,6 +3,7 @@ import { NgStyle } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Project } from 'src/app/shared/models/project.interface';
+import { CountStatus } from 'src/app/shared/models/countStatus.interface';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit{
 
   paramHomeId: string;
   isProjectKey: boolean;
+  countStatus: CountStatus;
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
   }
 
@@ -39,6 +41,19 @@ export class HomeComponent implements OnInit{
       if (this.isProjectKey == undefined) {
         this.router.navigate(['dashboard']);
       }
+    });
+  }
+
+  getIssue(iParam: string) {
+    this.userService.getIssue(this.paramHomeId)
+    .then((res: any) => {
+      this.countStatus = res.issueDTO.reduce((total, item) => {
+        if (!total[item.status]) {
+            total[item.status] = 0;
+        }
+        total[item.status]++;
+        return total;
+    }, {});
     });
   }
 }

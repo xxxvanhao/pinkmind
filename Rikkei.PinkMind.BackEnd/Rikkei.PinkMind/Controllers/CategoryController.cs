@@ -24,11 +24,11 @@ namespace Rikkei.PinkMind.API.Controllers
       _caller = httpContextAccessor.HttpContext.User;
     }
 
-    // GET: api/Categories/getall/1
-    [Route("getall/{id}")]
-    public async Task<ActionResult<CategoriesViewModel>> GetAllCategory(int id)
+    // GET: api/Category/getall
+    [Route("getall")]
+    public async Task<ActionResult<CategoriesViewModel>> GetAllCategory()
     {
-      return Ok(await _mediator.Send(new GetAllCategoryQuery { ID = id }));
+      return Ok(await _mediator.Send(new GetAllCategoryQuery()));
     }
 
     // GET: api/Category/1

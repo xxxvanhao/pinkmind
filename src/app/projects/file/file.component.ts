@@ -20,7 +20,6 @@ export class FileComponent implements OnInit {
   ngOnInit() {
 
     this.getParamProjectFile();
-    this.checkProject();
     $('#checkAll').click(() => {
     $('.check').prop('checked', $(this).prop('checked'));
     });
@@ -41,6 +40,7 @@ export class FileComponent implements OnInit {
   getParamProjectFile() {
     this.route.params.subscribe(params => {
       this.paramFileId = params['id'];
+      this.checkProject();
       this.userService.getParamSpaceId(this.paramFileId);
       });
   }

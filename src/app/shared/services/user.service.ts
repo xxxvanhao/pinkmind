@@ -10,18 +10,20 @@ import { Space } from '../models/space.interface';
 import { Project } from '../models/project.interface';
 import { ReUpdate } from '../models/reUpdate.interface';
 import * as moment from 'moment';
+import { Issue } from '../models/issue.interface';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService extends BaseService {
 
   baseUrl: string;
-
   listProject: Project;
   userDetails: UserDetails;
   spaceId: string;
   listDateReUpdate: Date[];
   listReUpdate: ReUpdate;
+  listIssue: Issue;
+
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
   // Observable navItem stream
@@ -217,6 +219,19 @@ export class UserService extends BaseService {
       this.listDateReUpdate = Array.from(new Set((res.reUpdateDTOs as any).map((item: any) =>
         moment(item.updateTime).format('MMM DD, YYYY'))));
       this.listReUpdate = res.reUpdateDTOs.reverse();
+    });
+  }
+
+  getIssue(iKey: string) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Issue/${iKey}`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listIssue = res;
     });
   }
 }

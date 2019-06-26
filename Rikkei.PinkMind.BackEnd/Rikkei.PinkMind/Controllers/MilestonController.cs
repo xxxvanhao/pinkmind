@@ -23,12 +23,12 @@ namespace Rikkei.PinkMind.API.Controllers
       _caller = httpContextAccessor.HttpContext.User;
     }
 
-    // GET: api/Categories/getall/1
-    //[Route("getall/{id}")]
-    //public async Task<ActionResult<MilestonsViewModel>> GetAllMileston(int id)
-    //{
-    //  return Ok(await _mediator.Send(new GetAllMilestonsQueryHandler()));
-    //}
+    //GET: api/Mileston/getall
+    [Route("getall")]
+    public async Task<ActionResult<MilestonsViewModel>> GetAllMileston()
+    {
+      return Ok(await _mediator.Send(new GetAllMilestoneQuery()));
+    }
 
     // GET: api/Mileston/1
     [HttpGet("{id}")]

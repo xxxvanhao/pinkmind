@@ -15,13 +15,14 @@ body {
 .status,
 .deleteIssue,
 .is-active,
+.if-active,
+.idd-active,
 .is-item:hover {
-    background-color: #4caf93;
+    background-color: #4caf93 !important;
     padding: 3px 10px;
     margin: 0 3px;
     border-radius: 20px;
     color: white;
-    line-height: 2.5rem;
     font-size: .8rem;
     cursor: pointer;
 }
@@ -200,8 +201,13 @@ body {
     margin-right: 5px;
 }
 
-.issue-menu .is-item {
+.issue-menu .is-item,
+.search-conditions .is-item {
     margin-right: 15px;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
 .issue-table,
@@ -248,7 +254,7 @@ table {
 
 .issue-tbody tr td,
 .file-tbody tr td {
-    padding: 0 6px;
+    padding: 8px 6px;
 }
 
 .issue-tbody tr:hover,

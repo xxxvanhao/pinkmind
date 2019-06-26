@@ -7,6 +7,5 @@ namespace Rikei.PinkMind.Business.Categories.Queries.GetAllCategory
 {
   public class GetAllCategoryQuery : IRequest<CategoriesViewModel>
   {
-    public int ID { get; set; }
   }
 }

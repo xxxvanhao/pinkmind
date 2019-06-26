@@ -87,7 +87,7 @@
                 <div class="timeline-wraper ">
                     <h5>Recent Updates</h5>
                     <div class="timeline-content ">
-                        <div *ngIf="(userService.listProject | keyvalue)?.length> 0; else notShowTimeLine">
+                        <div *ngIf="(userService.listDateReUpdate | keyvalue)?.length> 0; else notShowTimeLine">
                             <div class="timeline" *ngFor="let ut of userService.listDateReUpdate">
                                 <h6 class=" timeline-date ">{{ut}}</h6>
                                 <div class="display-content" *ngFor="let lud of userService.listReUpdate">
@@ -148,17 +148,17 @@
                     <h5>My Issues</h5>
                     <div class="issue-table ">
                         <div class="issue-menu ">
-                            <p class="mb-0 ">
+                            <p id="if-click" class="mb-0">
                                 <span class="is-filter ">Filters:</span>
-                                <span class="is-item is-active ">Assigned to me</span>
-                                <span class="is-item ">Created by me</span>
+                                <button type="button" (click)="ifSubmit('Assigned')" class="is-item if-active">Assigned to me</button>
+                                <button type="button" (click)="ifSubmit('Created')" class="is-item ">Created by me</button>
                             </p>
-                            <p class="mb-0 ">
+                            <p id="idd-click" class="mb-0">
                                 <span class="is-dueDate ">Due date:</span>
-                                <span class="is-item is-active ">All</span>
-                                <span class="is-item ">4days</span>
-                                <span class="is-item ">Due Today</span>
-                                <span class="is-item ">Overdue</span>
+                                <button type="button" (click)="iddSubmit('all')" class="is-item idd-active">All</button>
+                                <button type="button" (click)="iddSubmit('fourDay')" class="is-item ">4days</button>
+                                <button type="button" (click)="iddSubmit('dueToday')" class="is-item ">Due Today</button>
+                                <button type="button" (click)="iddSubmit('overDue')" class="is-item ">Overdue</button>
                             </p>
                         </div>
                         <table>
