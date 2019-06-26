@@ -14,9 +14,11 @@ using Rikei.PinkMind.Business.Issues.Queries;
 using Rikei.PinkMind.Business.Issues.Queries.GetAllIssues;
 using Rikei.PinkMind.Business.Issues.Queries.SearchIssues;
 using Rikei.PinkMind.Business.Issues.Queries.GetIssueByUser;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
+  [Authorize(Policy = "ApiUser")]
   [Route("api/[controller]")]
   [ApiController]
   public class IssueController : ControllerBase

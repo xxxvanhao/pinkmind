@@ -13,6 +13,7 @@ namespace Rikkei.PinkMind.DAO.Data
     public PinkMindContext(DbContextOptions<PinkMindContext> options)
         : base(options)
     {
+      
     }
     public DbSet<SpaceControl> SpaceControls { get; set; }
     public DbSet<Space> Spaces { get; set; }

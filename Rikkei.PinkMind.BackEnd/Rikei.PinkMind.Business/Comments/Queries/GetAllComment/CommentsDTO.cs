@@ -16,6 +16,5 @@ namespace Rikei.PinkMind.Business.Comments.Queries.GetAllComment
     public bool DelFlag { get; set; }
     public byte[] CheckUpdate { get; set; }
     public int IssueID { get; set; }
-    public string FileName { get; set; }
   }
 }

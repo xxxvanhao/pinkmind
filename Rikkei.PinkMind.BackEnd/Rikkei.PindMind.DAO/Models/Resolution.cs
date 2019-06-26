@@ -9,13 +9,16 @@ namespace Rikkei.PindMind.DAO.Models
     public class Resolution
     {
         public int ID { get; set; }
+        [Required]
         [StringLength(50, MinimumLength = 3)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string Name { get; set; }
+        [Required]
         public long CreateBy { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Create At")]
         public DateTime CreateAt { get; set; }
+        [Required]
         [Display(Name = "Update By")]
         public long UpdateBy { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

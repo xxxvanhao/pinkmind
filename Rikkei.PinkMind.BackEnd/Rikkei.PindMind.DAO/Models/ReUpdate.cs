@@ -10,12 +10,14 @@ namespace Rikkei.PindMind.DAO.Models
     public int ID { get; set; }
     public string AvatarPath { get; set; }
     public string UserName { get; set; }
+    [Required]
     public string ActionName { get; set; }
     public string IssueKey { get; set; }
     public string Subject { get; set; }
     public string Content { get; set; }
     [DataType(DataType.Date)]
     public DateTime UpdateTime { get; set; }
+    [Required]
     public string SpaceID { get; set; }
     public string ProjectKey { get; set; }
   }

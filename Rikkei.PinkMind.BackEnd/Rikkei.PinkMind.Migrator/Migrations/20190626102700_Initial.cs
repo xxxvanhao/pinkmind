@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Rikkei.PinkMind.Migrator.Migrations
 {
-    public partial class PK : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     BackgroundColor = table.Column<string>(nullable: false),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
@@ -53,7 +53,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<long>(nullable: false),
@@ -72,7 +72,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<long>(nullable: false),
@@ -90,7 +90,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 columns: table => new
                 {
                     ID = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<long>(nullable: false),
@@ -109,7 +109,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<long>(nullable: false),
@@ -130,12 +130,12 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AvatarPath = table.Column<string>(nullable: true),
                     UserName = table.Column<string>(nullable: true),
-                    ActionName = table.Column<string>(nullable: true),
+                    ActionName = table.Column<string>(nullable: false),
                     IssueKey = table.Column<string>(nullable: true),
                     Subject = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     UpdateTime = table.Column<DateTime>(nullable: false),
-                    SpaceID = table.Column<string>(nullable: true),
+                    SpaceID = table.Column<string>(nullable: false),
                     ProjectKey = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -180,7 +180,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<long>(nullable: false),
@@ -199,7 +199,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<long>(nullable: false),
@@ -237,7 +237,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    SpaceID = table.Column<string>(nullable: true),
+                    SpaceID = table.Column<string>(nullable: false),
                     ControlBy = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -248,7 +248,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         column: x => x.SpaceID,
                         principalTable: "tbl_space",
                         principalColumn: "SpaceID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -258,9 +258,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TeamID = table.Column<int>(nullable: false),
-                    ProjectID = table.Column<string>(nullable: true),
+                    ProjectID = table.Column<string>(nullable: false),
                     JoinOn = table.Column<DateTime>(nullable: false),
-                    AddBy = table.Column<long>(nullable: false),
+                    AddBy = table.Column<long>(nullable: true),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -271,7 +271,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         column: x => x.ProjectID,
                         principalTable: "tbl_project",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_tbl_teamjoin_tbl_team_TeamID",
                         column: x => x.TeamID,
@@ -287,17 +287,17 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     IssueTypeID = table.Column<int>(nullable: false),
-                    Subject = table.Column<string>(nullable: true),
+                    Subject = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     StatusID = table.Column<int>(nullable: false),
-                    AssigneeUser = table.Column<int>(nullable: false),
-                    PriorityID = table.Column<int>(nullable: false),
-                    CategoryID = table.Column<int>(nullable: false),
-                    MilestoneID = table.Column<int>(nullable: false),
-                    VersionID = table.Column<int>(nullable: false),
+                    AssigneeUser = table.Column<long>(nullable: true),
+                    PriorityID = table.Column<int>(nullable: true),
+                    CategoryID = table.Column<int>(nullable: true),
+                    MilestoneID = table.Column<int>(nullable: true),
+                    VersionID = table.Column<int>(nullable: true),
                     ResolutionID = table.Column<int>(nullable: true),
                     DueDate = table.Column<DateTime>(nullable: false),
-                    ProjectID = table.Column<string>(nullable: true),
+                    ProjectID = table.Column<string>(nullable: false),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<long>(nullable: false),
@@ -313,7 +313,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         column: x => x.CategoryID,
                         principalTable: "tbl_category",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_tbl_issue_tbl_issuetype_IssueTypeID",
                         column: x => x.IssueTypeID,
@@ -325,19 +325,19 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         column: x => x.MilestoneID,
                         principalTable: "tbl_milestone",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_tbl_issue_tbl_priority_PriorityID",
                         column: x => x.PriorityID,
                         principalTable: "tbl_priority",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_tbl_issue_tbl_project_ProjectID",
                         column: x => x.ProjectID,
                         principalTable: "tbl_project",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_tbl_issue_tbl_resolution_ResolutionID",
                         column: x => x.ResolutionID,
@@ -355,7 +355,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         column: x => x.VersionID,
                         principalTable: "tbl_version",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -371,8 +371,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<bool>(type: "bit", nullable: false),
                     CheckUpdate = table.Column<byte[]>(type: "timestamp", rowVersion: true, nullable: true),
-                    IssueID = table.Column<int>(nullable: false),
-                    FileName = table.Column<string>(nullable: true)
+                    IssueID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
