@@ -204,13 +204,14 @@ export class UserService extends BaseService {
   }
 
   // API GET
-  getReUpdate() {
+
+  getReUpdate(pKey: string) {
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    return this.http.get(this.baseUrl + '/ReUpdates', {headers})
+    return this.http.get(this.baseUrl + `/ReUpdates/${pKey}`, {headers})
     .toPromise()
     .then((res: any) => {
       this.listDateReUpdate = Array.from(new Set((res.reUpdateDTOs as any).map((item: any) =>

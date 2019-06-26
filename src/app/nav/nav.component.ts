@@ -22,6 +22,7 @@ export class NavComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.userService.authNavStatus$.subscribe(status => this.status = status);
+    this.userService.getProject();
   }
 
   ngOnDestroy() {

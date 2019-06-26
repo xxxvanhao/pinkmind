@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using MediatR;
@@ -60,11 +61,27 @@ namespace Rikkei.PinkMind.API.Controllers
 
     // POST: api/Issue
     [HttpPost]
-    public async Task<Unit> PostIssue([FromBody]CreateIssueCommand command)
+    public async Task<IActionResult> PostIssue([FromBody]CreateIssueCommand command)
     {
-      var Issue = await _mediator.Send(command);
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      await _mediator.Send(new CreateIssueCommand {
+        IssueTypeID = command.IssueTypeID,
+        Subject = command.Subject,
+        Description = WebUtility.HtmlEncode(command.Description),
+        StatusID = command.StatusID,
+        AssigneeUser = command.AssigneeUser,
+        PriorityID = command.PriorityID,
+        CategoryID = command.CategoryID,
+        MilestoneID = command.MilestoneID,
+        VersionID = command.VersionID,
+        ResolutionID = command.ResolutionID,
+        DueDate = command.DueDate,
+        ProjectID = command.ProjectID,
+        CreateBy = Convert.ToInt64(userID.Value),
+        UpdateBy = Convert.ToInt64(userID.Value)
+      });
 
-      return Issue;
+      return NoContent();
     }
 
     // DELETE: api/Issue 

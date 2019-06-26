@@ -13,11 +13,11 @@ namespace Rikkei.PindMind.DAO.Models
     public string Subject { get; set; }
     public string Description { get; set; }
     public int StatusID { get; set; }
-    public int AssigneeUser { get; set; }
-    public int PriorityID { get; set; }
-    public int CategoryID { get; set; }
-    public int MilestoneID { get; set; }
-    public int VersionID { get; set; }
+    public long? AssigneeUser { get; set; }
+    public int? PriorityID { get; set; }
+    public int? CategoryID { get; set; }
+    public int? MilestoneID { get; set; }
+    public int? VersionID { get; set; }
     public int? ResolutionID { get; set; }
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -34,9 +34,9 @@ namespace Rikkei.PindMind.DAO.Models
     [Display(Name = "Last Update")]
     public DateTime LastUpdate { get; set; }
     [Column(TypeName = "bit")]
-    [Timestamp]
     public bool DelFlag { get; set; }
     [Column(TypeName = "timestamp")]
+    [Timestamp]
     public byte[] CheckUpdate { get; set; }
     public Project Project { get; set; }
     public IssueType IssueType { get; set; }

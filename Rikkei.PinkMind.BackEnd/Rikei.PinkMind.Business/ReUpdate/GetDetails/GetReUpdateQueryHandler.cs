@@ -36,10 +36,23 @@ namespace Rikei.PinkMind.Business.ReUpdate.GetDetails
                     where u.ID == request.userID
                     select p.ID;
       var projectNameDetails = await project.ToListAsync(cancellationToken);
-
-      for (int i = 0; i < projectNameDetails.Count; i++)
+      if (request.projectKey == "pkey")
       {
-        var reUpdate = await _pmContext.ReUpdates.Where(ru => ru.SpaceID == userDetails.SpaceID && ru.ProjectKey == projectNameDetails.ElementAt(i)).OrderByDescending(d => d.UpdateTime).ToListAsync(cancellationToken);
+        for (int i = 0; i < projectNameDetails.Count; i++)
+        {
+
+          var reUpdate = await _pmContext.ReUpdates.Where(ru => ru.SpaceID == userDetails.SpaceID && ru.ProjectKey == projectNameDetails.ElementAt(i)).OrderByDescending(d => d.UpdateTime).ToListAsync(cancellationToken);
+
+          foreach (ReUpdateSpace item in reUpdate)
+          {
+            item.ActionName = WebUtility.HtmlDecode(item.ActionName);
+            item.Content = WebUtility.HtmlDecode(item.Content);
+            reUpdateList.Add(item);
+          }
+        }
+      } else {
+        var reUpdate = await _pmContext.ReUpdates.Where(ru => ru.SpaceID == userDetails.SpaceID && ru.ProjectKey == request.projectKey).OrderByDescending(d => d.UpdateTime).ToListAsync(cancellationToken);
+
         foreach (ReUpdateSpace item in reUpdate)
         {
           item.ActionName = WebUtility.HtmlDecode(item.ActionName);
@@ -47,7 +60,6 @@ namespace Rikei.PinkMind.Business.ReUpdate.GetDetails
           reUpdateList.Add(item);
         }
       }
-
       var model = new ReUpdateViewModel
       {
         ReUpdateDTOs = _mapper.Map<IEnumerable<ReUpdateDTO>>(reUpdateList)

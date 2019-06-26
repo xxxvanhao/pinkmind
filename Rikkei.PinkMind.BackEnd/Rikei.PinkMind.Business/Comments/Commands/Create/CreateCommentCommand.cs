@@ -6,6 +6,7 @@ using Rikkei.PindMind.DAO.Models;
 using Rikkei.PinkMind.DAO.Data;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -42,22 +43,26 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
           UpdateBy = request.UpdateBy,
           LastUpdate = DateTime.UtcNow,
           FileName = "",
-          DelFlag = true,          
+          DelFlag = true,
         };
         _pmContext.Comments.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);
-        int ReID = entity.ID;
-        var createFile = new CreateFileCommand();
-        foreach(var item in request.FileName)
+        //Save file
+        if(request.FileName != null)
         {
-          createFile.CommentID = ReID;
-          createFile.CreateBy = request.CreateBy;
-          createFile.UpdateBy = request.UpdateBy;
-          createFile.IssueID = request.IssueID;
+          int ReID = entity.ID;
+          var createFile = new CreateFileCommand();
+          foreach (var item in request.FileName)
+          {
+            createFile.CommentID = ReID;
+            createFile.CreateBy = request.CreateBy;
+            createFile.UpdateBy = request.UpdateBy;
+            createFile.IssueID = request.IssueID;
+          }
+          var SavefileContent = await _mediator.Send(new CreateFileCommand());
         }
-        var SavefileContent = await _mediator.Send(new CreateFileCommand());
         return Unit.Value;
-      }      
+      }
     }
   }
 }

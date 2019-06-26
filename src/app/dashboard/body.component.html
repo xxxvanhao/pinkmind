@@ -35,7 +35,7 @@
                                                 <label for="name">Project name</label>
                                                 <input type="text" name="name" ngModel #name="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-3 px-2">
                                                 <label for="id">Project key</label>
-                                                <input type="text " name="id" ngModel #id="ngModel" required minlength="3" maxlength="25" class="input-fix d-flex mb-1 px-2">
+                                                <input type="text " name="id" ngModel #id="ngModel" required minlength="3" maxlength="5" class="input-fix d-flex mb-1 px-2">
                                                 <p>The project key is a unique identifier for a project. A short, concise key is recommended.</p>
                                                 <p>(e.g. Project name Backlog has project key BLG_2) Uppercase letters (A-Z), numbers (0-9) and underscore (_) can be used.</p>
                                             </div>
@@ -96,10 +96,10 @@
                                             <img class="avatarProfile" src="{{lud.avatarPath}}">
                                         </div>
                                         <div class="col-md-7 pl-0 py-2 ">
-                                            <span class="title ">
-                                      <span class="fn ">{{lud.userName}}</span>
-                                            <span class="action ">updated</span>the issues
-                                            </span>
+                                            <div class="title-recent">
+                                                <span class="fn">{{lud.userName}}</span>
+                                                <span [innerHTML]="lud.actionName"></span>
+                                            </div>
                                             <div class="action-content ">
                                                 <a class="issue-key mr-1 " href="#">{{lud.issueKey}}</a>
                                                 <span class="subject ">{{lud.subject}}</span>

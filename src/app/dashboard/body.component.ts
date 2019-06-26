@@ -20,10 +20,9 @@ export class BodyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getProject();
     this.checkAddUser();
+    this.userService.getReUpdate('pkey');
     // setTimeout(this.checkProject, 1000);
-    this.userService.getReUpdate();
     setTimeout(this.checkTimeLine, 1000);
   }
 
@@ -57,8 +56,7 @@ export class BodyComponent implements OnInit {
   checkTimeLine() {
   const timeLine = document.getElementsByClassName('isNo-items timeline') as any;
   const issue = document.getElementsByClassName('issue') as any;
-  console.log(timeLine);
-    if (timeLine.length > 0) {
+  if (timeLine.length > 0) {
       issue[0].style.marginLeft = '-35.63rem';
       issue[0].style.transition = '0.5s';
     } else {
@@ -69,9 +67,9 @@ export class BodyComponent implements OnInit {
     this.userService.postProject(formProject.value).subscribe(
       res => {
         this.toastr.success('Successful!', 'Register Project');
+        this.router.navigate([`/projects/home/${formProject.value.id}`]);
         formProject.resetForm();
         $('.modal-backdrop').remove();
-        this.router.navigate(['/projects/home'], { queryParams: { id: formProject.value.projectKey}});
       },
       err => {
         this.toastr.error('Failed!', 'Register Project');

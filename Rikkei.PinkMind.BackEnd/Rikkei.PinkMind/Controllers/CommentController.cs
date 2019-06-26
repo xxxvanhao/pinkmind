@@ -29,8 +29,8 @@ namespace Rikkei.PinkMind.API.Controllers
       _caller = httpContextAccessor.HttpContext.User;
     }
 
-    // GET: api/Comment/getall/5
-    [Route("getall/{id}")]
+    // GET: api/Comment/GetAll/5
+    [Route("GetAll/{id}")]
     public async Task<ActionResult<CommentsViewModel>> GetAllComment(int id)
     {
       return Ok(await _mediator.Send(new GetAllCommentsQuery { ID = id }));
@@ -57,6 +57,7 @@ namespace Rikkei.PinkMind.API.Controllers
 
     // PUT: api/Comment 
     [HttpPut]
+    [Route("Update")]
     public async Task<IActionResult> PutComment([FromBody]UpdateCommentCommand command)
     {
       await _mediator.Send(command);
@@ -66,6 +67,7 @@ namespace Rikkei.PinkMind.API.Controllers
 
     // POST: api/Comment
     [HttpPost]
+    [Route("Create")]
     public async Task<Unit> PostComment([FromBody]CreateCommentCommand command)
     {            
       var Comment = await _mediator.Send(command);
