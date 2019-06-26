@@ -2,53 +2,50 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Rikkei.PinkMind.DAO.Data;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Rikkei.PindMind.DAO.Models
 {
   public class SeedData
   {
-    private readonly PinkMindContext _pmContext;
-    public SeedData(PinkMindContext pinkMindContext)
-    {
-      _pmContext = pinkMindContext;
-    }
     public void CreateData(IServiceProvider serviceProvider)
     {
-      //Data for tbl_Category
-      if (_pmContext.Issues.ToList() == null)
+      using (var _pmContext = new PinkMindContext(
+                 serviceProvider.GetRequiredService<
+                     DbContextOptions<PinkMindContext>>()))
       {
-        //Data for IssueType
-        _pmContext.Add(new IssueType
+        //Data for tbl_Category
+        if (!_pmContext.Issues.Any())
         {
-          Name = "Task",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new IssueType
-        {
-          Name = "Bug",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new IssueType
-        {
-          Name = "Request",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new IssueType
+          //Data for IssueType
+          _pmContext.AddRange(new IssueType
+          {
+            Name = "Task",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new IssueType
+          {
+            Name = "Bug",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+         new IssueType
+         {
+           Name = "Request",
+           CreateBy = 2591977,
+           CreateAt = DateTime.UtcNow,
+           UpdateBy = 2591977,
+           LastUpdate = DateTime.UtcNow,
+           DelFlag = true
+         },
+        new IssueType
         {
           Name = "Other",
           CreateBy = 2591977,
@@ -57,162 +54,210 @@ namespace Rikkei.PindMind.DAO.Models
           LastUpdate = DateTime.UtcNow,
           DelFlag = true
         });
-        _pmContext.SaveChanges();
-      }
-      //Data for Mileston
-      if (_pmContext.Milestones.ToList() == null)
-      {
-        _pmContext.Add(new Milestone
+          _pmContext.SaveChanges();
+        }
+        //Data for Mileston
+        if (!_pmContext.Milestones.Any())
         {
-          Name = "Phase1",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Milestone
+          _pmContext.AddRange(new Milestone
+          {
+            Name = "Phase 1",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Milestone
+          {
+            Name = "Phase 2",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Milestone
+          {
+            Name = "Phase 3",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          });
+          _pmContext.SaveChanges();
+        }
+        //Data for Version
+        if (_pmContext.Versions.Any())
         {
-          Name = "Phase2",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Milestone
+          _pmContext.AddRange(new Version
+          {
+            Name = "1.0",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          (new Version
+          {
+            Name = "2.0",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Version
+          {
+            Name = "3.0",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          }));
+          _pmContext.SaveChanges();
+        }
+        //Data for Status
+        if (!_pmContext.Statuses.Any())
         {
-          Name = "Phase3",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Milestone
+          _pmContext.AddRange(new Status
+          {
+            Name = "Open",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Status
+          {
+            Name = "In Progress",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Status
+          {
+            Name = "Resolved",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Status
+          {
+            Name = "Closed",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          });
+          _pmContext.SaveChanges();
+        }
+        //Data for Priority
+        if (!_pmContext.Priorities.Any())
         {
-          Name = "Phase4",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.SaveChanges();
-      }
-      //Data for Version
-      if (_pmContext.Versions.ToList() == null)
-      {
-        _pmContext.Add(new Version
+          _pmContext.AddRange(new Priority
+          {
+            Name = "High",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Priority
+          {
+            Name = "Normal",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Priority
+          {
+            Name = "Low",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          });
+          _pmContext.SaveChanges();
+        }
+        if (!_pmContext.Resolutions.Any())
         {
-          Name = "Phase1",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Version
+          _pmContext.AddRange(new Resolution
+          {
+            Name = "Fixed",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Resolution
+          {
+            Name = "Won't Fix",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Resolution
+          {
+            Name = "Invalid",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Resolution
+          {
+            Name = "Duplication",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+          new Resolution
+          {
+            Name = "Can't Reproduce",
+            CreateBy = 2591977,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 2591977,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          });
+          _pmContext.SaveChanges();
+        }
+        if (!_pmContext.Roles.Any())
         {
-          Name = "Phase2",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Version
-        {
-          Name = "Phase3",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Version
-        {
-          Name = "Phase4",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.SaveChanges();
-      }
-      //Data for Status
-      if (_pmContext.Statuses.ToList() == null)
-      {
-        _pmContext.Add(new Status
-        {
-          Name = "Open",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Status
-        {
-          Name = "in progress",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Status
-        {
-          Name = "Resolve",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Status
-        {
-          Name = "Close",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.SaveChanges();
-      }
-      //Data for Priority
-      if (_pmContext.Priorities.ToList() == null)
-      {
-        _pmContext.Add(new Priority
-        {
-          Name = "Hight",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Priority
-        {
-          Name = "Lower",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.Add(new Priority
-        {
-          Name = "Nomal",
-          CreateBy = 2591977,
-          CreateAt = DateTime.UtcNow,
-          UpdateBy = 2591977,
-          LastUpdate = DateTime.UtcNow,
-          DelFlag = true
-        });
-        _pmContext.SaveChanges();
+          _pmContext.AddRange(new Role
+          {
+            Name = "Admin"
+          },
+          new Resolution
+          {
+            Name = "Member",
+          },
+          new Resolution
+          {
+            Name = "GUEST",
+          });
+          _pmContext.SaveChanges();
+        }
       }
     }
   }

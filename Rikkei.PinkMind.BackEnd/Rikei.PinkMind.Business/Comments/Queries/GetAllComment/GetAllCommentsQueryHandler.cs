@@ -33,10 +33,18 @@ namespace Rikei.PinkMind.Business.Comments.Queries.GetAllComment
                        cm.DelFlag,
                        cm.CheckUpdate,
                        cm.IssueID,
-                       cm.FileName
                      };
       var Allcomment = await Comments.Where(td => td.IssueID == request.ID).ToListAsync(cancellationToken);
-
+      var tranfList = new List<CommentsDTO>();
+      foreach(var item in Allcomment)
+      {
+        var tfitem = new CommentsDTO();
+        tfitem.ID = item.ID;
+        tfitem.IssueID = item.IssueID;
+        tfitem.LastUpdate = item.LastUpdate;
+        tfitem.UpdateBy = item.UpdateBy;
+        tfitem.CheckUpdate = item.CheckUpdate;
+      }
       var model = new CommentsViewModel
       {
         Comments = _mapper.Map<IEnumerable<CommentsDTO>>(Allcomment)
