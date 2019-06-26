@@ -59,15 +59,15 @@ namespace Rikkei.PinkMind.API.Controllers
     public async Task<IActionResult> PutUser([FromBody]UpdateUserCommand command)
     {
       var userID = _caller.Claims.Single(u => u.Type == "id");
-        await _mediator.Send(new UpdateUserCommand
-        {
-            ID = Convert.ToInt64(userID.Value),
-            Email = command.Email,
-            LastName = command.LastName,
-            FirstName = command.FirstName,
-            PictureUrl = command.PictureUrl,
-            SpaceID = command.SpaceID
-        });
+      await _mediator.Send(new UpdateUserCommand
+      {
+        ID = Convert.ToInt64(userID.Value),
+        Email = command.Email,
+        LastName = command.LastName,
+        FirstName = command.FirstName,
+        PictureUrl = command.PictureUrl,
+        SpaceID = command.SpaceID
+      });
 
       return NoContent();
     }

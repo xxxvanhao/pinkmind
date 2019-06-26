@@ -48,6 +48,7 @@ namespace Rikkei.PindMind.DAO.Models
     public Resolution Resolution { get; set; }
     public ICollection<Comment> Comments { get; set; }
     public ICollection<Notify> Notifies { get; set; }
+    public ICollection<User> User { get; set; }
 
   }
 }

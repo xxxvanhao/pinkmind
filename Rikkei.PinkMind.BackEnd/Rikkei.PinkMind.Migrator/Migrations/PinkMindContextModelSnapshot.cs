@@ -69,6 +69,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FileName");
+
                     b.Property<int>("IssueID");
 
                     b.Property<DateTime>("LastUpdate");
@@ -131,6 +133,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<int>("CategoryID");
 
                     b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp");
 
                     b.Property<DateTime>("CreateAt");
@@ -138,8 +142,6 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<long>("CreateBy");
 
                     b.Property<bool>("DelFlag")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bit");
 
                     b.Property<string>("Description");
@@ -328,7 +330,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.ToTable("tbl_project");
                 });
 
-            modelBuilder.Entity("Rikkei.PindMind.DAO.Models.ReUpdate", b =>
+            modelBuilder.Entity("Rikkei.PindMind.DAO.Models.ReUpdateSpace", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -575,6 +577,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<string>("FirstName")
                         .HasMaxLength(50);
 
+                    b.Property<int?>("IssueID");
+
                     b.Property<string>("LastName")
                         .HasMaxLength(50);
 
@@ -589,6 +593,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasMaxLength(50);
 
                     b.HasKey("ID");
+
+                    b.HasIndex("IssueID");
 
                     b.HasIndex("SpaceID");
 
@@ -640,7 +646,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .HasForeignKey("CommentID");
 
                     b.HasOne("Rikkei.PindMind.DAO.Models.Issue", "Issue")
-                        .WithMany("Files")
+                        .WithMany()
                         .HasForeignKey("IssueID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -733,6 +739,10 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
             modelBuilder.Entity("Rikkei.PindMind.DAO.Models.User", b =>
                 {
+                    b.HasOne("Rikkei.PindMind.DAO.Models.Issue")
+                        .WithMany("User")
+                        .HasForeignKey("IssueID");
+
                     b.HasOne("Rikkei.PindMind.DAO.Models.Space", "Space")
                         .WithMany("Users")
                         .HasForeignKey("SpaceID");
