@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Rikei.PinkMind.Business.Notifies.Commands.Create;
 using Rikei.PinkMind.Business.Notifies.Commands.Delete;
 using Rikei.PinkMind.Business.Notifies.Queries;
+using Rikei.PinkMind.Business.Notifies.Queries.GetAll;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
@@ -22,44 +23,11 @@ namespace Rikkei.PinkMind.API.Controllers
       _caller = httpContextAccessor.HttpContext.User;
     }
 
-    //// GET: api/Notifies/getall/1
-    //[Route("getall/{id}")]
-    //public async Task<ActionResult<NotifyViewModel>> GetAllNotify(int id)
-    //{
-    //  return Ok(await _mediator.Send(new GetAllNotifyQuery { ID = id }));
-    //}
-
-    // GET: api/Notify/1
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetNotify(int id)
+    //// GET: api/Notify/GetAll
+    [Route("GetAll")]
+    public async Task<ActionResult<NotifyViewModel>> GetAllNotify()
     {
-      var Notify = await _mediator.Send(new GetNotifyQuery { ID = id });
-      return new OkObjectResult(new
-      {
-        Message = "This is secure API and team details data!",
-        Notify.ID,
-        Notify.Status,
-        Notify.IssueID,
-        Notify.UserID
-      });
-    }
-
-    // POST: api/Notify
-    [HttpPost]
-    [Route("Create")]
-    public async Task<Unit> PostNotify(CreateNotifyCommand command)
-    {
-      var Notify = await _mediator.Send(command);
-
-      return Notify;
-    }
-
-    // DELETE: api/Notify 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteNotifys(int id)
-    {
-      await _mediator.Send(new DeleteNotifyCommand { ID = id });
-      return NoContent();
+      return Ok(await _mediator.Send(new GetAllNotifyQuery()));
     }
   }
 }

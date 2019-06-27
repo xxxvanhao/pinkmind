@@ -59,7 +59,7 @@ export class BodyComponent implements OnInit {
   const timeLine = document.getElementsByClassName('isNo-items timeline') as any;
   const issue = document.getElementsByClassName('issue') as any;
   if (timeLine.length > 0) {
-      issue[0].style.marginLeft = '-35.63rem';
+      issue[0].style.marginLeft = '-105.6%';
       issue[0].style.transition = '0.5s';
     } else {
       issue[0].style.marginLeft = '0px';
@@ -90,7 +90,7 @@ export class BodyComponent implements OnInit {
       item.className += ' if-active';
       });
     }
-    this.userService.getIssue('iPrama');
+    this.userService.getIssue(iParam);
   }
 
   iddSubmit(iParam: string) {
@@ -103,6 +103,5 @@ export class BodyComponent implements OnInit {
       item.className += ' idd-active';
       });
     }
-    this.userService.getIssue('iPrama');
   }
 }

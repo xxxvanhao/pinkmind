@@ -11,8 +11,10 @@ import { Project } from '../models/project.interface';
 import { ReUpdate } from '../models/reUpdate.interface';
 import * as moment from 'moment';
 import { Issue } from '../models/issue.interface';
-import { IGetType } from '../models/IGetType.interface';
+import { IGetType } from '../models/igettype.interface';
 import { IIssueType } from '../models/issuetype.interface';
+import { ProjectMember } from '../models/projectmember.interface';
+import { IssueDetails } from '../models/issuedetails.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,11 +24,18 @@ export class UserService extends BaseService {
   listProject: Project;
   userDetails: UserDetails;
   spaceId: string;
+  projectMember: ProjectMember;
   listDateReUpdate: Date[];
   listReUpdate: ReUpdate;
   listIssue: Issue;
+  issueDetails: IssueDetails;
   mileStone: IGetType;
   issueType: IIssueType;
+  listVersion: IGetType;
+  listResolution: IGetType;
+  listPriority: IGetType;
+  listCategory: IGetType;
+  listStatus: IGetType;
 
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
@@ -209,7 +218,21 @@ export class UserService extends BaseService {
     // .pipe(catchError(this.handleError));
   }
 
+  getProjectMember(pmParam: string) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/teamdetails/getall/${pmParam}`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.projectMember = res.teamDetails;
+    });
+  }
+
   // API GET
+
 
   getReUpdate(pKey: string) {
     const authToken = localStorage.getItem('auth_token');
@@ -222,7 +245,7 @@ export class UserService extends BaseService {
     .then((res: any) => {
       this.listDateReUpdate = Array.from(new Set((res.reUpdateDTOs as any).map((item: any) =>
         moment(item.updateTime).format('MMM DD, YYYY'))));
-      this.listReUpdate = res.reUpdateDTOs.reverse();
+      this.listReUpdate = res.reUpdateDTOs;
     });
   }
 
@@ -232,11 +255,9 @@ export class UserService extends BaseService {
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    return this.http.get(this.baseUrl + `/Issue/${iKey}`, {headers})
+    return this.http.get(this.baseUrl + `/Issue/GetByUser/${iKey}`, {headers})
     .toPromise()
-    .then((res: any) => {
-      this.listIssue = res;
-    });
+    .then((res: any) => this.issueDetails = res.issues);
   }
   getMilestone() {
     const authToken = localStorage.getItem('auth_token');
@@ -259,7 +280,7 @@ export class UserService extends BaseService {
     return this.http.get(this.baseUrl + `/Category/getall`, {headers})
     .toPromise()
     .then((res: any) => {
-      this.mileStone = res.categories;
+      this.listCategory = res.categories;
     });
   }
 
@@ -269,7 +290,7 @@ export class UserService extends BaseService {
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    return this.http.get(this.baseUrl + `/Mileston/getall`, {headers})
+    return this.http.get(this.baseUrl + `/issuetype/getall`, {headers})
     .toPromise()
     .then((res: any) => {
       this.issueType = res.issueTypes;
@@ -285,7 +306,7 @@ export class UserService extends BaseService {
     return this.http.get(this.baseUrl + `/Version/getall`, {headers})
     .toPromise()
     .then((res: any) => {
-      this.mileStone = res.versions;
+      this.listVersion = res.versions;
     });
   }
 
@@ -298,7 +319,7 @@ export class UserService extends BaseService {
     return this.http.get(this.baseUrl + `/Status/getall`, {headers})
     .toPromise()
     .then((res: any) => {
-      this.mileStone = res.statuses;
+      this.listStatus = res.statuses;
     });
   }
 
@@ -311,7 +332,7 @@ export class UserService extends BaseService {
     return this.http.get(this.baseUrl + `/Priority/getall`, {headers})
     .toPromise()
     .then((res: any) => {
-      this.mileStone = res.priorities;
+      this.listPriority = res.priorities;
     });
   }
 
@@ -324,7 +345,20 @@ export class UserService extends BaseService {
     return this.http.get(this.baseUrl + `/Resolution/getall`, {headers})
     .toPromise()
     .then((res: any) => {
-      this.mileStone = res.resolutions;
+      this.listResolution = res.resolutions;
     });
+  }
+
+  //Post Issue
+
+  postIssue(issue: Issue) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/issue', issue, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
   }
 }

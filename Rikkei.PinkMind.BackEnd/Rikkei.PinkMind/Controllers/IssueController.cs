@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;
@@ -49,7 +48,7 @@ namespace Rikkei.PinkMind.API.Controllers
     public async Task<ActionResult<IssuesViewModel>> GetIssueByUser(string key)
     {
       var userID = _caller.Claims.Single(u => u.Type == "id");
-      return Ok(await _mediator.Send(new GetIssueByUserQuery { Key = key, ID = Convert.ToInt64(userID) }));
+      return Ok(await _mediator.Send(new GetIssueByUserQuery { Key = key, ID = Convert.ToInt64(userID.Value) }));
     }
     // GET: api/Issue/GetDetail/7
     [HttpGet("GetDetail/{id}")]
@@ -77,7 +76,6 @@ namespace Rikkei.PinkMind.API.Controllers
         IssueTypeID = command.IssueTypeID,
         Subject = command.Subject,
         Description = WebUtility.HtmlEncode(command.Description),
-        StatusID = command.StatusID,
         AssigneeUser = command.AssigneeUser,
         PriorityID = command.PriorityID,
         CategoryID = command.CategoryID,

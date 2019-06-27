@@ -27,11 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Priorities\Queries\GetAllPriority\" />
     <Folder Include="SpaceControls\Commands\GetAllSpaceControl\" />
     <Folder Include="Projects\Commands\Delete\" />
     <Folder Include="Projects\Commands\Update\" />
-    <Folder Include="Users\Queries\GetUserDetailList\" />
   </ItemGroup>
 
   <ItemGroup>

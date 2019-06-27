@@ -17,7 +17,58 @@ namespace Rikkei.PindMind.DAO.Models
                      DbContextOptions<PinkMindContext>>()))
       {
         //Data for tbl_Category
-        if (!_pmContext.Issues.Any())
+        if (!_pmContext.Categories.Any())
+        {
+          //Data for IssueType
+          _pmContext.AddRange(new Category
+          {
+            Name = "Coding",
+            CreateBy = 999999999999,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 999999999999,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true,
+          },
+          new Category
+          {
+            Name = "Basic Design",
+            CreateBy = 999999999999,
+            CreateAt = DateTime.UtcNow,
+            UpdateBy = 999999999999,
+            LastUpdate = DateTime.UtcNow,
+            DelFlag = true
+          },
+         new Category
+         {
+           Name = "Infrastructure",
+           CreateBy = 999999999999,
+           CreateAt = DateTime.UtcNow,
+           UpdateBy = 999999999999,
+           LastUpdate = DateTime.UtcNow,
+           DelFlag = true
+         },
+        new Category
+        {
+          Name = "Detail Design",
+          CreateBy = 999999999999,
+          CreateAt = DateTime.UtcNow,
+          UpdateBy = 999999999999,
+          LastUpdate = DateTime.UtcNow,
+          DelFlag = true
+        },
+        new Category
+        {
+          Name = "Unit Test",
+          CreateBy = 999999999999,
+          CreateAt = DateTime.UtcNow,
+          UpdateBy = 999999999999,
+          LastUpdate = DateTime.UtcNow,
+          DelFlag = true
+        });
+          _pmContext.SaveChanges();
+        }
+        //
+        if (!_pmContext.IssueTypes.Any())
         {
           //Data for IssueType
           _pmContext.AddRange(new IssueType
@@ -235,7 +286,7 @@ namespace Rikkei.PindMind.DAO.Models
             CreateAt = DateTime.UtcNow,
             UpdateBy = 999999999999,
             LastUpdate = DateTime.UtcNow,
-            DelFlag = true
+            DelFlag = true,
           },
           new Resolution
           {

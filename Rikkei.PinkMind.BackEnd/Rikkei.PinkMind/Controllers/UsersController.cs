@@ -10,6 +10,7 @@ using Rikei.PinkMind.Business.Users.Commands.CreateUser;
 using Rikei.PinkMind.Business.Users.Commands.DeleteUser;
 using Rikei.PinkMind.Business.Users.Commands.UpdateUser;
 using Rikei.PinkMind.Business.Users.Queries.GetUserDetail;
+using Rikei.PinkMind.Business.Users.Queries.GetUserDetailList;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
@@ -26,11 +27,14 @@ namespace Rikkei.PinkMind.API.Controllers
       _caller = httpContextAccessor.HttpContext.User;
     }
 
-    // GET: api/Users
-    //[HttpGet]
-    //public async Task<ActionResult<IEnumerable<User>>> GetUser()
-    //{
-    //}
+    //GET: api/Users
+    [Authorize(Policy = "ApiUser")]
+    [Route("getall")]
+    public async Task<ActionResult<UserViewModel>> GetAllUser()
+    {
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      return Ok(await _mediator.Send(new UserQuery { userID = Convert.ToInt64(userID.Value) }));
+    }
 
     // GET: api/Users/5
     [Authorize(Policy = "ApiUser")]

@@ -15,7 +15,7 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Update
   {
     public long ID { get; set; }
     public string Content { get; set; }
-    public int UpdateBy { get; set; }
+    public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
     public string CheckUpdate { get; set; }

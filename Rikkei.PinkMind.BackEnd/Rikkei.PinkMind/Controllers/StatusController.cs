@@ -1,50 +1,35 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Rikei.PinkMind.Business.Statuses.Queries;
-using Rikei.PinkMind.Business.Statuses.Commands.Create;
-using Rikei.PinkMind.Business.Statuses.Commands.Update;
-using Rikei.PinkMind.Business.Statuses.Commands.Delete;
+using Rikei.PinkMind.Business.Statuses.Queries.GetAllStatus;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Rikkei.PinkMind.API.Controllers
 {
-    [Route("api/[controller]")]
-    public class StatusController : Controller
+  [Route("api/[controller]")]
+  public class StatusController : Controller
+  {
+    private readonly IMediator _mediator;
+    private readonly ClaimsPrincipal _caller;
+
+    public StatusController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
     {
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      _mediator = mediator;
+      _caller = httpContextAccessor.HttpContext.User;
     }
+    // GET: api/Status/GetAll
+    [Route("GetAll")]
+    public async Task<ActionResult<StatusViewModel>> GetAllStatus()
+    {
+      return Ok(await _mediator.Send(new GetAllStatusQuery( )));
+    }
+
+  }
 }

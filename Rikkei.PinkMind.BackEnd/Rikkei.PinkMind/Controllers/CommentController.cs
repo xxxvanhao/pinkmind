@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Rikei.PinkMind.Business.Comments.Commands.Create;
@@ -29,7 +30,7 @@ namespace Rikkei.PinkMind.API.Controllers
       _caller = httpContextAccessor.HttpContext.User;
     }
 
-    // GET: api/Comment/GetAll/5
+    // GET: api/Comment/GetAll/7
     [Route("GetAll/{id}")]
     public async Task<ActionResult<CommentsViewModel>> GetAllComment(int id)
     {
@@ -55,21 +56,27 @@ namespace Rikkei.PinkMind.API.Controllers
       });
     }
 
-    // PUT: api/Comment 
+    // PUT: api/Comment
+    [Authorize(Policy = "ApiUser")]
     [HttpPut]
     [Route("Update")]
     public async Task<IActionResult> PutComment([FromBody]UpdateCommentCommand command)
     {
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      command.UpdateBy = Convert.ToInt64(userID.Value);
       await _mediator.Send(command);
-
       return NoContent();
     }
 
     // POST: api/Comment
     [HttpPost]
+    [Authorize(Policy = "ApiUser")]
     [Route("Create")]
     public async Task<Unit> PostComment([FromBody]CreateCommentCommand command)
-    {            
+    {
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      command.CreateBy = Convert.ToInt64(userID.Value);
+      command.UpdateBy = Convert.ToInt64(userID.Value);
       var Comment = await _mediator.Send(command);
       return Comment;
     }

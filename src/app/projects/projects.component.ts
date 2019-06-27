@@ -13,11 +13,5 @@ export class ProjectsComponent implements OnInit {
  }
 
   ngOnInit() {
-    this.userService.getIssueType();
-    this.userService.getPriority();
-    this.userService.getCategory();
-    this.userService.getResolution();
-    this.userService.getVersion();
-    this.userService.getStatus();
   }
 }

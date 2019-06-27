@@ -29,9 +29,9 @@ namespace Rikkei.PinkMind.API.Controllers
 
     // GET: api/TeamDetails/getall/5
     [Route("getall/{id}")]
-    public async Task<ActionResult<TeamDetailsViewModel>> GetAllTeamDetails(int id)
+    public async Task<ActionResult<TeamDetailsViewModel>> GetAllTeamDetails(string id)
     {
-      return Ok(await _mediator.Send(new GetAllTeamDetailsQuery { ID = id }));
+      return Ok(await _mediator.Send(new GetAllTeamDetailsQuery { TeamName = id }));
     }
 
     // GET: api/TeamDetails/5

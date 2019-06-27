@@ -51,44 +51,35 @@
             <div class="col-md-4 fix-md-4 pl-0">
                 <h5 class="title">Status</h5>
                 <div class="home-status">
-                    <div class="row text-center align-content-center px-3 flex-nowrap">
+                    <div class="row text-center align-content-center px-3 flex-nowrap" *ngIf="countStatus">
                         <div class="col-md-3 px-0">
                             <span>Open</span>
                             <br>
-                            <span class="home-open">0</span>
+                            <span class="home-open">{{countStatus.open}}</span>
                         </div>
                         <div class="col-md-3 px-0">
                             <span>In progress</span>
                             <br>
-                            <span class="home-progress">0</span>
+                            <span class="home-progress">{{countStatus.inprogress}}</span>
                         </div>
                         <div class="col-md-3 px-0">
                             <span>Resolved</span>
                             <br>
-                            <span class="home-resolve">0</span>
+                            <span class="home-resolve">{{countStatus.resolved}}</span>
                         </div>
                         <div class="col-md-3 px-0">
                             <span>Closed</span>
                             <br>
-                            <span class="home-close">0</span>
+                            <span class="home-close">{{countStatus.closed}}</span>
                         </div>
                     </div>
                 </div>
                 <h5 class="title">Milestone</h5>
                 <div class="home-milestone">
                     <div class="row text-center align-content-center px-3">
-                        <div class="milestone-list-items d-flex flex-column align-items-start mx-2">
+                        <div class="milestone-list-items d-flex flex-column align-items-start mx-2" *ngFor="let item of userService.mileStone">
                             <div class="items-text">
-                                1.0
-                            </div>
-                            <div class="graph-bar d-flex align-items-start mb-3">
-                                <span class="graph-rule mr-2"></span>
-                                <span class="total-items">(0/0)</span>
-                            </div>
-                        </div>
-                        <div class="milestone-list-items d-flex flex-column align-items-start mx-2">
-                            <div class="items-text">
-                                Phase
+                                {{item.name}}
                             </div>
                             <div class="graph-bar d-flex align-items-start mb-3">
                                 <span class="graph-rule mr-2"></span>
@@ -100,24 +91,16 @@
                 <h5 class="title">Category</h5>
                 <div class="home-category">
                     <div class="row text-center align-content-center px-3">
-                        <div class="category-list-items d-flex flex-column align-items-start mx-2">
+                        <div class="category-list-items d-flex flex-column align-items-start mx-2" *ngFor="let item of userService.listCategory">
                             <div class="items-text">
-                                Coding
+                                {{item.name}}
                             </div>
                             <div class="graph-bar d-flex align-items-start mb-3">
                                 <span class="graph-rule mr-2"></span>
                                 <span class="total-items">(0/0)</span>
                             </div>
                         </div>
-                        <div class="milestone-list-items d-flex flex-column align-items-start mx-2">
-                            <div class="items-text">
-                                Basic Design
-                            </div>
-                            <div class="graph-bar d-flex align-items-start mb-3">
-                                <span class="graph-rule mr-2"></span>
-                                <span class="total-items">(0/0)</span>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

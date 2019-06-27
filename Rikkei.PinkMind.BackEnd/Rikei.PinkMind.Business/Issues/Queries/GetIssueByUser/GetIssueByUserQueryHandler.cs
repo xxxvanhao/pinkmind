@@ -101,9 +101,9 @@ namespace Rikei.PinkMind.Business.Issues.Queries.GetIssueByUser
         tfItem.VersionID = item.VersionID;
         tfItem.VersionName = item.VersionName;
         tfItem.AssigneeUser = item.AssigneeUser;
-        var GetAssignee = ListUser.SingleOrDefault(x => x.ID == tfItem.AssigneeUser);
-        tfItem.AssigneeName = GetAssignee.FullName;
-        tfItem.AssigneePicture = GetAssignee.PictureUrl;
+        //var GetAssignee = ListUser.Where(x => x.ID == tfItem.AssigneeUser).First();
+        tfItem.AssigneeName = "Admin";
+        tfItem.AssigneePicture = "Admin";
         tfItem.CategoryID = item.CategoryID;
         tfItem.CategoryName = item.CategoryName;
         tfItem.CheckUpdate = item.CheckUpdate;

@@ -18,7 +18,7 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
   {
     public int ID { get; set; }
     public string Content { get; set; }
-    public int CreateBy { get; set; }
+    public long CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
     public bool DelFlag { get; set; }
     public long UpdateBy { get; set; }

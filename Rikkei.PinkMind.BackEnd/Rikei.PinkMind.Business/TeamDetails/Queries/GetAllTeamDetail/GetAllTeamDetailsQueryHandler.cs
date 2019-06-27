@@ -22,8 +22,22 @@ namespace Rikei.PinkMind.Business.TeamDetails.Queries.GetAllTeamDetail
     }
     public async Task<TeamDetailsViewModel> Handle(GetAllTeamDetailsQuery request, CancellationToken cancellationToken)
     {
-      var teamDetails = from td in _pmContext.TeamDetails select td;
-      var allTeamDetails = await teamDetails.Where(td => td.TeamID == request.ID).ToListAsync(cancellationToken);
+      var teamDetails = from td in _pmContext.TeamDetails
+                        select new TeamDetailsDTO
+                        {
+                          ID = td.ID,
+                          UserID = td.UserID,
+                          AvatarPath = td.User.PictureUrl,
+                          UserName = $"{td.User.FirstName} {td.User.LastName}",
+                          TeamID = td.TeamID,
+                          TeamName = td.Team.Name,
+                          RoleID = td.RoleID,
+                          RoleName = td.Role.Name,
+                          JoinedOn = td.JoinedOn,
+                          AddBy = td.AddBy,
+                          DelFlag = td.DelFlag,
+                        };
+      var allTeamDetails = await teamDetails.Where(td => td.TeamName == request.TeamName).ToListAsync(cancellationToken);
 
       var model = new TeamDetailsViewModel
       {

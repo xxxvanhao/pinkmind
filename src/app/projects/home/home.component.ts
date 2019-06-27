@@ -20,13 +20,15 @@ export class HomeComponent implements OnInit{
 
   ngOnInit() {
     this.getParamProjectHome();
-    this.getIssue();
+    this.userService.getMilestone();
+    this.userService.getCategory();
   }
 
   getParamProjectHome() {
       this.route.params.subscribe(params => {
       this.paramHomeId = params['id'];
       this.checkProject();
+      this.getCountStatus();
       this.userService.getParamSpaceId(this.paramHomeId);
       this.userService.getReUpdate(this.paramHomeId);
       });
@@ -45,17 +47,22 @@ export class HomeComponent implements OnInit{
     });
   }
 
-  getIssue() {
+  getCountStatus() {
     this.userService.getIssue(this.paramHomeId)
     .then((res: any) => {
-      const sum = res.issueDTO.reduce((total, item) => {
-        if (!total[item.status]) {
-            total[item.status] = 0;
+      const sum = res.reduce((total, item) => {
+        if (!total[item.statusName]) {
+            total[item.statusName] = 0;
         }
-        total[item.status]++;
+        total[item.statusName]++;
         return total;
         }, {});
-      console.log(sum);
+      this.countStatus =  {
+        open: sum['Open'] == undefined ? 0 : sum['Open'],
+        inprogress: sum['In Progress'] == undefined ? 0 : sum['In Progress'],
+        resolved: sum['Resolved'] == undefined ? 0 : sum['Resolved'],
+        closed: sum['Closed'] == undefined ? 0 : sum['Closed']
+      };
     });
   }
 }

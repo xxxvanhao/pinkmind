@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -47,12 +48,14 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
       }
       public async Task<Unit> Handle(CreateIssueCommand request, CancellationToken cancellationToken)
       {
+        var status = _pmContext.Statuses.Where(it => it.Name == "Open").SingleOrDefault();
+
           var eIssue = new Issue
           {
             IssueTypeID = request.IssueTypeID,
             Subject = request.Subject,
             Description = request.Description,
-            StatusID = request.StatusID,
+            StatusID = status.ID,
             AssigneeUser = request.AssigneeUser,
             PriorityID = request.PriorityID,
             CategoryID = request.CategoryID,
@@ -75,14 +78,14 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
         var eReUpdate = new ReUpdateSpace
         {
           AvatarPath = uDetails.PictureUrl,
-          UserName = $"{uDetails.FirstName} {uDetails.LastUpdate}",
+          UserName = $"{uDetails.FirstName} {uDetails.LastName}",
           ActionName = WebUtility.HtmlEncode(actineName),
           IssueKey = $"{request.ProjectID}-{eIssue.ID}",
           Subject = request.Subject,
           Content = request.Description,
           ProjectKey = request.ProjectID,
           SpaceID = uDetails.SpaceID,
-          UpdateTime = DateTime.UtcNow
+          UpdateTime = DateTime.Now
         };
         _pmContext.ReUpdates.Add(eReUpdate);
 

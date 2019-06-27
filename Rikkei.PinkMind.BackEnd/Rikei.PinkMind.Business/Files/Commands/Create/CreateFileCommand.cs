@@ -11,7 +11,7 @@ namespace Rikei.PinkMind.Business.Files.Commands.Create
   public class CreateFileCommand : IRequest
   {
     public string FilePath { get; set; }
-    public int CreateBy { get; set; }
+    public long CreateBy { get; set; }
     public DateTime CreateAt { get; set; }
     public int DelFlag { get; set; }
     public int IssueID { get; set; }
