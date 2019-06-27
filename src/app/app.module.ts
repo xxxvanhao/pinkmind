@@ -61,7 +61,7 @@ import { TimeagoModule } from 'ngx-timeago';
     AdminComponent,
     AdminAccountComponent,
     MembersComponent,
-    SpaceComponent
+    SpaceComponent,
   ],
   imports: [
     FroalaEditorModule.forRoot(),

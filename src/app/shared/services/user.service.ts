@@ -11,7 +11,7 @@ import { Project } from '../models/project.interface';
 import { ReUpdate } from '../models/reUpdate.interface';
 import * as moment from 'moment';
 import { Issue } from '../models/issue.interface';
-import { GetAllIssues } from '../models/GetAllIssues.interface';
+import { Issues } from '../models/Issues.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +24,7 @@ export class UserService extends BaseService {
   listDateReUpdate: Date[];
   listReUpdate: ReUpdate;
   listIssue: Issue;
-  ListGetAllIssue: GetAllIssues;
+  Issues: Issues;
 
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
@@ -237,16 +237,44 @@ export class UserService extends BaseService {
     });
   }
   //GetAllIssue
-  getAllIssue() {
+  getAllIssue(projectKey: string/*,key: string ,AssigneeUser: number, CategoryID: number,MilestoneID: number,StatusID : number*/) {
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    return this.http.get(this.baseUrl + `/Issue/getall`, {headers})
+    // let SubURL = projectKey+ "?";
+    // if(key != null){
+    //     SubURL += "key="+ key + "&";
+    // }
+    // if(AssigneeUser != 0){
+    //   SubURL += "AssigneeUser="+ AssigneeUser + "&";
+    // }
+    // if(CategoryID != 0){
+    //   SubURL += "CategoryID="+ CategoryID + "&";
+    // }
+    // if(MilestoneID != 0){
+    //   SubURL += "MilestoneID="+ MilestoneID + "&";
+    // }
+    // if(StatusID != 0){
+    //   SubURL += "StatusID="+ StatusID + "&";
+    // }
+    return this.http.get(this.baseUrl + `/Issue/Search/MAm`, {headers})
     .toPromise()
     .then((res: any) => {
-      this.ListGetAllIssue = res;
+      this.Issues = res.Issues;
     });
-  }
+    }
+    getIssueDetail(ID: Number) {
+      const authToken = localStorage.getItem('auth_token');
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+        'Content-Type' : 'application/json'
+      });
+      return this.http.get(this.baseUrl + `/Issue/${ID}`, {headers})
+      .toPromise()
+      .then((res: any) => {
+        this.listIssue = res.IssueDetail;
+      });
+    }
 }

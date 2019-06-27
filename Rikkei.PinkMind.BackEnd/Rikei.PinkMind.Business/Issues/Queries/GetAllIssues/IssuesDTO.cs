@@ -9,6 +9,8 @@ namespace Rikei.PinkMind.Business.Issues.Queries.GetAllIssues
     public int ID { get; set; }
     public string Key { get; set; }
     public int IssueTypeID { get; set; }
+    public string IssueTypeName { get; set; }
+    public string IssueTypeColor { get; set; }
     public string Subject { get; set; }
     public string Description { get; set; }
     public int StatusID { get; set; }

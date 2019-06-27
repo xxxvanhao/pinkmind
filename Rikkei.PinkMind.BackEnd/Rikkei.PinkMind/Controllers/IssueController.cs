@@ -54,8 +54,8 @@ namespace Rikkei.PinkMind.API.Controllers
     [HttpGet("GetDetail/{id}")]
     public async Task<IActionResult> GetIssue(int id)
     {
-      var Issue = await _mediator.Send(new GetIssueQuery { ID = id });
-      return new OkObjectResult(Issue);
+      var IssueDetail = await _mediator.Send(new GetIssueQuery { ID = id });
+      return new OkObjectResult(IssueDetail);
     }
 
     // PUT: api/Issue 

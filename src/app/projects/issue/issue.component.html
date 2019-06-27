@@ -81,21 +81,21 @@
                                     <th class="res-table">Attachment</th>
                                 </tr>
                             </thead>
-                            <tbody class="issue-tbody text-center">
-                                <tr class="tr-body">
-                                    <td>Task</td>
-                                    <td><a href="# ">FRS_K1-4</a></td>
-                                    <td class="text-left">Code các phần common front-end</td>
-                                    <td class="issue-assgine-item"><span class="avatar">Văn Hảo</span></td>
-                                    <td><span class="status">In progress</span></td>
-                                    <td class="res-table">Normal</td>
-                                    <td class="d-none">Coding</td>
-                                    <td class="d-none">1.0</td>
-                                    <td class="d-none">Phase</td>
-                                    <td class="res-table">May. 27, 2019</td>
-                                    <td class="res-table">Jun. 1</td>
-                                    <td class="res-table">May. 28, 2019</td>
-                                    <td class="d-none">Văn Hảo</td>
+                            <tbody class="issue-tbody text-center" *ngIf="(userService.ListGetAllIssue | keyvalue)?.length> 0; else notShowTimeLine">
+                                <tr class="tr-body" *ngFor="let item of userService.ListGetAllIssue" >
+                                    <td>{{item.ID}}</td>
+                                    <td><a href="#">{{item.Key}}</a></td>
+                                    <td class="text-left">{{item.Subject}}</td>
+                                    <td class="issue-assgine-item"><span class="avatar">{{item.AssigneeName}}</span></td>
+                                    <td><span class="status">{{item.StatusName}}</span></td>
+                                    <td class="res-table">{{item.PriorityName}}</td>
+                                    <td class="d-none">{{item.CategoryName}}</td>
+                                    <td class="d-none">{{item.VersionName}}</td>
+                                    <td class="d-none">{{item.MilestonName}}</td>
+                                    <td class="res-table">{{item.CreateAt}}</td>
+                                    <td class="res-table">{{item.DueDate}}</td>
+                                    <td class="res-table">{{item.LastUpdate}}</td>
+                                    <td class="d-none">{{item.UpdateByName}}</td>
                                     <td class="res-table"></td>
                                 </tr>
 

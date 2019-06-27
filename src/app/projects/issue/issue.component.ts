@@ -21,6 +21,7 @@ export class IssueComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.paramIssueId = params['id'];
       this.checkProject();
+      this.getIssue();
       this.userService.getParamSpaceId(this.paramIssueId);
       });
   }
@@ -36,5 +37,8 @@ export class IssueComponent implements OnInit {
         this.router.navigate(['dashboard']);
       }
     });
+  }
+  getIssue(){
+    this.userService.getAllIssue("k")
   }
 }

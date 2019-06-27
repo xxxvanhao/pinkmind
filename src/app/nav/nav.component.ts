@@ -15,13 +15,14 @@ export class NavComponent implements OnInit, OnDestroy {
 
   status: boolean;
   subscription: Subscription;
-  listSearch : string [];
+
   constructor(private userService: UserService, private router: Router) {
 
   }
 
   ngOnInit() {
     this.subscription = this.userService.authNavStatus$.subscribe(status => this.status = status);
+    this.userService.getProject();
   }
 
   ngOnDestroy() {
@@ -42,21 +43,12 @@ export class NavComponent implements OnInit, OnDestroy {
   const projectContent = filterProject.getElementsByClassName('project-content') as any;
   // tslint:disable-next-line: prefer-for-of
   for (let i = 0; i < projectName.length; i++) {
-    const txtValue = projectName[i].textContent || projectName[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      projectContent[i].style.display = '';
-    } else {
-      projectContent[i].style.display = 'none';
+      const txtValue = projectName[i].textContent || projectName[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        projectContent[i].style.display = '';
+      } else {
+        projectContent[i].style.display = 'none';
+      }
     }
-  }
-}
-searchSpace() {
-  const spaceName = document.getElementById('searchSpace') as HTMLInputElement;
-  let showPopup = document.getElementsByClassName('showPopup')[0] as any;
-  if(spaceName.value.length > 0 ) {
-    showPopup.style.display = '';
-  }else {
-    showPopup.style.display = 'none';
-  }
   }
 }
