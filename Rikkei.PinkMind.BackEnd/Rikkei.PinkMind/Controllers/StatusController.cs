@@ -14,6 +14,8 @@ using Rikei.PinkMind.Business.Statuses.Queries.GetAllStatus;
 namespace Rikkei.PinkMind.API.Controllers
 {
   [Route("api/[controller]")]
+  [Produces("application/json")]
+  [ApiController]
   public class StatusController : Controller
   {
     private readonly IMediator _mediator;

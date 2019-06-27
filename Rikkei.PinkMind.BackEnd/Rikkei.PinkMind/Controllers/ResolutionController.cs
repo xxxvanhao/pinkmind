@@ -12,6 +12,7 @@ using Rikei.PinkMind.Business.Resolutions.Queries.GetAllResolution;
 namespace Rikkei.PinkMind.API.Controllers
 {
   [Route("api/[controller]")]
+  [Produces("application/json")]
   [ApiController]
   public class ResolutionController : ControllerBase
   {

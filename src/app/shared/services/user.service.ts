@@ -11,6 +11,7 @@ import { Project } from '../models/project.interface';
 import { ReUpdate } from '../models/reUpdate.interface';
 import * as moment from 'moment';
 import { Issue } from '../models/issue.interface';
+import { GetAllIssues } from '../models/GetAllIssues.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +24,7 @@ export class UserService extends BaseService {
   listDateReUpdate: Date[];
   listReUpdate: ReUpdate;
   listIssue: Issue;
+  ListGetAllIssue: GetAllIssues;
 
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
@@ -232,6 +234,19 @@ export class UserService extends BaseService {
     .toPromise()
     .then((res: any) => {
       this.listIssue = res;
+    });
+  }
+  //GetAllIssue
+  getAllIssue() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Issue/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.ListGetAllIssue = res;
     });
   }
 }

@@ -11,6 +11,7 @@ using Rikei.PinkMind.Business.Notifies.Queries.GetAll;
 namespace Rikkei.PinkMind.API.Controllers
 {
   [Route("api/[controller]")]
+  [Produces("application/json")]
   [ApiController]
   public class NotifyController : ControllerBase
   {
