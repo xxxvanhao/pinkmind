@@ -179,7 +179,9 @@ body {
 .avatarProfile {
     border-radius: 50%;
 }
-
+.show-description{
+    margin: 30px 0;
+}
 
 /****My Issue****/
 
@@ -207,6 +209,10 @@ body {
     margin-bottom: 5px;
     border: none;
     outline: none;
+    padding: 3px 10px;
+    margin: 0 3px;
+    border-radius: 20px;
+    font-size: .8rem;
     background-color: transparent;
 }
 

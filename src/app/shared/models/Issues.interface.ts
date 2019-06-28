@@ -1,4 +1,4 @@
-export interface Issues{
+export interface IIssues{
     ID? : number;
     Key? : string;
     IssueTypeID? : number;

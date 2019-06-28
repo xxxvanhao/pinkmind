@@ -46,7 +46,7 @@ namespace Rikei.PinkMind.Business.Projects.Commands.Create
 
         var eTeam = new Team
         {
-          Name = request.Name,
+          Name = request.ID,
           CreateBy = request.CreateBy,
           CreateAt = DateTime.UtcNow,
           UpdateBy = request.UpdateBy,

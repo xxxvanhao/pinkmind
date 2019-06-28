@@ -33,7 +33,7 @@ namespace Rikkei.PindMind.DAO.Models
         {
             get
             {
-                return LastName + " " + FirstName;
+                return FirstName + " " + LastName;
             }
         }
         public Space Space { get; set; }

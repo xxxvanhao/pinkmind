@@ -172,12 +172,12 @@
                                 </tr>
                             </thead>
                             <tbody class="issue-tbody " align="center">
-                                <tr class="tr-body">
-                                    <td><a href="# ">FRS_K1-4</a></td>
-                                    <td class="text-left">Code các phần common front-end</td>
-                                    <td>Normal</td>
-                                    <td><span class="status">In progress</span></td>
-                                    <td>Jun. 1</td>
+                                <tr class="tr-body" *ngFor="let item of userService.issueDetails">
+                                    <td><a href="/projects/view/{{item.id}}">{{item.key}}</a></td>
+                                    <td class="text-left">{{item.subject}}</td>
+                                    <td>{{item.priorityName}}</td>
+                                    <td><span class="status">{{item.statusName}}</span></td>
+                                    <td>{{item.dueDate | date : 'MMM .dd'}}</td>
                                 </tr>
                             </tbody>
                         </table>

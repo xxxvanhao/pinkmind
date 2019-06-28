@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, enableProdMode } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { ConfigService } from '../utils/config.service';
 import {BaseService} from './base.service';
@@ -11,7 +11,11 @@ import { Project } from '../models/project.interface';
 import { ReUpdate } from '../models/reUpdate.interface';
 import * as moment from 'moment';
 import { Issue } from '../models/issue.interface';
-import { Issues } from '../models/Issues.interface';
+import { IGetType } from '../models/igettype.interface';
+import { IIssueType } from '../models/issuetype.interface';
+import { ProjectMember } from '../models/projectmember.interface';
+import { IssueDetails } from '../models/issuedetails.interface';
+import { IssueDetail } from '../models/IssueDetail.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,10 +25,20 @@ export class UserService extends BaseService {
   listProject: Project;
   userDetails: UserDetails;
   spaceId: string;
+  projectMember: ProjectMember;
   listDateReUpdate: Date[];
   listReUpdate: ReUpdate;
   listIssue: Issue;
-  Issues: Issues;
+  issueDetails: IssueDetails;
+  mileStone: IGetType;
+  issueType: IIssueType;
+  listVersion: IGetType;
+  listResolution: IGetType;
+  listPriority: IGetType;
+  listCategory: IGetType;
+  listStatus: IGetType;
+  listSearchIssue : IssueDetails;
+  IssueDetail : IssueDetail;
 
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
@@ -207,7 +221,21 @@ export class UserService extends BaseService {
     // .pipe(catchError(this.handleError));
   }
 
+  getProjectMember(pmParam: string) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/teamdetails/getall/${pmParam}`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.projectMember = res.teamDetails;
+    });
+  }
+
   // API GET
+
 
   getReUpdate(pKey: string) {
     const authToken = localStorage.getItem('auth_token');
@@ -220,7 +248,7 @@ export class UserService extends BaseService {
     .then((res: any) => {
       this.listDateReUpdate = Array.from(new Set((res.reUpdateDTOs as any).map((item: any) =>
         moment(item.updateTime).format('MMM DD, YYYY'))));
-      this.listReUpdate = res.reUpdateDTOs.reverse();
+      this.listReUpdate = res.reUpdateDTOs;
     });
   }
 
@@ -230,51 +258,130 @@ export class UserService extends BaseService {
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    return this.http.get(this.baseUrl + `/Issue/${iKey}`, {headers})
+    return this.http.get(this.baseUrl + `/Issue/GetByUser/${iKey}`, {headers})
     .toPromise()
-    .then((res: any) => {
-      this.listIssue = res;
-    });
+    .then((res: any) => this.issueDetails = res.issues);
   }
-  //GetAllIssue
-  getAllIssue(projectKey: string/*,key: string ,AssigneeUser: number, CategoryID: number,MilestoneID: number,StatusID : number*/) {
+  getMilestone() {
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    // let SubURL = projectKey+ "?";
-    // if(key != null){
-    //     SubURL += "key="+ key + "&";
-    // }
-    // if(AssigneeUser != 0){
-    //   SubURL += "AssigneeUser="+ AssigneeUser + "&";
-    // }
-    // if(CategoryID != 0){
-    //   SubURL += "CategoryID="+ CategoryID + "&";
-    // }
-    // if(MilestoneID != 0){
-    //   SubURL += "MilestoneID="+ MilestoneID + "&";
-    // }
-    // if(StatusID != 0){
-    //   SubURL += "StatusID="+ StatusID + "&";
-    // }
-    return this.http.get(this.baseUrl + `/Issue/Search/MAm`, {headers})
+    return this.http.get(this.baseUrl + `/Mileston/getall`, {headers})
     .toPromise()
     .then((res: any) => {
-      this.Issues = res.Issues;
+      this.mileStone = res.milestons;
     });
-    }
-    getIssueDetail(ID: Number) {
-      const authToken = localStorage.getItem('auth_token');
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${authToken}`,
-        'Content-Type' : 'application/json'
-      });
-      return this.http.get(this.baseUrl + `/Issue/${ID}`, {headers})
-      .toPromise()
-      .then((res: any) => {
-        this.listIssue = res.IssueDetail;
-      });
-    }
+  }
+  getCategory() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Category/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listCategory = res.categories;
+    });
+  }
+
+  getIssueType() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/issuetype/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.issueType = res.issueTypes;
+    });
+  }
+
+  getVersion() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Version/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listVersion = res.versions;
+    });
+  }
+
+  getStatus() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Status/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listStatus = res.statuses;
+    });
+  }
+
+  getPriority() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Priority/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listPriority = res.priorities;
+    });
+  }
+
+  getResolution() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Resolution/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listResolution = res.resolutions;
+    });
+  }
+
+  //Post Issue
+
+  postIssue(issue: Issue) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/issue', issue, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
+  getSearchIssue(proID:string,catID: number,staID:number,mileID:number,key:string) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/issue/search/`+ proID + "?key="+key+ "&CategoryID="+catID +"&MilestoneID="+mileID+"&StatusID="+staID, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listSearchIssue = res.issues;
+    });
+  }
+  getIssueDetail() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/issue/GetDetail/2`, {headers}).toPromise();
+  }
 }

@@ -19,6 +19,8 @@ import { AdminAccountComponent } from './admin/account/admin-account.component';
 import { MembersComponent } from './admin/members/members.component';
 import { SpaceComponent } from './space/space.component';
 import { AuthSpaceGuard } from './auth/auth-space.guard';
+import { ViewComponent } from './projects/issue/view/view.component';
+import { EditComponent } from './projects/issue/edit/edit.component';
 
 const routes: Routes = [
   {path: '', component: WwwrootComponent,  canActivate: [AuthGuard], children: [
@@ -49,6 +51,14 @@ const routes: Routes = [
       {
         path: 'setting/:id',
         component: ProjectsettingComponent
+      },
+      {
+        path: 'view/:id',
+        component: ViewComponent
+      },
+      {
+        path: 'edit/:id',
+        component: EditComponent
       }
     ]},
     {path: 'admin', component: AdminComponent, children: [

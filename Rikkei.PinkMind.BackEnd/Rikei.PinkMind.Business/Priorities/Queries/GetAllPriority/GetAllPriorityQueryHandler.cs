@@ -22,10 +22,10 @@ namespace Rikei.PinkMind.Business.Priorities.Queries.GetAllPriority
 
     public async Task<PriorityViewModel> Handle(GetAllPriorityQuery request, CancellationToken cancellationToken)
     {
-      var Categories = from ct in _pmContext.Categories select ct;
-      var AllCategories = await Categories.ToListAsync(cancellationToken);
+      var priorities = from ct in _pmContext.Priorities select ct;
+      var allPriorities = await priorities.ToListAsync(cancellationToken);
       var tranfItem = new List<PriorityDTO>();
-      foreach (var item in AllCategories)
+      foreach (var item in allPriorities)
       {
         var tfitem = new PriorityDTO();
         tfitem.ID = item.ID;
