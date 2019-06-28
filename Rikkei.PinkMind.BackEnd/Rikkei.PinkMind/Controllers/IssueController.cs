@@ -76,7 +76,6 @@ namespace Rikkei.PinkMind.API.Controllers
         IssueTypeID = command.IssueTypeID,
         Subject = command.Subject,
         Description = WebUtility.HtmlEncode(command.Description),
-        StatusID = command.StatusID,
         AssigneeUser = command.AssigneeUser,
         PriorityID = command.PriorityID,
         CategoryID = command.CategoryID,

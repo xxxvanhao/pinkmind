@@ -4,10 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Rikei.PinkMind.Business.Milestones.Queries.GetAllMileston;
-using Rikei.PinkMind.Business.Milestones.Queries.GetMileston;
-using Rikei.PinkMind.Business.Milestones.Commands.Update;
-using Rikei.PinkMind.Business.Milestones.Commands.Create;
-using Rikei.PinkMind.Business.Milestones.Commands.Delete;
+
 namespace Rikkei.PinkMind.API.Controllers
 {
   [Route("api/[controller]")]

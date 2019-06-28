@@ -68,12 +68,12 @@ namespace Rikei.PinkMind.Business.Issues.Queries.GetIssueByUser
                   };
       var List = await issue.ToListAsync(cancellationToken);
 
-      if (request.Key == "Create")
+      if (request.Key == "Created")
       {
         List = await issue.Where(x => x.CreateBy == request.ID).ToListAsync(cancellationToken);
       }
 
-      else if (request.Key == "Assigner")
+      else if (request.Key == "Assigned")
       {
         List = await issue.Where(x => x.AssigneeUser == request.ID).ToListAsync(cancellationToken);
       }
@@ -104,9 +104,9 @@ namespace Rikei.PinkMind.Business.Issues.Queries.GetIssueByUser
         tfItem.VersionID = item.VersionID;
         tfItem.VersionName = item.VersionName;
         tfItem.AssigneeUser = item.AssigneeUser;
-        var GetAssignee = ListUser.SingleOrDefault(x => x.ID == tfItem.AssigneeUser);
-        tfItem.AssigneeName = GetAssignee.FullName;
-        tfItem.AssigneePicture = GetAssignee.PictureUrl;
+        //var GetAssignee = ListUser.Where(x => x.ID == tfItem.AssigneeUser).First();
+        tfItem.AssigneeName = "Admin";
+        tfItem.AssigneePicture = "Admin";
         tfItem.CategoryID = item.CategoryID;
         tfItem.CategoryName = item.CategoryName;
         tfItem.CheckUpdate = item.CheckUpdate;
