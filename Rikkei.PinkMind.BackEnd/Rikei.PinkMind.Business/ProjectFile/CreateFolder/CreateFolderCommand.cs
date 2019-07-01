@@ -41,7 +41,7 @@ namespace Rikei.PinkMind.Business.ProjectFile.CreateFolder
           FolderPath = request.FolderPath,
           FilePath = request.FilePath,
           TypeModel = "Folder",
-          ImagePath = "Hihi",
+          ImagePath = "fas fa-folder mr-2 fix-color-orange",
           CreateBy = request.CreateBy,
           CreateAt = DateTime.UtcNow,
           UpdateBy = request.CreateBy,
