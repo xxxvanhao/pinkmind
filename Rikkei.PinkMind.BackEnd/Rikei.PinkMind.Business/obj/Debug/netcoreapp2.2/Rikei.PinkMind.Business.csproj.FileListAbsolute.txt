@@ -45,3 +45,5 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\obj\Debug\n
 >>>>>>> df6abc4f8a514685427249e516dca76e664a6daf
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.SignalR.Core.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.SignalR.Core.xml
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.SignalR.Core.dll
+C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikei.PinkMind.Business\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.SignalR.Core.xml

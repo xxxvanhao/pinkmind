@@ -17,8 +17,14 @@ import { IIssueType } from '../models/issuetype.interface';
 import { ProjectMember } from '../models/projectmember.interface';
 import { IssueDetails } from '../models/issuedetails.interface';
 
+
 import { IssueDetail } from '../models/IssueDetail.interface';
 import { FileUpload } from '../models/fileupload.interface';
+
+import { commentDetail } from '../models/commentDetail.interface';
+import { postComment } from '../models/postModel/postComment.interface';
+import { putIssue } from '../models/postModel/putIssue.interface';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,6 +46,7 @@ export class UserService extends BaseService {
   listPriority: IGetType;
   listCategory: IGetType;
   listStatus: IGetType;
+
   listFileDetails: FileUpload;
   listSearchIssue: IssueDetails;
   IssueDetail: IssueDetail;
@@ -413,6 +420,16 @@ export class UserService extends BaseService {
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
   }
+
+  getIssueDetail(id: number) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/issue/'+ id, {headers}).toPromise();
+  }
+
   getSearchIssue(proID:string,catID: number,staID:number,mileID:number,key:string) {
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
@@ -425,17 +442,18 @@ export class UserService extends BaseService {
       this.listSearchIssue = res.issues;
     });
   }
-  getIssueDetail() {
+  // Get comment : Hoang
+  getComment(issueID: number){
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
-    Authorization: `Bearer ${authToken}`,
-    'Content-Type' : 'application/json'
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
     });
-    return this.http.get(this.baseUrl + `/issue/GetDetail/2`, {headers})
-    .toPromise();
+    return this.http.get(this.baseUrl + `/Comment/getall/` + issueID, {headers}).toPromise();
   }
 
   // Post folder-file
+  // return this.http.get(this.baseUrl + `/Comment/getall/`+ issueID, {headers}).toPromise();
 
   postFolder(path: FileUpload) {
     const authToken = localStorage.getItem('auth_token');
@@ -444,6 +462,30 @@ export class UserService extends BaseService {
       'Content-Type' : 'application/json'
     });
     return this.http.post(this.baseUrl + '/FileUpload', path, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+    }
+  //Post comment : Hoang
+  postComment(postComment: postComment) {
+    console.log(postComment);
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/Comment/Create', postComment, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
+
+  //put: Update issue
+  putIssue(putIssueForm: putIssue) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.put(this.baseUrl + '/issue', putIssueForm, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
   }

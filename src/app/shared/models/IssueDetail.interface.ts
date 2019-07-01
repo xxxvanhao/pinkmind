@@ -1,6 +1,6 @@
 export interface IssueDetail{
 
-iD : number;
+id : number;
 issueTypeID  : number;
 subject : string;
 description  : string;
