@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpHeaders, HttpUrlEncodingCodec } from '@angular/common/http';
@@ -41,7 +41,7 @@ export class FileComponent implements OnInit {
     $('.add-folder-cancel').click(() => {
     $('.add-folder-erea').hide();
     });
-
+    setTimeout(() => this.getFileDetails(), 1000);
   }
 
   getParamProjectFile() {
@@ -51,7 +51,6 @@ export class FileComponent implements OnInit {
       this.checkProject();
       this.paramFile = this.getParaFileByName('path', null);
       this.userService.getParamSpaceId(this.paramFileId);
-      this.getFileDetails();
       });
   }
 
@@ -101,13 +100,12 @@ export class FileComponent implements OnInit {
   }
 
   UploadFile() {
-    
-    const pathFile = `${this.userService.userDetails.spaceID}/${this.paramFileId}`;
+
+    const pathFile = `${this.userService.userDetails.spaceID}/${this.paramFileId}/${this.paramFile}`;
     const pathEncode = encodeURIComponent(pathFile);
     const formdata = new FormData(); // FormData object
     const fileInput = document.getElementById('fileInput') as any;
     // Iterating through each files selected in fileInput
-    console.log('hihi');
     for (let i = 0; i < fileInput.files.length; i++) {
         // Appending each file to FormData object
         formdata.append(fileInput.files[i].name, fileInput.files[i]);

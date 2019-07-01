@@ -94,7 +94,7 @@ namespace Rikkei.PinkMind.API.Controllers
 
         var entity = new ProjectFileUpload
         {
-          FolderPath = $"{urlpath}/",
+          FolderPath = $"{urlpath}",
           FilePath = file.FileName,
           FileSize = $"{fileSize} KB",
           TypeModel = "File",
@@ -141,7 +141,7 @@ namespace Rikkei.PinkMind.API.Controllers
 
         var pathDetails = new
         {
-          FolderPath = $"image/imageissue/{path}/",
+          FolderPath = $"image/imageissue/{path}",
           FilePath = fileName,
           FileSize = $"{fileSize} KB"
         };

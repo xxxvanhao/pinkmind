@@ -397,9 +397,6 @@ export class UserService extends BaseService {
     .toPromise()
     .then((res: any) => {
       this.listFileDetails = res.fileDTOs;
-      
-    console.log(this.listFileDetails);
-    console.log(res);
       return res;
     });
   }

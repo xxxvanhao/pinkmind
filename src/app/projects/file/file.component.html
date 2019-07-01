@@ -36,7 +36,7 @@
                     </form>
                 </div>
                 <div class="add-file-erea mb-3">
-                    <form id="uploader">
+                    <form #fileForm="ngForm" autocomplete="off" (submit)="UploadFile()">
                         <div class="d-flex align-items-center">
                             <input type="file" id="fileInput" class="btn btn-light" multiple />
                             <button type="submit" class="btn btn-success">Upload</button>
@@ -59,10 +59,10 @@
                                 <tr class="tr-body" *ngFor="let item of userService.listFileDetails">
                                     <td>
                                         <div class="checkbox text-center mt-1">
-                                            <input type="checkbox" class="check" value="">
+                                            <input type="checkbox" class="check" value="" *ngIf="(item.typeModel == 'File')">
                                         </div>
                                     </td>
-                                    <td class="text-left"><a href="projects/file/{{item.projectID}}?path={{item.filePath}}"><i class="fas fa-folder mr-2 fix-color-orange"></i>{{item.filePath}}</a></td>
+                                    <td class="text-left"><a href="projects/file/{{item.projectID}}?path={{item.filePath}}"><i class="{{item.imagePath}}"></i>{{item.filePath}}</a></td>
                                     <td>{{item.fileSize}}</td>
                                     <td>{{item.updateBy}}</td>
                                     <td>{{item.lastUpdate | date: 'MMM dd, yyyy'}}</td>
