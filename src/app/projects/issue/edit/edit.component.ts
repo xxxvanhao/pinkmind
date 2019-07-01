@@ -4,6 +4,7 @@ import { IssueDetail } from 'src/app/shared/models/IssueDetail.interface';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-edit',
@@ -36,7 +37,7 @@ export class EditComponent implements OnInit {
   }
   onSubmit(formUpdateIssue: NgForm) {
     console.log(formUpdateIssue.value);
-    this.userService.postComment(formUpdateIssue.value).subscribe(
+    this.userService.putIssue(formUpdateIssue.value).subscribe(
       res => {
         this.toastr.success('Successful!', 'Update Issue successful');
       },

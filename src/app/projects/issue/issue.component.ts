@@ -27,6 +27,7 @@ export class IssueComponent implements OnInit {
     this.userService.getMilestone();
     this.userService.getCategory();
     this.userService.getStatus();
+    console.log(this.userService.getStatus())
     this.SearchIssue();
     }
 
@@ -51,6 +52,16 @@ export class IssueComponent implements OnInit {
     });
   }
   
+  active() {
+    const isItem = document.getElementsByClassName('status-item') as any;
+    for (const item of isItem) {
+      item.addEventListener('click', () => {
+      const current = document.getElementsByClassName('is-active');
+      current[0].classList.add(' is-active');
+      });
+    }
+  }
+
   SearchIssue(){
     this.projectId = this.userService.spaceId;
     this.categoryId = Number((document.getElementById("is-category-Category") as any).value);

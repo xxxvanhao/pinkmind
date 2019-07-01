@@ -34,8 +34,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="pl-4 show-description">
-                                    {{issueDetail.description}}
+                                <div class="pl-4 show-description" [innerHTML]='issueDetail.description'>
+                                    <pre></pre>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group mb-0">
-                                            {{issueDetail.dueDate}}
+                                            {{issueDetail.dueDate | date:'yyyy-MM-dd'}}
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +181,7 @@
                             </div>
                         </div>
                         <div class="col-md-11 pl-11 comment-content">
-                            <input type="hidden" id="issueID" name="issueID" [(value)]="issueDetail.issueID" ngModel #issueID="ngModel">
+                            <input type="hidden" id="issueID" name="issueID" [(ngModel)]="issueDetail.issueID" ngModel #issueID="ngModel">
                             <textarea class="form-control comment-text" id="comment-text" type="text" name="content"
                                 placeholder="Enter your comment" ngModel #content="ngModel"></textarea>
                         </div>
