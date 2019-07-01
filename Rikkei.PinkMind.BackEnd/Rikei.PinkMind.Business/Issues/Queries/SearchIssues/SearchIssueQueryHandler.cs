@@ -36,6 +36,7 @@ namespace Rikei.PinkMind.Business.Issues.Queries.SearchIssues
                     iss.ID,
                     iss.IssueTypeID,
                     IssueTypeName = iss.IssueType.Name,
+                    IssueTypeColor = iss.IssueType.BackgroundColor,
                     iss.Subject,
                     iss.Description,
                     iss.StatusID,
@@ -91,6 +92,8 @@ namespace Rikei.PinkMind.Business.Issues.Queries.SearchIssues
         tfItem.Key = item.ProjectID + "-" + item.ID;
         tfItem.ID = item.ID;
         tfItem.IssueTypeID = item.IssueTypeID;
+        tfItem.IssueTypeName = item.IssueTypeName;
+        tfItem.IssueTypeColor = item.IssueTypeColor;
         tfItem.LastUpdate = item.LastUpdate;
         tfItem.MilestoneID = item.MilestoneID;
         tfItem.MilestonName = item.MileStonName;

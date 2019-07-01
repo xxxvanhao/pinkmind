@@ -14,12 +14,7 @@
                     <h5>Search conditions</h5>
                     <p class="mb-1 ">
                         <span class="is-filter mr-2">Status:</span>
-                        <button class="is-item is-active mr-3">All</button>
-                        <button class="is-item mr-3">Open</button>
-                        <button class="is-item mr-3">In Progress</button>
-                        <button class="is-item mr-3">Resolved</button>
-                        <button class="is-item mr-3">Closed</button>
-                        <button class="is-item mr-3">Not Closed</button>
+                        <button class="is-item mr-3 status-item" [attr.id]="item.ID" *ngFor="let item of userService.listStatus" [id]="item.id" (click)="isActive()">{{item.name}}</button>
                     </p>
                     <form>
 
@@ -27,33 +22,43 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="is-filter-Category">Category</label>
-                                    <select class="form-control" id="is-category-Category">
-                                      <option>Test</option>
+                                    <select class="form-control" id="is-category-Category" (change)="SearchIssue()">
+                                        <option value="0">All</option>
+                                        <option *ngFor="let item of userService.listCategory" [value]="item.id">{{item.name}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="is-filter-Category">Milestone</label>
-                                    <select class="form-control" id="is-milestone-Category">
-                                      <option>Test</option>
+                                    <label for="is-filter-Category">Category</label>
+                                    <select class="form-control" id="is-milestone-Category" (change)="SearchIssue()">
+                                        <option value="0">All</option>
+                                        <option *ngFor="let item of userService.mileStone" [value]="item.id">{{item.name}}</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="is-filter-Category">Milestone</label>
+                                    <select class="form-control" id="is-milestone-Category" (change)="SearchIssue()">
+                                        <option value="0">All</option>
+                                        <option *ngFor="let item of userService.mileStone" [value]="item.id">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <!-- <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="is-filter-Category">Assignee</label>
                                     <select class="form-control" id="is-assignee-Category">
-                                      <option>Test</option>
+                                        <option value=""></option>
+                                        <option *ngFor="let item of userService.listCategory" [value]="item.id">{{item.name}}</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="is-filter-Category">Keyword</label>
-                                    <select class="form-control" id="is-keyword-Category">
-                                      <option>Test</option>
-                                    </select>
+                                    <input class="form-control" id="keySearch" placeholder="Enter" ng-model="milestone" (blur)="SearchIssue()"/>
                                 </div>
                             </div>
                         </div>
@@ -81,25 +86,31 @@
                                     <th class="res-table">Attachment</th>
                                 </tr>
                             </thead>
-                            <tbody class="issue-tbody text-center">
-                                <tr class="tr-body">
-                                    <td>Task</td>
-                                    <td><a href="# ">FRS_K1-4</a></td>
-                                    <td class="text-left">Code các phần common front-end</td>
-                                    <td class="issue-assgine-item"><span class="avatar">Văn Hảo</span></td>
-                                    <td><span class="status">In progress</span></td>
-                                    <td class="res-table">Normal</td>
-                                    <td class="d-none">Coding</td>
-                                    <td class="d-none">1.0</td>
-                                    <td class="d-none">Phase</td>
-                                    <td class="res-table">May. 27, 2019</td>
-                                    <td class="res-table">Jun. 1</td>
-                                    <td class="res-table">May. 28, 2019</td>
-                                    <td class="d-none">Văn Hảo</td>
+                            <tbody class="issue-tbody text-center" *ngIf="(userService.listSearchIssue | keyvalue)?.length> 0; else noData">
+                                <tr class="tr-body issue-item-detail" *ngFor="let item of userService.listSearchIssue" [attr.data-message-id]="item.id" onclick="redirect()">
+                                    <td [attr.data-message-id]="item.id"><a href="#">{{item.issueTypeName}}</a></td>
+                                    <td class="text-left">{{item.key}}</td>
+                                    <td class="text-left">{{item.subject}}</td>
+                                    <td class="issue-assgine-item"><span class="avatar">{{item.assigneeName}}</span></td>
+                                    <td><span class="status">{{item.statusName}}</span></td>
+                                    <td class="res-table">{{item.priorityName}}</td>
+                                    <td class="d-none">{{item.categoryName}}</td>
+                                    <td class="d-none">{{item.versionName}}</td>
+                                    <td class="d-none">{{item.milestonName}}</td>
+                                    <td class="res-table">{{item.createAt}}</td>
+                                    <td class="res-table">{{item.dueDate}}</td>
+                                    <td class="res-table">{{item.lastUpdate}}</td>
+                                    <td class="d-none">{{item.updateByName}}</td>
                                     <td class="res-table"></td>
                                 </tr>
-
+                                <script>
+                                </script>
                             </tbody>
+                            <ng-template>
+                                <div class="message-not-found" #noData>
+                                <p>Issue not found</p>
+                            </div>
+                        </ng-template>
                         </table>
                     </div>
                 </div>

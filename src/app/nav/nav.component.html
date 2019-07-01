@@ -19,7 +19,7 @@
                                 <span>Projects</span>
                                 <input type="search" id="project-search-id" class="dropbox-search" value="" (keyup)="searchProject()" name="searchProject" placeholder="Search projects">
                             </div>
-
+                            
                             <div class="isNo-items" *ngIf="!(userService.listProject | keyvalue)?.length > 0; else notShow"><span>There are no project<br>Projects assigned to you will be listed here.</span></div>
                             <ng-template #notShow></ng-template>
                             <div class="project-content" *ngFor="let p of userService.listProject">

@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    flex: 1;
+}
+
+
+/*add-form*/
+
+.form-control,
+.add-notiy {
+    font-size: .88rem;
+}
+
+.card-content {
+    font-size: .9rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.items-border {
+    padding: .57rem 0;
+    margin: 0 10px;
+    border-top: 1px solid #ddd;
+}
+
+.items-border-bottom {
+    border-bottom: 1px solid #ddd;
+}
+
+@media screen and (max-width: 760px) {
+    .res-add-version {
+        border-bottom: none;
+    }
+}

@@ -1,3 +1,141 @@
-<p>
-  view works!
-</p>
+<div class="col mb-5" >
+        <div class="home-body">
+            <div class="header-project">
+                <div class="row flex-nowrap">
+                    <div class="col-md-5">
+                        <span class="org-name mr-1"><i class="far fa-building"></i> RikkeiSoft</span>
+                        <span class="project-key">({{userService.spaceId}})</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row res-body-addissue">
+                <div class="col-12 mt-4">
+                        <div class="col-12">
+                                <label>Task</label><label>FRS_K1-10</label>
+                            </div>
+                    <form class="mt-3" action="javascript:void(0)" method="POST">
+                        <div class="card-content mb-3 px-4 py-3" *ngIf="issueDetail">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2 pl-4">
+                                        <i class="user-avatar"></i>
+                                        <span>UserName</span>
+                                    </div>
+                                    <div class="col-md-10 pr-4">
+                                        <div>Create : <span>{{issueDetail.createAt}} </span></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="pl-4 show-description">
+                                        {{issueDetail.description}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row py-3 items-border">
+                                        <div class="col-6">
+                                            Status
+                                        </div>
+                                        <div class="col-6 ">
+                                                {{issueDetail.statusID}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row align-items-center items-border">
+                                        <div class="col-6">
+                                            Assignee
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group mb-0">
+                                                    <div class="col-6 ">
+                                                            {{issueDetail.assigneeUser}}
+                                                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row align-items-center items-border">
+                                        <div class="col-6">
+                                            Priority
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group mb-0">
+                                                    <div class="col-6 ">
+                                                            {{issueDetail.number}}
+                                                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row align-items-center items-border">
+                                        <div class="col-6">
+                                            Milestone
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group mb-0">
+                                                    <div class="col-6 ">
+                                                            {{issueDetail.milestoneID}}
+                                                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row align-items-center items-border">
+                                        <div class="col-6">
+                                            Category
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group mb-0">
+                                                    <div class="col-6 ">
+                                                            {{issueDetail.categoryID}}
+                                                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row align-items-center items-border items-border-bottom  res-add-version">
+                                        <div class="col-6">
+                                            Version
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group mb-0">
+                                                <div class="col-6 ">
+                                                        {{issueDetail.versionID}}
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row align-items-center items-border items-border-bottom">
+                                        <div class="col-6">
+                                            Due date
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group mb-0">
+                                                <label>{{issueDetail.dueDate}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>

@@ -8,6 +8,7 @@ using Rikei.PinkMind.Business.Milestones.Queries.GetAllMileston;
 namespace Rikkei.PinkMind.API.Controllers
 {
   [Route("api/[controller]")]
+  [Produces("application/json")]
   [ApiController]
   public class MilestonController : ControllerBase
   {

@@ -37,6 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ProjectsRoutingModule } from './projects/projects-routing.module';
 import { TimeagoModule } from 'ngx-timeago';
+import { EditComponent } from './projects/issue/edit/edit.component';
+import { ViewComponent } from './projects/issue/view/view.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { TimeagoModule } from 'ngx-timeago';
     AdminComponent,
     AdminAccountComponent,
     MembersComponent,
-    SpaceComponent
+    SpaceComponent,
+    EditComponent,
+    ViewComponent
   ],
   imports: [
     FroalaEditorModule.forRoot(),

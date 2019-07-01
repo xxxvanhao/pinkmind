@@ -11,11 +11,23 @@ export class IssueComponent implements OnInit {
 
   paramIssueId: string;
   isProjectKey: boolean;
+
+  categoryId: number = 0;
+  milestoneId: number = 0;
+  assigneeId: number = 0;
+  statusId: number = 0;
+  key : string = "";
+  projectId :string;
+
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getParamProjectIssue();
-  }
+    this.userService.getMilestone();
+    this.userService.getCategory();
+    this.userService.getStatus();
+    this.SearchIssue();
+    }
 
   getParamProjectIssue() {
     this.route.params.subscribe(params => {
@@ -36,5 +48,20 @@ export class IssueComponent implements OnInit {
         this.router.navigate(['dashboard']);
       }
     });
+  }
+    
+  SearchIssue(){
+    this.projectId = 'KRS'
+    this.categoryId = Number((document.getElementById("is-category-Category") as any).value);
+    // if(!document.getElementsByClassName('is-active') as any != undefined){
+    //   this.statusId = (document.getElementsByClassName('is-active') as any).getAttribute('id');
+    // }
+    console.log(this.statusId);
+    this.milestoneId = Number((document.getElementById("is-milestone-Category") as any).value)
+    this.key = (document.getElementById("keySearch") as any).value;
+    
+    console.log(this.key,this.categoryId, this.statusId,this.milestoneId, this.key)
+    this.userService.getSearchIssue(this.projectId,this.categoryId,this.statusId,this.milestoneId,this.key);
+    
   }
 }

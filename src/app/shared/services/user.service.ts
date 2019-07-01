@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, enableProdMode } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { ConfigService } from '../utils/config.service';
 import {BaseService} from './base.service';
@@ -16,6 +16,10 @@ import { IGetType } from '../models/igettype.interface';
 import { IIssueType } from '../models/issuetype.interface';
 import { ProjectMember } from '../models/projectmember.interface';
 import { IssueDetails } from '../models/issuedetails.interface';
+<<<<<<< HEAD
+import { IssueDetail } from '../models/IssueDetail.interface';
+=======
+>>>>>>> 63f8031a5dae5ec055e6b79561033b2aef1b01e9
 @Injectable({
   providedIn: 'root'
 })
@@ -37,6 +41,11 @@ export class UserService extends BaseService {
   listPriority: IGetType;
   listCategory: IGetType;
   listStatus: IGetType;
+<<<<<<< HEAD
+  listSearchIssue : IssueDetails;
+  IssueDetail : IssueDetail;
+=======
+>>>>>>> 63f8031a5dae5ec055e6b79561033b2aef1b01e9
 
   // signalR
   public bradcastedData: ReUpdate[];
@@ -322,6 +331,7 @@ export class UserService extends BaseService {
       'Content-Type' : 'application/json'
     });
     return this.http.get(this.baseUrl + `/issuetype/getall`, {headers})
+<<<<<<< HEAD
     .toPromise()
     .then((res: any) => {
       this.issueType = res.issueTypes;
@@ -391,5 +401,94 @@ export class UserService extends BaseService {
     return this.http.post(this.baseUrl + '/issue', issue, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
+  }
+  getSearchIssue(proID:string,catID: number,staID:number,mileID:number,key:string) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/issue/search/`+ proID + "?key="+key+ "&CategoryID="+catID +"&MilestoneID="+mileID+"&StatusID="+staID, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listSearchIssue = res.issues;
+    });
+  }
+  getIssueDetail() {
+=======
+    .toPromise()
+    .then((res: any) => {
+      this.issueType = res.issueTypes;
+    });
+  }
+
+  getVersion() {
+>>>>>>> 63f8031a5dae5ec055e6b79561033b2aef1b01e9
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+<<<<<<< HEAD
+    return this.http.get(this.baseUrl + `/issue/GetDetail/2`, {headers}).toPromise();
+=======
+    return this.http.get(this.baseUrl + `/Version/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listVersion = res.versions;
+    });
+  }
+
+  getStatus() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Status/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listStatus = res.statuses;
+    });
+  }
+
+  getPriority() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Priority/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listPriority = res.priorities;
+    });
+  }
+
+  getResolution() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + `/Resolution/getall`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listResolution = res.resolutions;
+    });
+  }
+
+  //Post Issue
+
+  postIssue(issue: Issue) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/issue', issue, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+>>>>>>> 63f8031a5dae5ec055e6b79561033b2aef1b01e9
   }
 }
