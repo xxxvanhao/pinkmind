@@ -19,8 +19,6 @@ body {
 .idd-active,
 .is-item:hover {
     background-color: #4caf93 !important;
-    padding: 3px 10px;
-    margin: 0 3px;
     border-radius: 20px;
     color: white;
     font-size: .8rem;
@@ -319,7 +317,57 @@ table {
     cursor: pointer;
 }
 
-
+.display-user{
+    display: flex;
+}
+.display-user .avatar{
+    margin-right: 15px;
+}
+.display-user .user-infor p{
+    margin-bottom: 5px; 
+}
+.display-user .comment-content{
+    padding: 6px 0;
+}
+.comment-text{
+    height: 42px;
+}
+.margin-center{
+    margin: 0 auto;
+}
+.flex-elm{
+    display: none;
+}
+.func-btn{
+    margin: 0 12px;
+}
+.body-comment-issue{
+    margin-bottom: 100px;
+}
+#add-comment{
+    position: fixed;
+    bottom: -1rem;
+    width: 83.66666666%;
+}
+.active-form .comment-text{
+    height: 120px;
+    transition: all 0.5s;
+}
+.active-form .flex-elm{
+    display: flex!important;
+    margin-top: 20px;
+    transition: all 0.5s;
+}
+.attach-file{
+    display: inline-block;
+    padding: 20px;
+    background: #f1f1f1;
+    border-radius: 50%;
+}
+.attach-file:hover{
+    background: #28a745;
+    color: #FFF;
+}
 /******Sub-nav-project*****/
 
 #body-row {

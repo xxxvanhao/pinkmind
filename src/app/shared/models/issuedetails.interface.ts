@@ -1,11 +1,8 @@
 export interface IssueDetails {
     id: number;
     key: string;
-<<<<<<< HEAD
     issueTypeName: string;
     issueTypeColor: string;
-=======
->>>>>>> 63f8031a5dae5ec055e6b79561033b2aef1b01e9
     issueTypeID: number;
     subject: string;
     description: string;

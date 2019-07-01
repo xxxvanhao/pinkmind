@@ -1,141 +1,204 @@
-<div class="col mb-5" >
-        <div class="home-body">
-            <div class="header-project">
-                <div class="row flex-nowrap">
-                    <div class="col-md-5">
-                        <span class="org-name mr-1"><i class="far fa-building"></i> RikkeiSoft</span>
-                        <span class="project-key">({{userService.spaceId}})</span>
-                    </div>
+<div class="col mb-5">
+    <div class="home-body">
+        <div class="header-project">
+            <div class="row flex-nowrap">
+                <div class="col-md-5">
+                    <span class="org-name mr-1"><i class="far fa-building"></i> RikkeiSoft</span>
+                    <span class="project-key"></span>
                 </div>
             </div>
-            <div class="row res-body-addissue">
-                <div class="col-12 mt-4">
-                        <div class="col-12">
-                                <label>Task</label><label>FRS_K1-10</label>
-                            </div>
-                    <form class="mt-3" action="javascript:void(0)" method="POST">
-                        <div class="card-content mb-3 px-4 py-3" *ngIf="issueDetail">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-2 pl-4">
-                                        <i class="user-avatar"></i>
-                                        <span>UserName</span>
+        </div>
+        <div class="row res-body-addissue" [attr.id]="issueDetail.issueID">
+            <div class="col-12 mt-4">
+                <div class="row">
+                    <div class="col-10">
+                        <h1>Task {{issueDetail.key}}</h1>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-success px-5 " (click)="redirect()">Edit</button>
+                    </div>
+                </div>
+                <form class="mt-3" action="javascript:void(0)" method="POST">
+                    <div class="card-content mb-3 px-4 py-3" *ngIf="issueDetail">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 pl-4 display-user">
+                                    <div class="avatar">
+                                        <img [attr.src]="issueDetail.createByPicture"
+                                            alt="avatar" height="50" width="50">
                                     </div>
-                                    <div class="col-md-10 pr-4">
-                                        <div>Create : <span>{{issueDetail.createAt}} </span></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="pl-4 show-description">
-                                        {{issueDetail.description}}
+                                    <div class="user-infor">
+                                        <p>UserName</p>
+                                        <p>Create : 12/12/12</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row py-3 items-border">
-                                        <div class="col-6">
-                                            Status
-                                        </div>
-                                        <div class="col-6 ">
-                                                {{issueDetail.statusID}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row align-items-center items-border">
-                                        <div class="col-6">
-                                            Assignee
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group mb-0">
-                                                    <div class="col-6 ">
-                                                            {{issueDetail.assigneeUser}}
-                                                        </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row align-items-center items-border">
-                                        <div class="col-6">
-                                            Priority
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group mb-0">
-                                                    <div class="col-6 ">
-                                                            {{issueDetail.number}}
-                                                        </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row align-items-center items-border">
-                                        <div class="col-6">
-                                            Milestone
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group mb-0">
-                                                    <div class="col-6 ">
-                                                            {{issueDetail.milestoneID}}
-                                                        </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row align-items-center items-border">
-                                        <div class="col-6">
-                                            Category
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group mb-0">
-                                                    <div class="col-6 ">
-                                                            {{issueDetail.categoryID}}
-                                                        </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row align-items-center items-border items-border-bottom  res-add-version">
-                                        <div class="col-6">
-                                            Version
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group mb-0">
-                                                <div class="col-6 ">
-                                                        {{issueDetail.versionID}}
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row align-items-center items-border items-border-bottom">
-                                        <div class="col-6">
-                                            Due date
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group mb-0">
-                                                <label>{{issueDetail.dueDate}}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
+                                <div class="pl-4 show-description">
+                                    {{issueDetail.description}}
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row py-3 items-border">
+                                    <div class="col-6">
+                                        Status :
+                                    </div>
+                                    <div class="col-6 ">
+                                        <div class="form-group mb-0">
+                                            {{issueDetail.statusName}}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border">
+                                    <div class="col-6">
+                                        Assignee :
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            {{issueDetail.assigneeName}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border">
+                                    <div class="col-6">
+                                        Priority :
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            {{issueDetail.priorityName}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border">
+                                    <div class="col-6">
+                                        Milestone :
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            {{issueDetail.milestonName}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border">
+                                    <div class="col-6">
+                                        Category :
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            {{issueDetail.categoryID}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border items-border-bottom  res-add-version">
+                                    <div class="col-6">
+                                        Version :
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            {{issueDetail.categoryName}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border items-border-bottom">
+                                    <div class="col-6">
+                                        Due date :
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            {{issueDetail.dueDate}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+        <div class="row body-comment-issue">
+            <div class="col-12 mt-4">
+                <div class="col-12">
+                    <h2>Comment</h2>
+                </div>
+                <form class="mt-3">
+                    <div class="card-content mb-3 px-4 py-3" *ngFor="let item of listComment">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6 pl-4 display-user">
+                                    <div class="avatar">
+                                        <img src="https://d1zqp7au6yhc2p.cloudfront.net/default-icons/account/F8E71C/128x128.png"
+                                            alt="avatar" height="50" width="50">
+                                    </div>
+                                    <div class="user-infor">
+                                        <p>UserName</p>
+                                        <p>Create : {{item.id}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="pl-4 show-description">
+                                    {{item.content}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="add-comment">
+        <div class="mt-4">
+            <form class="mt-3" #formComment="ngForm" autocomplete="off" (submit)="onSubmit(formComment)">
+                <div class="card-content mb-3 px-4 py-3">
+                    <div class="row" (click)="active()">
+                        <div class="col-md-1 pl-4 display-user">
+                            <div class="avatar">
+                                <input type="file" id="fileName" name="fileName" multiple="multiple" hidden ngModel
+                                    #fileName="ngModel">
+                                <label for="fileName" class="fas fa-paperclip attach-file"
+                                    title="Add mutiple file"></label>
+                            </div>
+                        </div>
+                        <div class="col-md-11 pl-11 comment-content">
+                            <input type="hidden" id="issueID" name="issueID" [(value)]="issueDetail.issueID" ngModel #issueID="ngModel">
+                            <textarea class="form-control comment-text" id="comment-text" type="text" name="content"
+                                placeholder="Enter your comment" ngModel #content="ngModel"></textarea>
+                        </div>
+                    </div>
+                    <div class="flex-elm">
+                        <div class="margin-center flex-elm">
+                            <div class="func-btn">
+                                <button _ngcontent-wxw-c5="" class="btn btn-success px-5" type="submit">Submit</button>
+                            </div>
+                            <div class="func-btn">
+                                <a class="btn btn-success px-5" (click)="close()">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

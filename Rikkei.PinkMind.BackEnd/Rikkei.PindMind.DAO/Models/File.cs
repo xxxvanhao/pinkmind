@@ -32,6 +32,5 @@ namespace Rikkei.PindMind.DAO.Models
     public int? CommentID { get; set; }
     public Issue Issue { get; set; }
     public Comment Comment { get; set; }
-
   }
 }

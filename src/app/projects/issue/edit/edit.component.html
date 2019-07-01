@@ -1,140 +1,175 @@
 <div class="col mb-5">
-  <div class="home-body">
-      <div class="header-project">
-          <div class="row flex-nowrap">
-              <div class="col-md-5">
-                  <span class="org-name mr-1"><i class="far fa-building"></i> RikkeiSoft</span>
-                  <span class="project-key">({{userService.spaceId}})</span>
-              </div>
-          </div>
-      </div>
-      <div class="row res-body-addissue">
-          <div class="col-12 mt-4">
-              <form class="mt-3" action="javascript:void(0)" method="POST">
-                  <div class="form-group">
-                        <span _ngcontent-tii-c5="" class="Status">Task</span>
-                  </div>
-                  
-                  <div class="form-group">
-                      <input type="text" class="form-control" id="add-subject" placeholder="Subject">
-                  </div>
-                  <div class="card-content mb-3 px-4 py-3">
-                      <div class="form-group">
-                          <div class="row">
-                              <div class="col-md-2 pl-4">
-                                  Description
-                              </div>
-                              <div class="col-md-10 pr-4">
-                                  <div [froalaEditor]></div>
-                              </div>
-                          </div>
+    <div class="home-body">
+        <div class="header-project">
+            <div class="row flex-nowrap">
+                <div class="col-md-5">
+                    <span class="org-name mr-1" *ngIf="userService.userDetails.spaceID"><i class="far fa-building"></i>
+                        {{userService.userDetails.spaceID}}</span>
+                    <span class="project-key">({{userService.spaceId}})</span>
+                </div>
+            </div>
+        </div>
+        <div class="row res-body-addissue">
+            <div class="col-12 mt-4">
+                <h5>Edit Issue</h5>
+                <form class="mt-3" #formIssue="ngForm" autocomplete="off" (submit)="onSubmit(formIssue)">
+                    <div class="form-group">
+                        <input type="hidden" id="issueID" ngModel [(ngModel)]="issueDetail.id" name="id" #id="ngModel"> 
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control w-25" id="add-taskType" name="issueTypeID" ngModel [(ngModel)]="issueDetail.issueTypeID"
+                            #issueTypeID="ngModel" required>
+                            <option *ngFor="let item of userService.issueType" [value]="item.id">{{item.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="update-subject" name="subject" ngModel [value]="issueDetail.subject"
+                            #subject="ngModel" required minlength="3" placeholder="Subject"
+                            [(ngModel)]="issueDetail.subject">
+                    </div>
+                    <div class="card-content mb-3 px-4 py-3">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2 pl-4">
+                                    Description
+                                </div>
+                                <div class="col-md-10 pr-4">
+                                    <textarea [froalaEditor] name="description" ngModel [value]="issueDetail.dueDate"
+                                        #description="ngModel" [(froalaModel)]="issueDetail.description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row py-3 items-border">
+                                    <div class="col-6">
+                                        Status
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-control" id="update-status" name="statusID" ngModel [(ngModel)]="issueDetail.statusID"
+                                            #statusID="ngModel">
+                                            <option value=""></option>
+                                            <option *ngFor="let item of userService.listStatus" [value]="item.id">
+                                                {{item.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border">
+                                    <div class="col-6">
+                                        Assignee
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            <select class="form-control" id="add-assignee" name="assigneeUser" ngModel [(ngModel)]="issueDetail.assigneeUser"
+                                                #assigneeUser="ngModel">
+                                                <option *ngFor="let item of userService.projectMember"
+                                                    [value]="item.userID">{{item.userName}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border">
+                                    <div class="col-6">
+                                        Priority
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            <select class="form-control" id="add-priority" name="priorityID" ngModel [(ngModel)]="issueDetail.priorityID"
+                                                #priorityID="ngModel">
+                                                <option *ngFor="let item of userService.listPriority" [value]="item.id">
+                                                    {{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border">
+                                    <div class="col-6">
+                                        Milestone
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            <select class="form-control" id="add-milestone" name="milestoneID" ngModel [(ngModel)]="issueDetail.milestoneID"
+                                                #milestoneID="ngModel">
+                                                <option *ngFor="let item of userService.mileStone" [value]="item.id">
+                                                    {{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border">
+                                    <div class="col-6">
+                                        Category
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            <select class="form-control" id="update-category"
+                                                name="categoryID" ngModel [(ngModel)]="issueDetail.categoryID"
+                                                #categoryID="ngModel">
+                                                <option class="option-category"
+                                                    *ngFor="let item of userService.listCategory" [value]="item.id">
+                                                    {{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border items-border-bottom  res-add-version">
+                                    <div class="col-6">
+                                        Version
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            <select class="form-control" id="add-version" name="versionID" ngModel [(ngModel)]="issueDetail.versionID"
+                                                #versionID="ngModel">
+                                                <option value=""></option>
 
-                      </div>
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="row py-3 items-border">
-                                  <div class="col-6">
-                                      Status
-                                  </div>
-                                  <div class="col-6 ">
-                                      New
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="row align-items-center items-border">
-                                  <div class="col-6">
-                                      Assignee
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="form-group mb-0">
-                                          <select class="form-control" id="add-assignee">
-                                              <option>Test</option>
-                                          </select>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="row align-items-center items-border">
-                                  <div class="col-6">
-                                      Priority
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="form-group mb-0">
-                                          <select class="form-control" id="add-priority">
-                                              <option>Test</option>
-                                          </select>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="row align-items-center items-border">
-                                  <div class="col-6">
-                                      Milestone
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="form-group mb-0">
-                                          <select class="form-control" id="add-milestone">
-                                              <option>Test</option>
-                                          </select>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="row align-items-center items-border">
-                                  <div class="col-6">
-                                      Category
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="form-group mb-0">
-                                          <select class="form-control" id="add-category">
-                                                  <option>Test</option>
-                                              </select>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="row align-items-center items-border items-border-bottom  res-add-version">
-                                  <div class="col-6">
-                                      Version
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="form-group mb-0">
-                                          <select class="form-control" id="add-version">
-                                                  <option>Test</option>
-                                              </select>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="row align-items-center items-border items-border-bottom">
-                                  <div class="col-6">
-                                      Due date
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="form-group mb-0">
-                                          <input class="form-control" type="date" value="" id="add-duedate">
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                          </div>
-                      </div>
-                  </div>
-              </form>
-          </div>
-      </div>
-  </div>
+                                                <option *ngFor="let item of userService.listVersion" [value]="item.id">
+                                                    {{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row align-items-center items-border items-border-bottom">
+                                    <div class="col-6">
+                                        Due date
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            <input class="form-control" type="date" value="" id="update-duedate" 
+                                                name="dueDate" ngModel #dueDate="ngModel" [value]="issueDetail.dueDate">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-5 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success px-5"
+                            [disabled]="formIssue.invalid">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

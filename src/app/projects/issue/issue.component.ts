@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IssueDetail } from 'src/app/shared/models/IssueDetail.interface';
 
 @Component({
   selector: 'app-issue',
@@ -49,19 +50,22 @@ export class IssueComponent implements OnInit {
       }
     });
   }
-    
+  
   SearchIssue(){
-    this.projectId = 'KRS'
+    this.projectId = this.userService.spaceId;
     this.categoryId = Number((document.getElementById("is-category-Category") as any).value);
     // if(!document.getElementsByClassName('is-active') as any != undefined){
     //   this.statusId = (document.getElementsByClassName('is-active') as any).getAttribute('id');
     // }
-    console.log(this.statusId);
     this.milestoneId = Number((document.getElementById("is-milestone-Category") as any).value)
     this.key = (document.getElementById("keySearch") as any).value;
-    
-    console.log(this.key,this.categoryId, this.statusId,this.milestoneId, this.key)
     this.userService.getSearchIssue(this.projectId,this.categoryId,this.statusId,this.milestoneId,this.key);
     
+  }
+
+  redirect(data: IssueDetail) : any {
+    this.userService.IssueDetail = data;
+    console.log(data);
+    this.router.navigate(['projects/view/' + data.projectID]);
   }
 }
