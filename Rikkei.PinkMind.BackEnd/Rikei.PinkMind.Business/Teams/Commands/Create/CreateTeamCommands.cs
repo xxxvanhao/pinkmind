@@ -29,9 +29,9 @@ namespace Rikei.PinkMind.Business.Teams.Commands.Create
         var entity = new Team
         {
           Name = request.Name,
-          CreateAt = DateTime.UtcNow,
+          CreateAt = DateTime.Now,
           CreateBy = request.CreateBy,
-          LastUpdate = DateTime.UtcNow,
+          LastUpdate = DateTime.Now,
           UpdateBy = request.UpdateBy,
           DelFlag = true
         };

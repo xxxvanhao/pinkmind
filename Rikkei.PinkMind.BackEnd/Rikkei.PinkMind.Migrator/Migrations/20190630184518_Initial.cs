@@ -181,6 +181,7 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
+                    BackgroundColor = table.Column<string>(nullable: true),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<long>(nullable: false),
@@ -229,6 +230,36 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_version", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tbl_projectfile",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FolderPath = table.Column<string>(maxLength: 50, nullable: false),
+                    FilePath = table.Column<string>(maxLength: 50, nullable: true),
+                    TypeModel = table.Column<string>(nullable: true),
+                    FileSize = table.Column<string>(nullable: true),
+                    ImagePath = table.Column<string>(nullable: true),
+                    CreateBy = table.Column<long>(nullable: false),
+                    CreateAt = table.Column<DateTime>(nullable: false),
+                    UpdateBy = table.Column<long>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    DelFlag = table.Column<bool>(type: "bit", nullable: false),
+                    CheckUpdate = table.Column<byte[]>(type: "timestamp", rowVersion: true, nullable: true),
+                    ProjectID = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_projectfile", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_tbl_projectfile_tbl_project_ProjectID",
+                        column: x => x.ProjectID,
+                        principalTable: "tbl_project",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -443,7 +474,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FilePath = table.Column<string>(maxLength: 50, nullable: true),
+                    FolderPath = table.Column<string>(maxLength: 50, nullable: true),
+                    FilePath = table.Column<string>(nullable: true),
+                    FileSize = table.Column<string>(nullable: true),
                     CreateBy = table.Column<long>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<long>(nullable: false),
@@ -567,6 +600,11 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                 column: "IssueID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_tbl_projectfile_ProjectID",
+                table: "tbl_projectfile",
+                column: "ProjectID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_tbl_spaceControl_SpaceID",
                 table: "tbl_spaceControl",
                 column: "SpaceID");
@@ -614,6 +652,9 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
             migrationBuilder.DropTable(
                 name: "tbl_notify");
+
+            migrationBuilder.DropTable(
+                name: "tbl_projectfile");
 
             migrationBuilder.DropTable(
                 name: "tbl_reupdate");

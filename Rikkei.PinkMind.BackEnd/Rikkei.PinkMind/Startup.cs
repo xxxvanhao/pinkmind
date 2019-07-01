@@ -37,6 +37,7 @@ using Rikei.PinkMind.Business.TeamDetails.Queries.GetAllTeamDetail;
 
 using Rikei.PinkMind.Business.AutoMapper;
 using Rikei.PinkMind.Business.pmSpaces.Queries.GetpmSpace;
+using Rikei.PinkMind.Business.HubConfig;
 
 namespace Rikkei.PinkMind
 {
@@ -127,7 +128,10 @@ namespace Rikkei.PinkMind
                           typeof(DeleteUserQueryHandler).GetTypeInfo().Assembly,
                           typeof(GetAllTeamDetailsQueryHandler).GetTypeInfo().Assembly,
                           typeof(GetpmSpaceQuery).GetTypeInfo().Assembly);
+
+      services.AddSignalR();
     }
+
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -157,7 +161,12 @@ namespace Rikkei.PinkMind
       app.UseCors(
           options => options.WithOrigins("http://localhost:4200")
           .AllowAnyMethod()
-          .AllowAnyHeader());
+          .AllowAnyHeader()
+          .AllowCredentials());
+      app.UseSignalR(routes =>
+      {
+        routes.MapHub<RecentUpdateHub>("/reupdate");
+      });
 
       app.UseAuthentication();
       app.UseDefaultFiles();

@@ -27,7 +27,7 @@ namespace Rikei.PinkMind.Business.Versions.Commands.Create
         var entity = new Rikkei.PindMind.DAO.Models.Version
         {
           Name = request.Name,
-          CreateAt = DateTime.UtcNow,
+          CreateAt = DateTime.Now,
           CreateBy = request.CreateBy,
           DelFlag = request.DelFlag        
         };

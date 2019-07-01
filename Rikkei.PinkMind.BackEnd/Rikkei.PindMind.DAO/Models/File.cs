@@ -10,8 +10,9 @@ namespace Rikkei.PindMind.DAO.Models
   {
     public int ID { get; set; }
     [StringLength(50, MinimumLength = 3)]
-    [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+    public string FolderPath { get; set; }
     public string FilePath { get; set; }
+    public string FileSize { get; set; }
     [Required]
     public long CreateBy { get; set; }
     [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

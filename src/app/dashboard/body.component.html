@@ -156,9 +156,9 @@
                             <p id="idd-click" class="mb-0">
                                 <span class="is-dueDate ">Due date:</span>
                                 <button type="button" (click)="iddSubmit('all')" class="is-item idd-active">All</button>
-                                <button type="button" (click)="iddSubmit('fourDay')" class="is-item ">4days</button>
-                                <button type="button" (click)="iddSubmit('dueToday')" class="is-item ">Due Today</button>
-                                <button type="button" (click)="iddSubmit('overDue')" class="is-item ">Overdue</button>
+                                <button type="button" (click)="iddSubmit('4day')" class="is-item ">4days</button>
+                                <button type="button" (click)="iddSubmit('duetoday')" class="is-item ">Due Today</button>
+                                <button type="button" (click)="iddSubmit('overdue')" class="is-item ">Overdue</button>
                             </p>
                         </div>
                         <table>
@@ -172,8 +172,10 @@
                                 </tr>
                             </thead>
                             <tbody class="issue-tbody " align="center">
-                                <tr class="tr-body" *ngFor="let item of userService.issueDetails">
-                                    <td><a href="/projects/view/{{item.id}}">{{item.key}}</a></td>
+                                <tr class="tr-body" *ngFor="let item of issueDetails">
+                                    <td>
+                                        <a href="/projects/view/{{item.id}}">{{item.key}}</a>
+                                    </td>
                                     <td class="text-left">{{item.subject}}</td>
                                     <td>{{item.priorityName}}</td>
                                     <td><span class="status">{{item.statusName}}</span></td>

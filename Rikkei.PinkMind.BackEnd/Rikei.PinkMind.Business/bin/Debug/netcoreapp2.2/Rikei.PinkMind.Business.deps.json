@@ -13,6 +13,7 @@
           "MediatR.Extensions.Microsoft.AspNetCore.Mvc": "2.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
           "Rikkei.PindMind.DAO": "1.0.0",
+          "Microsoft.AspNetCore.SignalR.Core": "1.1.0.0",
           "Microsoft.Extensions.Hosting": "2.2.0.0"
         },
         "runtime": {
@@ -2122,6 +2123,14 @@
           "Rikkei.PindMind.DAO.dll": {}
         }
       },
+      "Microsoft.AspNetCore.SignalR.Core/1.1.0.0": {
+        "runtime": {
+          "Microsoft.AspNetCore.SignalR.Core.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.18316"
+          }
+        }
+      },
       "Microsoft.Extensions.Hosting/2.2.0.0": {
         "runtime": {
           "Microsoft.Extensions.Hosting.dll": {
@@ -3459,6 +3468,11 @@
     },
     "Rikkei.PindMind.DAO/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.SignalR.Core/1.1.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },

@@ -39,7 +39,7 @@ namespace Rikei.PinkMind.Business.Users.Commands.UpdateUser
         entity.FirstName = request.FirstName ?? entity.FirstName;
         entity.PictureUrl = request.PictureUrl ?? entity.PictureUrl;
         entity.SpaceID = request.SpaceID ?? entity.SpaceID;
-        entity.LastUpdate = DateTime.UtcNow;
+        entity.LastUpdate = DateTime.Now;
         await _pmContext.SaveChangesAsync(cancellationToken);
 
           return Unit.Value;

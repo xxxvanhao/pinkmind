@@ -41,7 +41,6 @@ D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.pdb
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.dll
 D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Abstractions.xml
-D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.deps.json
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.dll
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\bin\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.pdb
@@ -64,3 +63,4 @@ C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEn
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.dll
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.pdb
 C:\Users\Administrator\Desktop\PinkMind\pinkmind\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.csprojAssemblyReference.cache
+D:\Exercise\pinkmind\Rikkei.PinkMind.BackEnd\Rikkei.PinkMind.Migrator\obj\Debug\netcoreapp2.2\Rikkei.PinkMind.Migrator.csprojAssemblyReference.cache

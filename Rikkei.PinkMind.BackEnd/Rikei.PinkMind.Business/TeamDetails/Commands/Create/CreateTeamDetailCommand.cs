@@ -33,7 +33,7 @@ namespace Rikei.PinkMind.Business.TeamDetails.Commands.Create
           TeamID = request.TeamID,
           UserID = request.UserID,
           RoleID = request.RoleID,
-          JoinedOn = DateTime.UtcNow,
+          JoinedOn = DateTime.Now,
           AddBy = request.AddBy,
           DelFlag = true
         };

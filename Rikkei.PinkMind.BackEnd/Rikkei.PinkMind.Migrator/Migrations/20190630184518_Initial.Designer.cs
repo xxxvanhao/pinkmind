@@ -10,7 +10,7 @@ using Rikkei.PinkMind.DAO.Data;
 namespace Rikkei.PinkMind.Migrator.Migrations
 {
     [DbContext(typeof(PinkMindContext))]
-    [Migration("20190626102700_Initial")]
+    [Migration("20190630184518_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,7 +104,11 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<bool>("DelFlag")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FilePath")
+                    b.Property<string>("FilePath");
+
+                    b.Property<string>("FileSize");
+
+                    b.Property<string>("FolderPath")
                         .HasMaxLength(50);
 
                     b.Property<int>("IssueID");
@@ -336,6 +340,50 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.ToTable("tbl_project");
                 });
 
+            modelBuilder.Entity("Rikkei.PindMind.DAO.Models.ProjectFileUpload", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("CheckUpdate")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("timestamp");
+
+                    b.Property<DateTime>("CreateAt");
+
+                    b.Property<long>("CreateBy");
+
+                    b.Property<bool>("DelFlag")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FilePath")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("FileSize");
+
+                    b.Property<string>("FolderPath")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("ImagePath");
+
+                    b.Property<DateTime>("LastUpdate");
+
+                    b.Property<string>("ProjectID");
+
+                    b.Property<string>("TypeModel");
+
+                    b.Property<long>("UpdateBy");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProjectID");
+
+                    b.ToTable("tbl_projectfile");
+                });
+
             modelBuilder.Entity("Rikkei.PindMind.DAO.Models.ReUpdateSpace", b =>
                 {
                     b.Property<int>("ID")
@@ -464,6 +512,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BackgroundColor");
 
                     b.Property<byte[]>("CheckUpdate")
                         .IsConcurrencyToken()
@@ -708,6 +758,13 @@ namespace Rikkei.PinkMind.Migrator.Migrations
                         .WithMany("Notifies")
                         .HasForeignKey("IssueID")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Rikkei.PindMind.DAO.Models.ProjectFileUpload", b =>
+                {
+                    b.HasOne("Rikkei.PindMind.DAO.Models.Project", "Project")
+                        .WithMany("ProjectFiles")
+                        .HasForeignKey("ProjectID");
                 });
 
             modelBuilder.Entity("Rikkei.PindMind.DAO.Models.SpaceControl", b =>

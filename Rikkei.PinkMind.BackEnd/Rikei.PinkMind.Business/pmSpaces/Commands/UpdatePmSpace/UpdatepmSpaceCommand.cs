@@ -36,9 +36,9 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.UpdatePmSpace
           throw new NotFoundException(nameof(Space), request.SpaceID);
         }
         entity.OrganizationName = request.OrganizationName ?? entity.OrganizationName;
-        entity.CreateAt = DateTime.UtcNow;
+        entity.CreateAt = DateTime.Now;
         entity.UpdateBy = request.UpdateBy;
-        entity.LastUpdate = DateTime.UtcNow;
+        entity.LastUpdate = DateTime.Now;
         entity.DelFlag = !request.DelFlag ? true: false;
         await _pmContext.SaveChangesAsync(cancellationToken);
 

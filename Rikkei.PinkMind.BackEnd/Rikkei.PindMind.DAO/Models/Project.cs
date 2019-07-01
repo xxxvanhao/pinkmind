@@ -32,5 +32,6 @@ namespace Rikkei.PindMind.DAO.Models
         public byte[] CheckUpdate { get; set; }
         public ICollection<TeamJoin> TeamJoins { get; set; }
         public ICollection<Issue> Issues { get; set; }
-    }
+        public ICollection<ProjectFileUpload> ProjectFiles { get; set; }
+  }
 }

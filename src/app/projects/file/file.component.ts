@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 declare var jquery: any;
 declare var $: any;
 
@@ -34,6 +35,31 @@ export class FileComponent implements OnInit {
     $('.add-folder-cancel').click(() => {
     $('.add-folder-erea').hide();
     });
+
+    window.onload = () => {
+      document.getElementById('uploader').onsubmit = () => {
+          const formdata = new FormData(); // FormData object
+          const fileInput = document.getElementById('fileInput') as any;
+          // Iterating through each files selected in fileInput
+          console.log('hihi');
+          for (let i = 0; i < fileInput.files.length; i++) {
+              // Appending each file to FormData object
+              formdata.append(fileInput.files[i].name, fileInput.files[i]);
+          }
+          //Creating an XMLHttpRequest and sending
+          var xhr = new XMLHttpRequest();
+          const authToken = localStorage.getItem('auth_token');
+          xhr.open('POST', 'http://localhost:5000/api/FileUpload');
+          xhr.setRequestHeader('Authorization', `Bearer ${authToken}`);
+          xhr.send(formdata);
+          xhr.onreadystatechange = () => {
+              if (xhr.readyState == 4 && xhr.status == 200) {
+                  alert(xhr.responseText);
+              }
+          };
+          return false;
+      };
+  };
 
   }
 

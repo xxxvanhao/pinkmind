@@ -31,7 +31,7 @@ namespace Rikei.PinkMind.Business.Teams.Commands.Update
         }
         entity.Name = request.Name;
         entity.UpdateBy = request.UpdateBy;
-        entity.LastUpdate = DateTime.UtcNow;
+        entity.LastUpdate = DateTime.Now;
         await _pmContext.SaveChangesAsync(cancellationToken);
         return Unit.Value;
       }
