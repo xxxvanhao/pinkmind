@@ -37,8 +37,8 @@ namespace Rikei.PinkMind.Business.Users.Commands.CreateUser
           FirstName = request.FirstName,
           PictureUrl = request.PictureUrl,
           SpaceID = request.SpaceID,
-          CreateAt = DateTime.UtcNow,
-          LastUpdate = DateTime.UtcNow
+          CreateAt = DateTime.Now,
+          LastUpdate = DateTime.Now
         };
         _pmContext.Users.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);

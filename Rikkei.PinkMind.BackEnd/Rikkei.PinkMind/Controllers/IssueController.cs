@@ -69,10 +69,10 @@ namespace Rikkei.PinkMind.API.Controllers
 
     // POST: api/Issue
     [HttpPost]
-    public async Task<IActionResult> PostIssue([FromBody]CreateIssueCommand command)
+    public async Task<int> PostIssue([FromBody]CreateIssueCommand command)
     {
       var userID = _caller.Claims.Single(u => u.Type == "id");
-      await _mediator.Send(new CreateIssueCommand {
+      var issueId = await _mediator.Send(new CreateIssueCommand {
         IssueTypeID = command.IssueTypeID,
         Subject = command.Subject,
         Description = WebUtility.HtmlEncode(command.Description),
@@ -88,7 +88,7 @@ namespace Rikkei.PinkMind.API.Controllers
         UpdateBy = Convert.ToInt64(userID.Value)
       });
 
-      return NoContent();
+      return issueId;
     }
 
     // DELETE: api/Issue 

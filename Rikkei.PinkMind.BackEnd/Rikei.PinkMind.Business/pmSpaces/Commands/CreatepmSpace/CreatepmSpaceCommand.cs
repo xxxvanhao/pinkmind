@@ -36,9 +36,9 @@ namespace Rikei.PinkMind.Business.pmSpaces.Commands.CreatepmSpace
           SpaceID = request.SpaceID,
           OrganizationName = request.OrganizationName,
           CreateBy = request.CreateBy,
-          CreateAt = DateTime.UtcNow,
+          CreateAt = DateTime.Now,
           UpdateBy = request.UpdateBy,
-          LastUpdate = DateTime.UtcNow,
+          LastUpdate = DateTime.Now,
           DelFlag = true
         };
         _pmContext.Spaces.Add(eSpace);

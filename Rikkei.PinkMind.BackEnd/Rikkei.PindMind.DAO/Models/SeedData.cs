@@ -183,6 +183,7 @@ namespace Rikkei.PindMind.DAO.Models
           _pmContext.AddRange(new Status
           {
             Name = "Open",
+            BackgroundColor = "#ed8077",
             CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
             UpdateBy = 999999999999,
@@ -192,6 +193,7 @@ namespace Rikkei.PindMind.DAO.Models
           new Status
           {
             Name = "In Progress",
+            BackgroundColor = "#4488c5",
             CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
             UpdateBy = 999999999999,
@@ -201,6 +203,7 @@ namespace Rikkei.PindMind.DAO.Models
           new Status
           {
             Name = "Resolved",
+            BackgroundColor = "#5eb5a6",
             CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
             UpdateBy = 999999999999,
@@ -210,6 +213,7 @@ namespace Rikkei.PindMind.DAO.Models
           new Status
           {
             Name = "Closed",
+            BackgroundColor = "#b0be3c",
             CreateBy = 999999999999,
             CreateAt = DateTime.UtcNow,
             UpdateBy = 999999999999,

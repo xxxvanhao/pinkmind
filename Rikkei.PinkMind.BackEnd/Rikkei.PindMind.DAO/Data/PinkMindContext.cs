@@ -35,6 +35,7 @@ namespace Rikkei.PinkMind.DAO.Data
     public DbSet<TeamDetail> TeamDetails { get; set; }
     public DbSet<TeamJoin> TeamJoins { get; set; }
     public DbSet<Version> Versions { get; set; }
+    public DbSet<ProjectFileUpload> ProjectFiles { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -59,6 +60,7 @@ namespace Rikkei.PinkMind.DAO.Data
       modelBuilder.Entity<File>().ToTable("tbl_file");
       modelBuilder.Entity<Comment>().ToTable("tbl_comment");
       modelBuilder.Entity<ReUpdateSpace>().ToTable("tbl_reupdate");
+      modelBuilder.Entity<ProjectFileUpload>().ToTable("tbl_projectfile");
     }
   }
 }

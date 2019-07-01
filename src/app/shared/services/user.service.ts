@@ -10,6 +10,7 @@ import { Space } from '../models/space.interface';
 import { Project } from '../models/project.interface';
 import { ReUpdate } from '../models/reUpdate.interface';
 import * as moment from 'moment';
+import * as signalR from "@aspnet/signalr";
 import { Issue } from '../models/issue.interface';
 import { IGetType } from '../models/igettype.interface';
 import { IIssueType } from '../models/issuetype.interface';
@@ -26,7 +27,7 @@ export class UserService extends BaseService {
   spaceId: string;
   projectMember: ProjectMember;
   listDateReUpdate: Date[];
-  listReUpdate: ReUpdate;
+  listReUpdate: ReUpdate[];
   listIssue: Issue;
   issueDetails: IssueDetails;
   mileStone: IGetType;
@@ -37,6 +38,36 @@ export class UserService extends BaseService {
   listCategory: IGetType;
   listStatus: IGetType;
 
+  // signalR
+  public bradcastedData: ReUpdate[];
+  private hubConnection: signalR.HubConnection;
+  public startConnection = () => {
+    this.hubConnection = new signalR.HubConnectionBuilder()
+                            .withUrl('http://localhost:5000/reupdate')
+                            .build();
+    this.hubConnection
+      .start()
+      .then(() => console.log('Connection started'))
+      .catch(err => console.log('Error while starting connection: ' + err));
+  }
+
+  public addTransferChartDataListener = () => {
+    this.hubConnection.on('transferreupdata', (data) => {
+      this.bradcastedData = data;
+    });
+  }
+
+  public broadcastChartData = (data: any) => {
+    this.hubConnection.invoke('broadcastchartdata', data)
+    .catch(err => console.error(err));
+  }
+
+  public addBroadcastChartDataListener = () => {
+    const self = this as any;
+    this.hubConnection.on('broadcastchartdata', (data) => {
+      self.listReUpdate.unshift(data);
+    });
+  }
   // Observable navItem source
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
   // Observable navItem stream

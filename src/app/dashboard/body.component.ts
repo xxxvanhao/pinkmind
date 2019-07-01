@@ -3,6 +3,9 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/services/user.service';
 import { NgForm } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { IssueDetails } from '../shared/models/issuedetails.interface';
+import * as moment from 'moment';
 
 declare var jquery: any;
 declare var $: any;
@@ -15,7 +18,9 @@ export class BodyComponent implements OnInit {
 
   refId: any = document.getElementsByClassName('refId');
   openAdd: any = document.getElementsByClassName('add-user');
-  constructor(private userService: UserService, private router: Router, private toastr: ToastrService) {
+  issueDetails: IssueDetails;
+  iFilter: string;
+  constructor(private userService: UserService, private router: Router, private toastr: ToastrService, private http: HttpClient) {
 
   }
 
@@ -25,7 +30,22 @@ export class BodyComponent implements OnInit {
     // setTimeout(this.checkProject, 1000);
     setTimeout(this.checkTimeLine, 1000);
     this.ifSubmit('Assigned');
-    this.iddSubmit('all');
+    this.userService.startConnection();
+    this.userService.addBroadcastChartDataListener();
+    // this.userService.addTransferChartDataListener();
+    // this.startHttpRequest();
+  }
+
+  private startHttpRequest = () => {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization : `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    this.http.get('http://localhost:5000/api/Reupdates/signalr/pkey', { headers })
+      .subscribe(res => {
+        console.log(res);
+      });
   }
 
   checkProject() {
@@ -90,7 +110,15 @@ export class BodyComponent implements OnInit {
       item.className += ' if-active';
       });
     }
-    this.userService.getIssue(iParam);
+    this.iFilter = iParam;
+    const self = this;
+    this.userService.getIssue(iParam).then((res: any) => {
+      self.issueDetails = res;
+    });
+
+    const ifClick_click = document.getElementById('idd-click') as any;
+    const isItem_click = ifClick_click.getElementsByClassName('is-item')[0] as any;
+    isItem_click.click();
   }
 
   iddSubmit(iParam: string) {
@@ -102,6 +130,52 @@ export class BodyComponent implements OnInit {
       current[0].className = current[0].className.replace(' idd-active', '');
       item.className += ' idd-active';
       });
+    }
+    switch (iParam) {
+
+      case '4day':
+        this.userService.getIssue(iParam).then((res: any) => {
+        this.issueDetails = res.filter((item) => {
+            const now = new Date();
+            const datenow = `${now.getMonth()}/${now.getDate()}/${now.getFullYear()}`;
+            const createday = new Date(item.createAt);
+            const createAtTime = `${createday.getMonth()}/${createday.getDate()}/${createday.getFullYear()}`;
+            const secondstime = new Date(datenow).getTime() - new Date(createAtTime).getTime();
+            const fourday = Math.floor(secondstime / (3600 * 24));
+            return fourday == 3000;
+          });
+        });
+        break;
+
+      case 'duetoday':
+        this.userService.getIssue(iParam).then((res: any) => {
+        this.issueDetails = res.filter((item) => {
+            const now = new Date();
+            const datenow = `${now.getMonth()}/${now.getDate()}/${now.getFullYear()}`;
+            const duetime = new Date(item.dueDate);
+            const duedate = `${duetime.getMonth()}/${duetime.getDate()}/${duetime.getFullYear()}`;
+            return duedate == datenow;
+          });
+        });
+        break;
+
+      case 'overdue':
+        this.userService.getIssue(iParam).then((res: any) => {
+        this.issueDetails = res.filter((item) => {
+            const now = new Date();
+            const datenow = `${now.getMonth()}/${now.getDate()}/${now.getFullYear()}`;
+            const duetime = new Date(item.dueDate);
+            const duedate = `${duetime.getMonth()}/${duetime.getDate()}/${duetime.getFullYear()}`;
+            return duedate < datenow;
+          });
+        });
+        break;
+
+      default:
+        this.userService.getIssue(iParam).then((res: any) => {
+        this.issueDetails = res;
+        });
+        break;
     }
   }
 }

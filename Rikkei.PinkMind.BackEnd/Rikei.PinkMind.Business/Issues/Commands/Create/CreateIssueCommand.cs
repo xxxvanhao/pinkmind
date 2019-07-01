@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace Rikei.PinkMind.Business.Issues.Commands.Create
 {
 
-  public class CreateIssueCommand : IRequest
+  public class CreateIssueCommand : IRequest<int>
   {
     public int IssueTypeID { get; set; }
     public string Subject { get; set; }
@@ -38,7 +38,7 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
     public byte[] CheckUpdate { get; set; }
     public List<IFormFile> File { get; set; }
 
-    public class Handler : IRequestHandler<CreateIssueCommand, Unit>
+    public class Handler : IRequestHandler<CreateIssueCommand, int>
     {
       private readonly IMediator _mediator;
       private readonly PinkMindContext _pmContext;
@@ -46,7 +46,7 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
       {
         _pmContext = pmContext;
       }
-      public async Task<Unit> Handle(CreateIssueCommand request, CancellationToken cancellationToken)
+      public async Task<int> Handle(CreateIssueCommand request, CancellationToken cancellationToken)
       {
         var status = _pmContext.Statuses.Where(it => it.Name == "Open").SingleOrDefault();
 
@@ -65,9 +65,9 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
             DueDate = request.DueDate,
             ProjectID = request.ProjectID,
             CreateBy = request.CreateBy,
-            CreateAt = DateTime.UtcNow,
+            CreateAt = DateTime.Now,
             UpdateBy = request.UpdateBy,
-            LastUpdate = DateTime.UtcNow,
+            LastUpdate = DateTime.Now,
             DelFlag = true
           };
           _pmContext.Issues.Add(eIssue);
@@ -106,7 +106,7 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
         //  }
         //  var SaveFileContent = await _mediator.Send(new CreateFileCommand());
         //}
-        return Unit.Value;
+        return eIssue.ID;
       }
     }
   }

@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit{
     this.getParamProjectHome();
     this.userService.getMilestone();
     this.userService.getCategory();
+    this.userService.startConnection();
+    this.userService.addBroadcastChartDataListener();
   }
 
   getParamProjectHome() {

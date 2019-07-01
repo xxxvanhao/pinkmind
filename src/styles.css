@@ -294,6 +294,14 @@ table {
     opacity: 0;
 }
 
+.blockLink-issue {
+    position: absolute;
+    width: 100%;
+    left: 26px;
+    bottom: 24px;
+    text-align: left;
+}
+
 .project-list .project-content:not(:last-child) {
     border-bottom: 1px solid #ddd;
 }
