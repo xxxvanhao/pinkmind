@@ -46,6 +46,13 @@ export class UserService extends BaseService {
   listPriority: IGetType;
   listCategory: IGetType;
   listStatus: IGetType;
+<<<<<<< HEAD
+=======
+
+  listFileDetails: FileUpload;
+  listSearchIssue: IssueDetails;
+  IssueDetail: IssueDetail;
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 
   listFileDetails: FileUpload;
   listSearchIssue: IssueDetails;
@@ -451,17 +458,26 @@ export class UserService extends BaseService {
     });
     return this.http.get(this.baseUrl + `/Comment/getall/` + issueID, {headers}).toPromise();
   }
+<<<<<<< HEAD
   
   // Post folder-file
   // return this.http.get(this.baseUrl + `/Comment/getall/`+ issueID, {headers}).toPromise();
 
   //Post comment : Hoang
   postComment(postComment: postComment) {
+=======
+
+  // Post folder-file
+  // return this.http.get(this.baseUrl + `/Comment/getall/`+ issueID, {headers}).toPromise();
+
+  postFolder(path: FileUpload) {
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
+<<<<<<< HEAD
     return this.http.post(this.baseUrl + '/Comment/Create', postComment, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
@@ -471,13 +487,21 @@ export class UserService extends BaseService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
     });
+=======
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
     return this.http.post(this.baseUrl + '/FileUpload', path, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
     }
+<<<<<<< HEAD
       'Content-Type' : 'application/json'
       //Post comment : Hoang
   putComment(putComment: postComment) {
+=======
+  //Post comment : Hoang
+  postComment(postComment: postComment) {
+    console.log(postComment);
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
@@ -499,6 +523,7 @@ export class UserService extends BaseService {
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
   }
+<<<<<<< HEAD
   //get Search issue for search global
   SearchIssue(key:string){
     const authToken = localStorage.getItem('auth_token');
@@ -518,4 +543,6 @@ export class UserService extends BaseService {
     return this.http.get(this.baseUrl + '/User/SearchGlobal/'+ key, {headers})
     .toPromise();
   }
+=======
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 }
