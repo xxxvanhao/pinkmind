@@ -10,6 +10,8 @@ namespace Rikei.PinkMind.Business.Comments.Queries.GetAllComment
     public int ID { get; set; }
     public string Content { get; set; }
     public long CreateBy { get; set; }
+    public string CreateName { get; set; }
+    public string PictureURL { get; set; }
     public DateTime CreateAt { get; set; }
     public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }

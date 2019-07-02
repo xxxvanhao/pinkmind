@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 import { IssueDetail } from 'src/app/shared/models/IssueDetail.interface';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import * as moment from 'moment';
@@ -13,10 +13,13 @@ import * as moment from 'moment';
 })
 export class EditComponent implements OnInit {
   issueDetail: IssueDetail;
+  paramAddIssueId: string;
+  isProjectKey: boolean;
 
-  constructor(private userService: UserService, private router: Router, private toastr: ToastrService) { }
+  constructor(private userService: UserService, private router: Router,private route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.getParamProjectAddIssue();
     this.userService.getMilestone();
     this.userService.getCategory();
     this.userService.getStatus();
@@ -33,10 +36,9 @@ export class EditComponent implements OnInit {
     }
     else{
       this.router.navigate(['dashboard']);
-    }
+    } 
   }
   onSubmit(formUpdateIssue: NgForm) {
-    console.log(formUpdateIssue.value);
     this.userService.putIssue(formUpdateIssue.value).subscribe(
       res => {
         this.toastr.success('Successful!', 'Update Issue successful');
@@ -45,5 +47,25 @@ export class EditComponent implements OnInit {
         this.toastr.error('Failed!', 'Please type again');
       }
     );
+  }
+  getParamProjectAddIssue() {
+    this.route.params.subscribe(params => {
+      this.paramAddIssueId = params['id'];
+      this.checkProject();
+      this.userService.getParamSpaceId(this.paramAddIssueId);
+      this.userService.getProjectMember(this.paramAddIssueId);
+    });
+  }
+  checkProject() {
+    this.userService.getProject().then((res: any) => {
+      for (const item of res) {
+        if (item.id === this.paramAddIssueId) {
+          this.isProjectKey = true;
+        }
+      }
+      if (this.isProjectKey == undefined) {
+        this.router.navigate(['dashboard']);
+      }
+    });
   }
 }

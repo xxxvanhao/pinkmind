@@ -3,7 +3,7 @@
         <div class="header-project">
             <div class="row flex-nowrap">
                 <div class="col-md-5">
-                    <span class="org-name mr-1"><i class="far fa-building"></i> RikkeiSoft</span>
+                    <span class="org-name mr-1" *ngIf="userService.userDetails"><i class="far fa-building"></i>{{userService.userDetails.spaceID}}</span>
                     <span class="project-key">({{userService.spaceId}})</span>
                 </div>
             </div>

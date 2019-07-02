@@ -15,7 +15,9 @@ namespace Rikkei.PindMind.DAO.Models
     public string FolderPath { get; set; }
     [StringLength(50, MinimumLength = 3)]
     public string FilePath { get; set; }
+    
     public string TypeModel { get; set; }
+
     public string FileSize { get; set; }
     public string ImagePath { get; set; }
     [Required]

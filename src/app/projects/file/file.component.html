@@ -3,7 +3,7 @@
         <div class="header-project">
             <div class="row flex-nowrap">
                 <div class="col-md-5">
-                    <span class="org-name mr-1"><i class="far fa-building"></i> RikkeiSoft</span>
+                    <span class="org-name mr-1" *ngIf="userService.userDetails"><i class="far fa-building"></i> {{userService.userDetails.spaceID}}</span>
                     <span class="project-key">({{userService.spaceId}})</span>
                 </div>
             </div>
@@ -26,17 +26,17 @@
                     </div>
                 </div>
                 <div class="add-folder-erea mb-3">
-                    <form action="/" method="POST">
+                    <form #folderForm="ngForm" autocomplete="off" (submit)="folderSubmit(folderForm)">
                         <div class="d-flex align-items-center">
-                            <label class="mb-0" for="addFolder">Add Folder</label>
-                            <input type="text" class="form-control d-inline w-25 ml-2" name="addFolder" id="addFolderId">
-                            <button type="submit" class="btn btn-success ml-2">Add</button>
+                            <label class="mb-0" for="folderPath">Add Folder</label>
+                            <input type="text" class="form-control d-inline w-25 ml-2" id="folderPath" name="folderPath" ngModel #folderPath="ngModel" required minlength="3" maxlength="50">
+                            <button type="submit" class="btn btn-success ml-2" [disabled]="folderForm.invalid">Add</button>
                             <button type="button" class="btn btn-link ml-2 add-folder-cancel">Canel</button>
                         </div>
                     </form>
                 </div>
                 <div class="add-file-erea mb-3">
-                    <form id="uploader">
+                    <form #fileForm="ngForm" autocomplete="off" (submit)="UploadFile()">
                         <div class="d-flex align-items-center">
                             <input type="file" id="fileInput" class="btn btn-light" multiple />
                             <button type="submit" class="btn btn-success">Upload</button>
@@ -56,27 +56,16 @@
                                 </tr>
                             </thead>
                             <tbody class="file-tbody text-center">
-                                <tr class="tr-body">
+                                <tr class="tr-body" *ngFor="let item of userService.listFileDetails">
                                     <td>
                                         <div class="checkbox text-center mt-1">
-                                            <input type="checkbox" class="check" value="">
+                                            <input type="checkbox" class="check" value="" *ngIf="(item.typeModel == 'File')">
                                         </div>
                                     </td>
-                                    <td class="text-left"><a href="#"><i class="fas fa-folder mr-2 fix-color-orange"></i>Test</a></td>
-                                    <td>431.6 KB</td>
-                                    <td>Văn Hảo</td>
-                                    <td>May. 14, 2019 14:38</td>
-                                </tr>
-                                <tr class="tr-body">
-                                    <td>
-                                        <div class="checkbox text-center mt-1">
-                                            <input type="checkbox" class="check" value="">
-                                        </div>
-                                    </td>
-                                    <td class="text-left"><a href="#"><i class="fas fa-file mr-2 fix-color-yellowgreen"></i>cong_thuc_vat_li_lop_10.pdf</a></td>
-                                    <td>-</td>
-                                    <td>Văn Hảo</td>
-                                    <td>May. 14, 2019 14:38</td>
+                                    <td class="text-left"><a href="projects/file/{{item.projectID}}?path={{item.filePath}}"><i class="{{item.imagePath}}"></i>{{item.filePath}}</a></td>
+                                    <td>{{item.fileSize}}</td>
+                                    <td>{{item.updateBy}}</td>
+                                    <td>{{item.lastUpdate | date: 'MMM dd, yyyy'}}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -34,7 +34,7 @@
                                     Description
                                 </div>
                                 <div class="col-md-10 pr-4">
-                                    <textarea [froalaEditor] name="description" ngModel [value]="issueDetail.dueDate"
+                                    <textarea [froalaEditor] name="description" ngModel [(ngModel)]="issueDetail.description"
                                         #description="ngModel" [(froalaModel)]="issueDetail.description"></textarea>
                                 </div>
                             </div>
@@ -65,8 +65,7 @@
                                         <div class="form-group mb-0">
                                             <select class="form-control" id="add-assignee" name="assigneeUser" ngModel
                                                 [(ngModel)]="issueDetail.assigneeUser" #assigneeUser="ngModel">
-                                                <option *ngFor="let item of userService.projectMember"
-                                                    [value]="item.userID">{{item.userName}}</option>
+                                                <option *ngFor="let item of userService.projectMember" [value]="item.userID">{{item.userName}}</option>
                                             </select>
                                         </div>
                                     </div>

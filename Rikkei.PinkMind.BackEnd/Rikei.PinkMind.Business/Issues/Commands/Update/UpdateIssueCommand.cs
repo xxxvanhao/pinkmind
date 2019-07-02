@@ -16,14 +16,14 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Update
     public string Subject { get; set; }
     public string Description { get; set; }
     public int StatusID { get; set; }
-    public int AssigneeUser { get; set; }
+    public long AssigneeUser { get; set; }
     public int PriorityID { get; set; }
     public int CategoryID { get; set; }
     public int MilestoneID { get; set; }
     public int VersionID { get; set; }
     public int? ResolutionID { get; set; }
     public DateTime DueDate { get; set; }
-    public int UpdateBy { get; set; }
+    public long UpdateBy { get; set; }
     public DateTime LastUpdate { get; set; }
     public bool DelFlag { get; set; }
 
@@ -53,7 +53,7 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Update
         entity.VersionID = request.VersionID;
         entity.ResolutionID = request.ResolutionID;
         entity.DueDate = request.DueDate;
-        entity.UpdateBy = request.UpdateBy;
+        entity.UpdateBy = Convert.ToInt64(request.UpdateBy);
         entity.LastUpdate = DateTime.Now;
         await _pmContext.SaveChangesAsync(cancellationToken);
         return Unit.Value;

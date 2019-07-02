@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IssueDetail } from 'src/app/shared/models/IssueDetail.interface';
+import { VariableAst } from '@angular/compiler';
 
 @Component({
   selector: 'app-issue',
@@ -17,8 +18,8 @@ export class IssueComponent implements OnInit {
   milestoneId: number = 0;
   assigneeId: number = 0;
   statusId: number = 0;
-  key : string = "";
-  projectId :string;
+  key: string = "";
+  projectId: string;
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
@@ -29,14 +30,14 @@ export class IssueComponent implements OnInit {
     this.userService.getStatus();
     console.log(this.userService.getStatus())
     this.SearchIssue();
-    }
+  }
 
   getParamProjectIssue() {
     this.route.params.subscribe(params => {
       this.paramIssueId = params['id'];
       this.checkProject();
       this.userService.getParamSpaceId(this.paramIssueId);
-      });
+    });
   }
 
   checkProject() {
@@ -52,31 +53,31 @@ export class IssueComponent implements OnInit {
     });
   }
   
-  active() {
+  active(event: Event, id: number) {
+    this.statusId = id;
     const isItem = document.getElementsByClassName('status-item') as any;
     for (const item of isItem) {
-      item.addEventListener('click', () => {
-      const current = document.getElementsByClassName('is-active');
-      current[0].classList.add(' is-active');
-      });
+      if (id == item.getAttribute('id') && !item.classList.contains('is-active')) {
+        item.classList.add('is-active');
+      }
+      else {
+        item.classList.remove('is-active');
+      }
     }
+    this.SearchIssue();
   }
 
-  SearchIssue(){
+  SearchIssue() {
     this.projectId = this.userService.spaceId;
     this.categoryId = Number((document.getElementById("is-category-Category") as any).value);
-    // if(!document.getElementsByClassName('is-active') as any != undefined){
-    //   this.statusId = (document.getElementsByClassName('is-active') as any).getAttribute('id');
-    // }
     this.milestoneId = Number((document.getElementById("is-milestone-Category") as any).value)
     this.key = (document.getElementById("keySearch") as any).value;
-    this.userService.getSearchIssue(this.projectId,this.categoryId,this.statusId,this.milestoneId,this.key);
-    
+    this.userService.getSearchIssue(this.projectId, this.categoryId, this.statusId, this.milestoneId, this.key);
+
   }
 
-  redirect(data: IssueDetail) : any {
+  redirect(data: IssueDetail): any {
     this.userService.IssueDetail = data;
-    console.log(data);
     this.router.navigate(['projects/view/' + data.projectID]);
   }
 }

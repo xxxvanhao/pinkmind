@@ -101,6 +101,60 @@
             <ul class="navbar-nav mr-2 ">
                 <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Search this space">
                     <input type="search" class="dropbox-search fix-search" value="" name="searchSpace" placeholder="Search this Space">
+                    <div class="showPopup col-md-6 dropbox-header" id="popupSearch" style="display: none;">
+                        <span>Search this Space</span>
+                        <div class="tab">
+                            <button class="tablinks" onclick="openCity(event, 'Issue')">Issue</button>
+                            <button class="tablinks" onclick="openCity(event, 'Wiki')">Wiki</button>
+                            <button class="tablinks" onclick="openCity(event, 'SharedFiles')" id="defaultOpen">Shared Files</button>
+                            <button class="tablinks" onclick="openCity(event, 'Pullrequests')">Pull requests</button>
+                            <button class="tablinks" onclick="openCity(event, 'Members')">Members</button>
+                        </div>
+                        <div id="Issue" class="tabcontent">
+                            <h5>Issue</h5>
+                            <div class="container-fluid">
+                                <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span><h1>sdas</h1>fdsfdsf</div>
+                                <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
+                                <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
+                            </div>
+                        </div>
+                
+                        <div id="Wiki" class="tabcontent">
+                            <h5>Wiki</h5>
+                            <div class="container-fluid">
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>fdsfdsf</div>
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
+                            </div>
+                        </div>
+                
+                        <div id="SharedFiles" class="tabcontent">
+                            <h5>SharedFiles</h5>
+                            <div class="container-fluid">
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>fdsfdsf</div>
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
+                            </div>
+                        </div>
+                
+                        <div id="Pullrequests" class="tabcontent">
+                            <h5>Pullrequests</h5>
+                            <div class="container-fluid">
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>fdsfdsf</div>
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
+                            </div>
+                        </div>
+                
+                        <div id="Members" class="tabcontent">
+                            <h5>Members</h5>
+                            <div class="container-fluid">
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>fdsfdsf</div>
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
+                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Watching issues">
                     <a class="nav-link" href="javascript:void(0)"><i class="fas fa-eye"></i></a>
@@ -181,3 +235,18 @@
         </div>
     </div>
 </nav>
+<script type="text/javascript">
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>

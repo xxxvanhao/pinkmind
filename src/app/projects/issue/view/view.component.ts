@@ -6,6 +6,9 @@ import { commentDetail } from 'src/app/shared/models/commentDetail.interface';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { IssueDetail } from 'src/app/shared/models/IssueDetail.interface';
+import { postComment } from 'src/app/shared/models/postModel/postComment.interface';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-view',
@@ -17,8 +20,9 @@ export class ViewComponent implements OnInit {
   paramIssueId: string;
   issueDetail: IssueDetail;
   listComment: commentDetail;
+  baseUrl: string;
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private toastr: ToastrService) { }
+  constructor(private userService: UserService,private http: HttpClient, private router: Router, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getParamProjectIssue();
@@ -56,8 +60,6 @@ export class ViewComponent implements OnInit {
   getAllComment(id: number) {
     this.userService.getComment(id).then((res: any) => {
       this.listComment = res.comments;
-      console.log('this');
-      console.log(this.listComment);
     });
   }
   redirect() {
@@ -77,11 +79,46 @@ export class ViewComponent implements OnInit {
       res => {
         this.toastr.success('Successful!', 'Add comment successful');
         formComment.resetForm();
+        this.getAllComment(this.userService.IssueDetail.id);
       },
       err => {
         this.toastr.error('Failed!', 'Please type again');
         formComment.resetForm();
       }
     );
+  }
+  onSubmitChange(formComment: NgForm) {
+    console.log(formComment.value);
+    this.userService.putComment(formComment.value).subscribe(
+      res => {
+        this.toastr.success('Successful!', 'Add comment successful');
+        formComment.resetForm();
+        this.getAllComment(this.userService.IssueDetail.id);
+      },
+      err => {
+        this.toastr.error('Failed!', 'Please type again');
+        formComment.resetForm();
+      }
+    );
+  }
+  UpdateComment(formComment: postComment){
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.put(this.baseUrl + '/Issue', formComment, {headers})
+    .pipe(map((response: any) => response ))
+  }
+  activeFormEdit(event: Event, id: number) {
+    const isItem = document.getElementsByClassName('edit-content') as any;
+    for (const item of isItem) {
+      if (id == item.getAttribute('id') && !item.classList.contains('is-active-form')) {
+        item.classList.add('is-active-form');
+      }
+      else {
+        item.classList.remove('is-active-form');
+      }
+    }
   }
 }

@@ -35,7 +35,7 @@
                             </div>
                             <div class="row">
                                 <div class="pl-4 show-description" [innerHTML]='issueDetail.description'>
-                                    <pre></pre>
+                                    {{issueDetail.description }}
                                 </div>
                             </div>
                         </div>
@@ -145,20 +145,31 @@
                     <div class="card-content mb-3 px-4 py-3" *ngFor="let item of listComment">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-6 pl-4 display-user">
+                                <div class="col-md-10 pl-4 display-user">
                                     <div class="avatar">
-                                        <img src="https://d1zqp7au6yhc2p.cloudfront.net/default-icons/account/F8E71C/128x128.png"
+                                        <img *ngIf="item.pictureUL != ''" [attr.src]="item.pictureUL"
                                             alt="avatar" height="50" width="50">
                                     </div>
                                     <div class="user-infor">
-                                        <p>UserName</p>
-                                        <p>Create : {{item.id}}</p>
+                                        <p>{{item.createName}}</p>
+                                        <p>Create : {{item.createAt| date:'yyyy-MM-dd'}}</p>
                                     </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <i class="edit-comment" (click)="activeFormEdit($event, item.id)">edit</i>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="pl-4 show-description">
+                                <div class="col-12 pl-4 show-description">
                                     {{item.content}}
+                                </div>
+                                <div class="col-12 edit-content" [id]="item.id">
+                                    <form #formComment="ngForm" (submit)="onSubmitChange(formComment)">
+                                            <input name="id" type="hidden" ngModel [(ngModel)]="item.id" >
+                                            <textarea required class="form-control" name="content" [(ngModel)]="item.content"></textarea>
+                                            <br>
+                                            <button class="btn btn-success px-5" type="submit" (click)="UpdateComment(formComment)" >Change</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -181,7 +192,7 @@
                             </div>
                         </div>
                         <div class="col-md-11 pl-11 comment-content">
-                            <input type="hidden" id="issueID" name="issueID" [(ngModel)]="issueDetail.issueID" ngModel #issueID="ngModel">
+                            <input type="hidden" id="issueID" name="issueID" ngModel [(ngModel)]="issueDetail.id">
                             <textarea class="form-control comment-text" id="comment-text" type="text" name="content"
                                 placeholder="Enter your comment" ngModel #content="ngModel"></textarea>
                         </div>
@@ -197,7 +208,6 @@
                         </div>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>

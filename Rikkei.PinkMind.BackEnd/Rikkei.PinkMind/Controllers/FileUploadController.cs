@@ -13,6 +13,7 @@ using System.Security.Claims;
 using Rikei.PinkMind.Business.ProjectFile.CreateFolder;
 using MediatR;
 using Rikei.PinkMind.Business.ProjectFile.GetAllFolder;
+using System.Net;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
@@ -53,23 +54,28 @@ namespace Rikkei.PinkMind.API.Controllers
                 {".jpg", "image/jpeg"},
                 {".jpeg", "image/jpeg"},
                 {".gif", "image/gif"},
-                {".csv", "text/csv"}
+                {".csv", "text/csv"},
+                {".zip", "application/zip"},
+                {".rar", "application/x-rar-compressed"},
+                {".exe", "application/x-msdownload"},
             };
     }
 
-    [HttpGet("{pathfolder}")]
+    [Route("folder/{pathfolder}")]
     public async Task<IActionResult> GetFile(string pathfolder)
     {
-      return Ok(await _mediator.Send(new GetAllFileQuery { path = pathfolder}));
+      var pathDecode = WebUtility.UrlDecode(pathfolder);
+      return Ok(await _mediator.Send(new GetAllFileQuery { path = pathDecode }));
     }
 
-    [HttpPost("{path}")]
+    [HttpPost]
+    [Route("pathproject/{path}/{projectKey}")]
     [Consumes("multipart/form-data")]
     public async Task<IActionResult> Upload(string path, string projectKey)
     {
-
       var userID = _caller.Claims.Single(u => u.Type == "id");
       //var userInfo = await _pmContext.Users.FindAsync(Convert.ToInt64(userID.Value));
+      var urlpath = WebUtility.UrlDecode(path);
       for (int i = 0; i < Request.Form.Files.Count; i++)
       {
         IFormFile file = Request.Form.Files[i]; //Uploaded file
@@ -77,8 +83,8 @@ namespace Rikkei.PinkMind.API.Controllers
         long fileSize = file.Length;
         string fileName = file.FileName;
         string mimeType = file.ContentType;
-        Directory.CreateDirectory($"{path}");
-        var filePath = Path.Combine($"{path}", fileName);
+        Directory.CreateDirectory($"image/imageproject/{urlpath}");
+        var filePath = Path.Combine($"image/imageproject/{urlpath}", fileName);
         Stream fileContent = file.OpenReadStream();
         //To save file, use SaveAs method
         using (var stream = new FileStream(filePath, FileMode.Create))
@@ -88,11 +94,11 @@ namespace Rikkei.PinkMind.API.Controllers
 
         var entity = new ProjectFileUpload
         {
-          FolderPath = $"/{path}",
+          FolderPath = $"{urlpath}",
           FilePath = file.FileName,
           FileSize = $"{fileSize} KB",
           TypeModel = "File",
-          ImagePath = "Haha",
+          ImagePath = "fas fa-file mr-2 fix-color-yellowgreen",
           CreateBy = Convert.ToInt64(userID.Value),
           CreateAt = DateTime.UtcNow,
           UpdateBy = Convert.ToInt64(userID.Value),
@@ -108,11 +114,13 @@ namespace Rikkei.PinkMind.API.Controllers
 
     }
 
-    [HttpPost("{pathissue}")]
+    [HttpPost]
+    [Route("path/{pathissue}")]
     [Consumes("multipart/form-data")]
     public async Task<IActionResult> UploadFileIssue(string pathissue)
     {
-
+      var path = WebUtility.UrlDecode(pathissue);
+      List<object> pathlist = new List<object>();
       //var userID = _caller.Claims.Single(u => u.Type == "id");
       //var userInfo = await _pmContext.Users.FindAsync(Convert.ToInt64(userID.Value));
       for (int i = 0; i < Request.Form.Files.Count; i++)
@@ -122,8 +130,8 @@ namespace Rikkei.PinkMind.API.Controllers
         long fileSize = file.Length;
         string fileName = file.FileName;
         string mimeType = file.ContentType;
-        Directory.CreateDirectory($"{pathissue}");
-        var filePath = Path.Combine($"{pathissue}", fileName);
+        Directory.CreateDirectory($"image/imageissue/{path}");
+        var filePath = Path.Combine($"image/imageissue/{path}", fileName);
         Stream fileContent = file.OpenReadStream();
         //To save file, use SaveAs method
         using (var stream = new FileStream(filePath, FileMode.Create))
@@ -131,18 +139,26 @@ namespace Rikkei.PinkMind.API.Controllers
           await file.CopyToAsync(stream);
         }
 
+        var pathDetails = new
+        {
+          FolderPath = $"image/imageissue/{path}",
+          FilePath = fileName,
+          FileSize = $"{fileSize} KB"
+        };
+        pathlist.Add(pathDetails);
       }
 
-      return NoContent();
+      return Ok(pathlist);
       //return Ok("Uploaded " + Request.Form.Files.Count + " files");
     }
-    [HttpGet("{filename}")]
+    [Route("path/{filename}")]
     public async Task<IActionResult> Download(string filename)
     {
+      var pathFile = WebUtility.UrlDecode(filename);
       if (filename == null)
         return Content("filename not present");
 
-      var path = Path.Combine(filename);
+      var path = Path.Combine(pathFile);
 
       var memory = new MemoryStream();
       using (var stream = new FileStream(path, FileMode.Open))
@@ -157,9 +173,10 @@ namespace Rikkei.PinkMind.API.Controllers
     public async Task<IActionResult> PostFolder([FromBody]CreateFolderCommand command)
     {
       var userID = _caller.Claims.Single(u => u.Type == "id");
+      Directory.CreateDirectory($"image/imageproject/{command.FolderPath}{command.FilePath}");
       await _mediator.Send(new CreateFolderCommand
       {
-        FolderPath = $"/{command.FolderPath}",
+        FolderPath = $"{command.FolderPath}",
         FilePath = command.FilePath,
         CreateBy = Convert.ToInt64(userID.Value),
         UpdateBy = Convert.ToInt64(userID.Value),

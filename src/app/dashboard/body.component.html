@@ -171,7 +171,7 @@
                                     <th>Due</th>
                                 </tr>
                             </thead>
-                            <tbody class="issue-tbody " align="center">
+                            <tbody class="issue-tbody " align="center" *ngIf="(issueDetails | keyvalue)?.length > 0; else notIssueDetails">
                                 <tr class="tr-body" *ngFor="let item of issueDetails">
                                     <td>
                                         <a href="/projects/view/{{item.id}}">{{item.key}}</a>
@@ -182,6 +182,16 @@
                                     <td>{{item.dueDate | date : 'MMM .dd'}}</td>
                                 </tr>
                             </tbody>
+                            <ng-template #notIssueDetails>
+                                <tbody class="issue-tbody " align="center">
+                                    <tr class="tr-body">
+                                        <td></td>
+                                        <td></td>
+                                        <td>There are no issue<br>Issue created or assigned to you will be listed here.</td>
+                                        <td></td>
+                                        <td></td>
+                                </tbody>
+                            </ng-template>
                         </table>
                     </div>
                 </div>

@@ -16,7 +16,11 @@ import { IGetType } from '../models/igettype.interface';
 import { IIssueType } from '../models/issuetype.interface';
 import { ProjectMember } from '../models/projectmember.interface';
 import { IssueDetails } from '../models/issuedetails.interface';
+
+
 import { IssueDetail } from '../models/IssueDetail.interface';
+import { FileUpload } from '../models/fileupload.interface';
+
 import { commentDetail } from '../models/commentDetail.interface';
 import { postComment } from '../models/postModel/postComment.interface';
 import { putIssue } from '../models/postModel/putIssue.interface';
@@ -42,10 +46,12 @@ export class UserService extends BaseService {
   listPriority: IGetType;
   listCategory: IGetType;
   listStatus: IGetType;
-  listSearchIssue : IssueDetails;
-  IssueDetail : IssueDetail;
 
-  // signalR
+  listFileDetails: FileUpload;
+  listSearchIssue: IssueDetails;
+  IssueDetail: IssueDetail;
+  
+    // signalR
   public bradcastedData: ReUpdate[];
   private hubConnection: signalR.HubConnection;
   public startConnection = () => {
@@ -94,7 +100,7 @@ export class UserService extends BaseService {
    login(userName, password) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-
+                                                                                                                                                                                                                                                                                                                                          
     return this.http.post(
       this.baseUrl + '/auth/login',
       JSON.stringify({ userName, password }), { headers }
@@ -387,7 +393,22 @@ export class UserService extends BaseService {
     });
   }
 
-  //Post Issue
+  getFile(path: string) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    const urlpath = encodeURIComponent(path);
+    return this.http.get(this.baseUrl + `/FileUpload/folder/${urlpath}`, {headers})
+    .toPromise()
+    .then((res: any) => {
+      this.listFileDetails = res.fileDTOs;
+      return res;
+    });
+  }
+
+  // Post Issue
 
   postIssue(issue: Issue) {
     const authToken = localStorage.getItem('auth_token');
@@ -399,6 +420,16 @@ export class UserService extends BaseService {
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
   }
+
+  getIssueDetail(id: number) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/issue/'+ id, {headers}).toPromise();
+  }
+
   getSearchIssue(proID:string,catID: number,staID:number,mileID:number,key:string) {
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
@@ -411,14 +442,6 @@ export class UserService extends BaseService {
       this.listSearchIssue = res.issues;
     });
   }
-  getIssueDetail(id: number) {
-    const authToken = localStorage.getItem('auth_token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${authToken}`,
-      'Content-Type' : 'application/json'
-    });
-    return this.http.get(this.baseUrl + `/issue/GetDetail/`+id, {headers}).toPromise();
-  }
   // Get comment : Hoang
   getComment(issueID: number){
     const authToken = localStorage.getItem('auth_token');
@@ -426,17 +449,41 @@ export class UserService extends BaseService {
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    return this.http.get(this.baseUrl + `/Comment/getall/`+ issueID, {headers}).toPromise();
+    return this.http.get(this.baseUrl + `/Comment/getall/` + issueID, {headers}).toPromise();
   }
+  
+  // Post folder-file
+  // return this.http.get(this.baseUrl + `/Comment/getall/`+ issueID, {headers}).toPromise();
+
   //Post comment : Hoang
   postComment(postComment: postComment) {
-    console.log(postComment);
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
     return this.http.post(this.baseUrl + '/Comment/Create', postComment, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
+  postFolder(path: FileUpload) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+    });
+    return this.http.post(this.baseUrl + '/FileUpload', path, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+    }
+      'Content-Type' : 'application/json'
+      //Post comment : Hoang
+  putComment(putComment: postComment) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.put(this.baseUrl + '/Comment/Update', putComment, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
   }
@@ -448,8 +495,27 @@ export class UserService extends BaseService {
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    return this.http.put(this.baseUrl + '/issue', putIssueForm, {headers})
+    return this.http.put(this.baseUrl + '/Issue/Update', putIssueForm, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
+  }
+  //get Search issue for search global
+  SearchIssue(key:string){
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + '/Issue/SearchGlobal/'+ key, {headers})
+    .toPromise();
+  }
+  SearchMember(key: string){
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + '/User/SearchGlobal/'+ key, {headers})
+    .toPromise();
   }
 }
