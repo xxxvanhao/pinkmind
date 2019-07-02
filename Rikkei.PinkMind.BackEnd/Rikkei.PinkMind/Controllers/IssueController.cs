@@ -104,7 +104,7 @@ namespace Rikkei.PinkMind.API.Controllers
     }
     //Search Issue
     //HTTP get
-    [HttpGet]
+    [HttpGet] 
     [Route("SearchGlobal/{key}")]
     public async Task<ActionResult<IssuesViewModel>> SearchGlobal(string key)
     {

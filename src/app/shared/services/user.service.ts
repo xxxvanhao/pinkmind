@@ -48,13 +48,17 @@ export class UserService extends BaseService {
   listStatus: IGetType;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 =======
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 
   listFileDetails: FileUpload;
   listSearchIssue: IssueDetails;
   IssueDetail: IssueDetail;
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 
@@ -64,6 +68,8 @@ export class UserService extends BaseService {
   
     // signalR
 =======
+=======
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 
   // signalR
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
@@ -468,6 +474,7 @@ export class UserService extends BaseService {
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   // Post folder-file
   // return this.http.get(this.baseUrl + `/Comment/getall/`+ issueID, {headers}).toPromise();
@@ -477,12 +484,17 @@ export class UserService extends BaseService {
 =======
 =======
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
+=======
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 
   // Post folder-file
   // return this.http.get(this.baseUrl + `/Comment/getall/`+ issueID, {headers}).toPromise();
 
   postFolder(path: FileUpload) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
+=======
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 =======
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
@@ -491,6 +503,7 @@ export class UserService extends BaseService {
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     return this.http.post(this.baseUrl + '/Comment/Create', postComment, {headers})
@@ -506,16 +519,21 @@ export class UserService extends BaseService {
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 =======
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
+=======
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
     return this.http.post(this.baseUrl + '/FileUpload', path, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       'Content-Type' : 'application/json'
       //Post comment : Hoang
   putComment(putComment: postComment) {
 =======
+=======
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 =======
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
   //Post comment : Hoang
@@ -545,6 +563,7 @@ export class UserService extends BaseService {
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   //get Search issue for search global
   SearchIssue(key:string){
     const authToken = localStorage.getItem('auth_token');
@@ -564,6 +583,8 @@ export class UserService extends BaseService {
     return this.http.get(this.baseUrl + '/User/SearchGlobal/'+ key, {headers})
     .toPromise();
   }
+=======
+>>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 =======
 >>>>>>> 49f7096b7a04026ef8397289a55492ec96a76c4e
 =======
