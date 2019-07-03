@@ -30,7 +30,8 @@
                         ],
                         "scripts": [
                             "./node_modules/froala-editor/js/froala_editor.pkgd.min.js",
-                            "./node_modules/moment/moment.js"
+                            "./node_modules/moment/moment.js",
+                            "./node_modules/file-saver/dist/FileSaver.js"
                         ],
                         "es5BrowserSupport": true
                     },

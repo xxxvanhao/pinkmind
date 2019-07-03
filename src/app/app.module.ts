@@ -39,6 +39,7 @@ import { ProjectsRoutingModule } from './projects/projects-routing.module';
 import { TimeagoModule } from 'ngx-timeago';
 import { EditComponent } from './projects/issue/edit/edit.component';
 import { ViewComponent } from './projects/issue/view/view.component';
+import { LSelect2Module } from 'ngx-select2';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { ViewComponent } from './projects/issue/view/view.component';
     WwwrootModule,
     FormsModule,
     HttpClientModule,
-    TimeagoModule.forRoot()
+    TimeagoModule.forRoot(),
+    LSelect2Module
   ],
   providers: [ConfigService, {
     provide: [HttpXhrBackend, HTTP_INTERCEPTORS],

@@ -266,6 +266,8 @@ namespace Rikkei.PinkMind.Migrator.Migrations
 
                     b.Property<int>("IssueID");
 
+                    b.Property<int>("ReupdateID");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 

@@ -85,7 +85,9 @@ namespace Rikkei.PinkMind.API.Controllers
         DueDate = command.DueDate,
         ProjectID = command.ProjectID,
         CreateBy = Convert.ToInt64(userID.Value),
-        UpdateBy = Convert.ToInt64(userID.Value)
+        UpdateBy = Convert.ToInt64(userID.Value),
+        FileIssue = command.FileIssue,
+        ListNotification = command.ListNotification
       });
 
       return issueId;

@@ -15,6 +15,7 @@ namespace Rikkei.PindMind.DAO.Models
     public bool Status { get; set; }
     [Required]
     public int IssueID { get; set; }
+    public int ReupdateID { get; set; }
     public Issue Issue { get; set; }
   }
 }

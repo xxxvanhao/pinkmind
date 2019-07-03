@@ -3,6 +3,7 @@ import { UserService } from '../shared/services/user.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Notify } from '../shared/models/notify.interface';
 
 declare var jquery: any;
 declare var $: any;
@@ -15,6 +16,7 @@ export class NavComponent implements OnInit, OnDestroy {
 
   status: boolean;
   subscription: Subscription;
+  listNotify: Notify;
 
   constructor(private userService: UserService, private router: Router) {
 
@@ -23,6 +25,7 @@ export class NavComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.userService.authNavStatus$.subscribe(status => this.status = status);
     this.userService.getProject();
+    this.getListNotify();
   }
 
   ngOnDestroy() {
@@ -33,6 +36,14 @@ export class NavComponent implements OnInit, OnDestroy {
   logout() {
     this.userService.logout();
     this.router.navigate(['/account/facebook-login']);
+ }
+
+  getListNotify() {
+    this.userService.getNotify().then((res: any) => {
+      this.listNotify = res.notifies;
+      console.log(res);
+      console.log(this.listNotify)
+    });
  }
 
  searchProject() {

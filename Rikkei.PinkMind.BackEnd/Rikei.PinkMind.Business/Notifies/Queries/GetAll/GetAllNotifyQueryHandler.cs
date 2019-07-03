@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Rikkei.PindMind.DAO.Models;
+using System.Net;
 
 namespace Rikei.PinkMind.Business.Notifies.Queries.GetAll
 {
@@ -21,25 +23,37 @@ namespace Rikei.PinkMind.Business.Notifies.Queries.GetAll
 
     public async Task<NotifyViewModel> Handle(GetAllNotifyQuery request, CancellationToken cancellationToken)
     {
-      var Notifies = from ct in _pmContext.Notifies select ct;
-      var AllNotifies = await Notifies.ToListAsync(cancellationToken);
-      var tranfItem = new List<NotifyDTO>();
-      foreach (var item in AllNotifies)
-      {
-        var tfitem = new NotifyDTO();
-        tfitem.ID = item.ID;
-        tfitem.IssueID = item.IssueID;
-        tfitem.Status = item.Status;
-        tfitem.UserID = item.UserID;
-        tranfItem.Add(tfitem);
-      }
+      var getNotifyList = await _pmContext.Notifies.Where(arr => arr.UserID == request.userID).ToListAsync();
 
+      List<NotifyDTO> notifyList = new List<NotifyDTO>();
+
+      for(int i=0; i < getNotifyList.Count; i++)
+      {
+        var notify = await _pmContext.ReUpdates.FindAsync(getNotifyList.ElementAt(i).ReupdateID);
+        var notifyDTO = new NotifyDTO
+        {
+          ID = notify.ID,
+          ActionName = WebUtility.HtmlDecode(notify.ActionName),
+          Content = WebUtility.HtmlDecode(notify.Content),
+          Subject = notify.Subject,
+          UserName = notify.UserName,
+          AvatarPath = notify.AvatarPath,
+          Status = false,
+          IssueID = getNotifyList.ElementAt(i).IssueID,
+          IssueKey = notify.IssueKey,
+          ProjectKey = notify.ProjectKey,
+          SpaceID = notify.SpaceID,
+          UpdateTime = notify.UpdateTime
+        };
+
+        notifyList.Add(notifyDTO);
+      }
+      
       var model = new NotifyViewModel
       {
-        notifies = _mapper.Map<IEnumerable<NotifyDTO>>(tranfItem)
+        notifies = _mapper.Map<IEnumerable<NotifyDTO>>(notifyList)
       };
       return model;
-      throw new System.NotImplementedException();
     }
   }
 }

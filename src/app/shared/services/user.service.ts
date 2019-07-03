@@ -10,7 +10,7 @@ import { Space } from '../models/space.interface';
 import { Project } from '../models/project.interface';
 import { ReUpdate } from '../models/reUpdate.interface';
 import * as moment from 'moment';
-import * as signalR from "@aspnet/signalr";
+import * as signalR from '@aspnet/signalr';
 import { Issue } from '../models/issue.interface';
 import { IGetType } from '../models/igettype.interface';
 import { IIssueType } from '../models/issuetype.interface';
@@ -276,7 +276,15 @@ export class UserService extends BaseService {
   }
 
   // API GET
-
+  getNotify() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + '/notify', {headers})
+    .toPromise();
+  }
 
   getReUpdate(pKey: string) {
     const authToken = localStorage.getItem('auth_token');
@@ -427,7 +435,7 @@ export class UserService extends BaseService {
       Authorization: `Bearer ${authToken}`,
       'Content-Type' : 'application/json'
     });
-    return this.http.post(this.baseUrl + '/issue/'+ id, {headers}).toPromise();
+    return this.http.post(this.baseUrl + '/issue/' + id, {headers}).toPromise();
   }
 
   getSearchIssue(proID:string,catID: number,staID:number,mileID:number,key:string) {
@@ -464,8 +472,18 @@ export class UserService extends BaseService {
     return this.http.post(this.baseUrl + '/FileUpload', path, {headers})
     .pipe(map((response: any) => response ))
     .pipe(catchError(this.handleError));
-    }
-  //Post comment : Hoang
+  }
+
+  downloadFileProject(path: string) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      });
+    const urlpath = encodeURIComponent(path);
+    return this.http.get(this.baseUrl + `/FileUpload/path/${urlpath}`, { responseType: 'blob' , headers});
+  }
+
+  // Post comment : Hoang
   postComment(postComment: postComment) {
     console.log(postComment);
     const authToken = localStorage.getItem('auth_token');
@@ -478,7 +496,7 @@ export class UserService extends BaseService {
     .pipe(catchError(this.handleError));
   }
 
-  //put: Update issue
+  // put: Update issue
   putIssue(putIssueForm: putIssue) {
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
