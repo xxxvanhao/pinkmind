@@ -372,8 +372,14 @@ table {
 
 #add-comment {
     position: fixed;
-    bottom: -1rem;
+    bottom: 0;
     width: 83.66666666%;
+    background: #FFF;
+    border-top: #f1f1f1;
+}
+
+#update-issue-atcm {
+    display: none;
 }
 
 .active-form .comment-text {
@@ -397,6 +403,37 @@ table {
 .attach-file:hover {
     background: #28a745;
     color: #FFF;
+}
+
+.edit-comment {
+    display: inline-block;
+    padding: 3px 13px;
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.edit-comment:hover {
+    background: #28a745;
+    color: FFF;
+}
+
+.edit-content {
+    display: none;
+}
+
+.is-active-form {
+    display: block !important;
+}
+
+.search-space-title {
+    background: #28a745;
+    text-align: center;
+    color: #FFF;
+    padding: 10px 0;
+}
+
+#notifyToUser {
+    display: none;
 }
 
 
@@ -831,6 +868,142 @@ button.toast-close-button {
     background-color: #000000;
     opacity: 0.4;
 }
+
+
+/*Style form search*/
+
+
+/* Style the tab */
+
+.tab {
+    overflow: hidden;
+    padding: 10px 20px;
+    border-bottom: 0.5px solid #f1f1f1;
+}
+
+
+/* Style the buttons inside the tab */
+
+.tab button {
+    display: inline-block;
+    width: calc(100% / 3);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 12px;
+    font-size: 0.8rem;
+    border: 0.5px solid #f1f1f1;
+    box-sizing: border-box;
+}
+
+.tab button span {
+    font-size: inherit!important;
+    padding: 0!important;
+}
+
+.showPopup {
+    display: block!important;
+}
+
+
+/* Change background color of buttons on hover */
+
+.tab button:hover,
+.active {
+    background-color: #28a745;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.this-active {
+    display: block!important;
+}
+
+
+/* Style the tab content */
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+.resultSearch {
+    padding: 5px;
+    border-bottom: 0.5px solid #f1f1f1;
+}
+
+.resultSearch:hover {
+    background: #28a745;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.tabcontent .icon {
+    padding: 8px;
+}
+
+.item-text {
+    font-size: 1rem;
+    margin-left: 15px;
+    color: #000!important;
+}
+
+#popupSearch {
+    display: none;
+    background: white;
+    position: fixed;
+    z-index: 1000;
+    top: 60px;
+    right: 0;
+    width: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+#popupSearch>span {
+    color: orangered;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.result {
+    overflow: auto;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.result::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+.result::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+.result::-webkit-scrollbar-thumb {
+    background: #28a745;
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+.result::-webkit-scrollbar-thumb:hover {
+    background: #f1f1f1;
+}
+
+
+/*End style form search*/
 
 
 /* Responsive Design */

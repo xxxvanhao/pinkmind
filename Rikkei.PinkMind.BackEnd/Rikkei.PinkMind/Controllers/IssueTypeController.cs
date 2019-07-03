@@ -12,7 +12,7 @@ namespace Rikkei.PinkMind.API.Controllers
   [Produces("application/json")]
   [ApiController]
   public class IssueTypeController : ControllerBase
-  {
+  { 
     private readonly IMediator _mediator;
     private readonly ClaimsPrincipal _caller;
 

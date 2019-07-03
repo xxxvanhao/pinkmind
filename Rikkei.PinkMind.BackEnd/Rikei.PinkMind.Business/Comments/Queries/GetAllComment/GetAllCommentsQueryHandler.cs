@@ -21,6 +21,15 @@ namespace Rikei.PinkMind.Business.Comments.Queries.GetAllComment
     }
     public async Task<CommentsViewModel> Handle(GetAllCommentsQuery request, CancellationToken cancellationToken)
     {
+      var user = from us in _pmContext.Users
+                 select new
+                 {
+                   us.ID,
+                   us.FullName,
+                   us.PictureUrl
+                 };
+      var ListUser = _pmContext.Users.ToList();
+
       var Comments = from cm in _pmContext.Comments
                      select new
                      {
@@ -46,6 +55,9 @@ namespace Rikei.PinkMind.Business.Comments.Queries.GetAllComment
         tfitem.CheckUpdate = item.CheckUpdate;
         tfitem.Content = item.Content;
         tfitem.CreateAt = item.CreateAt;
+        var GetCreateBy = ListUser.SingleOrDefault(x => x.ID == item.CreateBy);
+        tfitem.CreateName = GetCreateBy.FullName;
+        tfitem.PictureURL = GetCreateBy.PictureUrl;
         tfitem.CreateBy = item.CreateBy;
         tfitem.DelFlag = item.DelFlag;
         tranfList.Add(tfitem);

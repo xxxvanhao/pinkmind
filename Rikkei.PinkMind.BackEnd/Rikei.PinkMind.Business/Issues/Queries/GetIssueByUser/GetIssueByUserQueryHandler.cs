@@ -101,22 +101,25 @@ namespace Rikei.PinkMind.Business.Issues.Queries.GetIssueByUser
         tfItem.StatusName = item.StatusName;
         tfItem.Subject = item.Subject;
         tfItem.UpdateBy = item.UpdateBy;
-        var GetUpdateBy = ListUser.SingleOrDefault(x => x.ID == tfItem.UpdateBy);
+        var GetUpdateBy = ListUser.SingleOrDefault(x => x.ID == item.UpdateBy);
         tfItem.UpdateByName = GetUpdateBy.FullName;
         tfItem.UpdateByPicture = GetUpdateBy.PictureUrl;
         tfItem.VersionID = item.VersionID;
         tfItem.VersionName = item.VersionName;
         tfItem.AssigneeUser = item.AssigneeUser;
-        //var GetAssignee = ListUser.Where(x => x.ID == tfItem.AssigneeUser).First();
-        tfItem.AssigneeName = "Admin";
-        tfItem.AssigneePicture = "Admin";
+        var GetAssignee = ListUser.SingleOrDefault(x => x.ID == item.AssigneeUser);
+        if (GetAssignee != null)
+        {
+          tfItem.AssigneeName = GetAssignee.FullName;
+          tfItem.AssigneePicture = GetAssignee.PictureUrl;
+        }
         tfItem.CategoryID = item.CategoryID;
         tfItem.CategoryName = item.CategoryName;
         tfItem.CheckUpdate = item.CheckUpdate;
         tfItem.CreateAt = item.CreateAt;
         tfItem.CategoryName = item.CategoryName;
         tfItem.CreateBy = item.CreateBy;
-        var GetCreateBy = ListUser.SingleOrDefault(x => x.ID == tfItem.CreateBy);
+        var GetCreateBy = ListUser.SingleOrDefault(x => x.ID == item.CreateBy);
         tfItem.CreateByName = GetUpdateBy.FullName;
         tfItem.CreateByPicture = GetUpdateBy.PictureUrl;
         tfItem.DelFlag = item.DelFlag;

@@ -14,10 +14,11 @@ using Rikei.PinkMind.Business.Issues.Queries.GetAllIssues;
 using Rikei.PinkMind.Business.Issues.Queries.SearchIssues;
 using Rikei.PinkMind.Business.Issues.Queries.GetIssueByUser;
 using Microsoft.AspNetCore.Authorization;
+using Rikei.PinkMind.Business.Issues.Search;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
-  [Authorize(Policy = "ApiUser")]
+  //[Authorize(Policy = "ApiUser")]
   [Route("api/[controller]")]
   [ApiController]
   public class IssueController : ControllerBase
@@ -60,8 +61,11 @@ namespace Rikkei.PinkMind.API.Controllers
 
     // PUT: api/Issue 
     [HttpPut]
+    [Route("Update")]
     public async Task<IActionResult> PutIssue([FromBody]UpdateIssueCommand command)
     {
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      command.UpdateBy = Convert.ToInt64(userID.Value);
       await _mediator.Send(command);
 
       return NoContent();
@@ -99,6 +103,14 @@ namespace Rikkei.PinkMind.API.Controllers
     {
       await _mediator.Send(new DeleteIssueCommand { ID = id });
       return NoContent();
+    }
+    //Search Issue
+    //HTTP get
+    [HttpGet] 
+    [Route("SearchGlobal/{key}")]
+    public async Task<ActionResult<IssuesViewModel>> SearchGlobal(string key)
+    {
+      return Ok(await _mediator.Send(new GetIssueSearchQuery { Key = key }));
     }
   }
 }

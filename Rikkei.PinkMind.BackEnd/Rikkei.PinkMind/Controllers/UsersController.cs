@@ -11,6 +11,7 @@ using Rikei.PinkMind.Business.Users.Commands.DeleteUser;
 using Rikei.PinkMind.Business.Users.Commands.UpdateUser;
 using Rikei.PinkMind.Business.Users.Queries.GetUserDetail;
 using Rikei.PinkMind.Business.Users.Queries.GetUserDetailList;
+using Rikei.PinkMind.Business.Users.Queries.Search;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
@@ -92,6 +93,12 @@ namespace Rikkei.PinkMind.API.Controllers
     {
       await _mediator.Send(new DeleteUserCommand { ID = id });
       return NoContent();
+    }
+    //HTTP get -  search User
+    [Route("searchUser/{key}")]
+    public async Task<ActionResult<SearchUserViewModel>> SearchUser(string key)
+    {
+      return Ok(await _mediator.Send(new GetSearchUserQuery {key = key }));
     }
   }
 }

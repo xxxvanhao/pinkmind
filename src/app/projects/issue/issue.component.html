@@ -12,9 +12,10 @@
             <div class="col-md-12">
                 <div class="search-conditions mt-4">
                     <h5>Search conditions</h5>
-                    <p class="mb-1 ">
+                    <p class="mb-1">
                         <span class="is-filter mr-2">Status:</span>
-                        <button class="is-item mr-3 status-item" [attr.id]="item.ID" *ngFor="let item of userService.listStatus" [id]="item.id" (click)="isActive()">{{item.name}}</button>
+                        <button class="is-item mr-3 status-item" id="0" (click)="active($event, 0)">All</button>
+                        <button class="is-item mr-3 status-item" [attr.id]="item.ID" *ngFor="let item of userService.listStatus" [id]="item.id" (click)="active($event, item.id)">{{item.name}}</button>
                     </p>
                     <form>
                         <div class="row">
@@ -29,31 +30,22 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="is-filter-Category">Category</label>
-                                    <select class="form-control" id="is-milestone-Category" (change)="SearchIssue()">
-                                        <option value="0">All</option>
-                                        <option *ngFor="let item of userService.mileStone" [value]="item.id">{{item.name}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- <div class="col-md-3">
-                                <div class="form-group">
                                     <label for="is-filter-Category">Milestone</label>
                                     <select class="form-control" id="is-milestone-Category" (change)="SearchIssue()">
                                         <option value="0">All</option>
                                         <option *ngFor="let item of userService.mileStone" [value]="item.id">{{item.name}}</option>
                                     </select>
                                 </div>
-                            </div> -->
-                            <!-- <div class="col-md-3">
+                            </div>
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="is-filter-Category">Assignee</label>
                                     <select class="form-control" id="is-assignee-Category">
-                                        <option value=""></option>
-                                        <option *ngFor="let item of userService.listCategory" [value]="item.id">{{item.name}}</option>
+                                        <option value="0">All</option>
+                                        <option *ngFor="let item of userService.projectMember" [value]="item.userID">{{item.userName}}</option>
                                     </select>
                                 </div>
-                            </div> -->
+                            </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="is-filter-Category">Keyword</label>
@@ -89,18 +81,18 @@
                                 <tr class="tr-body issue-item-detail" *ngFor="let item of userService.listSearchIssue" [attr.data-message-id]="item.id" onclick="redirect()">
                                     <td [attr.id]="item.id" (click)="redirect(item)"><a href="#">{{item.issueTypeName}}</a></td>
                                     <td class="text-left"  (click)="redirect(item)">{{item.key}}</td>
-                                    <td class="text-left">{{item.subject}}</td>
-                                    <td class="issue-assgine-item"><span class="avatar">{{item.assigneeName}}</span></td>
-                                    <td><span class="status">{{item.statusName}}</span></td>
+                                    <td class="text-left" (click)="redirect(item)">{{item.subject}}</td>
+                                    <td class="issue-assgine-item" (click)="redirect(item)"><span class="avatar">{{item.assigneeName}}</span></td>
+                                    <td><span class="status" (click)="redirect(item)">{{item.statusName}}</span></td>
                                     <td class="res-table">{{item.priorityName}}</td>
-                                    <td class="d-none">{{item.categoryName}}</td>
-                                    <td class="d-none">{{item.versionName}}</td>
-                                    <td class="d-none">{{item.milestonName}}</td>
-                                    <td class="res-table">{{item.createAt}}</td>
-                                    <td class="res-table">{{item.dueDate}}</td>
-                                    <td class="res-table">{{item.lastUpdate}}</td>
-                                    <td class="d-none">{{item.updateByName}}</td>
-                                    <td class="res-table"></td>
+                                    <td class="d-none" (click)="redirect(item)">{{item.categoryName}}</td>
+                                    <td class="d-none" (click)="redirect(item)">{{item.versionName}}</td>
+                                    <td class="d-none" (click)="redirect(item)">{{item.milestonName}}</td>
+                                    <td class="res-table" (click)="redirect(item)">{{item.createAt  | date:'yyyy-MM-dd'}}</td>
+                                    <td class="res-table" (click)="redirect(item)">{{item.dueDate  | date:'yyyy-MM-dd'}}</td>
+                                    <td class="res-table" (click)="redirect(item)">{{item.lastUpdate  | date:'yyyy-MM-dd'}}</td>
+                                    <td class="d-none" (click)="redirect(item)">{{item.updateByName}}</td>
+                                    <td class="res-table" (click)="redirect(item)"></td>
                                 </tr>
                                 <script>
                                 </script>

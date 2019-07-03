@@ -145,7 +145,7 @@ export class FileComponent implements OnInit {
     }
   }
 
-  downloadFile() {
+  async downloadFile() {
     let haveCheck = false;
     const checkFile = document.getElementsByClassName('checkFile') as any;
     for (const item of checkFile) {
@@ -160,7 +160,7 @@ export class FileComponent implements OnInit {
     for (const item of checkFile) {
       if (item.checked === true) {
         const path = `image/imageproject/${this.userService.userDetails.spaceID}/${this.paramFileId}/${this.paramFilePath}${item.value}`;
-        this.userService.downloadFileProject(path).subscribe((res: any) => {
+       await this.userService.downloadFileProject(path).subscribe((res: any) => {
           console.log(res);
           saveFile(res, `${item.value}`, res.type );
           // const blob = new Blob([res], { type: res.type});
