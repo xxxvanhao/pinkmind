@@ -27,7 +27,12 @@
 .items-border-bottom {
     border-bottom: 1px solid #ddd;
 }
-
+#add-comment .tab{
+    border-bottom: none;
+}
+#add-comment .tab button{
+    width: calc(100% / 4);
+}
 @media screen and (max-width: 760px) {
     .res-add-version {
         border-bottom: none;

@@ -18,7 +18,7 @@ using Rikei.PinkMind.Business.Issues.Search;
 
 namespace Rikkei.PinkMind.API.Controllers
 {
-  [Authorize(Policy = "ApiUser")]
+  //[Authorize(Policy = "ApiUser")]
   [Route("api/[controller]")]
   [ApiController]
   public class IssueController : ControllerBase

@@ -24,8 +24,8 @@
                             <div class="row">
                                 <div class="col-md-6 pl-4 display-user">
                                     <div class="avatar">
-                                        <img [attr.src]="issueDetail.createByPicture"
-                                            alt="avatar" height="50" width="50">
+                                        <img [attr.src]="issueDetail.createByPicture" alt="avatar" height="50"
+                                            width="50">
                                     </div>
                                     <div class="user-infor">
                                         <p>UserName</p>
@@ -147,8 +147,8 @@
                             <div class="row">
                                 <div class="col-md-10 pl-4 display-user">
                                     <div class="avatar">
-                                        <img *ngIf="item.pictureUL != ''" [attr.src]="item.pictureUL"
-                                            alt="avatar" height="50" width="50">
+                                        <img *ngIf="item.pictureUL != ''" [attr.src]="item.pictureUL" alt="avatar"
+                                            height="50" width="50">
                                     </div>
                                     <div class="user-infor">
                                         <p>{{item.createName}}</p>
@@ -165,10 +165,12 @@
                                 </div>
                                 <div class="col-12 edit-content" [id]="item.id">
                                     <form #formComment="ngForm" (submit)="onSubmitChange(formComment)">
-                                            <input name="id" type="hidden" ngModel [(ngModel)]="item.id" >
-                                            <textarea required class="form-control" name="content" [(ngModel)]="item.content"></textarea>
-                                            <br>
-                                            <button class="btn btn-success px-5" type="submit" (click)="UpdateComment(formComment)" >Change</button>
+                                        <input name="id" type="hidden" ngModel [(ngModel)]="item.id">
+                                        <textarea required class="form-control" name="content"
+                                            [(ngModel)]="item.content"></textarea>
+                                        <br>
+                                        <button class="btn btn-success px-5" type="submit"
+                                            (click)="UpdateComment(formComment)">Change</button>
                                     </form>
                                 </div>
                             </div>
@@ -179,9 +181,12 @@
         </div>
     </div>
     <div id="add-comment">
-        <div class="mt-4">
-            <form class="mt-3" #formComment="ngForm" autocomplete="off" (submit)="onSubmit(formComment)">
-                <div class="card-content mb-3 px-4 py-3">
+        <div class="row">
+            <form class="col-md-7" #formComment="ngForm" autocomplete="off" (submit)="onSubmit(formComment)">
+                <div class="mb-3 px-4 py-3">
+                    <input id="notifyToUser" class="form-control" type="text" name="notifyToUser">
+                </div>
+                <div class="mb-3 px-4 py-3">
                     <div class="row" (click)="active()">
                         <div class="col-md-1 pl-4 display-user">
                             <div class="avatar">
@@ -204,6 +209,65 @@
                             </div>
                             <div class="func-btn">
                                 <a class="btn btn-success px-5" (click)="close()">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form class="col-md-5" id="update-issue-atcm" #formUpdateIssue="ngForm" autocomplete="off" (submit)="UpdateIssue(formUpdateIssue)">
+                <div class="col-md-12">
+                    <div class="tab">
+                        <input id="update-statusID" type="hidden" name="statusID" ngModel
+                            [(ngModel)]="issueDetail.statusID">
+                        <button class="tablinks status-item-update" *ngFor="let item of userService.listStatus"
+                            [attr.value]="item.id" type="button" (click)="ChangeStatusValue($event, item.id)">{{item.name}}</button>
+                    </div>
+                    <div class="col-6">
+                        <div>Assignee</div>
+                        <div class="form-group mb-0">
+                            <select class="form-control" id="update-assignee" name="assigneeUser" ngModel
+                                [(ngModel)]="issueDetail.assigneeUser" #assigneeUser="ngModel">
+                                <option *ngFor="let item of userService.projectMember" [value]="item.userID">
+                                    {{item.userName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row mx-1">
+                        <div class="col-6">
+                            <div>
+                                Mileston
+                            </div>
+                            <div class="form-group mb-0">
+                                <select class="form-control" id="update-milestone" name="milestoneID" ngModel
+                                    [(ngModel)]="issueDetail.milestoneID" #milestoneID="ngModel">
+                                    <option *ngFor="let item of userService.mileStone" [value]="item.id">
+                                        {{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                Due Date
+                            </div>
+                            <div class="form-group mb-0">
+                                <input class="form-control" type="date" id="update-duedate" name="dueDate" ngModel
+                                    #dueDate="ngModel" [ngModel]="issueDetail.dueDate | date:'yyyy-MM-dd'"
+                                    [value]="issueDetail.dueDate | date:'yyyy-MM-dd'"
+                                    (ngModelChange)="issueDetail.dueDate = $event" />
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row mx-1">
+                        <div class="col-6">
+                            <div>Resolution</div>
+                            <div class="form-group mb-0">
+                                <select class="form-control" id="update-resolution" name="milestoneID" ngModel
+                                    [(ngModel)]="issueDetail.milestoneID" #milestoneID="ngModel">
+                                    <option *ngFor="let item of userService.listResolution" [value]="item.id">
+                                        {{item.name}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>
