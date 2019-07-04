@@ -29,12 +29,11 @@ namespace Rikkei.PinkMind.API.Controllers
     }
 
     //GET: api/Users
-    [Authorize(Policy = "ApiUser")]
+    //[Authorize(Policy = "ApiUser")]
     [Route("getall")]
     public async Task<ActionResult<UserViewModel>> GetAllUser()
     {
-      var userID = _caller.Claims.Single(u => u.Type == "id");
-      return Ok(await _mediator.Send(new UserQuery { userID = Convert.ToInt64(userID.Value) }));
+      return Ok(await _mediator.Send(new UserQuery ()));
     }
 
     // GET: api/Users/5
@@ -99,6 +98,6 @@ namespace Rikkei.PinkMind.API.Controllers
     public async Task<ActionResult<SearchUserViewModel>> SearchUser(string key)
     {
       return Ok(await _mediator.Send(new GetSearchUserQuery {key = key }));
-    }
+    }    
   }
 }

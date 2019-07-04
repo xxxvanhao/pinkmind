@@ -1,0 +1,26 @@
+.member-body-fix {
+    background-color: #fff;
+    margin: 1.5rem .5rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    min-height: 51rem;
+}
+
+.member-col-12-fix {
+    padding: 2rem 24.9rem 2rem 26.3rem;
+    font-size: .9rem;
+}
+.memList{
+    border-bottom: 1px solid grey; 
+    font-weight: bold; 
+    color: grey;
+}
+.memList:hover {
+    background-color: gainsboro;
+    cursor: pointer;
+}
+.memHeader {
+    border-bottom: 1px solid grey;
+    font-weight: bold; 
+    color: grey;
+}

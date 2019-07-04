@@ -1,3 +1,32 @@
-<p>
-  members works!
-</p>
+<div class="row member-body-fix">
+    <div class="col-md-12 member-col-12-fix">
+        <div class="row titleHeader"><h5>Org-members (7)</h5></div>
+        <div class="row memHeader">
+          <div class="col-md-4">
+              Members
+          </div>
+          <div class="col-md-4">
+              Teams
+          </div>
+          <div class="col-md-4">
+              Role
+          </div>
+        </div>
+        <div class="row memList" *ngFor="let item of ListMember">
+            <div class="col-md-5">
+                <div class="row">
+                   <div class="col-md-2"><br/><img [attr.src]="item.pictureUrl" width="40px" height="40px" /></div> 
+                   <div class="col-md-10"><br/><p>{{item.fullName}}</p></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+            <div class="col-md-4">
+              <br/><p style="font-weight: normal;">Member <br/> <span style="font-size: 12px; font-weight: normal;">Can invite members</span></p>
+            </div>
+          </div>
+        
+           
+    </div>
+</div>

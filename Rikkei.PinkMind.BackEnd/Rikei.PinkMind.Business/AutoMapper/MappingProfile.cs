@@ -7,6 +7,7 @@ using Rikei.PinkMind.Business.ProjectFile.GetAllFolder;
 using Rikei.PinkMind.Business.Projects.Queries;
 using Rikei.PinkMind.Business.ReUpdate.GetDetails;
 using Rikei.PinkMind.Business.TeamDetails.Queries.GetAllTeamDetail;
+using Rikei.PinkMind.Business.Users.Queries.GetUserDetailList;
 using Rikkei.PindMind.DAO.Models;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,9 @@ namespace Rikei.PinkMind.Business.AutoMapper
       CreateMap<ProjectFileUpload, FileDTO>()
         .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.ID))
         .ForMember(dest => dest.ProjectID, opt => opt.MapFrom(src => src.ProjectID));
+      CreateMap<User, UserDTO>()
+        .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.ID))
+        .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName));
     }
   }
 }

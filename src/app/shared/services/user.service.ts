@@ -516,4 +516,14 @@ export class UserService extends BaseService {
       return this.http.get(this.baseUrl + '/Users/searchUser/' + key, { headers })
         .toPromise();
     }
+    //Get All User
+    getAllMember(){
+      const authToken = localStorage.getItem('auth_token');
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+        'Content-Type': 'application/json'
+      });
+      return this.http.get(this.baseUrl + '/Users/getall', { headers })
+        .toPromise();
+    }
 }
