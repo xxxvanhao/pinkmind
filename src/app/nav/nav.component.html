@@ -1,8 +1,9 @@
 <nav class="container-fluid nav-fix navbar navbar-expand-md navbar-dark">
     <span></span>
-    <button class="navbar-toggler mr-2 fix-background-toggle" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+    <button class="navbar-toggler mr-2 fix-background-toggle" type="button" data-toggle="collapse"
+        data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="row flex-nowrap collapse navbar-collapse" id="myNavbar">
         <div class="col-md-7">
             <ul class="navbar-nav ml-2">
@@ -10,17 +11,21 @@
                     <a class="nav-link" href="dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" (click)="userService.getProject" data-toggle="dropdown">
-                                    Projects
-                                </a>
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" (click)="userService.getProject"
+                        data-toggle="dropdown">
+                        Projects
+                    </a>
                     <div class="dropdown-menu fix-nav-project">
                         <div class="project-list dropdown-item filter-project">
                             <div class="dropbox-header">
                                 <span>Projects</span>
-                                <input type="search" id="project-search-id" class="dropbox-search" value="" (keyup)="searchProject()" name="searchProject" placeholder="Search projects">
+                                <input type="search" id="project-search-id" class="dropbox-search" value=""
+                                    (keyup)="searchProject()" name="searchProject" placeholder="Search projects">
                             </div>
-                            
-                            <div class="isNo-items" *ngIf="!(userService.listProject | keyvalue)?.length > 0; else notShow"><span>There are no project<br>Projects assigned to you will be listed here.</span></div>
+
+                            <div class="isNo-items"
+                                *ngIf="!(userService.listProject | keyvalue)?.length > 0; else notShow"><span>There are
+                                    no project<br>Projects assigned to you will be listed here.</span></div>
                             <ng-template #notShow></ng-template>
                             <div class="project-content" *ngFor="let p of userService.listProject">
                                 <div class="row mx-0 align-items-center">
@@ -41,13 +46,14 @@
                 </li>
                 <li class="nav-item drop-issue dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
-                                    Recently Viewed Issues
-                                    </a>
+                        Recently Viewed Issues
+                    </a>
                     <div class="dropdown-menu">
                         <div class="issue-list dropdown-item">
                             <div class="dropbox-header">
                                 <span>Recently Viewed Issues</span>
-                                <input type="search" class="dropbox-search" value="" name="searchIssue" placeholder="Search recently viewed issues">
+                                <input type="search" class="dropbox-search" value="" name="searchIssue"
+                                    placeholder="Search recently viewed issues">
                             </div>
                             <div class="isNo-items">There are no recently viewed issues yet.</div>
                             <div class="issue-content">
@@ -77,7 +83,8 @@
                         <div class="saved-filter-list dropdown-item">
                             <div class="dropbox-header">
                                 <span>Issue Filters</span>
-                                <input type="search" class="dropbox-search" value="" name="searchFilter" placeholder="Search saved filters">
+                                <input type="search" class="dropbox-search" value="" name="searchFilter"
+                                    placeholder="Search saved filters">
                             </div>
                             <div class="isNo-items">
                                 <p class="mb-0">There are no saved issue filters</p>
@@ -99,59 +106,42 @@
         </div>
         <div class="col-md-5 d-flex justify-content-end">
             <ul class="navbar-nav mr-2 ">
-                <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Search this space">
-                    <input type="search" class="dropbox-search fix-search" value="" name="searchSpace" placeholder="Search this Space">
-                    <div class="showPopup col-md-6 dropbox-header" id="popupSearch" style="display: none;">
-                        <span>Search this Space</span>
+                <li id="form-search" class="nav-item" data-toggle="tooltip" data-placement="bottom"
+                    title="Search this space">
+                    <input type="search" class="dropbox-search fix-search" value="" id="search-global"
+                        (keydown)="search()" name="searchSpace" placeholder="Search this Space">
+                    <div class="col-md-6 dropbox-header" id="popupSearch">
+                        <div class="search-space-title">
+                            <h4>Search this Space</h4>
+                            <span id="close-search-form" class="fas fa-times" (click)="close()"></span>
+                        </div>
                         <div class="tab">
-                            <button class="tablinks" onclick="openCity(event, 'Issue')">Issue</button>
-                            <button class="tablinks" onclick="openCity(event, 'Wiki')">Wiki</button>
-                            <button class="tablinks" onclick="openCity(event, 'SharedFiles')" id="defaultOpen">Shared Files</button>
-                            <button class="tablinks" onclick="openCity(event, 'Pullrequests')">Pull requests</button>
-                            <button class="tablinks" onclick="openCity(event, 'Members')">Members</button>
+                            <button id="Issues" class="tablinks active" (click)="active($event, 'Issues')">Issue
+                                <span>(</span><span id="count-issue"></span><span>)</span></button>
+                            <button id="Members" class="tablinks" (click)="active($event, 'Members')">Members
+                                <span>(</span><span id="count-member"></span><span>)</span></button>
                         </div>
-                        <div id="Issue" class="tabcontent">
-                            <h5>Issue</h5>
-                            <div class="container-fluid">
-                                <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span><h1>sdas</h1>fdsfdsf</div>
-                                <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
-                                <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
+                        <div class="result">
+                            <div id="Issue" class="tabcontent this-active">
+                                <div class="container-fluid">
+                                    <div class="row resultSearch" *ngFor="let item of listSearchIssue"
+                                        (click)="redirect($event, item.id)">
+                                        <i class="icon fas fa-building"></i>
+                                        <span class="item-text">
+                                            [{{item.createName}}] - {{item.subject}} {{item.assigneeName}}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                
-                        <div id="Wiki" class="tabcontent">
-                            <h5>Wiki</h5>
-                            <div class="container-fluid">
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>fdsfdsf</div>
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
-                            </div>
-                        </div>
-                
-                        <div id="SharedFiles" class="tabcontent">
-                            <h5>SharedFiles</h5>
-                            <div class="container-fluid">
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>fdsfdsf</div>
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
-                            </div>
-                        </div>
-                
-                        <div id="Pullrequests" class="tabcontent">
-                            <h5>Pullrequests</h5>
-                            <div class="container-fluid">
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>fdsfdsf</div>
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
-                            </div>
-                        </div>
-                
-                        <div id="Members" class="tabcontent">
-                            <h5>Members</h5>
-                            <div class="container-fluid">
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>fdsfdsf</div>
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>gdfdsfb</div>
-                                    <div class="row resultSearch"><span class="glyphicon glyphicon-cloud" style="color: black;">&#xe017;</span>bgfdfds</div>
+                            <div id="Member" class="tabcontent">
+                                <div class="container-fluid">
+                                    <div class="row resultSearch" *ngFor="let item of listSearchUser">
+                                        <i class="icon fas fa-building"></i>
+                                        <span class="item-text">
+                                            {{item.fullName}}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -160,11 +150,13 @@
                     <a class="nav-link" href="javascript:void(0)"><i class="fas fa-eye"></i></a>
                 </li>
                 <li class="nav-item dropdown" data-toggle="tooltip" data-placement="bottom" title="Notification">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true"><i class="fas fa-bell" aria-hidden="true"></i></a>
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown"
+                        aria-haspopup="true"><i class="fas fa-bell" aria-hidden="true"></i></a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-notification">
                         <div class="dropbox-header">
                             <span>Notification</span>
-                            <label for="unread" class="unread mb-0 float-right"><input type="checkbox" name="unread">Unread Only</label>
+                            <label for="unread" class="unread mb-0 float-right"><input type="checkbox"
+                                    name="unread">Unread Only</label>
                         </div>
                         <div class="notification-list-content">
                             <div class="notification-content">
@@ -174,8 +166,8 @@
                                     </div>
                                     <div class="col-md-7 pl-0 py-2 ">
                                         <span class="title-noti">
-                                          <span class="fn-noti mr-1">Văn Hảo</span>
-                                        <span class="action-noti mx-1">updated</span>the issues
+                                            <span class="fn-noti mr-1">Văn Hảo</span>
+                                            <span class="action-noti mx-1">updated</span>the issues
                                         </span>
                                         <div class="action-noti-content ">
                                             <div class="content ">[ Status: In Progress ]</div>
@@ -220,11 +212,14 @@
 
                 <!-- Dropdown -->
                 <li class="nav-item dropdown" data-toggle="tooltip" data-placement="bottom" title="User control">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-user-control">
-                        <h6 class="dropdown-header" *ngIf="userService.userDetails"><span><i class="far fa-building mr-2"></i></span>{{userService.userDetails.spaceID}} ({{userService.userDetails.lastName}})</h6>
+                        <h6 class="dropdown-header" *ngIf="userService.userDetails"><span><i
+                                    class="far fa-building mr-2"></i></span>{{userService.userDetails.spaceID}}
+                            ({{userService.userDetails.lastName}})</h6>
                         <a class="dropdown-item" routerLink="/admin/members">Organization Settings</a>
                         <hr>
                         <a class="dropdown-item" routerLink="/admin/account">My profile</a>

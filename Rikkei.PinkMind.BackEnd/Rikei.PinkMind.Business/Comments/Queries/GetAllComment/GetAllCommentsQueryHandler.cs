@@ -43,7 +43,7 @@ namespace Rikei.PinkMind.Business.Comments.Queries.GetAllComment
                        cm.CheckUpdate,
                        cm.IssueID,
                      };
-      var Allcomment = await Comments.Where(td => td.IssueID == request.ID).ToListAsync(cancellationToken);
+      var Allcomment = await Comments.Where(td => td.IssueID == request.ID).OrderByDescending(x=>x.CreateAt).ToListAsync(cancellationToken);
       var tranfList = new List<CommentsDTO>();
       foreach(var item in Allcomment)
       {

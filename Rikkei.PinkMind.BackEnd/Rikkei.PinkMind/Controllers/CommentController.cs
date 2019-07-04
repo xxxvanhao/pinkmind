@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using MediatR;
@@ -78,7 +79,33 @@ namespace Rikkei.PinkMind.API.Controllers
       command.CreateBy = Convert.ToInt64(userID.Value);
       command.UpdateBy = Convert.ToInt64(userID.Value);
       var Comment = await _mediator.Send(command);
-      return Comment;
+      try
+      {
+        var file = Request.Form.Files[0];
+        var folderName = Path.Combine("issue", "comment");
+        var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+        if (file.Length > 0)
+        {
+          var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+          var fullPath = Path.Combine(pathToSave, fileName);
+          var dbPath = Path.Combine(folderName, fileName);
+
+          using (var stream = new FileStream(fullPath, FileMode.Create))
+          {
+            file.CopyTo(stream);
+          }
+        }
+        else
+        {
+          return Unit.Value;
+        }
+      }
+      catch (Exception ex)
+      {
+        return Unit.Value;
+      }
+      return Unit.Value;
     }
 
     // DELETE: api/Comment 

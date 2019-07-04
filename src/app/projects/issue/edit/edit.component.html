@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-md-10 pr-4">
                                     <textarea [froalaEditor] name="description" ngModel [(ngModel)]="issueDetail.description"
-                                        #description="ngModel" [(froalaModel)]="issueDetail.description"></textarea>
+                                              #description="ngModel" [(froalaModel)]="issueDetail.description"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -151,18 +151,30 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group mb-0">
-                                            <input class="form-control" type="date"
-                                                id="update-duedate" name="dueDate" ngModel #dueDate="ngModel"
+                                            <input class="form-control" type="date" id="update-duedate" name="dueDate"
+                                                ngModel #dueDate="ngModel"
                                                 [ngModel]="issueDetail.dueDate | date:'yyyy-MM-dd'"
                                                 [value]="issueDetail.dueDate | date:'yyyy-MM-dd'"
-                                                (ngModelChange)="issueDetail.dueDate = $event"
-                                                 />
+                                                (ngModelChange)="issueDetail.dueDate = $event" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-
+                                <div class="row align-items-center items-border items-border-bottom">
+                                    <div class="col-6">
+                                        Resolution
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-0">
+                                            <select class="form-control" id="update-resolution" name="resolutionID" ngModel
+                                                [(ngModel)]="issueDetail.resolutionID" #resolutionID="ngModel">
+                                                <option *ngFor="let item of userService.listResolution" [value]="item.id">
+                                                    {{item.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

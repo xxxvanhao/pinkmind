@@ -14,7 +14,7 @@ using static System.Net.WebRequestMethods;
 
 namespace Rikei.PinkMind.Business.Comments.Commands.Create
 {
-  public class CreateCommentCommand : IRequest
+  public class CreateCommentCommand : IRequest<int>
   {
     public int ID { get; set; }
     public string Content { get; set; }
@@ -22,9 +22,9 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
     public DateTime CreateAt { get; set; }
     public bool DelFlag { get; set; }
     public long UpdateBy { get; set; }
-    public List<IFormFile> FileName { get; set; }
+    public string FileName { get; set; }
     public int IssueID { get; set; }
-    public class Handler : IRequestHandler<CreateCommentCommand, Unit>
+    public class Handler : IRequestHandler<CreateCommentCommand, int>
     {
       private readonly IMediator _mediator;
       private readonly PinkMindContext _pmContext;
@@ -32,7 +32,7 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
       {
         _pmContext = pmContext;
       }
-      public async Task<Unit> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
+      public async Task<int> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
       {
         var entity = new Comment
         {
@@ -46,21 +46,7 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
         };
         _pmContext.Comments.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);
-        //Save file
-        if(request.FileName != null)
-        {
-          int ReID = entity.ID;
-          var createFile = new CreateFileCommand();
-          foreach (var item in request.FileName)
-          {
-            createFile.CommentID = ReID;
-            createFile.CreateBy = request.CreateBy;
-            createFile.UpdateBy = request.UpdateBy;
-            createFile.IssueID = request.IssueID;
-          }
-          var SavefileContent = await _mediator.Send(new CreateFileCommand());
-        }
-        return Unit.Value;
+        return entity.ID;
       }
     }
   }

@@ -4,6 +4,6 @@ export interface postComment {
     createAt: Date;
     delFlag: boolean;
     updateBy: number;
-    fileName: string;
+    fileName: FileList;
     issueID: string;
 }

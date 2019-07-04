@@ -4,7 +4,7 @@ using Rikkei.PinkMind.DAO.Data;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
+using System.Threading; 
 using System.Threading.Tasks;
 
 namespace Rikei.PinkMind.Business.Issues.Search
@@ -46,7 +46,11 @@ namespace Rikei.PinkMind.Business.Issues.Search
         tfItem.Id = item.ID;
         tfItem.Subject = item.Subject;
         tfItem.CreateName = ListUser.SingleOrDefault(x => x.ID == item.CreateBy).FullName;
-        tfItem.AssigneeName = ListUser.SingleOrDefault(x => x.ID == item.AssigneeUser).FullName;
+        var GetAssignee = ListUser.SingleOrDefault(x => x.ID == item.AssigneeUser);
+        if (GetAssignee != null)
+        {
+          tfItem.AssigneeName = GetAssignee.FullName;
+        }
         modelIssue.Add(tfItem);
       }
 

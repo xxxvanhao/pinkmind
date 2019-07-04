@@ -30,6 +30,8 @@ export class IssueComponent implements OnInit {
     this.userService.getStatus();
     console.log(this.userService.getStatus())
     this.SearchIssue();
+    this.userService.getProjectMember(this.paramIssueId);
+
   }
 
   getParamProjectIssue() {
@@ -80,4 +82,5 @@ export class IssueComponent implements OnInit {
     this.userService.IssueDetail = data;
     this.router.navigate(['projects/view/' + data.projectID]);
   }
+  
 }

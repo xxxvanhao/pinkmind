@@ -85,28 +85,30 @@ namespace Rikei.PinkMind.Business.Issues.Queries
       modelIssue.StatusName = item.StatusName;
       modelIssue.Subject = item.Subject;
       modelIssue.UpdateBy = item.UpdateBy;
-      var GetUpdateBy = ListUser.SingleOrDefault(x => x.ID == modelIssue.UpdateBy);
+      var GetUpdateBy = ListUser.SingleOrDefault(x => x.ID == item.UpdateBy);
       modelIssue.UpdateByName = GetUpdateBy.FullName;
       modelIssue.UpdateByPicture = GetUpdateBy.PictureUrl;
       modelIssue.VersionID = item.VersionID;
       modelIssue.VersionName = item.VersionName;
       modelIssue.AssigneeUser = item.AssigneeUser;
-      var GetAssignee = ListUser.SingleOrDefault(x => x.ID == modelIssue.AssigneeUser);
-      modelIssue.AssigneeName = GetAssignee.FullName;
-      modelIssue.AssigneePicture = GetAssignee.PictureUrl;
+      var GetAssignee = ListUser.SingleOrDefault(x => x.ID == item.AssigneeUser);
+      if (GetAssignee != null)
+      {
+        modelIssue.AssigneeName = GetAssignee.FullName;
+        modelIssue.AssigneePicture = GetAssignee.PictureUrl;
+      }
       modelIssue.CategoryID = item.CategoryID;
       modelIssue.CategoryName = item.CategoryName;
       modelIssue.CheckUpdate = item.CheckUpdate;
       modelIssue.CreateAt = item.CreateAt;
       modelIssue.CategoryName = item.CategoryName;
       modelIssue.CreateBy = item.CreateBy;
-      var GetCreateBy = ListUser.SingleOrDefault(x => x.ID == modelIssue.CreateBy);
+      var GetCreateBy = ListUser.SingleOrDefault(x => x.ID == item.CreateBy);
       modelIssue.CreateByName = GetUpdateBy.FullName;
       modelIssue.CreateByPicture = GetUpdateBy.PictureUrl;
       modelIssue.DelFlag = item.DelFlag;
       modelIssue.Description = item.Description;
       modelIssue.DueDate = item.DueDate;
-
       return modelIssue;
     }
   }
