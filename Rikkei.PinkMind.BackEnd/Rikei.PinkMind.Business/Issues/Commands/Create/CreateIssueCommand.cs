@@ -36,7 +36,8 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
     public bool DelFlag { get; set; }
     [Timestamp]
     public byte[] CheckUpdate { get; set; }
-    public List<IFormFile> File { get; set; }
+    public List<CreateFileCommand> FileIssue { get; set; }
+    public List<Int64> ListNotification { get; set; }
 
     public class Handler : IRequestHandler<CreateIssueCommand, int>
     {
@@ -92,20 +93,41 @@ namespace Rikei.PinkMind.Business.Issues.Commands.Create
 
         await _pmContext.SaveChangesAsync(cancellationToken);
 
-        ////Save files
-        //if (request.File != null)
-        //{
-        //  int resID = entity.ID;
-        //  var createFile = new CreateFileCommand();
-        //  foreach (var item in request.File)
-        //  {
-        //    createFile.CommentID = null;
-        //    createFile.CreateBy = request.CreateBy;
-        //    createFile.UpdateBy = request.CreateBy;
-        //    createFile.IssueID = resID;
-        //  }
-        //  var SaveFileContent = await _mediator.Send(new CreateFileCommand());
-        //}
+        if(request.FileIssue.Count > 0) {
+          foreach(var item in request.FileIssue)
+          {
+            var eFile = new File
+            {
+              FolderPath = item.FolderPath,
+              FilePath = item.FilePath,
+              FileSize = item.FileSize,
+              CreateBy = request.CreateBy,
+              CreateAt  = DateTime.Now,
+              UpdateBy = request.UpdateBy,
+              LastUpdate = DateTime.Now,
+              DelFlag = true,
+              IssueID = eIssue.ID
+            };
+            _pmContext.Files.Add(eFile);
+            await _pmContext.SaveChangesAsync(cancellationToken);
+          }
+        }
+
+        if(request.ListNotification.Count > 0)
+        {
+          foreach(var item in request.ListNotification)
+          {
+            var eNotify = new Notify
+            {
+              UserID = item,
+              IssueID = eIssue.ID,
+              ReupdateID =  eReUpdate.ID,
+              Status = false
+            };
+            _pmContext.Notifies.Add(eNotify);
+            await _pmContext.SaveChangesAsync(cancellationToken);
+          }
+        }
         return eIssue.ID;
       }
     }

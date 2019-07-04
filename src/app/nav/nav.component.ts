@@ -3,9 +3,16 @@ import { UserService } from '../shared/services/user.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+<<<<<<< HEAD
 import { searchUserModel } from '../shared/models/postModel/searchUserModel.interface';
 import { searchIssueModel } from '../shared/models/SearchIssueModel.interface';
 import { IssueDetail } from '../shared/models/IssueDetail.interface';
+=======
+import { Notify } from '../shared/models/notify.interface';
+import { searchUserModel } from '../shared/models/postModel/searchUserModel.interface';
+import { searchIssueModel } from '../shared/models/SearchIssueModel.interface';
+
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
 
 declare var jquery: any;
 declare var $: any;
@@ -21,6 +28,10 @@ export class NavComponent implements OnInit, OnDestroy {
   listSearchUser: searchUserModel = null;
   listSearchIssue: searchIssueModel = null;
 
+  listNotify: Notify;
+  listSearchUser: searchUserModel = null;
+  listSearchIssue: searchIssueModel = null;
+
   constructor(private userService: UserService, private router: Router) {
 
   }
@@ -28,6 +39,7 @@ export class NavComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.userService.authNavStatus$.subscribe(status => this.status = status);
     this.userService.getProject();
+    this.getListNotify();
   }
 
   ngOnDestroy() {
@@ -38,7 +50,30 @@ export class NavComponent implements OnInit, OnDestroy {
   logout() {
     this.userService.logout();
     this.router.navigate(['/account/facebook-login']);
+<<<<<<< HEAD
   }
+=======
+ }
+
+  getListNotify() {
+    this.userService.getNotify().then((res: any) => {
+      this.listNotify = res.notifies;
+      console.log(res);
+      console.log(this.listNotify)
+    });
+ }
+
+//  searchProject() {
+//   const searchID = document.getElementById('project-search-id') as HTMLInputElement;
+//   const filter = searchID.value.toUpperCase();
+//   const filterProject = document.getElementsByClassName('filter-project')[0] as any;
+//   const projectName = filterProject.getElementsByClassName('project-name') as any;
+//   const projectContent = filterProject.getElementsByClassName('project-content') as any;
+//   // tslint:disable-next-line: prefer-for-of
+//   for (let i = 0; i < projectName.length; i++) {
+
+//   }
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
 
   searchProject() {
     const searchID = document.getElementById('project-search-id') as HTMLInputElement;
@@ -63,11 +98,16 @@ export class NavComponent implements OnInit, OnDestroy {
       this.userService.SearchMember(key).then((res: any) => {
         this.listSearchUser = res.searchUsers;
         var countIssue = res.searchUsers.length;
+<<<<<<< HEAD
         (document.getElementById('count-member') as any).innerHTML = countIssue;
+=======
+        (document.getElementById('count-issue') as any).innerHTML = countIssue;
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
       });
       this.userService.SearchIssue(key).then((res: any) => {
         this.listSearchIssue = res.issueSearches;
         var countmember = res.issueSearches.length;
+<<<<<<< HEAD
         (document.getElementById('count-issue') as any).innerHTML = countmember;
       });
     }
@@ -81,6 +121,15 @@ export class NavComponent implements OnInit, OnDestroy {
     document.getElementById('popupSearch').classList.remove('showPopup');
   }
 
+=======
+        (document.getElementById('count-member') as any).innerHTML = countmember;
+      });
+    }
+    else{
+      openPopup.classList.remove('showPopup');
+    }
+  }
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
   searchSpace() {
     const spaceName = document.getElementById('searchSpace') as HTMLInputElement;
     let showPopup = document.getElementsByClassName('showPopup')[0] as any;
@@ -117,10 +166,13 @@ export class NavComponent implements OnInit, OnDestroy {
     }
 
   }
+<<<<<<< HEAD
   redirect(event, id: number) {
     this.userService.getIssueDetail(id).then((res: any) => {
       this.userService.IssueDetail = res;
       this.router.navigate(['projects/view/' + res.projectID]);
     })
   }
+=======
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
 }

@@ -46,7 +46,25 @@ namespace Rikei.PinkMind.Business.Comments.Commands.Create
         };
         _pmContext.Comments.Add(entity);
         await _pmContext.SaveChangesAsync(cancellationToken);
+<<<<<<< HEAD
         return entity.ID;
+=======
+        //Save file
+        if(request.FileName != null)
+        {
+          int ReID = entity.ID;
+          var createFile = new CreateFileCommand();
+          foreach (var item in request.FileName)
+          {
+            createFile.CommentID = ReID;
+            createFile.CreateBy = request.CreateBy;
+            createFile.UpdateBy = request.UpdateBy;
+            createFile.IssueID = request.IssueID;
+          }
+          //var SavefileContent = await _mediator.Send(new CreateFileCommand());
+        }
+        return Unit.Value;
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
       }
     }
   }

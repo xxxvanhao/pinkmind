@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { FileUpload } from 'src/app/shared/models/fileupload.interface';
 import { empty } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { getFileNameFromResponseContentDisposition, saveFile } from 'src/app/shared/services/file-download-helper';
 declare var jquery: any;
 declare var $: any;
 
@@ -19,6 +20,9 @@ export class FileComponent implements OnInit {
   paramFileId: string;
   isProjectKey: boolean;
   paramFile: string;
+  paramFilePath: string;
+  iBackFolder: number;
+  BackFolder: string;
   fileUpload: FileUpload;
   constructor(private toastr: ToastrService, private userService: UserService, private router: Router, private route: ActivatedRoute) {
 
@@ -50,6 +54,9 @@ export class FileComponent implements OnInit {
       this.paramFileId = params.id;
       this.checkProject();
       this.paramFile = this.getParaFileByName('path', null);
+      this.paramFilePath = this.paramFile == '' ? '' : `${this.paramFile}/`;
+      this.iBackFolder = this.paramFile.lastIndexOf('/');
+      this.BackFolder = this.iBackFolder == -1 ? '' : `?path=${this.paramFile.substring(0, this.iBackFolder)}`;
       this.userService.getParamSpaceId(this.paramFileId);
       });
   }
@@ -123,5 +130,68 @@ export class FileComponent implements OnInit {
     };
     return false;
   }
+
+  checkboxChecked() {
+    const getAll = document.getElementById('checkAll') as any;
+    const checkFile = document.getElementsByClassName('checkFile') as any;
+    if (getAll.checked === true) {
+      for (const item of checkFile) {
+        item.checked = true;
+      }
+    } else {
+      for (const item of checkFile) {
+        item.checked = false;
+      }
+    }
+  }
+
+  async downloadFile() {
+    let haveCheck = false;
+    const checkFile = document.getElementsByClassName('checkFile') as any;
+    for (const item of checkFile) {
+      if (item.checked === true) {
+        haveCheck = true;
+      }
+    }
+    if (!haveCheck) {
+      this.toastr.warning('Please pick some thing!', 'Download file');
+      return false;
+    }
+    for (const item of checkFile) {
+      if (item.checked === true) {
+        const path = `image/imageproject/${this.userService.userDetails.spaceID}/${this.paramFileId}/${this.paramFilePath}${item.value}`;
+       await this.userService.downloadFileProject(path).subscribe((res: any) => {
+          console.log(res);
+          saveFile(res, `${item.value}`, res.type );
+          // const blob = new Blob([res], { type: res.type});
+          // const url = window.URL.createObjectURL(blob);
+          // const pwa = window.open(url);
+          // if (!pwa || pwa.closed || typeof pwa.closed == undefined) {
+          //   alert( 'Please disable your Pop-up blocker and try again.');
+          // }
+        });
+      }
+    }
+  }
+
+  deleteFile() {
+    let haveCheck = false;
+    const checkFile = document.getElementsByClassName('checkFile') as any;
+    for (const item of checkFile) {
+      if (item.checked === true) {
+        haveCheck = true;
+      }
+    }
+    if (!haveCheck) {
+      this.toastr.warning('Please pick some thing!', 'Delete file');
+      return false;
+    }
+    for (const item of checkFile) {
+      if (item.checked === true) {
+        return true;
+      }
+    }
+  }
+
 }
 

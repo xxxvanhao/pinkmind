@@ -148,7 +148,9 @@ namespace Rikkei.PinkMind.API.Controllers
         pathlist.Add(pathDetails);
       }
 
-      return Ok(pathlist);
+      return new OkObjectResult(new {
+        pathListFile = pathlist
+      });
       //return Ok("Uploaded " + Request.Form.Files.Count + " files");
     }
     [Route("path/{filename}")]
@@ -173,7 +175,7 @@ namespace Rikkei.PinkMind.API.Controllers
     public async Task<IActionResult> PostFolder([FromBody]CreateFolderCommand command)
     {
       var userID = _caller.Claims.Single(u => u.Type == "id");
-      Directory.CreateDirectory($"image/imageproject/{command.FolderPath}{command.FilePath}");
+      Directory.CreateDirectory($"image/imageproject/{command.FolderPath}/{command.FilePath}");
       await _mediator.Send(new CreateFolderCommand
       {
         FolderPath = $"{command.FolderPath}",

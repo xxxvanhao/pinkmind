@@ -10,7 +10,7 @@ import { Space } from '../models/space.interface';
 import { Project } from '../models/project.interface';
 import { ReUpdate } from '../models/reUpdate.interface';
 import * as moment from 'moment';
-import * as signalR from "@aspnet/signalr";
+import * as signalR from '@aspnet/signalr';
 import { Issue } from '../models/issue.interface';
 import { IGetType } from '../models/igettype.interface';
 import { IIssueType } from '../models/issuetype.interface';
@@ -276,12 +276,23 @@ export class UserService extends BaseService {
   }
 
   // API GET
-
+  getNotify() {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+<<<<<<< HEAD
+=======
+      'Content-Type' : 'application/json'
+    });
+    return this.http.get(this.baseUrl + '/notify', {headers})
+    .toPromise();
+  }
 
   getReUpdate(pKey: string) {
     const authToken = localStorage.getItem('auth_token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
       'Content-Type': 'application/json'
     });
     return this.http.get(this.baseUrl + `/ReUpdates/${pKey}`, { headers })
@@ -427,7 +438,15 @@ export class UserService extends BaseService {
       Authorization: `Bearer ${authToken}`,
       'Content-Type': 'application/json'
     });
+<<<<<<< HEAD
     return this.http.get(this.baseUrl + '/Issue/GetDetail/' + id, { headers }).toPromise();
+=======
+
+    return this.http.get(this.baseUrl + '/issue/' + id, {headers}).toPromise();
+// =======
+//     return this.http.post(this.baseUrl + '/issue/' + id, { headers }).toPromise();
+// >>>>>>> d347d5a90f03428233530498a1d426993367c6d1
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
   }
 
   getSearchIssue(proID: string, catID: number, staID: number, mileID: number, key: string) {
@@ -460,6 +479,7 @@ export class UserService extends BaseService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${authToken}`,
     });
+<<<<<<< HEAD
     return this.http.post(this.baseUrl + '/FileUpload', path, { headers })
       .pipe(map((response: any) => response))
       .pipe(catchError(this.handleError));
@@ -476,6 +496,48 @@ export class UserService extends BaseService {
         .pipe(catchError(this.handleError));
     }
     //Put comment
+=======
+    return this.http.post(this.baseUrl + '/FileUpload', path, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
+
+  downloadFileProject(path: string) {
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      });
+    const urlpath = encodeURIComponent(path);
+    return this.http.get(this.baseUrl + `/FileUpload/path/${urlpath}`, { responseType: 'blob' , headers});
+  }
+
+  // Post comment : Hoang
+  postComment(postComment: postComment) {
+    console.log(postComment);
+    const authToken = localStorage.getItem('auth_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${authToken}`,
+      'Content-Type' : 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/Comment/Create', postComment, {headers})
+    .pipe(map((response: any) => response ))
+    .pipe(catchError(this.handleError));
+  }
+
+  // put: Update issue
+  // putIssue(putIssueForm: putIssue) {
+  //   const authToken = localStorage.getItem('auth_token');
+  //   const headers = new HttpHeaders({
+  //     Authorization: `Bearer ${authToken}`,
+  //     'Content-Type' : 'application/json'
+  //   });
+  //   return this.http.put(this.baseUrl + '/issue', putIssueForm, {headers})
+  //   .pipe(map((response: any) => response ))
+  //   .pipe(catchError(this.handleError));
+  // }
+
+    // Put comment
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
     putComment(putComment: postComment) {
       const authToken = localStorage.getItem('auth_token');
       const headers = new HttpHeaders({
@@ -486,7 +548,11 @@ export class UserService extends BaseService {
         .pipe(map((response: any) => response))
         .pipe(catchError(this.handleError));
     }
+<<<<<<< HEAD
     //put: Update issue
+=======
+    // put: Update issue
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
     putIssue(issueDetail: IssueDetail) {
       const authToken = localStorage.getItem('auth_token');
       const headers = new HttpHeaders({
@@ -497,8 +563,14 @@ export class UserService extends BaseService {
         .pipe(map((response: any) => response))
         .pipe(catchError(this.handleError));
     }
+<<<<<<< HEAD
     //get Search issue for search global
     SearchIssue(key: string){
+=======
+
+    // get Search issue for search global
+    SearchIssue(key: string) {
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
       const authToken = localStorage.getItem('auth_token');
       const headers = new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -507,7 +579,11 @@ export class UserService extends BaseService {
       return this.http.get(this.baseUrl + '/issue/SearchGlobal/' + key, { headers })
         .toPromise();
     }
+<<<<<<< HEAD
     SearchMember(key: string){
+=======
+    SearchMember(key: string) {
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
       const authToken = localStorage.getItem('auth_token');
       const headers = new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -516,6 +592,7 @@ export class UserService extends BaseService {
       return this.http.get(this.baseUrl + '/Users/searchUser/' + key, { headers })
         .toPromise();
     }
+<<<<<<< HEAD
     //Get All User
     getAllMember(){
       const authToken = localStorage.getItem('auth_token');
@@ -527,3 +604,6 @@ export class UserService extends BaseService {
         .toPromise();
     }
 }
+=======
+}
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52

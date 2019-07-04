@@ -76,6 +76,9 @@ namespace Rikei.PinkMind.Business.Issues.Queries.GetIssueByUser
       else if (request.Key == "Assigned")
       {
         List = await issue.Where(x => x.AssigneeUser == request.ID).ToListAsync(cancellationToken);
+      } else
+      {
+        List = await issue.Where(x => x.ProjectID == request.Key).ToListAsync(cancellationToken);
       }
       var modelIssue = new List<IssuesDTO>();
       foreach (var item in List)

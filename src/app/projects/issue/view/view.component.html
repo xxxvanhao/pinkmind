@@ -184,10 +184,14 @@
         <div class="row">
             <form class="col-md-7" #formComment="ngForm" autocomplete="off" (submit)="onSubmit(formComment)">
                 <div class="mb-3 px-4 py-3">
+<<<<<<< HEAD
                         <div class="col-md-1"></div>
                         <div class="col-md-11">
                             <input id="notifyToUser" class="form-control" type="text" name="notifyToUser">
                         </div>
+=======
+                    <input id="notifyToUser" class="form-control" type="text" name="notifyToUser">
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
                 </div>
                 <div class="mb-3 px-4 py-3">
                     <div class="row" (click)="active()">
@@ -266,8 +270,13 @@
                         <div class="col-6">
                             <div>Resolution</div>
                             <div class="form-group mb-0">
+<<<<<<< HEAD
                                 <select class="form-control" id="update-resolution" name="resolutionID" ngModel
                                     [(ngModel)]="issueDetail.resolutionID" #resolutionID="ngModel">
+=======
+                                <select class="form-control" id="update-resolution" name="milestoneID" ngModel
+                                    [(ngModel)]="issueDetail.milestoneID" #milestoneID="ngModel">
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
                                     <option *ngFor="let item of userService.listResolution" [value]="item.id">
                                         {{item.name}}</option>
                                 </select>

@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using MediatR;
@@ -25,10 +27,11 @@ namespace Rikkei.PinkMind.API.Controllers
     }
 
     //// GET: api/Notify/GetAll
-    [Route("GetAll")]
+    [HttpGet]
     public async Task<ActionResult<NotifyViewModel>> GetAllNotify()
     {
-      return Ok(await _mediator.Send(new GetAllNotifyQuery()));
+      var userID = _caller.Claims.Single(u => u.Type == "id");
+      return Ok(await _mediator.Send(new GetAllNotifyQuery { userID = Convert.ToInt64(userID.Value) }));
     }
   }
 }

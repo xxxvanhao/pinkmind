@@ -55,32 +55,58 @@
                                     <th>Updated</th>
                                 </tr>
                             </thead>
-                            <tbody class="file-tbody text-center">
+                            <tbody class="file-tbody text-center" *ngIf="(userService.listFileDetails)?.length > 0; else notShowList">
+                                <tr *ngIf="!(paramFile == '')">
+                                    <td></td>
+                                    <td class="text-left"><a href="projects/file/{{paramFileId}}{{BackFolder}}"><i class="fas fa-folder mr-2 fix-color-orange"></i>...</a></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                                 <tr class="tr-body" *ngFor="let item of userService.listFileDetails">
                                     <td>
                                         <div class="checkbox text-center mt-1">
-                                            <input type="checkbox" class="check" value="" *ngIf="(item.typeModel == 'File')">
+                                            <input type="checkbox" class="checkFile" value="{{item.filePath}}" *ngIf="(item.typeModel == 'File')">
                                         </div>
                                     </td>
-                                    <td class="text-left"><a href="projects/file/{{item.projectID}}?path={{item.filePath}}"><i class="{{item.imagePath}}"></i>{{item.filePath}}</a></td>
+
+                                    <td class="text-left"><a href="projects/file/{{item.projectID}}?path={{paramFilePath}}{{item.filePath}}"><i class="{{item.imagePath}}"></i>{{item.filePath}}</a></td>
                                     <td>{{item.fileSize}}</td>
-                                    <td>{{item.updateBy}}</td>
+                                    <td>{{item.updateName}}</td>
                                     <td>{{item.lastUpdate | date: 'MMM dd, yyyy'}}</td>
                                 </tr>
                             </tbody>
+                            <ng-template #notShowList>
+                                <tbody class="file-tbody text-center">
+                                    <tr>
+                                        <td></td>
+                                        <td class="text-left"><a href="projects/file/{{paramFileId}}{{BackFolder}}"><i class="fas fa-folder mr-2 fix-color-orange"></i>...</a></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="tr-body">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-right">There are no items.</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </ng-template>
                         </table>
                     </form>
                     <div class="file-menu ">
                         <form>
                             <div class="row px-1">
                                 <div class="col-md-4 px-4 d-flex align-items-center ">
-                                    <input type="checkbox" class="mr-2 check" id="checkAll" value="">
+                                    <input type="checkbox" class="mr-2 check" id="checkAll" value="" (click)="checkboxChecked()">
                                     <label class="mb-0">Select all</label>
                                 </div>
                                 <div class="col-md-8 d-flex justify-content-end align-items-center">
                                     <span>checked item(s)</span>
-                                    <button type="submit" class="btn btn-danger ml-2">Delete</button>
-                                    <button type="submit" class="btn btn-success ml-2">Download</button>
+                                    <button type="button" class="btn btn-danger ml-2" (click)="deleteFile()">Delete</button>
+                                    <button type="button" class="btn btn-success ml-2" (click)="downloadFile()">Download</button>
                                 </div>
                             </div>
                         </form>

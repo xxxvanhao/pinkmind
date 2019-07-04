@@ -84,12 +84,15 @@ export class ViewComponent implements OnInit {
     elmAddComment.classList.add('is-active-form');
     const inputNotify = document.getElementById('notifyToUser');
     inputNotify.classList.add('is-active-form');
+<<<<<<< HEAD
     var statusBegin = document.getElementsByClassName('status-item-update') as any;
     for (var item of statusBegin){
       if(item.getAttribute('value') == this.issueDetail.statusID){
         item.classList.add('active')
       }
     }
+=======
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
   }
   close() {
     var elmAddComment = document.getElementById('add-comment');
@@ -101,6 +104,10 @@ export class ViewComponent implements OnInit {
   }
   onSubmit(formComment: NgForm) {
     var issueSubmit = document.getElementById('update-issue-atcm') as any;
+<<<<<<< HEAD
+=======
+
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
     this.userService.postComment(formComment.value).subscribe(
       res => {
         this.toastr.success('Successful!', 'Add comment successful');
@@ -117,6 +124,10 @@ export class ViewComponent implements OnInit {
           this.issueDetail.resolutionID = Number(updateResolution);
           this.UpdateIssue(this.issueDetail);
         });
+<<<<<<< HEAD
+=======
+        formComment.resetForm();
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
         this.getAllComment(this.userService.IssueDetail.id);
       },
       err => {
@@ -176,6 +187,10 @@ export class ViewComponent implements OnInit {
     var statusIDElm = document.getElementById('update-statusID');
     var changeStatus = document.getElementsByClassName('status-item-update') as any;
     statusIDElm.setAttribute("value", id.toString());
+<<<<<<< HEAD
+=======
+    console.log(id);
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
     for (const item of changeStatus) {
       if (id == item.getAttribute('value')) {
         item.classList.add('active');

@@ -15,8 +15,10 @@ namespace Rikei.PinkMind.Business.ProjectFile.GetAllFolder
     public string FileSize { get; set; }
     public string ImagePath { get; set; }
     public long CreateBy { get; set; }
+    public string CreateName { get; set; }
     public DateTime CreateAt { get; set; }
     public long UpdateBy { get; set; }
+    public string UpdateName { get; set; }
     public DateTime LastUpdate { get; set; }
     [Column(TypeName = "bit")]
     public bool DelFlag { get; set; }

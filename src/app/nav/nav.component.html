@@ -106,13 +106,18 @@
         </div>
         <div class="col-md-5 d-flex justify-content-end">
             <ul class="navbar-nav mr-2 ">
+<<<<<<< HEAD
                 <li id="form-search" class="nav-item" data-toggle="tooltip" data-placement="bottom"
                     title="Search this space">
+=======
+                <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Search this space">
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
                     <input type="search" class="dropbox-search fix-search" value="" id="search-global"
                         (keydown)="search()" name="searchSpace" placeholder="Search this Space">
                     <div class="col-md-6 dropbox-header" id="popupSearch">
                         <div class="search-space-title">
                             <h4>Search this Space</h4>
+<<<<<<< HEAD
                             <span id="close-search-form" class="fas fa-times" (click)="close()"></span>
                         </div>
                         <div class="tab">
@@ -120,12 +125,22 @@
                                 <span>(</span><span id="count-issue"></span><span>)</span></button>
                             <button id="Members" class="tablinks" (click)="active($event, 'Members')">Members
                                 <span>(</span><span id="count-member"></span><span>)</span></button>
+=======
+                        </div>
+                        <div class="tab">
+                            <button id="Issues" class="tablinks active" (click)="active($event, 'Issues')">Issue <span>(</span><span id="count-issue"></span><span>)</span></button>
+                            <button id="Members" class="tablinks" (click)="active($event, 'Members')">Members <span>(</span><span id="count-member"></span><span>)</span></button>
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
                         </div>
                         <div class="result">
                             <div id="Issue" class="tabcontent this-active">
                                 <div class="container-fluid">
+<<<<<<< HEAD
                                     <div class="row resultSearch" *ngFor="let item of listSearchIssue"
                                         (click)="redirect($event, item.id)">
+=======
+                                    <div class="row resultSearch" *ngFor="let item of listSearchIssue">
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
                                         <i class="icon fas fa-building"></i>
                                         <span class="item-text">
                                             [{{item.createName}}] - {{item.subject}} {{item.assigneeName}}
@@ -138,7 +153,11 @@
                                     <div class="row resultSearch" *ngFor="let item of listSearchUser">
                                         <i class="icon fas fa-building"></i>
                                         <span class="item-text">
+<<<<<<< HEAD
                                             {{item.fullName}}
+=======
+                                                {{item.fullName}}
+>>>>>>> c8164f3717d232480e774ceea613430b3124df52
                                         </span>
                                     </div>
                                 </div>
